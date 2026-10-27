@@ -260,3 +260,18 @@ form input[type=date], form input[type=text], form select {
 
 .empty { text-align: center; color: var(--ink-2); padding: 24px 8px; }
 .foot { text-align: center; color: var(--ink-2); font-size: 12px; margin-top: 24px; }
+
+/* ---------- marchio Giry Corporation ---------- */
+.made { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 36px 0 8px; }
+.made > span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+.giry { display: inline-flex; align-items: center; gap: 10px; }
+.giry-mark { width: 38px; height: 38px; filter: drop-shadow(0 3px 8px rgba(200,91,107,.3)); }
+.giry-text { display: flex; flex-direction: column; line-height: 1; }
+.giry-name { font-family: var(--serif); font-weight: 650; font-size: 24px; letter-spacing: -0.02em; color: var(--ink); }
+.giry-sub { font-size: 9.5px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); margin-top: 3px; }
+.giry-sub sup { font-size: 8px; letter-spacing: 0; margin-left: 1px; vertical-align: 4px; }
+.giry.lg .giry-mark { width: 120px; height: 120px; }
+.giry.lg { gap: 24px; }
+.giry.lg .giry-name { font-size: 76px; }
+.giry.lg .giry-sub { font-size: 25px; margin-top: 8px; }
+.giry.lg .giry-sub sup { font-size: 18px; vertical-align: 12px; }

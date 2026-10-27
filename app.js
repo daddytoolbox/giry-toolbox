@@ -35,6 +35,17 @@
     </ol></div>`;
   const fmtData = iso => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
 
+  // ---------- marchio ----------
+  const giry = (cls = "") => `<div class="giry ${cls}" aria-label="Giry Corporation">
+    <svg class="giry-mark" viewBox="0 0 48 48" aria-hidden="true">
+      <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9825B"/><stop offset="1" stop-color="#C85B6B"/></linearGradient></defs>
+      <rect width="48" height="48" rx="14" fill="url(#gg)"/>
+      <path d="M33.5 17.5A11 11 0 1 0 35 26h-10" fill="none" stroke="#FFF8EE" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M31.5 9.5l1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#FFE2A8"/>
+    </svg>
+    <div class="giry-text"><span class="giry-name">Giry</span><span class="giry-sub">Corporation<sup>™</sup></span></div>
+  </div>`;
+
   // ---------- fase corrente ----------
   function fase() {
     const p = store.get("profilo", null);
@@ -100,7 +111,8 @@
         <button class="btn" type="submit">${primoAvvio ? "Iniziamo" : "Salva"}</button>
         ${primoAvvio ? "" : `<button class="btn ghost" type="button" id="reset">Azzera le liste spuntate</button>`}
       </form>
-      <p class="foot">I dati restano solo su questo telefono.</p>`;
+      <p class="foot">I dati restano solo su questo telefono.</p>
+      <div class="made"><span>un'app di</span>${giry()}</div>`;
     const f = document.getElementById("f");
     f.addEventListener("change", e => {
       if (e.target.name === "stato") document.getElementById("lbl-data").textContent = e.target.value === "nato" ? "Data di nascita" : "Data presunta del parto";
@@ -182,6 +194,7 @@
         <a class="back" href="#/attivita">Tutte le attività →</a>` : ""}
       <h2>Da leggere ora</h2>
       <div class="grid">${schedePerFase(f).slice(0, 4).map(tile).join("")}</div>
+      <div class="made"><span>un'app di</span>${giry()}</div>
     `;
   }
 
