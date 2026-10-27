@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nido</title>
+  <meta name="description" content="Puericultura, idee e attività per genitori e futuri genitori.">
+  <meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1B1F1C" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">Nido</span>
+    <button class="icon-btn" id="btn-profilo" aria-label="Impostazioni">⚙︎</button>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <nav class="tabbar" aria-label="Sezioni">
+    <a href="#/oggi" data-tab="oggi"><span class="ti">☀︎</span><span>Oggi</span></a>
+    <a href="#/guide" data-tab="guide"><span class="ti">❋</span><span>Guide</span></a>
+    <a href="#/perte" data-tab="perte"><span class="ti">♡</span><span>Per te</span></a>
+    <a href="#/attivita" data-tab="attivita"><span class="ti">✿</span><span>Attività</span></a>
+    <a href="#/liste" data-tab="liste"><span class="ti">✓</span><span>Liste</span></a>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

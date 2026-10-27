@@ -1,0 +1,62 @@
+{
+  "aggiornato": "2026-10-27",
+  "citta": "Torino",
+  "nota": "Prima versione: risorse ricorrenti. Gli eventi della settimana verranno aggiunti dall'aggiornamento automatico.",
+  "eventi": [
+    {
+      "titolo": "Corsi di accompagnamento alla nascita",
+      "quando": "Tutto l'anno, su iscrizione",
+      "dove": "Consultori familiari ASL Città di Torino",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Incontri gratuiti con ostetriche per entrambi i genitori. Chiedi al consultorio di zona quando aprono le iscrizioni.",
+      "link": "https://www.aslcittaditorino.it",
+      "gratuito": true,
+      "ricorrente": true
+    },
+    {
+      "titolo": "Letture Nati per Leggere",
+      "quando": "Calendario mensile",
+      "dove": "Biblioteche civiche torinesi",
+      "eta": "0-3",
+      "tipo": "Lettura",
+      "descr": "Letture ad alta voce per i più piccoli e sezioni 0-6 con libri da prendere in prestito.",
+      "link": "https://bct.comune.torino.it",
+      "gratuito": true,
+      "ricorrente": true
+    },
+    {
+      "titolo": "Attività per famiglie nelle Case del Quartiere",
+      "quando": "Programmi settimanali",
+      "dove": "Rete delle Case del Quartiere",
+      "eta": "tutti",
+      "tipo": "Comunità",
+      "descr": "Gruppi per neogenitori, laboratori, scambio di abiti e attrezzatura.",
+      "link": "https://www.retecasedelquartiere.org",
+      "gratuito": true,
+      "ricorrente": true
+    },
+    {
+      "titolo": "Corso di disostruzione pediatrica",
+      "quando": "Più date al mese",
+      "dove": "Croce Rossa Italiana – Comitato di Torino",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Manovre salvavita per lattanti e bambini, in poche ore. Ottimo da fare in coppia.",
+      "link": "https://cri.it/torino",
+      "gratuito": false,
+      "ricorrente": true
+    },
+    {
+      "titolo": "Musei con l'Abbonamento Musei",
+      "quando": "Sempre",
+      "dove": "Torino e Piemonte",
+      "eta": "tutti",
+      "tipo": "Cultura",
+      "descr": "Ingressi illimitati per un anno in centinaia di musei e residenze. Molti hanno laboratori per famiglie.",
+      "link": "https://www.abbonamentomusei.it",
+      "gratuito": false,
+      "ricorrente": true
+    }
+  ]
+}
