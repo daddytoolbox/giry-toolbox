@@ -125,22 +125,32 @@
   function vistaOggi(f) {
     const p = f.p;
     const s = bloccoSettimana(f);
+    const deco = `<svg class="hero-deco" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="160" cy="30" r="70" fill="currentColor" opacity=".10"/>
+      <circle cx="190" cy="150" r="46" fill="currentColor" opacity=".08"/>
+    </svg>`;
     let hero;
     if (f.stato === "attesa") {
       const pct = Math.min(100, Math.round((f.settimana * 7 + (f.giorno || 0)) / 280 * 100));
-      const mancano = f.giorni > 0 ? `Mancano circa ${f.giorni} giorni` : "Ci siamo quasi";
-      hero = `<div class="card hero">
+      const mancano = f.giorni > 0 ? `Mancano circa <strong>${f.giorni} giorni</strong>` : "Ci siamo quasi";
+      hero = `<section class="hero">${deco}
         <p class="eyebrow">${f.scaduta ? "" : `${f.trimestre}º trimestre · `}${esc(p.nome || "In arrivo")}</p>
-        <h1>${etichettaFase(f)}</h1>
-        <p>${f.scaduta ? `È nato? Aggiorna la data nelle <a href="#/profilo" style="color:inherit">impostazioni</a>.` : mancano}</p>
-        <div class="progress"><span style="width:${pct}%"></span></div>
-      </div>`;
+        ${f.scaduta ? `<h1>${etichettaFase(f)}</h1>
+          <p class="hero-sub">È nato? Aggiorna la data nelle <a href="#/profilo">impostazioni</a>.</p>` : `
+        <div class="hero-row">
+          <div><div class="big">${f.settimana}<sup>ª</sup></div><p class="unit">settimana${f.giorno ? ` + ${f.giorno} giorni` : ""}</p></div>
+          <div class="ring" style="--p:${pct}"><span>${pct}<small>%</small></span></div>
+        </div>
+        <p class="hero-sub">${mancano}</p>`}
+      </section>`;
     } else {
-      hero = `<div class="card hero">
+      const et = etichettaFase(f);
+      const m = et.match(/^(\d+)\s(.*)$/);
+      hero = `<section class="hero">${deco}
         <p class="eyebrow">${esc(p.nome || "Il vostro bimbo")}</p>
-        <h1>${etichettaFase(f)}</h1>
-        <p>Nato il ${fmtData(p.data)}</p>
-      </div>`;
+        ${m ? `<div class="big">${m[1]}</div><p class="unit">${esc(m[2])}</p>` : `<h1>${esc(et)}</h1>`}
+        <p class="hero-sub">Nato il ${fmtData(p.data)}</p>
+      </section>`;
     }
 
     // idea attività del giorno, a rotazione
@@ -157,15 +167,16 @@
     const eventi = filtraEventi(f).slice(0, 2);
     $app.innerHTML = `
       ${hero}
-      ${s ? `<div class="card">
+      ${s ? `<div class="card phase">
         <p class="eyebrow">Questa fase</p>
         <h2 style="margin-top:4px">${esc(s.titolo)}</h2>
         <p>${esc(s.testo)}</p>
         <ul class="todo">${s.todo.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
       </div>` : ""}
-      ${idea ? `<div class="card">
+      ${idea ? `<div class="card idea-card">
+        <span class="spark" aria-hidden="true">✦</span>
         <p class="eyebrow">${ideaTitolo}</p>
-        <div class="idea" style="margin-top:8px"><span class="dot"></span><div><h3>${esc(idea.t)}</h3><p>${esc(idea.d)}</p></div></div>
+        <h3>${esc(idea.t)}</h3><p>${esc(idea.d)}</p>
       </div>` : ""}
       ${eventi.length ? `<h2>In zona</h2>${eventi.map(cardEvento).join("")}
         <a class="back" href="#/attivita">Tutte le attività →</a>` : ""}
@@ -183,7 +194,8 @@
     return [...C.schede].sort((a, b) => ordine.indexOf(a.fase) - ordine.indexOf(b.fase));
   }
 
-  const tile = s => `<a class="tile" href="#/guida/${esc(s.id)}"><span class="emo">${s.icona}</span><h3>${esc(s.titolo)}</h3><small>${esc(s.sommario)}</small></a>`;
+  const tinta = id => "t" + ([...id].reduce((a, c) => a + c.charCodeAt(0), 0) % 5);
+  const tile = s => `<a class="tile ${tinta(s.id)}" href="#/guida/${esc(s.id)}"><span class="emo">${s.icona}</span><h3>${esc(s.titolo)}</h3><small>${esc(s.sommario)}</small></a>`;
 
   function vistaGuide(f) {
     const fasi = [...new Set(schedePerFase(f).map(s => s.fase))];
