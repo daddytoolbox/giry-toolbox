@@ -3,6 +3,14 @@
 App personale (PWA) per genitori e futuri genitori, creata da Marco (account GitHub `daddytoolbox`).
 Marchio: "un'app di Giry Corporation™". Pubblicata con GitHub Pages su https://daddytoolbox.github.io/giry-toolbox/ (repository `daddytoolbox/giry-toolbox`, ex `nido`)
 
+## Missione (guida ogni scelta)
+Dare a genitori e futuri genitori informazioni **affidabili e imparziali**, in alternativa alla disinformazione e alle pubblicità mascherate dei social. È "l'anti-Instagram per genitori del 2026". Di conseguenza:
+- Nessuna pubblicità, nessun link affiliato, nessun prodotto sponsorizzato, nessun tracciamento degli utenti. I link ai prezzi (idealo) sono solo comparatori, senza commissioni.
+- Ogni affermazione ha una fonte primaria verificabile (istituzioni, test di laboratorio, riviste peer-reviewed) e una data. Le fonti secondarie (giornali, blog di negozi) servono solo a ritrovare un dato primario, da dichiarare come tali e da sostituire appena possibile.
+- Dire chiaramente quando un dato manca, è vecchio o non è verificabile: meglio un "non lo sappiamo" che un consiglio debole.
+- Nessun influencer, nessun "lo usano tutti", nessuna classifica basata sulla popolarità.
+- Tono sobrio e rispettoso: informare, non spaventare né colpevolizzare.
+
 ## Lingua e stile
 - Rispondere e scrivere i contenuti in **italiano**.
 - Consigli diretti, niente frasi di circostanza, segnalare quando un dato può essere cambiato.
@@ -41,6 +49,7 @@ Marchio: "un'app di Giry Corporation™". Pubblicata con GitHub Pages su https:/
    - Ogni consiglio: fonte, data del test, fascia di prezzo.
 2. **Aggiornamenti automatici** — ATTIVI come attività programmate di Claude: settimanale (lunedì) = richiami Safety Gate, prezzi, eventi family Torino in `eventi.json`; mensile (giorno 2) = nuovi test pubblicati. Culla/next-to-me e baby monitor hanno test vecchi o assenti: priorità quando esce un test nuovo.
 3. Eventi locali per altre città, una alla volta.
+4. Coerenza con la missione: sostituire le fonti secondarie oggi usate in acquisti.json (blog del negozio mypram per i voti dei passeggini, articoli di giornale per marsupi e seggiolini) con fonti primarie quando accessibili; valutare una pagina "Perché ci puoi credere" (metodo, assenza di conflitti d'interesse, registro delle correzioni).
 
 ## Note per l'utente
 - Dipendente SSN in esclusiva: prima di qualsiasi monetizzazione serve parere dell'ufficio personale e commercialista.
