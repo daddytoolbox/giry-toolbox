@@ -8,7 +8,8 @@
     "**Norme**: R129 (i-Size) per i seggiolini, EN 1888 passeggini, EN 716 lettini, EN 16781 culle co-sleeping, EN 13209 marsupi.",
     "**Prezzo**: a parità di voto vince chi costa meno. I prezzi sono quelli rilevati nel test: il link idealo mostra quello di oggi.",
     "**Recensioni degli utenti**: solo per scovare difetti ricorrenti, mai per decidere la classifica.",
-    "**Marchi piccoli**: a parità di voto, certificazioni e prezzo li preferiamo. Dove ci sono crash test, però, un piccolo non testato non batte un grande testato."
+    "**Marchi piccoli**: contano solo come spareggio, a parità di voto, certificazioni e prezzo. Non danno punti in più e non tolgono nulla ai grandi marchi testati bene.",
+    "**Marchi famosi assenti?** Per ogni categoria trovi \"E i marchi noti?\": se un modello conosciuto non è in lista, ti diciamo se è stato testato e come, oppure che non esiste un test imparziale."
   ],
   "categorie": [
     {
@@ -28,42 +29,210 @@
         {
           "nome": "Ovetto · 40–87 cm (fino a circa 15 mesi)",
           "scelte": [
-            { "nome": "Foppapedretti Disk Infant i-Size + base Tech i-Size", "voto": "1,9", "scala": "ADAC", "fonte": "ADAC/ÖAMTC", "data": "2026-05", "prezzo": "non indicato nel test", "q": "Foppapedretti Disk Infant", "nota": "Il migliore del 2026. Sostanze nocive al minimo (1,0). Punto debole: urto laterale nella media, fodera da lavare a mano.", "top": true, "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877" },
-            { "nome": "Joie i-Gemm 3 + i-Base Encore", "voto": "2,2", "scala": "ADAC", "fonte": "ADAC", "data": "2026-10", "prezzo": "330 €", "q": "Joie i-Gemm 3", "nota": "Stesso voto del Cybex con base, 130 € in meno: il miglior rapporto voto/prezzo con base.", "conv": true, "link": "https://www.autohaus.de/nachrichten/autohandel/adac-kindersitztest-viel-gutes-zwei-versager-3923501" },
-            { "nome": "Joie i-Gemm 3 (senza base)", "voto": "2,6", "scala": "ADAC", "fonte": "ADAC", "data": "2026-10", "prezzo": "140 €", "q": "Joie i-Gemm 3", "nota": "La scelta economica se monti l'ovetto con la cintura.", "conv": true, "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/" },
-            { "nome": "Cybex Cloud G3 (senza base)", "voto": "2,3", "scala": "ADAC", "fonte": "ADAC", "data": "2026-10", "prezzo": "230 €", "q": "Cybex Cloud G3", "nota": "Ottimo anche senza base; con Base G3 sale a 2,2 ma costa 460 €.", "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/" },
-            { "nome": "Lionelo Astrid i-Size", "voto": "67/100", "scala": "Altroconsumo", "fonte": "Altroconsumo", "data": "2026-02", "prezzo": "94 €", "q": "Lionelo Astrid i-Size", "nota": "Miglior Acquisto Altroconsumo: per chi usa poco l'auto e ha un budget stretto.", "conv": true, "link": "https://www.greenme.it/?p=1359536" }
+            {
+              "nome": "Foppapedretti Disk Infant i-Size + base Tech i-Size",
+              "voto": "1,9",
+              "scala": "ADAC",
+              "fonte": "ADAC/ÖAMTC",
+              "data": "2026-05",
+              "prezzo": "non indicato nel test",
+              "q": "Foppapedretti Disk Infant",
+              "nota": "Il migliore del 2026. Sostanze nocive al minimo (1,0). Punto debole: urto laterale nella media, fodera da lavare a mano.",
+              "top": true,
+              "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877"
+            },
+            {
+              "nome": "Nuna Pipa Urbn",
+              "voto": "79/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-02",
+              "prezzo": "299 €",
+              "q": "Nuna Pipa Urbn",
+              "nota": "Migliore del Test Altroconsumo su 41 ovetti. Isofix integrato nell'ovetto: niente base separata.",
+              "link": "https://www.greenme.it/?p=1359536"
+            },
+            {
+              "nome": "Peg Perego Primo Viaggio Lounge + base",
+              "voto": "77/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-02",
+              "prezzo": "368 €",
+              "q": "Peg Perego Primo Viaggio Lounge",
+              "link": "https://www.greenme.it/?p=1359536"
+            },
+            {
+              "nome": "Joie i-Gemm 3 + i-Base Encore",
+              "voto": "2,2",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-10",
+              "prezzo": "330 €",
+              "q": "Joie i-Gemm 3",
+              "nota": "Stesso voto del Cybex con base, 130 € in meno: il miglior rapporto voto/prezzo con base.",
+              "conv": true,
+              "link": "https://www.autohaus.de/nachrichten/autohandel/adac-kindersitztest-viel-gutes-zwei-versager-3923501"
+            },
+            {
+              "nome": "Joie i-Gemm 3 (senza base)",
+              "voto": "2,6",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-10",
+              "prezzo": "140 €",
+              "q": "Joie i-Gemm 3",
+              "nota": "La scelta economica se monti l'ovetto con la cintura.",
+              "conv": true,
+              "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/"
+            }
           ]
         },
         {
           "nome": "Da 0–1 anno fino a 4 anni (contromarcia)",
           "scelte": [
-            { "nome": "Recaro Toron 1", "voto": "2,3", "scala": "ADAC", "fonte": "ADAC", "data": "2026-10", "prezzo": "550 €", "q": "Recaro Toron 1", "nota": "Isofix, 40–105 cm: si usa dalla nascita a circa 4 anni, al posto dell'ovetto.", "top": true, "link": "https://www.autohaus.de/nachrichten/autohandel/adac-kindersitztest-viel-gutes-zwei-versager-3923501" },
-            { "nome": "Cybex Sirona Ti", "voto": "2,5", "scala": "ADAC", "fonte": "ADAC", "data": "2026-05", "prezzo": "non indicato nel test", "q": "Cybex Sirona Ti", "link": "https://de.motor1.com/news/797074/adac-kindersitztest-2026-produkte-ergebnisse/" },
-            { "nome": "Maxi-Cosi MobiFix Pro", "voto": "2,5", "scala": "ADAC", "fonte": "ADAC", "data": "2026-10", "prezzo": "550 €", "q": "Maxi-Cosi MobiFix Pro", "nota": "61–125 cm, solo contromarcia: l'unico \"buono\" che arriva a 6 anni.", "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/" }
+            {
+              "nome": "Recaro Toron 1",
+              "voto": "2,3",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-10",
+              "prezzo": "550 €",
+              "q": "Recaro Toron 1",
+              "nota": "Isofix, 40–105 cm: si usa dalla nascita a circa 4 anni, al posto dell'ovetto.",
+              "top": true,
+              "link": "https://www.autohaus.de/nachrichten/autohandel/adac-kindersitztest-viel-gutes-zwei-versager-3923501"
+            },
+            {
+              "nome": "Cybex Sirona Ti",
+              "voto": "2,5",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-05",
+              "prezzo": "non indicato nel test",
+              "q": "Cybex Sirona Ti",
+              "link": "https://de.motor1.com/news/797074/adac-kindersitztest-2026-produkte-ergebnisse/"
+            },
+            {
+              "nome": "Maxi-Cosi MobiFix Pro",
+              "voto": "2,5",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-10",
+              "prezzo": "550 €",
+              "q": "Maxi-Cosi MobiFix Pro",
+              "nota": "61–125 cm, solo contromarcia: l'unico \"buono\" che arriva a 6 anni.",
+              "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/"
+            }
           ]
         },
         {
           "nome": "Bambini grandi · da 100 cm",
           "scelte": [
-            { "nome": "Kinderkraft Junior Fix", "voto": "2,5", "scala": "ADAC", "fonte": "ADAC", "data": "2026-05", "prezzo": "non indicato nel test", "q": "Kinderkraft Junior Fix", "nota": "Pari al Cybex Pallas G3, di solito a una frazione del prezzo.", "conv": true, "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835" },
-            { "nome": "Cybex Pallas G3", "voto": "2,5", "scala": "ADAC", "fonte": "ADAC", "data": "2026-05", "prezzo": "non indicato nel test", "q": "Cybex Pallas G3", "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835" }
+            {
+              "nome": "Kinderkraft Junior Fix",
+              "voto": "2,5",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-05",
+              "prezzo": "non indicato nel test",
+              "q": "Kinderkraft Junior Fix",
+              "nota": "Pari al Cybex Pallas G3, di solito a una frazione del prezzo.",
+              "conv": true,
+              "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835"
+            },
+            {
+              "nome": "Cybex Pallas G3",
+              "voto": "2,5",
+              "scala": "ADAC",
+              "fonte": "ADAC",
+              "data": "2026-05",
+              "prezzo": "non indicato nel test",
+              "q": "Cybex Pallas G3",
+              "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835"
+            }
           ]
         }
       ],
       "evitare": [
-        { "nome": "Britax Römer Baby-Safe Pro + Vario Base 5Z", "motivo": "5,5 (insufficiente): nel crash frontale la fibbia si è aperta e il manichino è stato sbalzato fuori. Richiamo volontario per gli ovetti con base Isofix prodotti tra il 26/12/2025 e il 30/09/2026.", "data": "2026-10", "richiamo": true, "link": "https://www.autobild.de/artikel/adac-warnt-kind-wird-aus-kindersitz-geschleudert-3967e4f-28839599.html" },
-        { "nome": "Axkid Minikid Core", "motivo": "5,5: il piede di supporto si è sbloccato e la scocca si è rotta. Richiamato: sostituzione gratuita con Minikid 4 Pro.", "data": "2026-10", "richiamo": true, "link": "https://www.gov.uk/product-safety-alerts-reports-recalls/product-recall-axkid-minikid-core-car-seats-2609-0213" },
-        { "nome": "Kinderkraft Mink Pro 2 + base Isofix", "motivo": "5,5: nell'urto può staccarsi dalla base. Il produttore offre reso o sostituzione.", "data": "2026-05", "richiamo": true, "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835" },
-        { "nome": "Maxi-Cosi Pebble 360 Pro (con o senza base)", "motivo": "20/100 nel database Altroconsumo.", "data": "2026-02", "link": "https://www.greenme.it/?p=1359536" },
-        { "nome": "Avionaut Aerofix Smart + IQ Orbit", "motivo": "3,8: PFAS elevati nella fodera.", "data": "2026-10", "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/" },
-        { "nome": "Jané Concord Kombikid", "motivo": "3,8: ritardante di fiamma dannoso nella fodera.", "data": "2026-05", "link": "https://de.motor1.com/news/797074/adac-kindersitztest-2026-produkte-ergebnisse/" },
-        { "nome": "Seggiolini senza marca e cinture in tessuto dai marketplace", "motivo": "Nel test ADAC di ottobre 2026 non hanno trattenuto il bambino o non lo hanno protetto negli urti laterali.", "data": "2026-10", "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/" }
+        {
+          "nome": "Britax Römer Baby-Safe Pro + Vario Base 5Z",
+          "motivo": "5,5 (insufficiente): nel crash frontale la fibbia si è aperta e il manichino è stato sbalzato fuori. Richiamo volontario per gli ovetti con base Isofix prodotti tra il 26/12/2025 e il 30/09/2026.",
+          "data": "2026-10",
+          "richiamo": true,
+          "link": "https://www.autobild.de/artikel/adac-warnt-kind-wird-aus-kindersitz-geschleudert-3967e4f-28839599.html"
+        },
+        {
+          "nome": "Axkid Minikid Core",
+          "motivo": "5,5: il piede di supporto si è sbloccato e la scocca si è rotta. Richiamato: sostituzione gratuita con Minikid 4 Pro.",
+          "data": "2026-10",
+          "richiamo": true,
+          "link": "https://www.gov.uk/product-safety-alerts-reports-recalls/product-recall-axkid-minikid-core-car-seats-2609-0213"
+        },
+        {
+          "nome": "Kinderkraft Mink Pro 2 + base Isofix",
+          "motivo": "5,5: nell'urto può staccarsi dalla base. Il produttore offre reso o sostituzione.",
+          "data": "2026-05",
+          "richiamo": true,
+          "link": "https://www.autohaus.de/nachrichten/autohandel/adac-sechs-mal-die-note-gut-im-kindersitztest-3807835"
+        },
+        {
+          "nome": "Maxi-Cosi Pebble 360 Pro (con o senza base)",
+          "motivo": "20/100 nel database Altroconsumo.",
+          "data": "2026-02",
+          "link": "https://www.greenme.it/?p=1359536"
+        },
+        {
+          "nome": "Avionaut Aerofix Smart + IQ Orbit",
+          "motivo": "3,8: PFAS elevati nella fodera.",
+          "data": "2026-10",
+          "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/"
+        },
+        {
+          "nome": "Jané Concord Kombikid",
+          "motivo": "3,8: ritardante di fiamma dannoso nella fodera.",
+          "data": "2026-05",
+          "link": "https://de.motor1.com/news/797074/adac-kindersitztest-2026-produkte-ergebnisse/"
+        },
+        {
+          "nome": "Seggiolini senza marca e cinture in tessuto dai marketplace",
+          "motivo": "Nel test ADAC di ottobre 2026 non hanno trattenuto il bambino o non lo hanno protetto negli urti laterali.",
+          "data": "2026-10",
+          "link": "https://de.motor1.com/news/812555/adac-kindersitztest-herbst-2026-ergebnisse/"
+        }
       ],
       "fonti": [
-        { "t": "ADAC – Kindersitztest (risultati completi)", "u": "https://www.adac.de/rund-ums-fahrzeug/ausstattung-technik-zubehoer/kindersitze/kindersitztest/" },
-        { "t": "ADAC – Comunicato test autunno 2026 (20/10/2026)", "u": "https://presse.adac.de/meldungen/adac-ev/tests/babyschalen-holen-spitzenplaetze-im-adac-kindersitztest.html" },
-        { "t": "ÖAMTC – Kindersitztest 2026", "u": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877" }
+        {
+          "t": "ADAC – Kindersitztest (risultati completi)",
+          "u": "https://www.adac.de/rund-ums-fahrzeug/ausstattung-technik-zubehoer/kindersitze/kindersitztest/"
+        },
+        {
+          "t": "ADAC – Comunicato test autunno 2026 (20/10/2026)",
+          "u": "https://presse.adac.de/meldungen/adac-ev/tests/babyschalen-holen-spitzenplaetze-im-adac-kindersitztest.html"
+        },
+        {
+          "t": "ÖAMTC – Kindersitztest 2026",
+          "u": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877"
+        }
+      ],
+      "altri": [
+        {
+          "nome": "Cybex Cloud G3",
+          "stato": "2,3 ADAC senza base (230 €), 2,2 con Base G3 (460 €), ottobre 2026: ottimo, fuori dalla lista solo per il prezzo a parità di voto."
+        },
+        {
+          "nome": "Chicco Kory Plus Air + base",
+          "stato": "73/100 Altroconsumo (febbraio 2026), buono ma sotto i migliori a prezzo più alto (398 €)."
+        },
+        {
+          "nome": "Lionelo Astrid i-Size",
+          "stato": "Miglior Acquisto Altroconsumo (67/100, 94 €, febbraio 2026): per chi usa poco l'auto e ha un budget stretto.",
+          "link": "https://www.greenme.it/?p=1359536"
+        },
+        {
+          "nome": "Inglesina Darwin",
+          "stato": "Non abbiamo trovato un risultato recente in un test di laboratorio pubblico."
+        }
       ]
     },
     {
@@ -82,22 +251,109 @@
         {
           "nome": "Combinati con navicella (test di luglio 2026)",
           "scelte": [
-            { "nome": "Britax Römer Rio (con navicella)", "voto": "2,3", "scala": "Warentest", "fonte": "Stiftung Warentest / VKI", "data": "2026-07", "prezzo": "400–550 €", "q": "Britax Römer Rio", "nota": "Il migliore del test e tra i più economici.", "top": true, "conv": true, "link": "https://www.mypram.com/de/magazin/kinderwagen-blog/britax-roemer-rio-stiftung-warentest-sieger-2026" },
-            { "nome": "Joolz Hub2 con navicella", "voto": "2,4", "scala": "Warentest", "fonte": "Stiftung Warentest / VKI", "data": "2026-07", "prezzo": "non indicato", "q": "Joolz Hub2", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-            { "nome": "Maxi-Cosi Oxford+", "voto": "2,4", "scala": "Warentest", "fonte": "Stiftung Warentest / VKI", "data": "2026-07", "prezzo": "non indicato", "q": "Maxi-Cosi Oxford", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-            { "nome": "Hauck Move N Care Set", "voto": "2,5", "scala": "Warentest", "fonte": "Stiftung Warentest / VKI", "data": "2026-07", "prezzo": "450 €", "q": "Hauck Move N Care", "conv": true, "link": "https://www.mypram.com/de/magazin/kinderwagen-blog/britax-roemer-rio-stiftung-warentest-sieger-2026" }
+            {
+              "nome": "Britax Römer Rio (con navicella)",
+              "voto": "2,3",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest / VKI",
+              "data": "2026-07",
+              "prezzo": "400–550 €",
+              "q": "Britax Römer Rio",
+              "nota": "Il migliore del test e tra i più economici.",
+              "top": true,
+              "conv": true,
+              "link": "https://www.mypram.com/de/magazin/kinderwagen-blog/britax-roemer-rio-stiftung-warentest-sieger-2026"
+            },
+            {
+              "nome": "Joolz Hub2 con navicella",
+              "voto": "2,4",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest / VKI",
+              "data": "2026-07",
+              "prezzo": "non indicato",
+              "q": "Joolz Hub2",
+              "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+            },
+            {
+              "nome": "Maxi-Cosi Oxford+",
+              "voto": "2,4",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest / VKI",
+              "data": "2026-07",
+              "prezzo": "non indicato",
+              "q": "Maxi-Cosi Oxford",
+              "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+            },
+            {
+              "nome": "Hauck Move N Care Set",
+              "voto": "2,5",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest / VKI",
+              "data": "2026-07",
+              "prezzo": "450 €",
+              "q": "Hauck Move N Care",
+              "conv": true,
+              "link": "https://www.mypram.com/de/magazin/kinderwagen-blog/britax-roemer-rio-stiftung-warentest-sieger-2026"
+            }
           ]
         }
       ],
       "evitare": [
-        { "nome": "Hartan Ivy Outdoor", "motivo": "Insufficiente per sostanze nocive (ftalati o PFAS oltre i limiti). Marchio artigianale di nicchia: la prova che \"piccolo\" non basta.", "data": "2026-07", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-        { "nome": "Kinderkraft Nea 2in1", "motivo": "Insufficiente per sostanze vietate.", "data": "2026-07", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-        { "nome": "BabyOne Little One Kodiak", "motivo": "Insufficiente per sostanze nocive.", "data": "2026-07", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-        { "nome": "Baby Jogger City Mini GT2 Double", "motivo": "Insufficiente per sostanze nocive.", "data": "2026-07", "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" }
+        {
+          "nome": "Hartan Ivy Outdoor",
+          "motivo": "Insufficiente per sostanze nocive (ftalati o PFAS oltre i limiti). Marchio artigianale di nicchia: la prova che \"piccolo\" non basta.",
+          "data": "2026-07",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "Kinderkraft Nea 2in1",
+          "motivo": "Insufficiente per sostanze vietate.",
+          "data": "2026-07",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "BabyOne Little One Kodiak",
+          "motivo": "Insufficiente per sostanze nocive.",
+          "data": "2026-07",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "Baby Jogger City Mini GT2 Double",
+          "motivo": "Insufficiente per sostanze nocive.",
+          "data": "2026-07",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        }
       ],
       "fonti": [
-        { "t": "Stiftung Warentest – Kinderwagen im Test (52 modelli, luglio 2026)", "u": "https://www.test.de/Kinderwagen-im-Test-4805700-0/" },
-        { "t": "VKI – Comunicato test passeggini 2026 (28/07/2026)", "u": "https://vki.at/system/files/2026-07/2026-07-28_PA_Kinderwagen.pdf" }
+        {
+          "t": "Stiftung Warentest – Kinderwagen im Test (52 modelli, luglio 2026)",
+          "u": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "t": "VKI – Comunicato test passeggini 2026 (28/07/2026)",
+          "u": "https://vki.at/system/files/2026-07/2026-07-28_PA_Kinderwagen.pdf"
+        }
+      ],
+      "altri": [
+        {
+          "nome": "Nuna Demi Next (con navicella)",
+          "stato": "2,8 Stiftung Warentest (test 7/2025, primo a pari merito in quel test, dove nessun modello ha preso \"buono\"). Circa 1.100 €: costa più del doppio del Britax Römer Rio, che nel 2026 ha preso 2,3.",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "Cybex Balios S Lux",
+          "stato": "2,8 Stiftung Warentest (7/2025). Navicella giudicata stretta.",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "Bugaboo Fox 5 Renew, Stokke Yoyo3",
+          "stato": "Testati da Warentest e VKI a luglio 2026: non tra i 4 promossi con \"buono\" né tra quelli bocciati. Voto esatto non pubblico.",
+          "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+        },
+        {
+          "nome": "Inglesina (Aptica, Electa e trio)",
+          "stato": "Nessun test di laboratorio indipendente recente trovato. Non significa che siano cattivi: non abbiamo un dato imparziale per confrontarli. Se scegli un modello non testato, usa i criteri di \"Come scegliere\"."
+        }
       ]
     },
     {
@@ -116,12 +372,28 @@
       "nessunTest": "Nessun test di laboratorio indipendente recente e accessibile confronta le culle next-to-me vendute in Italia. Qui trovi i criteri per scegliere: i modelli arriveranno con l'aggiornamento mensile, appena ADAC, Warentest, Öko-Test o Which? pubblicano un test.",
       "gruppi": [],
       "evitare": [
-        { "nome": "Gaia Baby Hera (next-to-me)", "motivo": "Which?: bordo troppo basso in posizione inclinata, tappini piccoli rimovibili (soffocamento), materasso che si restringe dopo il lavaggio.", "data": "2023-12", "link": "https://www.which.co.uk/news/article/which-testing-uncovers-safety-issues-with-gaia-baby-hera-bedside-crib-aU9fY0V6jCZ4" },
-        { "nome": "Sdraiette e culle inclinate usate per dormire", "motivo": "L'AAP raccomanda un piano piatto e rigido: niente superfici inclinate per il sonno.", "data": "2022-07", "link": "https://pubmed.ncbi.nlm.nih.gov/35726558/" }
+        {
+          "nome": "Gaia Baby Hera (next-to-me)",
+          "motivo": "Which?: bordo troppo basso in posizione inclinata, tappini piccoli rimovibili (soffocamento), materasso che si restringe dopo il lavaggio.",
+          "data": "2023-12",
+          "link": "https://www.which.co.uk/news/article/which-testing-uncovers-safety-issues-with-gaia-baby-hera-bedside-crib-aU9fY0V6jCZ4"
+        },
+        {
+          "nome": "Sdraiette e culle inclinate usate per dormire",
+          "motivo": "L'AAP raccomanda un piano piatto e rigido: niente superfici inclinate per il sonno.",
+          "data": "2022-07",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/35726558/"
+        }
       ],
       "fonti": [
-        { "t": "AAP – Sleep-Related Infant Deaths: Updated 2022 Recommendations (Pediatrics, PubMed)", "u": "https://pubmed.ncbi.nlm.nih.gov/35726558/" },
-        { "t": "NHS – Reduce the risk of sudden infant death syndrome", "u": "https://www.nhs.uk/baby/caring-for-a-newborn/reduce-the-risk-of-sudden-infant-death-syndrome/" }
+        {
+          "t": "AAP – Sleep-Related Infant Deaths: Updated 2022 Recommendations (Pediatrics, PubMed)",
+          "u": "https://pubmed.ncbi.nlm.nih.gov/35726558/"
+        },
+        {
+          "t": "NHS – Reduce the risk of sudden infant death syndrome",
+          "u": "https://www.nhs.uk/baby/caring-for-a-newborn/reduce-the-risk-of-sudden-infant-death-syndrome/"
+        }
       ]
     },
     {
@@ -140,25 +412,103 @@
         {
           "nome": "Fasce (test di giugno 2026)",
           "scelte": [
-            { "nome": "Didymos fascia tessuta", "voto": "1,8", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2026-06", "prezzo": "125 €", "q": "Didymos fascia", "nota": "La migliore del test. Piccolo produttore tedesco storico.", "top": true, "piccolo": true, "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" },
-            { "nome": "Hoppediz fascia tessuta", "voto": "1,9", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2026-06", "prezzo": "70 €", "q": "Hoppediz fascia", "nota": "Quasi pari alla prima, a poco più di metà prezzo.", "conv": true, "piccolo": true, "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" },
-            { "nome": "Manduca Sling", "voto": "2,0", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2026-06", "prezzo": "70 €", "q": "Manduca Sling", "conv": true, "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" }
+            {
+              "nome": "Didymos fascia tessuta",
+              "voto": "1,8",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2026-06",
+              "prezzo": "125 €",
+              "q": "Didymos fascia",
+              "nota": "La migliore del test. Piccolo produttore tedesco storico.",
+              "top": true,
+              "piccolo": true,
+              "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+            },
+            {
+              "nome": "Hoppediz fascia tessuta",
+              "voto": "1,9",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2026-06",
+              "prezzo": "70 €",
+              "q": "Hoppediz fascia",
+              "nota": "Quasi pari alla prima, a poco più di metà prezzo.",
+              "conv": true,
+              "piccolo": true,
+              "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+            },
+            {
+              "nome": "Manduca Sling",
+              "voto": "2,0",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2026-06",
+              "prezzo": "70 €",
+              "q": "Manduca Sling",
+              "conv": true,
+              "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+            }
           ]
         },
         {
           "nome": "Marsupi con fibbie",
           "scelte": [
-            { "nome": "Lennylamb Lennyupgrade Pro", "voto": "2,2", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2026-06", "prezzo": "non indicato", "q": "Lennylamb Lennyupgrade", "nota": "Il migliore tra i marsupi a fibbie, a pari merito. Piccolo produttore polacco.", "top": true, "piccolo": true, "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" },
-            { "nome": "Manduca XT", "voto": "2,2", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2026-06", "prezzo": "non indicato", "q": "Manduca XT", "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" }
+            {
+              "nome": "Lennylamb Lennyupgrade Pro",
+              "voto": "2,2",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2026-06",
+              "prezzo": "non indicato",
+              "q": "Lennylamb Lennyupgrade",
+              "nota": "Il migliore tra i marsupi a fibbie, a pari merito. Piccolo produttore polacco.",
+              "top": true,
+              "piccolo": true,
+              "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+            },
+            {
+              "nome": "Manduca XT",
+              "voto": "2,2",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2026-06",
+              "prezzo": "non indicato",
+              "q": "Manduca XT",
+              "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+            }
           ]
         }
       ],
       "evitare": [
-        { "nome": "Fillikid Walk Bauchtrage", "motivo": "4,7 (insufficiente): PFAS nel tessuto oltre i limiti UE.", "data": "2026-06", "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html" }
+        {
+          "nome": "Fillikid Walk Bauchtrage",
+          "motivo": "4,7 (insufficiente): PFAS nel tessuto oltre i limiti UE.",
+          "data": "2026-06",
+          "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+        }
       ],
       "fonti": [
-        { "t": "Stiftung Warentest – Babytragen und Tragetücher im Test (14 modelli, giugno 2026)", "u": "https://www.test.de/Babytragen-und-Tragetuecher-im-Test-5552293-0/" },
-        { "t": "Stiftung Warentest – Cinque marsupi non adatti ai neonati", "u": "https://www.test.de/news/Babytragen-Test-Fuenf-nicht-fuer-Neugeborene-geeignet-darunter-Babybjoern-Infantino-und-Nuna-6321568-0/" }
+        {
+          "t": "Stiftung Warentest – Babytragen und Tragetücher im Test (14 modelli, giugno 2026)",
+          "u": "https://www.test.de/Babytragen-und-Tragetuecher-im-Test-5552293-0/"
+        },
+        {
+          "t": "Stiftung Warentest – Cinque marsupi non adatti ai neonati",
+          "u": "https://www.test.de/news/Babytragen-Test-Fuenf-nicht-fuer-Neugeborene-geeignet-darunter-Babybjoern-Infantino-und-Nuna-6321568-0/"
+        }
+      ],
+      "altri": [
+        {
+          "nome": "Babybjörn Harmony, Infantino Flip 4-in-1, Nuna Cudl Clik",
+          "stato": "Nel test Warentest di giugno 2026 sono tra i 5 marsupi non adatti ai neonati. Vanno bene da quando il bimbo è più grande: controlla l'età minima.",
+          "link": "https://www.test.de/news/Babytragen-Test-Fuenf-nicht-fuer-Neugeborene-geeignet-darunter-Babybjoern-Infantino-und-Nuna-6321568-0/"
+        },
+        {
+          "nome": "Ergobaby Omni Deluxe, Cybex Coya, Stokke Limas",
+          "stato": "Testati a giugno 2026, voto non pubblico: non sono tra i migliori citati né tra i bocciati.",
+          "link": "https://www.test.de/Babytragen-und-Tragetuecher-im-Test-5552293-0/"
+        }
       ]
     },
     {
@@ -176,17 +526,55 @@
         {
           "nome": "Ultimo test di laboratorio (Stiftung Warentest, 2022)",
           "scelte": [
-            { "nome": "Reer Nova (solo audio)", "voto": "2,2", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2022-09", "prezzo": "35 €", "q": "Reer Nova babyphone", "nota": "Quasi pari al migliore, a un terzo del prezzo. Piccolo marchio tedesco.", "conv": true, "piccolo": true, "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576" },
-            { "nome": "Philips Avent SCD713 (solo audio)", "voto": "1,9", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2022-09", "prezzo": "105 €", "q": "Philips Avent SCD713", "top": true, "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576" },
-            { "nome": "Philips Avent SCD833 (video)", "voto": "2,9", "scala": "Warentest", "fonte": "Stiftung Warentest", "data": "2022-09", "prezzo": "170 €", "q": "Philips Avent SCD833", "nota": "Il migliore tra i video, ma nessun video ha ottenuto \"buono\".", "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576" }
+            {
+              "nome": "Reer Nova (solo audio)",
+              "voto": "2,2",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2022-09",
+              "prezzo": "35 €",
+              "q": "Reer Nova babyphone",
+              "nota": "Quasi pari al migliore, a un terzo del prezzo. Piccolo marchio tedesco.",
+              "conv": true,
+              "piccolo": true,
+              "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576"
+            },
+            {
+              "nome": "Philips Avent SCD713 (solo audio)",
+              "voto": "1,9",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2022-09",
+              "prezzo": "105 €",
+              "q": "Philips Avent SCD713",
+              "top": true,
+              "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576"
+            },
+            {
+              "nome": "Philips Avent SCD833 (video)",
+              "voto": "2,9",
+              "scala": "Warentest",
+              "fonte": "Stiftung Warentest",
+              "data": "2022-09",
+              "prezzo": "170 €",
+              "q": "Philips Avent SCD833",
+              "nota": "Il migliore tra i video, ma nessun video ha ottenuto \"buono\".",
+              "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576"
+            }
           ]
         }
       ],
       "avviso": "Test del 2022: alcuni modelli potrebbero essere usciti di produzione o aver cambiato prezzo.",
       "evitare": [],
       "fonti": [
-        { "t": "Stiftung Warentest – Babyphones im Test (46 modelli)", "u": "https://www.test.de/Babyphones-im-Test-4840875-tabelle/" },
-        { "t": "AAP – Sleep-Related Infant Deaths: Updated 2022 Recommendations (PubMed)", "u": "https://pubmed.ncbi.nlm.nih.gov/35726558/" }
+        {
+          "t": "Stiftung Warentest – Babyphones im Test (46 modelli)",
+          "u": "https://www.test.de/Babyphones-im-Test-4840875-tabelle/"
+        },
+        {
+          "t": "AAP – Sleep-Related Infant Deaths: Updated 2022 Recommendations (PubMed)",
+          "u": "https://pubmed.ncbi.nlm.nih.gov/35726558/"
+        }
       ]
     },
     {
@@ -204,20 +592,74 @@
         {
           "nome": "Neonato · taglia 1 (Altroconsumo, ottobre 2026)",
           "scelte": [
-            { "nome": "Lupilu Premium (Lidl)", "voto": "73/100", "scala": "Altroconsumo", "fonte": "Altroconsumo", "data": "2026-10", "prezzo": "≈ 0,14 € a pannolino", "q": "Lupilu Premium pannolini", "nota": "Miglior Acquisto: due punti sotto il primo, a un terzo del prezzo.", "top": true, "conv": true, "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" },
-            { "nome": "Pampers Progressi Newborn", "voto": "75/100", "scala": "Altroconsumo", "fonte": "Altroconsumo", "data": "2026-10", "prezzo": "≈ 0,40 € a pannolino", "q": "Pampers Progressi Newborn", "nota": "Migliore del Test, ma costa circa 80 € al mese in più del Lupilu.", "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" },
-            { "nome": "Coop Crescendo Advance primi giorni", "voto": "68/100", "scala": "Altroconsumo", "fonte": "Altroconsumo", "data": "2026-10", "prezzo": "≈ 0,18 € a pannolino", "q": "Coop Crescendo pannolini", "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" },
-            { "nome": "Esselunga Newborn", "voto": "64/100", "scala": "Altroconsumo", "fonte": "Altroconsumo", "data": "2026-10", "prezzo": "≈ 0,15 € a pannolino", "q": "Esselunga pannolini newborn", "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" }
+            {
+              "nome": "Lupilu Premium (Lidl)",
+              "voto": "73/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-10",
+              "prezzo": "≈ 0,14 € a pannolino",
+              "q": "Lupilu Premium pannolini",
+              "nota": "Miglior Acquisto: due punti sotto il primo, a un terzo del prezzo.",
+              "top": true,
+              "conv": true,
+              "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+            },
+            {
+              "nome": "Pampers Progressi Newborn",
+              "voto": "75/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-10",
+              "prezzo": "≈ 0,40 € a pannolino",
+              "q": "Pampers Progressi Newborn",
+              "nota": "Migliore del Test, ma costa circa 80 € al mese in più del Lupilu.",
+              "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+            },
+            {
+              "nome": "Coop Crescendo Advance primi giorni",
+              "voto": "68/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-10",
+              "prezzo": "≈ 0,18 € a pannolino",
+              "q": "Coop Crescendo pannolini",
+              "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+            },
+            {
+              "nome": "Esselunga Newborn",
+              "voto": "64/100",
+              "scala": "Altroconsumo",
+              "fonte": "Altroconsumo",
+              "data": "2026-10",
+              "prezzo": "≈ 0,15 € a pannolino",
+              "q": "Esselunga pannolini newborn",
+              "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+            }
           ]
         }
       ],
       "evitare": [
-        { "nome": "Huggies Extra Care (taglia 1)", "motivo": "Ultimo nel test (50/100) e tra i più cari: circa 0,31 € a pannolino.", "data": "2026-10", "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" }
+        {
+          "nome": "Huggies Extra Care (taglia 1)",
+          "motivo": "Ultimo nel test (50/100) e tra i più cari: circa 0,31 € a pannolino.",
+          "data": "2026-10",
+          "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+        }
       ],
       "fonti": [
-        { "t": "Altroconsumo – Pannolini per neonati, i migliori del test (ottobre 2026)", "u": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test" },
-        { "t": "Altroconsumo – Pannolini per bambini, tutti i risultati", "u": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/test/pannolini-per-bambini" },
-        { "t": "Öko-Test – Pannolini taglia 4, 15 marche (dicembre 2025, sintesi)", "u": "https://newstime.joyn.de/themen/oeko-test/windeln-im-test-oeko-test-42866" }
+        {
+          "t": "Altroconsumo – Pannolini per neonati, i migliori del test (ottobre 2026)",
+          "u": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+        },
+        {
+          "t": "Altroconsumo – Pannolini per bambini, tutti i risultati",
+          "u": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/test/pannolini-per-bambini"
+        },
+        {
+          "t": "Öko-Test – Pannolini taglia 4, 15 marche (dicembre 2025, sintesi)",
+          "u": "https://newstime.joyn.de/themen/oeko-test/windeln-im-test-oeko-test-42866"
+        }
       ]
     }
   ],
@@ -233,12 +675,24 @@
       "Usato e scambi tra amici: spesso sono i capi più sicuri, perché lavati molte volte."
     ],
     "fonti": [
-      { "t": "OEKO-TEX – Standard 100", "u": "https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100" },
-      { "t": "Global Organic Textile Standard (GOTS)", "u": "https://global-standard.org" }
+      {
+        "t": "OEKO-TEX – Standard 100",
+        "u": "https://www.oeko-tex.com/en/our-standards/oeko-tex-standard-100"
+      },
+      {
+        "t": "Global Organic Textile Standard (GOTS)",
+        "u": "https://global-standard.org"
+      }
     ]
   },
   "fontiRichiami": [
-    { "t": "Safety Gate – Allerta rapida UE sui prodotti pericolosi", "u": "https://ec.europa.eu/safety-gate-alerts/screen/webReport" },
-    { "t": "MIMIT – Sistema di allarme rapido Safety Gate", "u": "https://www.mimit.gov.it/it/mercato-e-consumatori/sicurezza-prodotti/sistema-di-allarme-rapido-safety-gate" }
+    {
+      "t": "Safety Gate – Allerta rapida UE sui prodotti pericolosi",
+      "u": "https://ec.europa.eu/safety-gate-alerts/screen/webReport"
+    },
+    {
+      "t": "MIMIT – Sistema di allarme rapido Safety Gate",
+      "u": "https://www.mimit.gov.it/it/mercato-e-consumatori/sicurezza-prodotti/sistema-di-allarme-rapido-safety-gate"
+    }
   ]
 }

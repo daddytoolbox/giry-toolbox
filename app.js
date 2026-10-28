@@ -214,7 +214,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=13" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=14" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -722,6 +722,10 @@
           <div class="glist picks">${g.scelte.map(cardScelta).join("")}</div>`).join("")}
         ${cat.avviso ? `<p class="hint">${esc(cat.avviso)}</p>` : ""}
         <section class="card"><h2>Come scegliere</h2>${lista(cat.consigli)}</section>
+        ${cat.altri?.length ? `<h2 class="sec">🔎 E i marchi noti?</h2><div class="glist">${cat.altri.map(x => `
+          <div class="grow avoid"><span class="gi c5">?</span><span class="gt"><strong>${esc(x.nome)}</strong><small>${inline(x.stato)}</small>
+            ${x.link ? `<span class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Fonte</a></span>` : ""}</span></div>`).join("")}</div>
+          <p class="hint">Un modello non in lista non è per forza peggiore: spesso manca solo un test imparziale che lo confronti con gli altri.</p>` : ""}
         ${cat.evitare.length ? `<h2 class="sec">⛔ Da evitare</h2><div class="glist">${cat.evitare.map(e => `
           <div class="grow avoid"><span class="gi ${e.richiamo ? "c4" : "c0"}">${e.richiamo ? "⚠️" : "✋"}</span>
             <span class="gt"><strong>${esc(e.nome)}</strong><small>${inline(e.motivo)}</small>
