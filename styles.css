@@ -290,42 +290,72 @@ form.inline input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 14
 .sec .pill { vertical-align: middle; margin-left: 6px; }
 
 /* ---------- palette per sesso (solo se indicato nel profilo) ----------
-   Fondo ispirato a Pantone 2026 "Cloud Dancer"; tinte dalle passerelle FW26.
-   Bosco: verde bottiglia, petrolio, ocra. Prugna: prugna, bordeaux, ocra. */
+   Base mokka e beige (Pantone 2025 Mocha Mousse, 2026 Cloud Dancer).
+   "Mokka e salvia" (m) · "Mokka e cipria" (f). */
 :root[data-sesso="m"] {
-  --bg: #F4F1EA; --line: #E4DED1; --ink: #1F2622; --ink-2: #66706A;
-  --accent: #2E6B57; --accent-2: #1F4E5A; --on-accent: #FFFFFF; --hl: #A9771F;
-  --hero-1: #2E6B57; --hero-2: #1F4E5A;
-  --c0: #DCEAE2; --c0i: #2E6B57;
-  --c1: #E3EBDA; --c1i: #4A6B3A; --c2: #F3E7CC; --c2i: #85601A; --c3: #DCE7EA; --c3i: #1F5560;
-  --c4: #F2E2D8; --c4i: #964A2E; --c5: #E2E7EE; --c5i: #3D5470;
-  --shadow: 0 2px 6px rgba(30,50,40,.05), 0 10px 24px rgba(30,50,40,.07);
+  --bg: #F3EEE7; --surface: #FFFDFA; --line: #E3D9CC; --ink: #2B231E; --ink-2: #75685E;
+  --accent: #6B4F3F; --accent-2: #4E5B4B; --on-accent: #FFFFFF; --hl: #5E7154;
+  --hero-1: #7A5A47; --hero-2: #4E5B4B;
+  --c0: #EADFD3; --c0i: #6B4F3F; --c1: #E2E6D9; --c1i: #4F6045; --c2: #EFE4CF; --c2i: #7D6230;
+  --c3: #DFE4E6; --c3i: #45606B; --c4: #EEDDD2; --c4i: #8A5638; --c5: #E6E2DB; --c5i: #5B5249;
+  --shadow: 0 2px 6px rgba(60,40,25,.05), 0 10px 24px rgba(60,40,25,.07);
 }
 :root[data-sesso="f"] {
-  --bg: #F6F2EF; --line: #E8DFDB; --ink: #2A2026; --ink-2: #74666E;
-  --accent: #6E3A6B; --accent-2: #8E3440; --on-accent: #FFFFFF; --hl: #A9771F;
-  --hero-1: #6E3A6B; --hero-2: #8E3440;
-  --c0: #EEDFEA; --c0i: #6E3A6B;
-  --c1: #E6EADB; --c1i: #56663A; --c2: #F4E8CF; --c2i: #85601A; --c3: #E6E2EE; --c3i: #5A4B82;
-  --c4: #F2DFE0; --c4i: #8E3440; --c5: #E2E7EC; --c5i: #3F566B;
-  --shadow: 0 2px 6px rgba(60,30,50,.05), 0 10px 24px rgba(60,30,50,.07);
+  --bg: #F6EFEA; --surface: #FFFDFB; --line: #E8DBD3; --ink: #2D2220; --ink-2: #78675F;
+  --accent: #7A5548; --accent-2: #A2675E; --on-accent: #FFFFFF; --hl: #A2675E;
+  --hero-1: #85604F; --hero-2: #A2675E;
+  --c0: #F0DFD8; --c0i: #7A5548; --c1: #E5E6DA; --c1i: #5A6347; --c2: #F1E5D0; --c2i: #7D6230;
+  --c3: #E7E0E6; --c3i: #6A5470; --c4: #F1DCD8; --c4i: #984F48; --c5: #E8E2DD; --c5i: #5D5049;
+  --shadow: 0 2px 6px rgba(70,40,30,.05), 0 10px 24px rgba(70,40,30,.07);
 }
 @media (prefers-color-scheme: dark) {
   :root[data-sesso="m"] {
-    --bg: #121714; --surface: #1B221E; --line: #2C3630; --ink: #EDF1EC; --ink-2: #A5B0A9;
-    --accent: #8CC5AE; --accent-2: #7FB3BF; --on-accent: #0E1F18; --hl: #E2B65E;
-    --hero-1: #24574A; --hero-2: #1B4350;
-    --c0: #1F3A2F; --c0i: #8CC5AE;
-    --c1: #26321F; --c1i: #A9C995; --c2: #372D17; --c2i: #E2B65E; --c3: #183238; --c3i: #8CC4CF;
-    --c4: #3A2519; --c4i: #E5A486; --c5: #1E2838; --c5i: #9FB6D6;
+    --bg: #161210; --surface: #211B17; --line: #362C25; --ink: #F2EBE4; --ink-2: #B3A698;
+    --accent: #D2B39C; --accent-2: #A9B897; --on-accent: #2A1C13; --hl: #A9B897;
+    --hero-1: #5A4334; --hero-2: #3E4A3C;
+    --c0: #33271F; --c0i: #D2B39C; --c1: #262B20; --c1i: #A9B897; --c2: #332A1A; --c2i: #DDBF85;
+    --c3: #1F2A2E; --c3i: #9DB8C2; --c4: #36231A; --c4i: #DDA584; --c5: #29241F; --c5i: #C2B6A8;
   }
   :root[data-sesso="f"] {
-    --bg: #171215; --surface: #221B1F; --line: #372D33; --ink: #F3ECEF; --ink-2: #B7A8B0;
-    --accent: #D7A3CF; --accent-2: #E3A0A8; --on-accent: #2A1029; --hl: #E2B65E;
-    --hero-1: #5A2F58; --hero-2: #742B35;
-    --c0: #3A2337; --c0i: #D7A3CF;
-    --c1: #2A2F1E; --c1i: #B8C796; --c2: #372D17; --c2i: #E2B65E; --c3: #29243A; --c3i: #BDB0E3;
-    --c4: #3B1F23; --c4i: #E7A1A9; --c5: #1F2832; --c5i: #A3B8CC;
+    --bg: #171211; --surface: #231B19; --line: #3A2D29; --ink: #F4EBE7; --ink-2: #B9A69E;
+    --accent: #E0B5A5; --accent-2: #E0A79C; --on-accent: #2E1A14; --hl: #E0A79C;
+    --hero-1: #654438; --hero-2: #7A4A44;
+    --c0: #3A2621; --c0i: #E0B5A5; --c1: #282A20; --c1i: #B7BE9A; --c2: #342A1B; --c2i: #DDBF85;
+    --c3: #2D2430; --c3i: #C7B0CC; --c4: #3C2220; --c4i: #E7A39A; --c5: #2A2320; --c5i: #C6B5AC;
   }
 }
 .palette-hint { font-size: 13px; color: var(--ink-2); margin: 8px 2px 0; }
+
+/* ---------- mobile ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+a, button, label, summary, .chip, .hubtile { touch-action: manipulation; }
+.topbar { padding-left: max(16px, calc((100vw - 600px) / 2 + 16px), env(safe-area-inset-left)); padding-right: max(16px, calc((100vw - 600px) / 2 + 16px), env(safe-area-inset-right)); }
+.tabbar { left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); user-select: none; -webkit-user-select: none; }
+.tabbar a { min-height: 52px; justify-content: center; }
+.chips { scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+.chip { scroll-snap-align: start; min-height: 40px; }
+.icon-btn, .chip, .btn, .hubtile, .grow { -webkit-tap-highlight-color: transparent; }
+.icon-btn:active, .btn:active, .chip:active { transform: scale(.96); }
+.acts a, .more, .back { display: inline-block; padding: 6px 0; }
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); outline-offset: 2px; }
+img { max-width: 100%; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (min-width: 700px) { .hub { grid-template-columns: repeat(6, 1fr); } }
+.top-acts { display: flex; gap: 10px; }
+
+/* ---------- condividi ---------- */
+.sheet-bg { position: fixed; inset: 0; z-index: 20; background: rgba(20,12,8,.42); display: flex; align-items: flex-end; justify-content: center; animation: fade .18s ease; }
+.sheet { width: 100%; max-width: 560px; background: var(--surface); color: var(--ink); border-radius: 28px 28px 0 0; padding: 10px 18px calc(22px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 40px rgba(0,0,0,.2); animation: su .22s ease; max-height: 92vh; overflow-y: auto; }
+.sheet .grab { width: 44px; height: 5px; border-radius: 5px; background: var(--line); margin: 0 auto 14px; }
+.sheet h2 { margin-bottom: 4px; }
+.share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0 6px; }
+.share-grid a, .share-grid button { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 2px; border: none; background: none; text-decoration: none; color: var(--ink); font-size: 12.5px; font-weight: 800; cursor: pointer; }
+.share-grid .si { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; color: #fff; }
+.share-grid .si svg { width: 28px; height: 28px; }
+.qr { display: flex; gap: 14px; align-items: center; background: var(--bg); border-radius: 18px; padding: 12px; margin-top: 10px; }
+.qr img { width: 112px; height: 112px; border-radius: 10px; background: #fff; padding: 4px; flex: none; }
+.qr p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.linkbox { display: flex; gap: 8px; margin-top: 12px; }
+.linkbox input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 16px; }
+@keyframes su { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }

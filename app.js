@@ -120,8 +120,8 @@
     ? meseAnno(a) : `${mese(a)}${a.getFullYear() !== b.getFullYear() ? " " + a.getFullYear() : ""} – ${meseAnno(b)}`;
 
   // ---------- palette per sesso ----------
-  const TEMA = { m: { nome: "Bosco", desc: "verde bottiglia, petrolio e ocra", bg: ["#F4F1EA", "#121714"] },
-                 f: { nome: "Prugna", desc: "prugna, bordeaux e ocra", bg: ["#F6F2EF", "#171215"] } };
+  const TEMA = { m: { nome: "Mokka e salvia", desc: "caffè, beige e verde salvia", bg: ["#F3EEE7", "#161210"] },
+                 f: { nome: "Mokka e cipria", desc: "caffè, beige e rosa cipria", bg: ["#F6EFEA", "#171211"] } };
   function applicaTema(sx) {
     const r = document.documentElement;
     if (TEMA[sx]) r.dataset.sesso = sx; else delete r.dataset.sesso;
@@ -129,6 +129,78 @@
     document.querySelectorAll('meta[name="theme-color"]').forEach((m, i) => m.setAttribute("content", bg[i] || bg[0]));
   }
   const notaTema = sx => TEMA[sx] ? `Palette dell'app: <strong>${TEMA[sx].nome}</strong> · ${TEMA[sx].desc}.` : "Senza sesso indicato resta la palette corallo.";
+
+  // ---------- condividi ----------
+  const URL_APP = "https://daddytoolbox.github.io/giry-toolbox/";
+  const TESTO = "Giry toolbox: puericultura con fonti, acquisti scelti dai test di laboratorio e idee per mamma e papà, settimana dopo settimana. Gratis, senza pubblicità.";
+  const SI = {
+    wa: ['#25D366', '<path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/>'],
+    tg: ['#2AABEE', '<path fill="currentColor" stroke="none" d="M21.5 4.3 2.9 11.5c-1.3.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.8.8s.6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.4-1.5zM9 14.2l9-5.7c.4-.3.8-.1.5.2l-7.4 6.7-.3 3.2z"/>'],
+    mail: ['#8A7A70', '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/>'],
+    sms: ['#34A853', '<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/>'],
+    copia: ['#6B5E57', '<rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/>'],
+    altro: ['#4E5B4B', '<circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/>']
+  };
+  const icona = k => `<span class="si" style="background:${SI[k][0]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${SI[k][1]}</svg></span>`;
+  async function copia(testo, el) {
+    try { await navigator.clipboard.writeText(testo); }
+    catch { const t = document.createElement("textarea"); t.value = testo; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch {} t.remove(); }
+    if (el) { const o = el.lastChild.textContent; el.lastChild.textContent = "Copiato ✓"; setTimeout(() => { el.lastChild.textContent = o; }, 1600); }
+  }
+  function apriCondividi() {
+    const msg = `${TESTO}\n${URL_APP}`, e = encodeURIComponent;
+    const bg = document.createElement("div");
+    bg.className = "sheet-bg";
+    bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+      <div class="grab"></div>
+      <h2 id="sh-t">Condividi Giry toolbox</h2>
+      <p class="muted small" style="margin:0">Mandala a chi aspetta un bimbo o ne ha appena avuto uno.</p>
+      <div class="share-grid">
+        <a href="https://wa.me/?text=${e(msg)}" target="_blank" rel="noopener">${icona("wa")}<span>WhatsApp</span></a>
+        <a href="https://t.me/share/url?url=${e(URL_APP)}&text=${e(TESTO)}" target="_blank" rel="noopener">${icona("tg")}<span>Telegram</span></a>
+        <a href="mailto:?subject=${e("Un'app utile per genitori: Giry toolbox")}&body=${e(msg)}">${icona("mail")}<span>Email</span></a>
+        <a href="sms:?&body=${e(msg)}">${icona("sms")}<span>SMS</span></a>
+        <button type="button" data-a="copia">${icona("copia")}<span>Copia link</span></button>
+        ${navigator.share ? `<button type="button" data-a="altro">${icona("altro")}<span>Altre app</span></button>` : ""}
+      </div>
+      <div class="qr"><img src="qr.png" alt="Codice QR per aprire Giry toolbox" width="112" height="112">
+        <p><strong>Di persona?</strong><br>Fai inquadrare questo codice con la fotocamera del telefono.</p></div>
+      <div class="linkbox"><input type="text" readonly value="${URL_APP}" aria-label="Link dell'app"></div>
+      <button class="btn ghost" type="button" data-a="chiudi">Chiudi</button>
+    </div>`;
+    const chiudi = () => { bg.remove(); document.removeEventListener("keydown", esc_); };
+    const esc_ = ev => { if (ev.key === "Escape") chiudi(); };
+    bg.addEventListener("click", ev => {
+      if (ev.target === bg) return chiudi();
+      const b = ev.target.closest("[data-a]"); if (!b) return;
+      if (b.dataset.a === "chiudi") chiudi();
+      if (b.dataset.a === "copia") copia(URL_APP, b);
+      if (b.dataset.a === "altro") navigator.share({ title: "Giry toolbox", text: TESTO, url: URL_APP }).catch(() => {});
+    });
+    bg.querySelector("input").addEventListener("focus", ev => ev.target.select());
+    document.addEventListener("keydown", esc_);
+    document.body.appendChild(bg);
+  }
+  async function condividi() {
+    // sul telefono apre il pannello nativo (WhatsApp, Telegram, Messaggi, Gmail…); altrimenti il nostro
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+      try { await navigator.share({ title: "Giry toolbox", text: TESTO, url: URL_APP }); return; }
+      catch (err) { if (err && err.name === "AbortError") return; }
+    }
+    apriCondividi();
+  }
+
+  // ---------- installazione ----------
+  let installa = null;
+  window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installa = e; });
+  const installata = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const iOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  function bloccoInstalla() {
+    if (installata()) return "";
+    if (installa) return `<section class="card soft c3"><p class="kicker">📲 Installa l'app</p><p>Aggiungila alla schermata Home: si apre a tutto schermo e funziona anche senza rete.</p><button class="btn small" type="button" id="installa">Installa</button></section>`;
+    if (iOS()) return `<section class="card soft c3"><p class="kicker">📲 Installa l'app</p><p>In Safari tocca <strong>Condividi</strong> (il quadrato con la freccia) e poi <strong>Aggiungi alla schermata Home</strong>.</p></section>`;
+    return "";
+  }
 
   // ---------- dati ----------
   async function carica() {
@@ -142,7 +214,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=12" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=13" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -167,6 +239,7 @@
         <button class="btn" type="submit">${primo ? "Iniziamo" : "Salva"}</button>
         ${primo ? "" : `<button class="btn ghost" type="button" id="reset">Azzera le liste spuntate</button>`}
       </form>
+      ${primo ? "" : `${bloccoInstalla()}<section class="card soft c5"><p class="kicker">💌 Passaparola</p><p>Conosci qualcuno in attesa? Mandagli l'app con WhatsApp, Telegram, email o un codice QR.</p><button class="btn small" type="button" id="condividi2">Condividi l'app</button></section>`}
       <p class="foot">I dati restano solo su questo telefono.</p>
       ${firma()}`;
     const f = document.getElementById("f");
@@ -177,6 +250,8 @@
       store.set("profilo", { stato: d.get("stato"), sesso: d.get("sesso") || "", data: d.get("data"), nome: (d.get("nome") || "").trim(), citta: (d.get("citta") || "").trim() });
       location.hash = "#/oggi"; render();
     });
+    document.getElementById("condividi2")?.addEventListener("click", condividi);
+    document.getElementById("installa")?.addEventListener("click", async () => { if (!installa) return; installa.prompt(); try { await installa.userChoice; } catch {} installa = null; vistaProfilo(false); });
     document.getElementById("reset")?.addEventListener("click", () => { if (confirm("Vuoi togliere tutte le spunte?")) { store.set("check", {}); store.set("todo", {}); } });
   }
 
@@ -706,6 +781,7 @@
   }
 
   document.getElementById("btn-profilo").addEventListener("click", () => { location.hash = "#/profilo"; });
+  document.getElementById("btn-condividi").addEventListener("click", condividi);
   window.addEventListener("hashchange", render);
   applicaTema(store.get("profilo", {})?.sesso);
   carica().then(render);

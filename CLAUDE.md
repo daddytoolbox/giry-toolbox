@@ -24,7 +24,10 @@ Marchio: "un'app di Giry Corporation™". Pubblicata con GitHub Pages su https:/
 - Organizza: stagioni calcolate dalle date; taglie 50→92 con date previste (correzione ±0,25 mesi per sesso, curve OMS); lista regali copiabile
 - Vicino a te: Photon (photon.komoot.io/reverse con osm_tag per categoria, 3 richieste in parallelo, timeout 8 s, risultati progressivi, cache 7 giorni). Overpass è stato abbandonato (errore 406).
 - Sesso: usato per taglie, igiene al cambio (guida bagnetto), testi e **palette** (richiesta di Marco, ott 2026). Mai rosa/azzurro da cliché né stereotipi nei contenuti.
-- Palette: `data-sesso` su `<html>` (funzione `applicaTema` in app.js, aggiorna anche `theme-color`). Senza sesso: corallo originale. "Bosco" (m): verde bottiglia #2E6B57, petrolio, ocra. "Prugna" (f): prugna #6E3A6B, bordeaux, ocra. Fondo ispirato a Pantone 2026 Cloud Dancer, tinte da passerelle FW26; anche `--c0..--c5` sono ritinte in toni spenti. Varianti per tema scuro in styles.css.
+- Palette: `data-sesso` su `<html>` (funzione `applicaTema` in app.js, aggiorna anche `theme-color`). Senza sesso: corallo originale. Con sesso: base mokka e beige, preferenza di Marco (niente colori accesi). "Mokka e salvia" (m): caffè #6B4F3F, beige, salvia. "Mokka e cipria" (f): caffè #7A5548, beige, rosa cipria/terracotta. Anche `--c0..--c5` sono ritinte in toni spenti; varianti per tema scuro in styles.css.
+- Condividi: pulsante in alto e card in Impostazioni. Su telefono apre il pannello nativo (Web Share API); altrimenti un pannello con WhatsApp, Telegram, email, SMS, copia link e codice QR (`qr.png`, generato per l'URL dell'app: rigenerarlo se l'URL cambia).
+- Installazione: in Impostazioni pulsante "Installa" (Android, `beforeinstallprompt`) o istruzioni per Safari su iPhone. Il manifest ha le scorciatoie Acquisti, Vicino, Liste.
+- Mobile: input a 16 px (niente zoom su iOS), aree sicure, `touch-action: manipulation`, area di tocco minima di 40-52 px, riduzione delle animazioni se richiesta dal sistema. Provare sempre a 360 px di larghezza senza scroll orizzontale.
 
 ## Da fare (priorità)
 1. **Sezione Acquisti smart** — FATTA (v10, 28/10/2026). Mantenere questi criteri a ogni aggiornamento:
