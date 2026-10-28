@@ -18,7 +18,7 @@ Dare a genitori e futuri genitori informazioni **affidabili e imparziali**, in a
 
 ## Struttura (tutti i file nella radice, niente sottocartelle)
 - `index.html` – guscio, barra in alto, `<nav id="tabbar">` riempita da JS
-- `app.js` – tutta la logica (router hash `#/oggi`, `#/guide`, `#/guida/<id>`, `#/organizza`, `#/acquisti`, `#/mamma`, `#/papa`, `#/attivita`, `#/vicino`, `#/liste`, `#/profilo`)
+- `app.js` – tutta la logica (router hash `#/oggi`, `#/guide`, `#/guida/<id>`, `#/organizza`, `#/acquisti`, `#/nascita`, `#/mamma`, `#/papa`, `#/attivita`, `#/vicino`, `#/liste`, `#/profilo`)
 - `styles.css` – font Nunito, colori sezione `--c0..--c5`, tema scuro automatico
 - `contenuti.json` – tutti i testi: `settimane`, `schede` (guide con fonti), `perTe` (mamma), `attivitaBimbo`, `liste`, `organizza` (stagioni, taglie, consigli smart), `papa`
 - `acquisti.json` – Acquisti smart: `aggiornato`, `richiamiVerificati`, `metodo`, `categorie[]` (id, nome, emo, quando, norma, consigli, `gruppi[].scelte[]`, `evitare[]`, fonti; opzionali `nessunTest`, `avviso`), `tessili`, `fontiRichiami`. Ogni scelta: nome, voto, scala ("ADAC" | "Warentest" | "Altroconsumo"), fonte, data ("AAAA-MM"), prezzo, q (ricerca idealo), nota, link, flag `top`/`conv`/`piccolo`, opzionale `prezzoOggi` {valore, data "AAAA-MM-GG"} aggiornato dall'attività settimanale. Ogni voce da evitare: nome, motivo, data, link, `richiamo` (true se richiamo ufficiale). Campo `altri[]` per categoria (nome, stato, link opzionale): "E i marchi noti?", dice perché un marchio diffuso non è in lista (voto più basso, prezzo, nessun test). Tenerlo aggiornato: è la risposta alla domanda "e Inglesina/Nuna?"
