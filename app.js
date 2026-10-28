@@ -131,7 +131,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=10" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=11" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -606,7 +606,7 @@
       <div class="pick-b">
         ${badge ? `<div class="badges">${badge}</div>` : ""}
         <h3>${esc(x.nome)}</h3>
-        <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))} · <strong>${esc(x.prezzo)}</strong></p>
+        <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))} · <strong>${esc(x.prezzo)}</strong>${x.prezzoOggi ? ` · oggi da <strong>${esc(x.prezzoOggi.valore)}</strong> (${esc(fmtData(x.prezzoOggi.data))})` : ""}</p>
         ${x.nota ? `<p class="pn">${inline(x.nota)}</p>` : ""}
         <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Il test</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}</p>
       </div>
