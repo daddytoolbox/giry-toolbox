@@ -1,957 +1,1336 @@
 {
-  "versione": "2026-10-27",
-  "settimane": [
-    {
-      "stato": "attesa",
-      "da": 0,
-      "a": 13,
-      "titolo": "Primo trimestre",
-      "testo": "Periodo spesso faticoso: stanchezza e nausea sono comuni. Non c'è ancora niente da comprare. È il momento giusto per informarsi sul consultorio di zona e sui corsi di accompagnamento alla nascita.",
-      "todo": [
-        "Cerca il consultorio familiare più vicino",
-        "Inizia un diario o un album delle foto mensili",
-        "Parlate di come immaginate i primi mesi: chi aiuta, chi resta a casa, quando"
-      ]
-    },
-    {
-      "stato": "attesa",
-      "da": 14,
-      "a": 19,
-      "titolo": "Inizio secondo trimestre",
-      "testo": "Di solito arriva più energia. È il periodo migliore per viaggi brevi, uscite e per cominciare un'attività fisica dolce.",
-      "todo": [
-        "Valuta un corso di yoga o acquaticità prenatale",
-        "Inizia una lista nascita essenziale (vedi Liste)",
-        "Informati su congedi e permessi di entrambi i genitori"
-      ]
-    },
-    {
-      "stato": "attesa",
-      "da": 20,
-      "a": 24,
-      "titolo": "Metà gravidanza",
-      "testo": "Buon momento per decidere le cose grandi: dove dormirà il bambino, che passeggino serve davvero, che seggiolino auto comprare.",
-      "todo": [
-        "Leggi la guida Sonno sicuro",
-        "Leggi la guida Seggiolino auto",
-        "Iscriviti al corso di accompagnamento alla nascita (le iscrizioni si aprono spesso intorno alla 25ª settimana)"
-      ]
-    },
-    {
-      "stato": "attesa",
-      "da": 25,
-      "a": 29,
-      "titolo": "Verso il terzo trimestre",
-      "testo": "Il corso preparto è anche il posto migliore per conoscere altre coppie con la stessa data presunta: sono le persone con cui uscirete nei primi mesi.",
-      "todo": [
-        "Corso di disostruzione pediatrica per entrambi",
-        "Organizza la cameretta e il fasciatoio",
-        "Scegli il pediatra di libera scelta da indicare dopo la nascita"
-      ]
-    },
-    {
-      "stato": "attesa",
-      "da": 30,
-      "a": 34,
-      "titolo": "Preparare il nido",
-      "testo": "Lava i primi vestitini, monta culla e seggiolino e prova a usarli. Cucinare in anticipo per il dopo parto è uno dei regali migliori che potete farvi.",
-      "todo": [
-        "Monta e prova il seggiolino in auto",
-        "Batch cooking: 10-15 porzioni in freezer",
-        "Prepara la borsa per l'ospedale (vedi Liste)"
-      ]
-    },
-    {
-      "stato": "attesa",
-      "da": 35,
-      "a": 42,
-      "titolo": "Ultime settimane",
-      "testo": "Tutto pronto: ora conta riposare, uscire finché fa piacere e organizzare l'aiuto per le prime settimane a casa.",
-      "todo": [
-        "Borsa e documenti vicino alla porta",
-        "Decidi chi chiamare e come organizzare le visite",
-        "Scarica o stampa il percorso per l'ospedale"
-      ]
-    },
-    {
-      "stato": "nato",
-      "da": 0,
-      "a": 2,
-      "titolo": "Le prime due settimane",
-      "testo": "Nessun programma: dormire quando dorme lui, mangiare bene, poche visite e tanto contatto pelle a pelle.",
-      "todo": [
-        "Dichiarazione di nascita (in ospedale entro 3 giorni o in Comune entro 10)",
-        "Iscrizione al pediatra e codice fiscale",
-        "Domanda Assegno Unico all'INPS"
-      ]
-    },
-    {
-      "stato": "nato",
-      "da": 3,
-      "a": 8,
-      "titolo": "Il primo mese e mezzo",
-      "testo": "Iniziano i primi sguardi lunghi e, intorno alle 6 settimane, spesso il primo sorriso sociale. Brevi momenti a pancia in giù da sveglio, sempre sorvegliato.",
-      "todo": [
-        "Prima passeggiata lunga con fascia o carrozzina",
-        "Un incontro di gruppo neo-genitori al consultorio",
-        "Letture ad alta voce: anche solo 5 minuti"
-      ]
-    },
-    {
-      "stato": "nato",
-      "da": 9,
-      "a": 26,
-      "titolo": "Dai 2 ai 6 mesi",
-      "testo": "Il bambino scopre le mani, afferra, ride e si gira. Il gioco più utile resta il genitore: faccia, voce, canzoni e routine.",
-      "todo": [
-        "Corso di massaggio infantile",
-        "Primo accesso a una sezione 0-6 in biblioteca",
-        "Casa a prova di bambino: si inizia prima che gattoni"
-      ]
-    },
-    {
-      "stato": "nato",
-      "da": 27,
-      "a": 52,
-      "titolo": "Dai 6 ai 12 mesi",
-      "testo": "Alimentazione complementare, gattonamento, prime parole-gioco. Spazi sicuri a terra e tanti oggetti da esplorare.",
-      "todo": [
-        "Leggi la guida Inizio dell'alimentazione complementare",
-        "Cancelletti, paraspigoli e prese protette",
-        "Una attività di gruppo a settimana (musica, acqua, lettura)"
-      ]
-    },
-    {
-      "stato": "nato",
-      "da": 53,
-      "a": 160,
-      "titolo": "Da 1 a 3 anni",
-      "testo": "Cammina, parla, imita. Contano gioco libero all'aperto, libri, musica e altri bambini.",
-      "todo": [
-        "Parchi gioco e ludoteche in zona",
-        "Libri con frasi semplici e ripetute",
-        "Attività che ripetono una routine settimanale"
-      ]
-    }
-  ],
-  "schede": [
-    {
-      "id": "sonno-sicuro",
-      "titolo": "Sonno sicuro",
-      "fase": "Prima della nascita",
-      "icona": "🌙",
-      "sommario": "Dove e come far dormire il neonato nel primo anno.",
-      "testo": [
-        "Sono le raccomandazioni con le prove più solide di tutta la puericultura, e valgono per tutto il primo anno.",
-        "- **Sempre a pancia in su**, per ogni sonno, anche i pisolini.",
-        "- **Superficie rigida, piatta e non inclinata**, pensata per il sonno: culla, lettino o next-to-me a norma.",
-        "- **Culla vuota**: niente cuscini, paracolpi, peluche, coperte morbide. Meglio il sacco nanna.",
-        "- **Nella stanza dei genitori** ma su una superficie separata, almeno nei primi 6 mesi.",
-        "- **Niente sonno abituale** in ovetto, passeggino seduto, sdraietta o fascia: se si addormenta lì, appena possibile si sposta in culla.",
-        "- **Non coprire troppo**: stanza fresca (circa 18-20 °C), niente cappellino in casa.",
-        "- **Ambiente senza fumo**, in gravidanza e dopo.",
-        "Il ciuccio al momento della nanna è associato a un rischio minore. Se allatti, spesso si consiglia di introdurlo quando l'allattamento è ben avviato."
-      ],
-      "fonti": [
-        {
-          "t": "AAP. Sleep-Related Infant Deaths: Updated 2022 Recommendations. Pediatrics 2022;150(1):e2022057990",
-          "u": "https://doi.org/10.1542/peds.2022-057990"
-        },
-        {
-          "t": "AAP – Safe Sleep: Back is Best (2022)",
-          "u": "https://www.aap.org/en/news-room/news-releases/aap/2022/american-academy-of-pediatrics-updates-safe-sleep-recommendations-back-is-best"
-        },
-        {
-          "t": "GenitoriPiù – Programma nazionale di promozione della salute",
-          "u": "https://www.genitoripiu.it"
-        }
-      ]
-    },
-    {
-      "id": "seggiolino",
-      "titolo": "Seggiolino auto",
-      "fase": "Prima della nascita",
-      "icona": "🚗",
-      "sommario": "Ovetto, i-Size, contromarcia e dispositivo antiabbandono.",
-      "testo": [
-        "Il seggiolino serve già dal viaggio di ritorno dall'ospedale: va comprato e provato prima.",
-        "- **Contromarcia il più a lungo possibile**: almeno fino a 15 mesi per la norma i-Size, e idealmente oltre.",
-        "- **Omologazione R129 (i-Size)**: è lo standard attuale. Verifica l'etichetta arancione.",
-        "- **Base Isofix**: riduce molto gli errori di montaggio.",
-        "- **Cinture aderenti**: niente piumino spesso sotto le cinture, si copre il bambino sopra.",
-        "- **Airbag**: l'ovetto contromarcia sul sedile anteriore solo con airbag disattivato.",
-        "- **Dispositivo antiabbandono**: in Italia è obbligatorio per i bambini sotto i 4 anni.",
-        "- **Non è un lettino**: in viaggi lunghi una pausa ogni 1,5-2 ore, e a destinazione si sposta il bambino in culla.",
-        "Evita seggiolini usati di cui non conosci la storia: dopo un incidente vanno sostituiti."
-      ],
-      "fonti": [
-        {
-          "t": "Legge 1 ottobre 2018, n. 117 – dispositivi antiabbandono",
-          "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2018-10-01;117"
-        },
-        {
-          "t": "AAP / HealthyChildren – Car Safety Seats",
-          "u": "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Car-Safety-Seats-Information-for-Families.aspx"
-        }
-      ]
-    },
-    {
-      "id": "corredo",
-      "titolo": "Corredo essenziale",
-      "fase": "Prima della nascita",
-      "icona": "🧺",
-      "sommario": "Cosa serve davvero e cosa si può rimandare.",
-      "testo": [
-        "Il neonato ha bisogno di pochissimo. Molto si può comprare dopo, quando capisci cosa usi davvero.",
-        "**Subito indispensabile**",
-        "- Culla o next-to-me a norma, materasso rigido, 3 lenzuolini con angoli, 2 sacchi nanna",
-        "- Seggiolino auto omologato",
-        "- 6-8 body e 6-8 tutine taglia 1 mese (alcuni 0-1 mese, crescono in fretta)",
-        "- Pannolini taglia 1, salviette o cotone, crema per il cambio",
-        "- Fasciatoio o materassino su un mobile stabile",
-        "- Termometro, forbicine a punta tonda",
-        "**Utili ma rimandabili**",
-        "- Passeggino o trio: prova il peso e la chiusura, e se entra nel bagagliaio",
-        "- Fascia o marsupio ergonomico",
-        "- Sdraietta, palestrina, vaschetta",
-        "**Spesso inutili**",
-        "- Paracolpi, cuscini, piumoni, scaldabiberon sofisticati, tanti vestiti taglia neonato",
-        "Il mercato dell'usato è ottimo per vestiti, passeggini e mobili. Fanno eccezione seggiolini auto e materassi."
-      ],
-      "fonti": [
-        {
-          "t": "AAP 2022 – raccomandazioni sull'ambiente del sonno",
-          "u": "https://doi.org/10.1542/peds.2022-057990"
-        }
-      ]
-    },
-    {
-      "id": "bagnetto",
-      "titolo": "Bagnetto, cambio e cordone",
-      "fase": "Primi mesi",
-      "icona": "🛁",
-      "sommario": "Pulizia quotidiana senza esagerare.",
-      "testo": [
-        "La pelle del neonato non ha bisogno di molti prodotti.",
-        "- **Cordone ombelicale**: tienilo pulito e asciutto, lascia il pannolino ripiegato sotto. Cade di solito entro 1-3 settimane. Arrossamento che si allarga, cattivo odore o secrezioni vanno mostrati al pediatra.",
-        "- **Bagnetto**: 2-3 volte a settimana bastano. Acqua intorno a 37 °C (gomito o termometro), 5-10 minuti, detergente delicato e poco.",
-        "- **Mai lasciarlo solo** nell'acqua, nemmeno per un attimo: prepara tutto prima.",
-        "- **Cambio**: acqua tiepida e cotone o salviette senza profumo; crema all'ossido di zinco se la pelle si arrossa.",
-        "- **Fasciatoio**: una mano sempre sul bambino. Molte cadute avvengono lì.",
-        "- **Unghie**: limetta o forbicine a punta tonda, quando dorme."
-      ],
-      "fonti": [
-        {
-          "t": "WHO – Recommendations on maternal and newborn care for a positive postnatal experience (2022)",
-          "u": "https://www.who.int/publications/i/item/9789240045989"
-        },
-        {
-          "t": "GenitoriPiù",
-          "u": "https://www.genitoripiu.it"
-        }
-      ]
-    },
-    {
-      "id": "fascia",
-      "titolo": "Fascia e marsupio",
-      "fase": "Primi mesi",
-      "icona": "🤱",
-      "sommario": "Portare in sicurezza: la regola T.I.C.K.S.",
-      "testo": [
-        "Portare il bambino addosso calma, libera le mani e permette uscite fin dalle prime settimane.",
-        "La regola di sicurezza usata nel mondo del babywearing è **T.I.C.K.S.**:",
-        "- **Tight**: il supporto è aderente, il bambino non si accascia.",
-        "- **In view**: il viso è sempre visibile abbassando lo sguardo.",
-        "- **Close enough to kiss**: la testa è abbastanza alta da poterla baciare.",
-        "- **Keep chin off chest**: il mento non deve schiacciarsi sul petto. Ci deve stare un dito.",
-        "- **Supported back**: schiena sostenuta nella sua curva naturale.",
-        "Scegli supporti ergonomici con posizione a M (ginocchia più alte del sedere). Vale la pena una consulenza con una consulente del portare: molte offrono incontri di prova."
-      ],
-      "fonti": [
-        {
-          "t": "National Child Mortality Database (UK) – Sling safety e regola T.I.C.K.S.",
-          "u": "https://www.ncmd.info/safety/sling-safety/"
-        },
-        {
-          "t": "AAP 2022 – i dispositivi seduti non sono superfici per il sonno abituale",
-          "u": "https://doi.org/10.1542/peds.2022-057990"
-        }
-      ]
-    },
-    {
-      "id": "pianto",
-      "titolo": "Il pianto",
-      "fase": "Primi mesi",
-      "icona": "🫧",
-      "sommario": "Cosa aspettarsi e come restare calmi.",
-      "testo": [
-        "Il pianto aumenta nelle prime settimane, raggiunge spesso un picco intorno alle 6-8 settimane e poi diminuisce. Spesso si concentra nel tardo pomeriggio e la sera.",
-        "**Cose da provare, una alla volta**",
-        "- Fame, pannolino, caldo o freddo",
-        "- Contatto: in braccio, in fascia, pelle a pelle",
-        "- Movimento ritmico e rumore bianco o canticchiare",
-        "- Uscire all'aria aperta",
-        "**La regola più importante**",
-        "Se senti che stai perdendo la pazienza, metti il bambino al sicuro nella culla, esci dalla stanza e respira qualche minuto o chiama qualcuno. **Non scuotere mai un neonato**: anche pochi secondi possono causare danni gravi.",
-        "Pianto molto diverso dal solito, febbre, rifiuto del pasto o un bambino insolitamente spento: chiama il pediatra."
-      ],
-      "fonti": [
-        {
-          "t": "GenitoriPiù – sostegno ai genitori nei primi mesi",
-          "u": "https://www.genitoripiu.it"
-        }
-      ]
-    },
-    {
-      "id": "tummy-time",
-      "titolo": "Tempo a pancia in giù",
-      "fase": "Primi mesi",
-      "icona": "🧸",
-      "sommario": "Da sveglio e sorvegliato, fin dai primi giorni.",
-      "testo": [
-        "Si dorme a pancia in su, si gioca anche a pancia in giù.",
-        "- Si inizia nei primi giorni, sul petto del genitore o su un tappetino, per pochi minuti più volte al giorno.",
-        "- Si aumenta gradualmente fino ad almeno 15-30 minuti complessivi al giorno entro le 7 settimane.",
-        "- Rinforza collo e spalle e riduce l'appiattimento della testa.",
-        "- Mettiti alla sua altezza: la tua faccia è il gioco più interessante.",
-        "Sempre sveglio e sempre con un adulto presente."
-      ],
-      "fonti": [
-        {
-          "t": "AAP 2022 – Sleep-Related Infant Deaths (sezione tummy time)",
-          "u": "https://doi.org/10.1542/peds.2022-057990"
-        },
-        {
-          "t": "WHO – Guidelines on physical activity, sedentary behaviour and sleep for children under 5 (2019)",
-          "u": "https://www.who.int/publications/i/item/9789241550536"
-        }
-      ]
-    },
-    {
-      "id": "uscite",
-      "titolo": "Uscire con il neonato",
-      "fase": "Primi mesi",
-      "icona": "🌳",
-      "sommario": "Aria aperta, sole, freddo e passeggiate.",
-      "testo": [
-        "Uscire fa bene a tutti, già dai primi giorni se mamma e bambino stanno bene.",
-        "- **Sole**: sotto i 6 mesi evita l'esposizione diretta. Ombra, cappellino e abiti leggeri coprenti.",
-        "- **Freddo**: vestilo con uno strato in più di quello che serve a te. Controlla collo e petto, non mani e piedi, che sono spesso freschi.",
-        "- **Folla**: nei primi mesi, specie in stagione influenzale, preferisci parchi e luoghi aperti ai centri commerciali affollati.",
-        "- **Borsa pronta**: un cambio, pannolini, salviette, un telo, acqua per te.",
-        "Una passeggiata quotidiana aiuta anche il genitore: luce, movimento e qualche incontro."
-      ],
-      "fonti": [
-        {
-          "t": "HealthyChildren (AAP) – Sun Safety",
-          "u": "https://www.healthychildren.org/English/safety-prevention/at-play/Pages/Sun-Safety.aspx"
-        }
-      ]
-    },
-    {
-      "id": "pasto",
-      "titolo": "Il pasto in pratica",
-      "fase": "Primi mesi",
-      "icona": "🍼",
-      "sommario": "Allattamento e biberon: logistica e igiene.",
-      "testo": [
-        "Qui c'è la parte pratica. Per le difficoltà di allattamento il riferimento sono l'ostetrica, il consultorio o una consulente IBCLC.",
-        "- **A richiesta**: nelle prime settimane 8-12 poppate al giorno sono normali.",
-        "- **Postazione**: un angolo comodo con acqua, cuscino da allattamento, telefono e uno snack.",
-        "- **Biberon**: lava con acqua calda e sapone subito dopo l'uso. Sterilizza almeno nei primi mesi.",
-        "- **Latte artificiale**: rispetta esattamente le dosi della confezione, prepara con acqua secondo le istruzioni e butta i residui dopo il pasto.",
-        "- **Latte materno tirato**: frigo fino a 4 giorni, congelatore 6-12 mesi; scongela in frigo, mai in microonde.",
-        "L'OMS raccomanda allattamento esclusivo nei primi 6 mesi, quando possibile. Ogni famiglia trova il suo equilibrio: il pasto deve funzionare anche per chi lo dà."
-      ],
-      "fonti": [
-        {
-          "t": "WHO – Infant and young child feeding (fact sheet)",
-          "u": "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-        },
-        {
-          "t": "CDC – Proper Storage and Preparation of Breast Milk",
-          "u": "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html"
-        }
-      ]
-    },
-    {
-      "id": "casa-sicura",
-      "titolo": "Casa a prova di bambino",
-      "fase": "3-12 mesi",
-      "icona": "🏠",
-      "sommario": "Da fare prima che inizi a rotolare e gattonare.",
-      "testo": [
-        "Il momento giusto è prima che si muova: i primi spostamenti arrivano all'improvviso.",
-        "- **Batterie a bottone e magneti**: fuori portata, sempre. Se ne ingoia una è un'emergenza: pronto soccorso subito.",
-        "- **Farmaci e detersivi** (incluse le capsule per lavatrice): in alto e chiusi.",
-        "- **Cadute**: cancelletti alle scale, mai sdraietta o ovetto su un tavolo, finestre con blocchi.",
-        "- **Mobili**: fissa al muro librerie, cassettiere e TV.",
-        "- **Soffocamento**: niente oggetti più piccoli di un rotolo di carta igienica a portata di mano. Cordini delle tende fuori portata.",
-        "- **Ustioni**: niente bevande calde in braccio, manici delle pentole verso l'interno.",
-        "- **Acqua**: bastano pochi centimetri. Mai solo nella vasca.",
-        "Salva in rubrica il numero del Centro Antiveleni più vicino."
-      ],
-      "fonti": [
-        {
-          "t": "GenitoriPiù – prevenzione degli incidenti domestici",
-          "u": "https://www.genitoripiu.it"
-        },
-        {
-          "t": "HealthyChildren (AAP) – Childproofing Your Home",
-          "u": "https://www.healthychildren.org/English/safety-prevention/at-home/Pages/Childproofing-Your-Home.aspx"
-        }
-      ]
-    },
-    {
-      "id": "svezzamento",
-      "titolo": "Inizio dell'alimentazione complementare",
-      "fase": "3-12 mesi",
-      "icona": "🥣",
-      "sommario": "Quando e come iniziare con i cibi solidi.",
-      "testo": [
-        "L'OMS indica di iniziare intorno ai 6 mesi, continuando il latte. Il percorso si concorda con il pediatra.",
-        "**Segnali di prontezza**: sta seduto con poco sostegno, controlla bene la testa, porta oggetti alla bocca, mostra interesse per il cibo.",
-        "- Seduto dritto, sempre a tavola con un adulto.",
-        "- Niente sale e zucchero aggiunti, niente miele prima dell'anno.",
-        "- Cibi a rischio soffocamento (acini d'uva, pomodorini, olive, frutta secca intera, würstel a rondelle) vanno tagliati per il lungo o evitati.",
-        "- Mangiare insieme: il bambino impara guardando.",
-        "Utile un corso di disostruzione pediatrica prima di iniziare."
-      ],
-      "fonti": [
-        {
-          "t": "WHO – Infant and young child feeding",
-          "u": "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-        },
-        {
-          "t": "Ministero della Salute – Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica",
-          "u": "https://www.salute.gov.it/imgs/C_17_pubblicazioni_2618_allegato.pdf"
-        }
-      ]
-    },
-    {
-      "id": "schermi",
-      "titolo": "Schermi e sedentarietà",
-      "fase": "1-3 anni",
-      "icona": "📵",
-      "sommario": "Cosa dicono le linee guida sotto i 5 anni.",
-      "testo": [
-        "- **Sotto i 2 anni**: l'OMS raccomanda nessun tempo davanti agli schermi (le videochiamate con i nonni sono un'eccezione ragionevole).",
-        "- **2-4 anni**: non più di 1 ora al giorno, meno è meglio, idealmente insieme a un adulto.",
-        "- **Non più di 1 ora di fila** legato in passeggino o seggiolone.",
-        "- Il tempo tolto agli schermi va a gioco libero, lettura condivisa, musica e movimento."
-      ],
-      "fonti": [
-        {
-          "t": "WHO – Guidelines on physical activity, sedentary behaviour and sleep for children under 5 (2019)",
-          "u": "https://www.who.int/publications/i/item/9789241550536"
-        }
-      ]
-    },
-    {
-      "id": "lettura",
-      "titolo": "Leggere ad alta voce",
-      "fase": "Da 0 anni",
-      "icona": "📚",
-      "sommario": "Perché e come iniziare già dai primi mesi.",
-      "testo": [
-        "Leggere al bambino fin dai primi mesi favorisce linguaggio, attenzione e relazione. Non serve che capisca: conta la voce e il ritmo.",
-        "- **0-6 mesi**: libri cartonati ad alto contrasto, filastrocche, cantilene.",
-        "- **6-12 mesi**: libri da toccare, con buchi e alette, immagini di oggetti quotidiani.",
-        "- **1-3 anni**: storie brevi e ripetitive, libri dove indicare e nominare.",
-        "- Pochi minuti ogni giorno valgono più di una lunga lettura saltuaria.",
-        "Le biblioteche hanno sezioni 0-6 anni e letture gratuite del programma Nati per Leggere."
-      ],
-      "fonti": [
-        {
-          "t": "Nati per Leggere – programma nazionale",
-          "u": "https://www.natiperleggere.it"
-        },
-        {
-          "t": "AAP – Literacy Promotion: An Essential Component of Primary Care Pediatric Practice. Pediatrics 2014;134(2):404-9",
-          "u": "https://doi.org/10.1542/peds.2014-1384"
-        }
-      ]
-    }
-  ],
-  "perTe": {
-    "intro": "Idee per stare bene, uscire e conoscere altre persone durante l'attesa. Dopo il primo trimestre l'energia di solito torna, ed è un peccato passare tutto il tempo in casa.",
-    "nota": "Se la tristezza, l'ansia o la solitudine diventano persistenti, parlane con l'ostetrica o il consultorio: è frequente e c'è aiuto, in gravidanza e dopo.",
-    "categorie": [
-      {
-        "id": "movimento",
-        "nome": "Movimento",
-        "icona": "🌿",
-        "idee": [
-          {
-            "t": "Camminate in compagnia",
-            "d": "Lungo il fiume o nei parchi grandi. Anche 30 minuti al giorno contano.",
-            "trim": [
-              1,
-              2,
-              3
-            ]
-          },
-          {
-            "t": "Acquaticità o nuoto prenatale",
-            "d": "Molte piscine hanno corsi dedicati. L'acqua alleggerisce il peso nel terzo trimestre.",
-            "trim": [
-              2,
-              3
-            ]
-          },
-          {
-            "t": "Yoga o pilates prenatale",
-            "d": "Con insegnanti formati per la gravidanza. Utile anche per respiro e pavimento pelvico.",
-            "trim": [
-              2,
-              3
-            ]
-          },
-          {
-            "t": "Ballo dolce",
-            "d": "Lezioni leggere o anche a casa: muoversi con la musica funziona."
-          }
-        ],
-        "fonti": [
-          {
-            "t": "WHO 2020 guidelines on physical activity and sedentary behaviour. Br J Sports Med 2020;54:1451-62",
-            "u": "https://doi.org/10.1136/bjsports-2020-102955"
-          },
-          {
-            "t": "ACOG Committee Opinion 804 – Physical Activity and Exercise During Pregnancy and the Postpartum Period (2020)",
-            "u": "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/04/physical-activity-and-exercise-during-pregnancy-and-the-postpartum-period"
-          }
-        ],
-        "avvertenza": "L'OMS raccomanda almeno 150 minuti a settimana di attività moderata in gravidanza, in assenza di controindicazioni. Se ci sono complicazioni, chiedi prima all'ostetrica o al ginecologo."
-      },
-      {
-        "id": "persone",
-        "nome": "Conoscere persone",
-        "icona": "☕",
-        "idee": [
-          {
-            "t": "Corso di accompagnamento alla nascita",
-            "d": "Gratuito al consultorio. È il modo più semplice per conoscere coppie con la stessa data presunta.",
-            "trim": [
-              2,
-              3
-            ]
-          },
-          {
-            "t": "Gruppo delle future mamme",
-            "d": "Create una chat con le compagne di corso o di acquaticità e organizzate una colazione a settimana."
-          },
-          {
-            "t": "Case del Quartiere e biblioteche",
-            "d": "Hanno spesso incontri per neogenitori, scambio di abiti e attrezzatura, laboratori."
-          },
-          {
-            "t": "Pranzo con le amiche che sono già mamme",
-            "d": "Consigli pratici, oggetti prestati e una rete per dopo."
-          }
-        ]
-      },
-      {
-        "id": "creativo",
-        "nome": "Mani e testa",
-        "icona": "🧶",
-        "idee": [
-          {
-            "t": "Diario o album della gravidanza",
-            "d": "Una foto al mese sempre nello stesso punto, due righe su come ti senti."
-          },
-          {
-            "t": "Imparare maglia o uncinetto",
-            "d": "Una copertina o un cappellino. Ci sono laboratori nelle mercerie e nelle biblioteche."
-          },
-          {
-            "t": "Corso di fotografia",
-            "d": "Utile adesso e per i prossimi anni."
-          },
-          {
-            "t": "Una lingua o uno strumento",
-            "d": "Con mezz'ora al giorno, da casa o in un corso serale."
-          },
-          {
-            "t": "Playlist e libri per il bambino",
-            "d": "Scegliere ninne nanne e i primi libri da leggergli."
-          }
-        ]
-      },
-      {
-        "id": "cultura",
-        "nome": "Uscite e cultura",
-        "icona": "🏛️",
-        "idee": [
-          {
-            "t": "Musei con l'Abbonamento Musei",
-            "d": "Un abbonamento annuale permette ingressi illimitati: comodo per uscite brevi e frequenti."
-          },
-          {
-            "t": "Cinema, teatro, concerti",
-            "d": "Il secondo trimestre è il periodo ideale per recuperare."
-          },
-          {
-            "t": "Gite di un giorno",
-            "d": "Laghi, colline, borghi a meno di un'ora di auto o di treno."
-          },
-          {
-            "t": "Babymoon",
-            "d": "Un weekend tranquillo per voi due, di solito nel secondo trimestre.",
-            "trim": [
-              2
-            ]
-          }
-        ]
-      },
-      {
-        "id": "coppia",
-        "nome": "Da fare in coppia",
-        "icona": "🤝",
-        "idee": [
-          {
-            "t": "Corso di disostruzione pediatrica",
-            "d": "Organizzato da Croce Rossa e associazioni: poche ore, molto utile per entrambi.",
-            "trim": [
-              2,
-              3
-            ]
-          },
-          {
-            "t": "Cucinare per il dopo parto",
-            "d": "Una domenica di batch cooking insieme, porzioni in freezer.",
-            "trim": [
-              3
-            ]
-          },
-          {
-            "t": "Montare la cameretta",
-            "d": "Un progetto comune, con la musica giusta."
-          },
-          {
-            "t": "Scegliere il nome",
-            "d": "Una lista a testa e poi una serata per confrontarle."
-          },
-          {
-            "t": "Cena fuori a settimana",
-            "d": "Nei primi mesi sarà più difficile: approfittatene."
-          }
-        ]
-      },
-      {
-        "id": "dopo",
-        "nome": "Dopo la nascita",
-        "icona": "🌸",
-        "idee": [
-          {
-            "t": "Gruppi del dopo parto al consultorio",
-            "d": "Incontri con l'ostetrica e altre neomamme: allattamento, sonno, rientro.",
-            "nato": true
-          },
-          {
-            "t": "Corso di massaggio infantile",
-            "d": "Di solito dalle prime settimane fino ai 6 mesi, spesso al consultorio.",
-            "nato": true
-          },
-          {
-            "t": "Passeggiate in gruppo con carrozzina o fascia",
-            "d": "Un orario fisso a settimana con altre mamme.",
-            "nato": true
-          },
-          {
-            "t": "Ginnastica post parto e pavimento pelvico",
-            "d": "Dopo il controllo post parto, con professionisti dedicati.",
-            "nato": true
-          }
-        ]
-      }
-    ]
+ "versione": "2026-10-28",
+ "settimane": [
+  {
+   "stato": "attesa",
+   "da": 0,
+   "a": 13,
+   "titolo": "Primo trimestre",
+   "testo": "Periodo spesso faticoso: stanchezza e nausea sono comuni. Non c'è ancora niente da comprare. È il momento giusto per informarsi sul consultorio di zona e sui corsi di accompagnamento alla nascita.",
+   "todo": [
+    "Cerca il consultorio familiare più vicino",
+    "Inizia un diario o un album delle foto mensili",
+    "Parlate di come immaginate i primi mesi: chi aiuta, chi resta a casa, quando"
+   ]
   },
-  "attivitaBimbo": [
+  {
+   "stato": "attesa",
+   "da": 14,
+   "a": 19,
+   "titolo": "Inizio secondo trimestre",
+   "testo": "Di solito arriva più energia. È il periodo migliore per viaggi brevi, uscite e per cominciare un'attività fisica dolce.",
+   "todo": [
+    "Valuta un corso di yoga o acquaticità prenatale",
+    "Inizia una lista nascita essenziale (vedi Liste)",
+    "Informati su congedi e permessi di entrambi i genitori"
+   ]
+  },
+  {
+   "stato": "attesa",
+   "da": 20,
+   "a": 24,
+   "titolo": "Metà gravidanza",
+   "testo": "Buon momento per decidere le cose grandi: dove dormirà il bambino, che passeggino serve davvero, che seggiolino auto comprare.",
+   "todo": [
+    "Leggi la guida Sonno sicuro",
+    "Leggi la guida Seggiolino auto",
+    "Iscriviti al corso di accompagnamento alla nascita (le iscrizioni si aprono spesso intorno alla 25ª settimana)"
+   ]
+  },
+  {
+   "stato": "attesa",
+   "da": 25,
+   "a": 29,
+   "titolo": "Verso il terzo trimestre",
+   "testo": "Il corso preparto è anche il posto migliore per conoscere altre coppie con la stessa data presunta: sono le persone con cui uscirete nei primi mesi.",
+   "todo": [
+    "Corso di disostruzione pediatrica per entrambi",
+    "Organizza la cameretta e il fasciatoio",
+    "Scegli il pediatra di libera scelta da indicare dopo la nascita"
+   ]
+  },
+  {
+   "stato": "attesa",
+   "da": 30,
+   "a": 34,
+   "titolo": "Preparare il nido",
+   "testo": "Lava i primi vestitini, monta culla e seggiolino e prova a usarli. Cucinare in anticipo per il dopo parto è uno dei regali migliori che potete farvi.",
+   "todo": [
+    "Monta e prova il seggiolino in auto",
+    "Batch cooking: 10-15 porzioni in freezer",
+    "Prepara la borsa per l'ospedale (vedi Liste)"
+   ]
+  },
+  {
+   "stato": "attesa",
+   "da": 35,
+   "a": 42,
+   "titolo": "Ultime settimane",
+   "testo": "Tutto pronto: ora conta riposare, uscire finché fa piacere e organizzare l'aiuto per le prime settimane a casa.",
+   "todo": [
+    "Borsa e documenti vicino alla porta",
+    "Decidi chi chiamare e come organizzare le visite",
+    "Scarica o stampa il percorso per l'ospedale"
+   ]
+  },
+  {
+   "stato": "nato",
+   "da": 0,
+   "a": 2,
+   "titolo": "Le prime due settimane",
+   "testo": "Nessun programma: dormire quando dorme lui, mangiare bene, poche visite e tanto contatto pelle a pelle.",
+   "todo": [
+    "Dichiarazione di nascita (in ospedale entro 3 giorni o in Comune entro 10)",
+    "Iscrizione al pediatra e codice fiscale",
+    "Domanda Assegno Unico all'INPS"
+   ]
+  },
+  {
+   "stato": "nato",
+   "da": 3,
+   "a": 8,
+   "titolo": "Il primo mese e mezzo",
+   "testo": "Iniziano i primi sguardi lunghi e, intorno alle 6 settimane, spesso il primo sorriso sociale. Brevi momenti a pancia in giù da sveglio, sempre sorvegliato.",
+   "todo": [
+    "Prima passeggiata lunga con fascia o carrozzina",
+    "Un incontro di gruppo neo-genitori al consultorio",
+    "Letture ad alta voce: anche solo 5 minuti"
+   ]
+  },
+  {
+   "stato": "nato",
+   "da": 9,
+   "a": 26,
+   "titolo": "Dai 2 ai 6 mesi",
+   "testo": "Il bambino scopre le mani, afferra, ride e si gira. Il gioco più utile resta il genitore: faccia, voce, canzoni e routine.",
+   "todo": [
+    "Corso di massaggio infantile",
+    "Primo accesso a una sezione 0-6 in biblioteca",
+    "Casa a prova di bambino: si inizia prima che gattoni"
+   ]
+  },
+  {
+   "stato": "nato",
+   "da": 27,
+   "a": 52,
+   "titolo": "Dai 6 ai 12 mesi",
+   "testo": "Alimentazione complementare, gattonamento, prime parole-gioco. Spazi sicuri a terra e tanti oggetti da esplorare.",
+   "todo": [
+    "Leggi la guida Inizio dell'alimentazione complementare",
+    "Cancelletti, paraspigoli e prese protette",
+    "Una attività di gruppo a settimana (musica, acqua, lettura)"
+   ]
+  },
+  {
+   "stato": "nato",
+   "da": 53,
+   "a": 160,
+   "titolo": "Da 1 a 3 anni",
+   "testo": "Cammina, parla, imita. Contano gioco libero all'aperto, libri, musica e altri bambini.",
+   "todo": [
+    "Parchi gioco e ludoteche in zona",
+    "Libri con frasi semplici e ripetute",
+    "Attività che ripetono una routine settimanale"
+   ]
+  }
+ ],
+ "schede": [
+  {
+   "id": "sonno-sicuro",
+   "titolo": "Sonno sicuro",
+   "fase": "Prima della nascita",
+   "icona": "🌙",
+   "sommario": "Dove e come far dormire il neonato nel primo anno.",
+   "testo": [
+    "Sono le raccomandazioni con le prove più solide di tutta la puericultura, e valgono per tutto il primo anno.",
+    "- **Sempre a pancia in su**, per ogni sonno, anche i pisolini.",
+    "- **Superficie rigida, piatta e non inclinata**, pensata per il sonno: culla, lettino o next-to-me a norma.",
+    "- **Culla vuota**: niente cuscini, paracolpi, peluche, coperte morbide. Meglio il sacco nanna.",
+    "- **Nella stanza dei genitori** ma su una superficie separata, almeno nei primi 6 mesi.",
+    "- **Niente sonno abituale** in ovetto, passeggino seduto, sdraietta o fascia: se si addormenta lì, appena possibile si sposta in culla.",
+    "- **Non coprire troppo**: stanza fresca (circa 18-20 °C), niente cappellino in casa.",
+    "- **Ambiente senza fumo**, in gravidanza e dopo.",
+    "Il ciuccio al momento della nanna è associato a un rischio minore. Se allatti, spesso si consiglia di introdurlo quando l'allattamento è ben avviato."
+   ],
+   "fonti": [
     {
-      "da": 0,
-      "a": 3,
-      "nome": "0-3 mesi",
-      "idee": [
-        {
-          "t": "Facce e voce",
-          "d": "A 20-30 cm dal viso: smorfie, lingua fuori, sorrisi. Il neonato imita."
-        },
-        {
-          "t": "Libri ad alto contrasto",
-          "d": "Bianco e nero, forme semplici, da mostrare durante il tummy time."
-        },
-        {
-          "t": "Pelle a pelle",
-          "d": "Calma, regola il respiro e il calore. Vale anche per il papà."
-        },
-        {
-          "t": "Racconta cosa fai",
-          "d": "Mentre cambi o cucini, descrivi ad alta voce: è il primo bagno di linguaggio."
-        },
-        {
-          "t": "Canzoni e filastrocche",
-          "d": "Sempre le stesse: la ripetizione rassicura."
-        },
-        {
-          "t": "Passeggiata quotidiana",
-          "d": "In fascia vede il tuo viso e il mondo intorno."
-        }
-      ]
+     "t": "AAP. Sleep-Related Infant Deaths: Updated 2022 Recommendations. Pediatrics 2022;150(1):e2022057990",
+     "u": "https://doi.org/10.1542/peds.2022-057990"
     },
     {
-      "da": 3,
-      "a": 6,
-      "nome": "3-6 mesi",
-      "idee": [
-        {
-          "t": "Palestrina e oggetti da afferrare",
-          "d": "Sonagli leggeri, anelli, stoffe di consistenze diverse."
-        },
-        {
-          "t": "Specchio infrangibile",
-          "d": "Durante il tempo a pancia in giù."
-        },
-        {
-          "t": "Gioco del cucù",
-          "d": "Prime risate e primi segni di permanenza dell'oggetto."
-        },
-        {
-          "t": "Massaggio infantile",
-          "d": "Routine serale rilassante."
-        },
-        {
-          "t": "Musica in gruppo",
-          "d": "Incontri di musica per neonati in biblioteca o scuola di musica."
-        },
-        {
-          "t": "Libri di stoffa",
-          "d": "Da toccare, mordere e scrollare."
-        }
-      ]
+     "t": "AAP – Safe Sleep: Back is Best (2022)",
+     "u": "https://www.aap.org/en/news-room/news-releases/aap/2022/american-academy-of-pediatrics-updates-safe-sleep-recommendations-back-is-best"
     },
     {
-      "da": 6,
-      "a": 9,
-      "nome": "6-9 mesi",
-      "idee": [
-        {
-          "t": "Cestino dei tesori",
-          "d": "Oggetti quotidiani sicuri di materiali diversi: legno, metallo, stoffa, spazzolino da bagnetto."
-        },
-        {
-          "t": "Travasi semplici",
-          "d": "Contenitori e palline grandi da mettere e togliere."
-        },
-        {
-          "t": "Acquaticità neonatale",
-          "d": "Corsi in piscina per genitore e bambino."
-        },
-        {
-          "t": "Libri con alette",
-          "d": "Cosa si nasconde sotto? Rinforza l'attesa e la sorpresa."
-        },
-        {
-          "t": "Gioco a terra libero",
-          "d": "Su un tappeto, con giochi poco lontani per invogliare a muoversi."
-        },
-        {
-          "t": "Pasti insieme",
-          "d": "Toccare, schiacciare, assaggiare: anche questo è gioco."
-        }
-      ]
-    },
-    {
-      "da": 9,
-      "a": 12,
-      "nome": "9-12 mesi",
-      "idee": [
-        {
-          "t": "Incastri e torri",
-          "d": "Bicchieri impilabili, blocchi grandi."
-        },
-        {
-          "t": "Nascondino degli oggetti",
-          "d": "Nascondi un gioco sotto un telo davanti a lui."
-        },
-        {
-          "t": "Indicare e nominare",
-          "d": "Libri con immagini reali, foto di famiglia."
-        },
-        {
-          "t": "Musica e strumenti",
-          "d": "Tamburelli, maracas, battere le mani a ritmo."
-        },
-        {
-          "t": "Parco giochi",
-          "d": "Altalene per piccoli, sabbia, erba sotto i piedi."
-        },
-        {
-          "t": "Spinta e cammino",
-          "d": "Carrellino stabile da spingere, sempre con supervisione."
-        }
-      ]
-    },
-    {
-      "da": 12,
-      "a": 18,
-      "nome": "12-18 mesi",
-      "idee": [
-        {
-          "t": "Gioco simbolico",
-          "d": "Telefono finto, pentoline, bambola da nutrire."
-        },
-        {
-          "t": "Pasta di sale e acqua",
-          "d": "Manipolazione con supervisione stretta."
-        },
-        {
-          "t": "Ludoteche e spazi 0-3",
-          "d": "Giochi diversi da casa e altri bambini."
-        },
-        {
-          "t": "Libri da sfogliare da soli",
-          "d": "Cartonati robusti a portata di mano."
-        },
-        {
-          "t": "Natura",
-          "d": "Raccogliere foglie, sassi, guardare formiche e uccelli."
-        },
-        {
-          "t": "Canzoni con i gesti",
-          "d": "Collegano parola e movimento."
-        }
-      ]
-    },
-    {
-      "da": 18,
-      "a": 24,
-      "nome": "18-24 mesi",
-      "idee": [
-        {
-          "t": "Aiutare in casa",
-          "d": "Mettere i calzini nel cesto, mescolare, annaffiare."
-        },
-        {
-          "t": "Pittura con le mani e grandi pastelli",
-          "d": "Fogli grandi sul pavimento."
-        },
-        {
-          "t": "Puzzle a incastro",
-          "d": "Da 2-4 pezzi grandi."
-        },
-        {
-          "t": "Musei per famiglie",
-          "d": "Molti musei hanno percorsi e laboratori 0-3."
-        },
-        {
-          "t": "Corsa, equilibrio, arrampicata",
-          "d": "Percorsi al parco, cuscini in casa."
-        },
-        {
-          "t": "Storie con le marionette",
-          "d": "Inventate insieme con due calzini."
-        }
-      ]
-    },
-    {
-      "da": 24,
-      "a": 40,
-      "nome": "2-3 anni",
-      "idee": [
-        {
-          "t": "Laboratori creativi",
-          "d": "Biblioteche, musei e Case del Quartiere ne organizzano spesso."
-        },
-        {
-          "t": "Teatro per piccolissimi",
-          "d": "Spettacoli brevi pensati per 0-3 anni."
-        },
-        {
-          "t": "Cucinare insieme",
-          "d": "Lavare frutta, impastare, decorare."
-        },
-        {
-          "t": "Giochi di ruolo",
-          "d": "Dottore, negozio, cucina."
-        },
-        {
-          "t": "Bici senza pedali",
-          "d": "Equilibrio e autonomia."
-        },
-        {
-          "t": "Orto o vasi sul balcone",
-          "d": "Semi che crescono in pochi giorni: fagioli, crescione."
-        }
-      ]
+     "t": "GenitoriPiù – Programma nazionale di promozione della salute",
+     "u": "https://www.genitoripiu.it"
     }
-  ],
-  "liste": [
+   ]
+  },
+  {
+   "id": "seggiolino",
+   "titolo": "Seggiolino auto",
+   "fase": "Prima della nascita",
+   "icona": "🚗",
+   "sommario": "Ovetto, i-Size, contromarcia e dispositivo antiabbandono.",
+   "testo": [
+    "Il seggiolino serve già dal viaggio di ritorno dall'ospedale: va comprato e provato prima.",
+    "- **Contromarcia il più a lungo possibile**: almeno fino a 15 mesi per la norma i-Size, e idealmente oltre.",
+    "- **Omologazione R129 (i-Size)**: è lo standard attuale. Verifica l'etichetta arancione.",
+    "- **Base Isofix**: riduce molto gli errori di montaggio.",
+    "- **Cinture aderenti**: niente piumino spesso sotto le cinture, si copre il bambino sopra.",
+    "- **Airbag**: l'ovetto contromarcia sul sedile anteriore solo con airbag disattivato.",
+    "- **Dispositivo antiabbandono**: in Italia è obbligatorio per i bambini sotto i 4 anni.",
+    "- **Non è un lettino**: in viaggi lunghi una pausa ogni 1,5-2 ore, e a destinazione si sposta il bambino in culla.",
+    "Evita seggiolini usati di cui non conosci la storia: dopo un incidente vanno sostituiti."
+   ],
+   "fonti": [
     {
-      "id": "nascita",
-      "nome": "Lista nascita essenziale",
-      "voci": [
-        "Culla o next-to-me a norma",
-        "Materasso rigido",
-        "3 lenzuolini con angoli",
-        "2 sacchi nanna",
-        "Seggiolino auto R129 (i-Size)",
-        "Dispositivo antiabbandono",
-        "6-8 body taglia 1 mese",
-        "6-8 tutine taglia 1 mese",
-        "Pannolini taglia 1",
-        "Salviette o cotone",
-        "Crema per il cambio",
-        "Fasciatoio o materassino",
-        "Termometro",
-        "Forbicine a punta tonda",
-        "Passeggino o trio",
-        "Fascia o marsupio ergonomico"
-      ]
+     "t": "Legge 1 ottobre 2018, n. 117 – dispositivi antiabbandono",
+     "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2018-10-01;117"
     },
     {
-      "id": "borsa",
-      "nome": "Borsa per l'ospedale",
-      "voci": [
-        "Documenti, tessera sanitaria, esami della gravidanza",
-        "Camicie da notte aperte davanti o pigiami",
-        "Reggiseni da allattamento",
-        "Assorbenti post parto e slip comodi",
-        "Ciabatte e calzini",
-        "Prodotti per l'igiene personale",
-        "Caricabatterie lungo",
-        "Snack e acqua",
-        "Body e tutine per il bimbo (3 cambi)",
-        "Cappellino e calzine",
-        "Copertina",
-        "Vestiti per l'uscita e seggiolino in auto"
-      ]
-    },
-    {
-      "id": "casa",
-      "nome": "Casa pronta",
-      "voci": [
-        "Rilevatore di fumo funzionante",
-        "Culla montata nella stanza dei genitori",
-        "Postazione cambio attrezzata",
-        "Freezer con pasti pronti",
-        "Numeri utili salvati (pediatra, consultorio, Centro Antiveleni)",
-        "Seggiolino montato e provato"
-      ]
-    },
-    {
-      "id": "burocrazia",
-      "nome": "Dopo la nascita: pratiche",
-      "voci": [
-        "Dichiarazione di nascita (ospedale entro 3 giorni o Comune entro 10)",
-        "Codice fiscale e tessera sanitaria",
-        "Scelta del pediatra all'ASL",
-        "Domanda Assegno Unico all'INPS",
-        "Congedo di paternità obbligatorio",
-        "Comunicazione al datore di lavoro",
-        "Eventuale iscrizione al nido (verifica le scadenze del Comune)"
-      ],
-      "nota": "Importi, scadenze e durata dei congedi cambiano spesso: verifica sul sito dell'INPS e del Comune."
+     "t": "AAP / HealthyChildren – Car Safety Seats",
+     "u": "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Car-Safety-Seats-Information-for-Families.aspx"
     }
+   ]
+  },
+  {
+   "id": "corredo",
+   "titolo": "Corredo essenziale",
+   "fase": "Prima della nascita",
+   "icona": "🧺",
+   "sommario": "Cosa serve davvero e cosa si può rimandare.",
+   "testo": [
+    "Il neonato ha bisogno di pochissimo. Molto si può comprare dopo, quando capisci cosa usi davvero.",
+    "**Subito indispensabile**",
+    "- Culla o next-to-me a norma, materasso rigido, 3 lenzuolini con angoli, 2 sacchi nanna",
+    "- Seggiolino auto omologato",
+    "- 6-8 body e 6-8 tutine taglia 1 mese (alcuni 0-1 mese, crescono in fretta)",
+    "- Pannolini taglia 1, salviette o cotone, crema per il cambio",
+    "- Fasciatoio o materassino su un mobile stabile",
+    "- Termometro, forbicine a punta tonda",
+    "**Utili ma rimandabili**",
+    "- Passeggino o trio: prova il peso e la chiusura, e se entra nel bagagliaio",
+    "- Fascia o marsupio ergonomico",
+    "- Sdraietta, palestrina, vaschetta",
+    "**Spesso inutili**",
+    "- Paracolpi, cuscini, piumoni, scaldabiberon sofisticati, tanti vestiti taglia neonato",
+    "Il mercato dell'usato è ottimo per vestiti, passeggini e mobili. Fanno eccezione seggiolini auto e materassi."
+   ],
+   "fonti": [
+    {
+     "t": "AAP 2022 – raccomandazioni sull'ambiente del sonno",
+     "u": "https://doi.org/10.1542/peds.2022-057990"
+    }
+   ]
+  },
+  {
+   "id": "bagnetto",
+   "titolo": "Bagnetto, cambio e cordone",
+   "fase": "Primi mesi",
+   "icona": "🛁",
+   "sommario": "Pulizia quotidiana senza esagerare.",
+   "testo": [
+    "La pelle del neonato non ha bisogno di molti prodotti.",
+    "- **Cordone ombelicale**: tienilo pulito e asciutto, lascia il pannolino ripiegato sotto. Cade di solito entro 1-3 settimane. Arrossamento che si allarga, cattivo odore o secrezioni vanno mostrati al pediatra.",
+    "- **Bagnetto**: 2-3 volte a settimana bastano. Acqua intorno a 37 °C (gomito o termometro), 5-10 minuti, detergente delicato e poco.",
+    "- **Mai lasciarlo solo** nell'acqua, nemmeno per un attimo: prepara tutto prima.",
+    "- **Cambio**: acqua tiepida e cotone o salviette senza profumo; crema all'ossido di zinco se la pelle si arrossa.",
+    "- **Fasciatoio**: una mano sempre sul bambino. Molte cadute avvengono lì.",
+    "- **Unghie**: limetta o forbicine a punta tonda, quando dorme."
+   ],
+   "fonti": [
+    {
+     "t": "WHO – Recommendations on maternal and newborn care for a positive postnatal experience (2022)",
+     "u": "https://www.who.int/publications/i/item/9789240045989"
+    },
+    {
+     "t": "GenitoriPiù",
+     "u": "https://www.genitoripiu.it"
+    }
+   ]
+  },
+  {
+   "id": "fascia",
+   "titolo": "Fascia e marsupio",
+   "fase": "Primi mesi",
+   "icona": "🤱",
+   "sommario": "Portare in sicurezza: la regola T.I.C.K.S.",
+   "testo": [
+    "Portare il bambino addosso calma, libera le mani e permette uscite fin dalle prime settimane.",
+    "La regola di sicurezza usata nel mondo del babywearing è **T.I.C.K.S.**:",
+    "- **Tight**: il supporto è aderente, il bambino non si accascia.",
+    "- **In view**: il viso è sempre visibile abbassando lo sguardo.",
+    "- **Close enough to kiss**: la testa è abbastanza alta da poterla baciare.",
+    "- **Keep chin off chest**: il mento non deve schiacciarsi sul petto. Ci deve stare un dito.",
+    "- **Supported back**: schiena sostenuta nella sua curva naturale.",
+    "Scegli supporti ergonomici con posizione a M (ginocchia più alte del sedere). Vale la pena una consulenza con una consulente del portare: molte offrono incontri di prova."
+   ],
+   "fonti": [
+    {
+     "t": "National Child Mortality Database (UK) – Sling safety e regola T.I.C.K.S.",
+     "u": "https://www.ncmd.info/safety/sling-safety/"
+    },
+    {
+     "t": "AAP 2022 – i dispositivi seduti non sono superfici per il sonno abituale",
+     "u": "https://doi.org/10.1542/peds.2022-057990"
+    }
+   ]
+  },
+  {
+   "id": "pianto",
+   "titolo": "Il pianto",
+   "fase": "Primi mesi",
+   "icona": "🫧",
+   "sommario": "Cosa aspettarsi e come restare calmi.",
+   "testo": [
+    "Il pianto aumenta nelle prime settimane, raggiunge spesso un picco intorno alle 6-8 settimane e poi diminuisce. Spesso si concentra nel tardo pomeriggio e la sera.",
+    "**Cose da provare, una alla volta**",
+    "- Fame, pannolino, caldo o freddo",
+    "- Contatto: in braccio, in fascia, pelle a pelle",
+    "- Movimento ritmico e rumore bianco o canticchiare",
+    "- Uscire all'aria aperta",
+    "**La regola più importante**",
+    "Se senti che stai perdendo la pazienza, metti il bambino al sicuro nella culla, esci dalla stanza e respira qualche minuto o chiama qualcuno. **Non scuotere mai un neonato**: anche pochi secondi possono causare danni gravi.",
+    "Pianto molto diverso dal solito, febbre, rifiuto del pasto o un bambino insolitamente spento: chiama il pediatra."
+   ],
+   "fonti": [
+    {
+     "t": "GenitoriPiù – sostegno ai genitori nei primi mesi",
+     "u": "https://www.genitoripiu.it"
+    }
+   ]
+  },
+  {
+   "id": "tummy-time",
+   "titolo": "Tempo a pancia in giù",
+   "fase": "Primi mesi",
+   "icona": "🧸",
+   "sommario": "Da sveglio e sorvegliato, fin dai primi giorni.",
+   "testo": [
+    "Si dorme a pancia in su, si gioca anche a pancia in giù.",
+    "- Si inizia nei primi giorni, sul petto del genitore o su un tappetino, per pochi minuti più volte al giorno.",
+    "- Si aumenta gradualmente fino ad almeno 15-30 minuti complessivi al giorno entro le 7 settimane.",
+    "- Rinforza collo e spalle e riduce l'appiattimento della testa.",
+    "- Mettiti alla sua altezza: la tua faccia è il gioco più interessante.",
+    "Sempre sveglio e sempre con un adulto presente."
+   ],
+   "fonti": [
+    {
+     "t": "AAP 2022 – Sleep-Related Infant Deaths (sezione tummy time)",
+     "u": "https://doi.org/10.1542/peds.2022-057990"
+    },
+    {
+     "t": "WHO – Guidelines on physical activity, sedentary behaviour and sleep for children under 5 (2019)",
+     "u": "https://www.who.int/publications/i/item/9789241550536"
+    }
+   ]
+  },
+  {
+   "id": "uscite",
+   "titolo": "Uscire con il neonato",
+   "fase": "Primi mesi",
+   "icona": "🌳",
+   "sommario": "Aria aperta, sole, freddo e passeggiate.",
+   "testo": [
+    "Uscire fa bene a tutti, già dai primi giorni se mamma e bambino stanno bene.",
+    "- **Sole**: sotto i 6 mesi evita l'esposizione diretta. Ombra, cappellino e abiti leggeri coprenti.",
+    "- **Freddo**: vestilo con uno strato in più di quello che serve a te. Controlla collo e petto, non mani e piedi, che sono spesso freschi.",
+    "- **Folla**: nei primi mesi, specie in stagione influenzale, preferisci parchi e luoghi aperti ai centri commerciali affollati.",
+    "- **Borsa pronta**: un cambio, pannolini, salviette, un telo, acqua per te.",
+    "Una passeggiata quotidiana aiuta anche il genitore: luce, movimento e qualche incontro."
+   ],
+   "fonti": [
+    {
+     "t": "HealthyChildren (AAP) – Sun Safety",
+     "u": "https://www.healthychildren.org/English/safety-prevention/at-play/Pages/Sun-Safety.aspx"
+    }
+   ]
+  },
+  {
+   "id": "pasto",
+   "titolo": "Il pasto in pratica",
+   "fase": "Primi mesi",
+   "icona": "🍼",
+   "sommario": "Allattamento e biberon: logistica e igiene.",
+   "testo": [
+    "Qui c'è la parte pratica. Per le difficoltà di allattamento il riferimento sono l'ostetrica, il consultorio o una consulente IBCLC.",
+    "- **A richiesta**: nelle prime settimane 8-12 poppate al giorno sono normali.",
+    "- **Postazione**: un angolo comodo con acqua, cuscino da allattamento, telefono e uno snack.",
+    "- **Biberon**: lava con acqua calda e sapone subito dopo l'uso. Sterilizza almeno nei primi mesi.",
+    "- **Latte artificiale**: rispetta esattamente le dosi della confezione, prepara con acqua secondo le istruzioni e butta i residui dopo il pasto.",
+    "- **Latte materno tirato**: frigo fino a 4 giorni, congelatore 6-12 mesi; scongela in frigo, mai in microonde.",
+    "L'OMS raccomanda allattamento esclusivo nei primi 6 mesi, quando possibile. Ogni famiglia trova il suo equilibrio: il pasto deve funzionare anche per chi lo dà."
+   ],
+   "fonti": [
+    {
+     "t": "WHO – Infant and young child feeding (fact sheet)",
+     "u": "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+    },
+    {
+     "t": "CDC – Proper Storage and Preparation of Breast Milk",
+     "u": "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html"
+    }
+   ]
+  },
+  {
+   "id": "casa-sicura",
+   "titolo": "Casa a prova di bambino",
+   "fase": "3-12 mesi",
+   "icona": "🏠",
+   "sommario": "Da fare prima che inizi a rotolare e gattonare.",
+   "testo": [
+    "Il momento giusto è prima che si muova: i primi spostamenti arrivano all'improvviso.",
+    "- **Batterie a bottone e magneti**: fuori portata, sempre. Se ne ingoia una è un'emergenza: pronto soccorso subito.",
+    "- **Farmaci e detersivi** (incluse le capsule per lavatrice): in alto e chiusi.",
+    "- **Cadute**: cancelletti alle scale, mai sdraietta o ovetto su un tavolo, finestre con blocchi.",
+    "- **Mobili**: fissa al muro librerie, cassettiere e TV.",
+    "- **Soffocamento**: niente oggetti più piccoli di un rotolo di carta igienica a portata di mano. Cordini delle tende fuori portata.",
+    "- **Ustioni**: niente bevande calde in braccio, manici delle pentole verso l'interno.",
+    "- **Acqua**: bastano pochi centimetri. Mai solo nella vasca.",
+    "Salva in rubrica il numero del Centro Antiveleni più vicino."
+   ],
+   "fonti": [
+    {
+     "t": "GenitoriPiù – prevenzione degli incidenti domestici",
+     "u": "https://www.genitoripiu.it"
+    },
+    {
+     "t": "HealthyChildren (AAP) – Childproofing Your Home",
+     "u": "https://www.healthychildren.org/English/safety-prevention/at-home/Pages/Childproofing-Your-Home.aspx"
+    }
+   ]
+  },
+  {
+   "id": "svezzamento",
+   "titolo": "Inizio dell'alimentazione complementare",
+   "fase": "3-12 mesi",
+   "icona": "🥣",
+   "sommario": "Quando e come iniziare con i cibi solidi.",
+   "testo": [
+    "L'OMS indica di iniziare intorno ai 6 mesi, continuando il latte. Il percorso si concorda con il pediatra.",
+    "**Segnali di prontezza**: sta seduto con poco sostegno, controlla bene la testa, porta oggetti alla bocca, mostra interesse per il cibo.",
+    "- Seduto dritto, sempre a tavola con un adulto.",
+    "- Niente sale e zucchero aggiunti, niente miele prima dell'anno.",
+    "- Cibi a rischio soffocamento (acini d'uva, pomodorini, olive, frutta secca intera, würstel a rondelle) vanno tagliati per il lungo o evitati.",
+    "- Mangiare insieme: il bambino impara guardando.",
+    "Utile un corso di disostruzione pediatrica prima di iniziare."
+   ],
+   "fonti": [
+    {
+     "t": "WHO – Infant and young child feeding",
+     "u": "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+    },
+    {
+     "t": "Ministero della Salute – Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica",
+     "u": "https://www.salute.gov.it/imgs/C_17_pubblicazioni_2618_allegato.pdf"
+    }
+   ]
+  },
+  {
+   "id": "schermi",
+   "titolo": "Schermi e sedentarietà",
+   "fase": "1-3 anni",
+   "icona": "📵",
+   "sommario": "Cosa dicono le linee guida sotto i 5 anni.",
+   "testo": [
+    "- **Sotto i 2 anni**: l'OMS raccomanda nessun tempo davanti agli schermi (le videochiamate con i nonni sono un'eccezione ragionevole).",
+    "- **2-4 anni**: non più di 1 ora al giorno, meno è meglio, idealmente insieme a un adulto.",
+    "- **Non più di 1 ora di fila** legato in passeggino o seggiolone.",
+    "- Il tempo tolto agli schermi va a gioco libero, lettura condivisa, musica e movimento."
+   ],
+   "fonti": [
+    {
+     "t": "WHO – Guidelines on physical activity, sedentary behaviour and sleep for children under 5 (2019)",
+     "u": "https://www.who.int/publications/i/item/9789241550536"
+    }
+   ]
+  },
+  {
+   "id": "lettura",
+   "titolo": "Leggere ad alta voce",
+   "fase": "Da 0 anni",
+   "icona": "📚",
+   "sommario": "Perché e come iniziare già dai primi mesi.",
+   "testo": [
+    "Leggere al bambino fin dai primi mesi favorisce linguaggio, attenzione e relazione. Non serve che capisca: conta la voce e il ritmo.",
+    "- **0-6 mesi**: libri cartonati ad alto contrasto, filastrocche, cantilene.",
+    "- **6-12 mesi**: libri da toccare, con buchi e alette, immagini di oggetti quotidiani.",
+    "- **1-3 anni**: storie brevi e ripetitive, libri dove indicare e nominare.",
+    "- Pochi minuti ogni giorno valgono più di una lunga lettura saltuaria.",
+    "Le biblioteche hanno sezioni 0-6 anni e letture gratuite del programma Nati per Leggere."
+   ],
+   "fonti": [
+    {
+     "t": "Nati per Leggere – programma nazionale",
+     "u": "https://www.natiperleggere.it"
+    },
+    {
+     "t": "AAP – Literacy Promotion: An Essential Component of Primary Care Pediatric Practice. Pediatrics 2014;134(2):404-9",
+     "u": "https://doi.org/10.1542/peds.2014-1384"
+    }
+   ]
+  }
+ ],
+ "perTe": {
+  "intro": "Idee per stare bene, uscire e conoscere altre persone durante l'attesa. Dopo il primo trimestre l'energia di solito torna, ed è un peccato passare tutto il tempo in casa.",
+  "nota": "Se la tristezza, l'ansia o la solitudine diventano persistenti, parlane con l'ostetrica o il consultorio: è frequente e c'è aiuto, in gravidanza e dopo.",
+  "categorie": [
+   {
+    "id": "movimento",
+    "nome": "Movimento",
+    "icona": "🌿",
+    "idee": [
+     {
+      "t": "Camminate in compagnia",
+      "d": "Lungo il fiume o nei parchi grandi. Anche 30 minuti al giorno contano.",
+      "trim": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "t": "Acquaticità o nuoto prenatale",
+      "d": "Molte piscine hanno corsi dedicati. L'acqua alleggerisce il peso nel terzo trimestre.",
+      "trim": [
+       2,
+       3
+      ]
+     },
+     {
+      "t": "Yoga o pilates prenatale",
+      "d": "Con insegnanti formati per la gravidanza. Utile anche per respiro e pavimento pelvico.",
+      "trim": [
+       2,
+       3
+      ]
+     },
+     {
+      "t": "Ballo dolce",
+      "d": "Lezioni leggere o anche a casa: muoversi con la musica funziona."
+     }
+    ],
+    "fonti": [
+     {
+      "t": "WHO 2020 guidelines on physical activity and sedentary behaviour. Br J Sports Med 2020;54:1451-62",
+      "u": "https://doi.org/10.1136/bjsports-2020-102955"
+     },
+     {
+      "t": "ACOG Committee Opinion 804 – Physical Activity and Exercise During Pregnancy and the Postpartum Period (2020)",
+      "u": "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/04/physical-activity-and-exercise-during-pregnancy-and-the-postpartum-period"
+     }
+    ],
+    "avvertenza": "L'OMS raccomanda almeno 150 minuti a settimana di attività moderata in gravidanza, in assenza di controindicazioni. Se ci sono complicazioni, chiedi prima all'ostetrica o al ginecologo."
+   },
+   {
+    "id": "persone",
+    "nome": "Conoscere persone",
+    "icona": "☕",
+    "idee": [
+     {
+      "t": "Corso di accompagnamento alla nascita",
+      "d": "Gratuito al consultorio. È il modo più semplice per conoscere coppie con la stessa data presunta.",
+      "trim": [
+       2,
+       3
+      ]
+     },
+     {
+      "t": "Gruppo delle future mamme",
+      "d": "Create una chat con le compagne di corso o di acquaticità e organizzate una colazione a settimana."
+     },
+     {
+      "t": "Case del Quartiere e biblioteche",
+      "d": "Hanno spesso incontri per neogenitori, scambio di abiti e attrezzatura, laboratori."
+     },
+     {
+      "t": "Pranzo con le amiche che sono già mamme",
+      "d": "Consigli pratici, oggetti prestati e una rete per dopo."
+     }
+    ]
+   },
+   {
+    "id": "creativo",
+    "nome": "Mani e testa",
+    "icona": "🧶",
+    "idee": [
+     {
+      "t": "Diario o album della gravidanza",
+      "d": "Una foto al mese sempre nello stesso punto, due righe su come ti senti."
+     },
+     {
+      "t": "Imparare maglia o uncinetto",
+      "d": "Una copertina o un cappellino. Ci sono laboratori nelle mercerie e nelle biblioteche."
+     },
+     {
+      "t": "Corso di fotografia",
+      "d": "Utile adesso e per i prossimi anni."
+     },
+     {
+      "t": "Una lingua o uno strumento",
+      "d": "Con mezz'ora al giorno, da casa o in un corso serale."
+     },
+     {
+      "t": "Playlist e libri per il bambino",
+      "d": "Scegliere ninne nanne e i primi libri da leggergli."
+     }
+    ]
+   },
+   {
+    "id": "cultura",
+    "nome": "Uscite e cultura",
+    "icona": "🏛️",
+    "idee": [
+     {
+      "t": "Musei con l'Abbonamento Musei",
+      "d": "Un abbonamento annuale permette ingressi illimitati: comodo per uscite brevi e frequenti."
+     },
+     {
+      "t": "Cinema, teatro, concerti",
+      "d": "Il secondo trimestre è il periodo ideale per recuperare."
+     },
+     {
+      "t": "Gite di un giorno",
+      "d": "Laghi, colline, borghi a meno di un'ora di auto o di treno."
+     },
+     {
+      "t": "Babymoon",
+      "d": "Un weekend tranquillo per voi due, di solito nel secondo trimestre.",
+      "trim": [
+       2
+      ]
+     }
+    ]
+   },
+   {
+    "id": "coppia",
+    "nome": "Da fare in coppia",
+    "icona": "🤝",
+    "idee": [
+     {
+      "t": "Corso di disostruzione pediatrica",
+      "d": "Organizzato da Croce Rossa e associazioni: poche ore, molto utile per entrambi.",
+      "trim": [
+       2,
+       3
+      ]
+     },
+     {
+      "t": "Cucinare per il dopo parto",
+      "d": "Una domenica di batch cooking insieme, porzioni in freezer.",
+      "trim": [
+       3
+      ]
+     },
+     {
+      "t": "Montare la cameretta",
+      "d": "Un progetto comune, con la musica giusta."
+     },
+     {
+      "t": "Scegliere il nome",
+      "d": "Una lista a testa e poi una serata per confrontarle."
+     },
+     {
+      "t": "Cena fuori a settimana",
+      "d": "Nei primi mesi sarà più difficile: approfittatene."
+     }
+    ]
+   },
+   {
+    "id": "dopo",
+    "nome": "Dopo la nascita",
+    "icona": "🌸",
+    "idee": [
+     {
+      "t": "Gruppi del dopo parto al consultorio",
+      "d": "Incontri con l'ostetrica e altre neomamme: allattamento, sonno, rientro.",
+      "nato": true
+     },
+     {
+      "t": "Corso di massaggio infantile",
+      "d": "Di solito dalle prime settimane fino ai 6 mesi, spesso al consultorio.",
+      "nato": true
+     },
+     {
+      "t": "Passeggiate in gruppo con carrozzina o fascia",
+      "d": "Un orario fisso a settimana con altre mamme.",
+      "nato": true
+     },
+     {
+      "t": "Ginnastica post parto e pavimento pelvico",
+      "d": "Dopo il controllo post parto, con professionisti dedicati.",
+      "nato": true
+     }
+    ]
+   }
   ]
+ },
+ "attivitaBimbo": [
+  {
+   "da": 0,
+   "a": 3,
+   "nome": "0-3 mesi",
+   "idee": [
+    {
+     "t": "Facce e voce",
+     "d": "A 20-30 cm dal viso: smorfie, lingua fuori, sorrisi. Il neonato imita."
+    },
+    {
+     "t": "Libri ad alto contrasto",
+     "d": "Bianco e nero, forme semplici, da mostrare durante il tummy time."
+    },
+    {
+     "t": "Pelle a pelle",
+     "d": "Calma, regola il respiro e il calore. Vale anche per il papà."
+    },
+    {
+     "t": "Racconta cosa fai",
+     "d": "Mentre cambi o cucini, descrivi ad alta voce: è il primo bagno di linguaggio."
+    },
+    {
+     "t": "Canzoni e filastrocche",
+     "d": "Sempre le stesse: la ripetizione rassicura."
+    },
+    {
+     "t": "Passeggiata quotidiana",
+     "d": "In fascia vede il tuo viso e il mondo intorno."
+    }
+   ]
+  },
+  {
+   "da": 3,
+   "a": 6,
+   "nome": "3-6 mesi",
+   "idee": [
+    {
+     "t": "Palestrina e oggetti da afferrare",
+     "d": "Sonagli leggeri, anelli, stoffe di consistenze diverse."
+    },
+    {
+     "t": "Specchio infrangibile",
+     "d": "Durante il tempo a pancia in giù."
+    },
+    {
+     "t": "Gioco del cucù",
+     "d": "Prime risate e primi segni di permanenza dell'oggetto."
+    },
+    {
+     "t": "Massaggio infantile",
+     "d": "Routine serale rilassante."
+    },
+    {
+     "t": "Musica in gruppo",
+     "d": "Incontri di musica per neonati in biblioteca o scuola di musica."
+    },
+    {
+     "t": "Libri di stoffa",
+     "d": "Da toccare, mordere e scrollare."
+    }
+   ]
+  },
+  {
+   "da": 6,
+   "a": 9,
+   "nome": "6-9 mesi",
+   "idee": [
+    {
+     "t": "Cestino dei tesori",
+     "d": "Oggetti quotidiani sicuri di materiali diversi: legno, metallo, stoffa, spazzolino da bagnetto."
+    },
+    {
+     "t": "Travasi semplici",
+     "d": "Contenitori e palline grandi da mettere e togliere."
+    },
+    {
+     "t": "Acquaticità neonatale",
+     "d": "Corsi in piscina per genitore e bambino."
+    },
+    {
+     "t": "Libri con alette",
+     "d": "Cosa si nasconde sotto? Rinforza l'attesa e la sorpresa."
+    },
+    {
+     "t": "Gioco a terra libero",
+     "d": "Su un tappeto, con giochi poco lontani per invogliare a muoversi."
+    },
+    {
+     "t": "Pasti insieme",
+     "d": "Toccare, schiacciare, assaggiare: anche questo è gioco."
+    }
+   ]
+  },
+  {
+   "da": 9,
+   "a": 12,
+   "nome": "9-12 mesi",
+   "idee": [
+    {
+     "t": "Incastri e torri",
+     "d": "Bicchieri impilabili, blocchi grandi."
+    },
+    {
+     "t": "Nascondino degli oggetti",
+     "d": "Nascondi un gioco sotto un telo davanti a lui."
+    },
+    {
+     "t": "Indicare e nominare",
+     "d": "Libri con immagini reali, foto di famiglia."
+    },
+    {
+     "t": "Musica e strumenti",
+     "d": "Tamburelli, maracas, battere le mani a ritmo."
+    },
+    {
+     "t": "Parco giochi",
+     "d": "Altalene per piccoli, sabbia, erba sotto i piedi."
+    },
+    {
+     "t": "Spinta e cammino",
+     "d": "Carrellino stabile da spingere, sempre con supervisione."
+    }
+   ]
+  },
+  {
+   "da": 12,
+   "a": 18,
+   "nome": "12-18 mesi",
+   "idee": [
+    {
+     "t": "Gioco simbolico",
+     "d": "Telefono finto, pentoline, bambola da nutrire."
+    },
+    {
+     "t": "Pasta di sale e acqua",
+     "d": "Manipolazione con supervisione stretta."
+    },
+    {
+     "t": "Ludoteche e spazi 0-3",
+     "d": "Giochi diversi da casa e altri bambini."
+    },
+    {
+     "t": "Libri da sfogliare da soli",
+     "d": "Cartonati robusti a portata di mano."
+    },
+    {
+     "t": "Natura",
+     "d": "Raccogliere foglie, sassi, guardare formiche e uccelli."
+    },
+    {
+     "t": "Canzoni con i gesti",
+     "d": "Collegano parola e movimento."
+    }
+   ]
+  },
+  {
+   "da": 18,
+   "a": 24,
+   "nome": "18-24 mesi",
+   "idee": [
+    {
+     "t": "Aiutare in casa",
+     "d": "Mettere i calzini nel cesto, mescolare, annaffiare."
+    },
+    {
+     "t": "Pittura con le mani e grandi pastelli",
+     "d": "Fogli grandi sul pavimento."
+    },
+    {
+     "t": "Puzzle a incastro",
+     "d": "Da 2-4 pezzi grandi."
+    },
+    {
+     "t": "Musei per famiglie",
+     "d": "Molti musei hanno percorsi e laboratori 0-3."
+    },
+    {
+     "t": "Corsa, equilibrio, arrampicata",
+     "d": "Percorsi al parco, cuscini in casa."
+    },
+    {
+     "t": "Storie con le marionette",
+     "d": "Inventate insieme con due calzini."
+    }
+   ]
+  },
+  {
+   "da": 24,
+   "a": 40,
+   "nome": "2-3 anni",
+   "idee": [
+    {
+     "t": "Laboratori creativi",
+     "d": "Biblioteche, musei e Case del Quartiere ne organizzano spesso."
+    },
+    {
+     "t": "Teatro per piccolissimi",
+     "d": "Spettacoli brevi pensati per 0-3 anni."
+    },
+    {
+     "t": "Cucinare insieme",
+     "d": "Lavare frutta, impastare, decorare."
+    },
+    {
+     "t": "Giochi di ruolo",
+     "d": "Dottore, negozio, cucina."
+    },
+    {
+     "t": "Bici senza pedali",
+     "d": "Equilibrio e autonomia."
+    },
+    {
+     "t": "Orto o vasi sul balcone",
+     "d": "Semi che crescono in pochi giorni: fagioli, crescione."
+    }
+   ]
+  }
+ ],
+ "liste": [
+  {
+   "id": "nascita",
+   "nome": "Lista nascita essenziale",
+   "voci": [
+    "Culla o next-to-me a norma",
+    "Materasso rigido",
+    "3 lenzuolini con angoli",
+    "2 sacchi nanna",
+    "Seggiolino auto R129 (i-Size)",
+    "Dispositivo antiabbandono",
+    "6-8 body taglia 1 mese",
+    "6-8 tutine taglia 1 mese",
+    "Pannolini taglia 1",
+    "Salviette o cotone",
+    "Crema per il cambio",
+    "Fasciatoio o materassino",
+    "Termometro",
+    "Forbicine a punta tonda",
+    "Passeggino o trio",
+    "Fascia o marsupio ergonomico"
+   ]
+  },
+  {
+   "id": "borsa",
+   "nome": "Borsa per l'ospedale",
+   "voci": [
+    "Documenti, tessera sanitaria, esami della gravidanza",
+    "Camicie da notte aperte davanti o pigiami",
+    "Reggiseni da allattamento",
+    "Assorbenti post parto e slip comodi",
+    "Ciabatte e calzini",
+    "Prodotti per l'igiene personale",
+    "Caricabatterie lungo",
+    "Snack e acqua",
+    "Body e tutine per il bimbo (3 cambi)",
+    "Cappellino e calzine",
+    "Copertina",
+    "Vestiti per l'uscita e seggiolino in auto"
+   ]
+  },
+  {
+   "id": "casa",
+   "nome": "Casa pronta",
+   "voci": [
+    "Rilevatore di fumo funzionante",
+    "Culla montata nella stanza dei genitori",
+    "Postazione cambio attrezzata",
+    "Freezer con pasti pronti",
+    "Numeri utili salvati (pediatra, consultorio, Centro Antiveleni)",
+    "Seggiolino montato e provato"
+   ]
+  },
+  {
+   "id": "burocrazia",
+   "nome": "Dopo la nascita: pratiche",
+   "voci": [
+    "Dichiarazione di nascita (ospedale entro 3 giorni o Comune entro 10)",
+    "Codice fiscale e tessera sanitaria",
+    "Scelta del pediatra all'ASL",
+    "Domanda Assegno Unico all'INPS",
+    "Congedo di paternità obbligatorio",
+    "Comunicazione al datore di lavoro",
+    "Eventuale iscrizione al nido (verifica le scadenze del Comune)"
+   ],
+   "nota": "Importi, scadenze e durata dei congedi cambiano spesso: verifica sul sito dell'INPS e del Comune."
+  }
+ ],
+ "organizza": {
+  "stagioni": {
+   "inverno": {
+    "nome": "Inverno",
+    "icona": "❄️",
+    "bimbo": [
+     "Tutine in cotone felpato o ciniglia, con piedini",
+     "Body a manica lunga come primo strato",
+     "Sacco nanna invernale (circa 2.5 TOG con stanza a 16-20 °C)",
+     "Sacco imbottito o coprigambe per il passeggino",
+     "Cappellino e muffole solo per l'esterno",
+     "In ovetto niente tutona imbottita: copertina sopra le cinture"
+    ],
+    "mamma": [
+     "Estensore per giacca o giacca da babywearing: serve in gravidanza e dopo, col bimbo in fascia",
+     "Maglioni lunghi e morbidi, anche una taglia in più non premaman",
+     "Collant premaman con fascia alta",
+     "Stivali bassi con zip: allacciarsi diventa scomodo",
+     "Sciarpa grande che fa anche da copertura per allattare"
+    ]
+   },
+   "primavera": {
+    "nome": "Primavera",
+    "icona": "🌸",
+    "bimbo": [
+     "Strati leggeri: body + tutina in cotone + cardigan",
+     "Giacchino antivento sottile",
+     "Sacco nanna intermedio (circa 1-1.5 TOG)",
+     "Cappellino leggero per il sole",
+     "Copertina in mussola, utile in tutte le stagioni"
+    ],
+    "mamma": [
+     "Trench o giacca oversize da portare aperta",
+     "Camicie lunghe e oversize: poi servono per allattare",
+     "Sneakers comode senza lacci o con elastico",
+     "Leggings premaman più cardigan lunghi"
+    ]
+   },
+   "estate": {
+    "nome": "Estate",
+    "icona": "☀️",
+    "bimbo": [
+     "Body smanicati o a mezza manica in cotone o mussola",
+     "Pagliaccetti leggeri",
+     "Sacco nanna leggero (0.5 TOG) o solo body se la stanza supera i 24 °C",
+     "Cappellino con tesa e ombrellino per il passeggino",
+     "Non coprire il passeggino con teli: blocca l'aria e scalda",
+     "Sotto i 6 mesi niente sole diretto: ombra e abiti leggeri coprenti"
+    ],
+    "mamma": [
+     "Abiti ampi in lino o cotone con bottoni davanti: comodi in gravidanza e per allattare",
+     "Sandali con plantare e cinturino",
+     "Costume premaman per acquaticità o mare",
+     "Cappello e borraccia sempre in borsa"
+    ]
+   },
+   "autunno": {
+    "nome": "Autunno",
+    "icona": "🍂",
+    "bimbo": [
+     "Tutine in cotone pesante e un pile leggero",
+     "Giacca impermeabile o parapioggia per il passeggino",
+     "Sacco nanna intermedio (circa 1.5-2.5 TOG secondo la stanza)",
+     "Calzine antiscivolo quando inizia a muoversi"
+    ],
+    "mamma": [
+     "Giacca impermeabile ampia o estensore",
+     "Maglie a strati: la temperatura corporea in gravidanza è più alta",
+     "Stivaletti bassi e impermeabili",
+     "Felpe lunghe con zip: poi servono per allattare"
+    ]
+   }
+  },
+  "fasiMamma": [
+   {
+    "id": "t2",
+    "nome": "Secondo trimestre",
+    "da": 14,
+    "a": 27,
+    "nota": "La pancia si vede: è il momento di comprare la base premaman.",
+    "base": [
+     "2 pantaloni premaman con fascia",
+     "1 paio di leggings premaman",
+     "3-4 maglie lunghe elasticizzate",
+     "Reggiseni senza ferretto, meglio già da allattamento"
+    ]
+   },
+   {
+    "id": "t3",
+    "nome": "Terzo trimestre",
+    "da": 28,
+    "a": 40,
+    "nota": "Compra poco e solo ciò che serve anche dopo il parto.",
+    "base": [
+     "Scarpe da infilare, anche mezzo numero in più",
+     "Pigiama o camicia da notte aperta davanti per l'ospedale",
+     "Pancera di sostegno se la schiena tira (chiedi all'ostetrica)"
+    ]
+   },
+   {
+    "id": "pp",
+    "nome": "Primi 3 mesi dopo il parto",
+    "da": 40,
+    "a": 53,
+    "nota": "La pancia scende gradualmente: niente taglie \"di prima\" per ora.",
+    "base": [
+     "Pantaloni a vita alta morbida",
+     "Top e body da allattamento",
+     "Slip comodi a vita alta",
+     "Una vestaglia o felpa lunga per le notti"
+    ]
+   }
+  ],
+  "taglie": [
+   {
+    "taglia": "50",
+    "mesi": [
+     0,
+     0.5
+    ],
+    "quanti": "2-3 pezzi o saltala: molti neonati entrano subito nella 56"
+   },
+   {
+    "taglia": "56",
+    "mesi": [
+     0,
+     2
+    ],
+    "quanti": "6-8 body e 6-8 tutine"
+   },
+   {
+    "taglia": "62",
+    "mesi": [
+     2,
+     4
+    ],
+    "quanti": "6-8 body e 6 tutine"
+   },
+   {
+    "taglia": "68",
+    "mesi": [
+     4,
+     6
+    ],
+    "quanti": "6 body, 5-6 tutine o completini"
+   },
+   {
+    "taglia": "74",
+    "mesi": [
+     6,
+     9
+    ],
+    "quanti": "Tutine con piedini antiscivolo e pantaloni morbidi: inizia a muoversi"
+   },
+   {
+    "taglia": "80",
+    "mesi": [
+     9,
+     12
+    ],
+    "quanti": "Pantaloni comodi per gattonare, ginocchia rinforzate"
+   },
+   {
+    "taglia": "86",
+    "mesi": [
+     12,
+     18
+    ],
+    "quanti": "Scarpe primi passi solo quando cammina fuori casa"
+   },
+   {
+    "taglia": "92",
+    "mesi": [
+     18,
+     24
+    ],
+    "quanti": "Capi facili da sfilare, utili per togliere il pannolino"
+   }
+  ],
+  "smart": [
+   {
+    "t": "Chiedi in regalo taglia e stagione",
+    "d": "Invece di \"una tutina\", indica ad esempio \"taglia 74 per l'estate\". L'app ti dice quale taglia servirà in quale stagione."
+   },
+   {
+    "t": "Taglie piccole di seconda mano",
+    "d": "Le taglie 50-62 si usano poche settimane: usato, scambi e prestiti sono perfetti. Eccezioni: seggiolino e materasso."
+   },
+   {
+    "t": "Scatole etichettate per taglia",
+    "d": "Una scatola per taglia: quando una si esaurisce, apri la successiva e la vecchia va in cantina o in prestito."
+   },
+   {
+    "t": "Aperture davanti e bottoni automatici",
+    "d": "Body a portafoglio e tutine con zip a due vie: il cambio notturno dura la metà."
+   },
+   {
+    "t": "Lava prima di usare",
+    "d": "Detersivo delicato senza profumo, niente ammorbidente all'inizio."
+   },
+   {
+    "t": "Compra la stagione dopo",
+    "d": "I saldi di fine stagione sono il momento giusto per la taglia successiva, se la stagione coincide."
+   }
+  ],
+  "fonti": [
+   {
+    "t": "The Lullaby Trust – Room temperature (16-20 °C) and safer sleep",
+    "u": "https://www.lullabytrust.org.uk/safer-sleep-advice/baby-room-temperature/"
+   },
+   {
+    "t": "HealthyChildren (AAP) – Winter Car Seat Safety Tips",
+    "u": "https://www.healthychildren.org/English/safety-prevention/on-the-go/Pages/Winter-Car-Seat-Safety-Tips.aspx"
+   },
+   {
+    "t": "HealthyChildren (AAP) – Sun Safety",
+    "u": "https://www.healthychildren.org/English/safety-prevention/at-play/Pages/Sun-Safety.aspx"
+   }
+  ],
+  "notaTog": "I valori TOG sono indicazioni dei produttori: il riferimento resta una stanza a 16-20 °C e un bambino che al tatto, su collo e petto, non è sudato."
+ },
+ "papa": {
+  "intro": "Consigli pratici per esserci davvero, dall'attesa ai primi anni, e giochi che fanno crescere.",
+  "fasi": [
+   {
+    "stato": "attesa",
+    "titolo": "Durante l'attesa",
+    "icona": "🧭",
+    "punti": [
+     "Vai alle visite e alle ecografie quando puoi: rende tutto più reale anche per te.",
+     "Il corso di accompagnamento alla nascita è per entrambi: molti consultori hanno incontri dedicati ai papà.",
+     "Prendi in carico interi progetti, non singoli compiti: seggiolino, cameretta, pratiche burocratiche.",
+     "Dividetevi il carico mentale: usate le Liste dell'app per sapere chi fa cosa.",
+     "Fai il corso di disostruzione pediatrica.",
+     "Pianifica con il datore di lavoro il congedo di paternità e le ferie intorno alla data presunta."
+    ]
+   },
+   {
+    "stato": "nato",
+    "titolo": "Le prime settimane",
+    "icona": "🍼",
+    "punti": [
+     "Pelle a pelle anche con il papà: calma il bambino e crea legame.",
+     "Fai tuoi alcuni momenti fissi: bagnetto, cambio notturno, la passeggiata del mattino.",
+     "Di notte: se c'è allattamento, porta tu il bimbo alla mamma, cambialo e rimettilo a dormire.",
+     "Fai da filtro alle visite: poche, brevi e senza raffreddori.",
+     "Gestisci spesa e pasti: il freezer pieno fatto in gravidanza serve ora.",
+     "Dormi anche tu quando puoi: un genitore esausto è meno paziente."
+    ]
+   }
+  ],
+  "congedi": {
+   "titolo": "Congedi in pratica",
+   "punti": [
+    "Congedo di paternità obbligatorio: 10 giorni lavorativi retribuiti, anche frazionabili, da 2 mesi prima della data presunta a 5 mesi dopo la nascita. Va comunicato per iscritto al datore di lavoro almeno 5 giorni prima.",
+    "Congedo parentale: oltre a quello della madre, ogni genitore ha mesi propri non trasferibili. Alcuni mesi sono indennizzati all'80% e gli altri al 30%, entro limiti di età del figlio.",
+    "Il contratto collettivo o l'azienda possono prevedere giorni o condizioni in più: chiedi all'ufficio del personale."
+   ],
+   "nota": "Le regole e le percentuali cambiano spesso con le leggi di bilancio: verifica sempre sul sito dell'INPS prima di fare domanda.",
+   "fonti": [
+    {
+     "t": "INPS – sezione Congedi e permessi per genitori",
+     "u": "https://www.inps.it"
+    },
+    {
+     "t": "D.Lgs. 30 giugno 2022, n. 105 (attuazione direttiva UE 2019/1158)",
+     "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2022-06-30;105"
+    }
+   ]
+  },
+  "benessere": {
+   "titolo": "Anche i papà",
+   "testo": "Circa 1 papà su 10 vive una depressione nel periodo intorno alla nascita. Spesso non si presenta come tristezza ma come irritabilità, rifugio nel lavoro, chiusura o più alcol. Parlarne con la compagna, un amico o il medico è il primo passo.",
+   "fonti": [
+    {
+     "t": "Paulson JF, Bazemore SD. Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis. JAMA 2010;303(19):1961-9",
+     "u": "https://doi.org/10.1001/jama.2010.605"
+    }
+   ]
+  },
+  "giochi": [
+   {
+    "da": 0,
+    "a": 6,
+    "nome": "0-6 mesi",
+    "idee": [
+     {
+      "t": "Leggi qualsiasi cosa",
+      "d": "Anche il giornale o un manuale, con voce espressiva: conta la voce, non la storia."
+     },
+     {
+      "t": "La telecronaca",
+      "d": "In passeggiata racconta quello che vedi, come un cronista: è il primo vocabolario."
+     },
+     {
+      "t": "Faccia a faccia",
+      "d": "Sdraiati a terra davanti a lui durante il tempo a pancia in giù: la tua faccia è il gioco migliore."
+     },
+     {
+      "t": "Canzoni a voce bassa",
+      "d": "La voce grave del papà è calmante: sempre le stesse canzoni prima della nanna."
+     }
+    ]
+   },
+   {
+    "da": 6,
+    "a": 12,
+    "nome": "6-12 mesi",
+    "idee": [
+     {
+      "t": "Cucù e nascondino degli oggetti",
+      "d": "Nascondi un gioco sotto un panno davanti a lui: impara che le cose esistono anche se non le vede."
+     },
+     {
+      "t": "Bagnetto con travasi",
+      "d": "Bicchieri, imbuti e colini: prime esperienze di quantità."
+     },
+     {
+      "t": "Il cestino del papà",
+      "d": "Oggetti sicuri di casa: mestolo di legno, scatola di latta, spazzola, chiavi grandi."
+     },
+     {
+      "t": "Gioco fisico dolce",
+      "d": "Dondolii, aeroplanino sostenuto bene, sempre seguendo le sue reazioni."
+     }
+    ]
+   },
+   {
+    "da": 12,
+    "a": 24,
+    "nome": "1-2 anni",
+    "idee": [
+     {
+      "t": "Lotta sul tappeto",
+      "d": "Rotolate e spinte su un materasso, con regole chiare: si gioca, ci si ferma quando qualcuno dice stop. Insegna a regolare la forza."
+     },
+     {
+      "t": "Torri da abbattere",
+      "d": "Costruisci, lui distrugge, si ricomincia: causa ed effetto e tanta risata."
+     },
+     {
+      "t": "L'aiutante del papà",
+      "d": "Passare le mollette, mettere i calzini nel cesto, annaffiare: si sente capace."
+     },
+     {
+      "t": "Spedizione al parco",
+      "d": "Una lente d'ingrandimento e un sacchetto per foglie, sassi e legnetti."
+     }
+    ]
+   },
+   {
+    "da": 24,
+    "a": 40,
+    "nome": "2-3 anni",
+    "idee": [
+     {
+      "t": "Galleggia o affonda?",
+      "d": "Una bacinella e oggetti di casa: prima indovina, poi prova. Il primo esperimento scientifico."
+     },
+     {
+      "t": "Il percorso a ostacoli",
+      "d": "Cuscini, sedie e coperte: sopra, sotto, dentro. Allena le parole di posizione."
+     },
+     {
+      "t": "Città di cartone",
+      "d": "Scatole, nastro adesivo e pennarelli: una casa, un'auto, un razzo."
+     },
+     {
+      "t": "Storie a turno",
+      "d": "Una frase tu, una lui: fantasia, ascolto e linguaggio."
+     },
+     {
+      "t": "Cucina del sabato",
+      "d": "Pizza o biscotti: misurare, impastare, aspettare."
+     }
+    ]
+   }
+  ]
+ }
 }
