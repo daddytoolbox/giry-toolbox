@@ -10,7 +10,12 @@
   // ---------- storage ----------
   const store = {
     get(k, d) { try { const v = localStorage.getItem("nido:" + k); return v ? JSON.parse(v) : d; } catch { return d; } },
-    set(k, v) { try { localStorage.setItem("nido:" + k, JSON.stringify(v)); } catch {} }
+    set(k, v, silenzioso) {
+      try {
+        if (!silenzioso && ["profilo", "nascita", "cal", "check", "todo"].includes(k)) segnaModifiche(k, v);
+        localStorage.setItem("nido:" + k, JSON.stringify(v));
+      } catch {}
+    }
   };
 
   // ---------- utilità ----------
@@ -59,7 +64,8 @@
     liste:     { nome: "Liste",     emo: "✅", col: "c5", sub: "Da spuntare" },
     vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
     acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" },
-    nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" }
+    nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" },
+    calendario: { nome: "Calendario", emo: "📅", col: "c3", sub: "Visite, ecografie e appuntamenti, per entrambi" }
   };
   const ICON = {
     oggi: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
@@ -215,7 +221,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=15" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=16" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -240,7 +246,7 @@
         <button class="btn" type="submit">${primo ? "Iniziamo" : "Salva"}</button>
         ${primo ? "" : `<button class="btn ghost" type="button" id="reset">Azzera le liste spuntate</button>`}
       </form>
-      ${primo ? "" : `${bloccoInstalla()}<section class="card soft c5"><p class="kicker">💌 Passaparola</p><p>Conosci qualcuno in attesa? Mandagli l'app con WhatsApp, Telegram, email o un codice QR.</p><button class="btn small" type="button" id="condividi2">Condividi l'app</button></section>`}
+      ${primo ? "" : `${bloccoSync()}${bloccoInstalla()}<section class="card soft c5"><p class="kicker">💌 Passaparola</p><p>Conosci qualcuno in attesa? Mandagli l'app con WhatsApp, Telegram, email o un codice QR.</p><button class="btn small" type="button" id="condividi2">Condividi l'app</button></section>`}
       <p class="foot">I dati restano solo su questo telefono.</p>
       ${firma()}`;
     const f = document.getElementById("f");
@@ -252,6 +258,7 @@
       location.hash = "#/oggi"; render();
     });
     document.getElementById("condividi2")?.addEventListener("click", condividi);
+    eventiSync(() => vistaProfilo(false));
     document.getElementById("installa")?.addEventListener("click", async () => { if (!installa) return; installa.prompt(); try { await installa.userChoice; } catch {} installa = null; vistaProfilo(false); });
     document.getElementById("reset")?.addEventListener("click", () => { if (confirm("Vuoi togliere tutte le spunte?")) { store.set("check", {}); store.set("todo", {}); } });
   }
@@ -300,13 +307,17 @@
     }
 
     const td = store.get("todo", {});
-    const hub = f.stato === "nato" ? ["acquisti", "guide", "vicino", "organizza", "mamma", "papa"] : ["nascita", "acquisti", "vicino", "organizza", "mamma", "papa"];
+    const hub = f.stato === "nato" ? ["calendario", "acquisti", "guide", "organizza", "liste", "vicino", "nascita", "mamma", "papa"]
+      : ["calendario", "nascita", "acquisti", "organizza", "liste", "vicino", "attivita", "mamma", "papa"];
+    const pe = prossimiEventi()[0];
     const ev = filtraEventi(f)[0];
     const st = C.organizza.stagioni[stagione(oggi())];
 
     $app.innerHTML = `
       ${hero}
       <div class="hub">${hub.map(k => `<a class="hubtile ${SEZ[k].col}" href="#/${k}"><span>${SEZ[k].emo}</span>${SEZ[k].nome}</a>`).join("")}</div>
+      ${pe ? `<a class="card link soft c3" href="#/calendario"><p class="kicker">📅 Prossimo appuntamento</p><h2>${tipo(pe.tipo)[2]} ${esc(pe.titolo)}</h2>
+        <p>${esc(fmtData(pe.data))}${pe.ora ? ", ore " + esc(pe.ora) : ""}${pe.luogo ? " · " + esc(pe.luogo) : ""} →</p></a>` : ""}
 
       ${s ? `<section class="card">
         <div class="row-h"><h2>${esc(s.titolo)}</h2><span class="pill">Questa fase</span></div>
@@ -1037,6 +1048,352 @@
     toast(modo === "condividi" ? "PDF scaricato: allegalo nella chat da WhatsApp o Telegram (cartella Download)." : "PDF scaricato.");
   }
 
+  // ---------- profilo condiviso (sincronizzazione cifrata) ----------
+  // I dati vengono cifrati qui con AES-GCM; la chiave viaggia solo nel link d'invito (dopo #).
+  const SYNC_URL = "";
+  const urlSync = () => (store.get("syncUrl", "") || SYNC_URL).replace(/\/+$/, "");
+  const SINC = ["profilo", "nascita", "cal", "check", "todo"];
+  const b64u = buf => { const b = new Uint8Array(buf); let s = ""; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); };
+  const deb64u = s => { const t = atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)); const b = new Uint8Array(t.length); for (let i = 0; i < t.length; i++) b[i] = t.charCodeAt(i); return b; };
+  const casuale = n => b64u(crypto.getRandomValues(new Uint8Array(n)));
+  const chiaveDa = s => crypto.subtle.importKey("raw", deb64u(s), "AES-GCM", false, ["encrypt", "decrypt"]);
+  async function cifra(k, obj) {
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await chiaveDa(k), new TextEncoder().encode(JSON.stringify(obj))));
+    const out = new Uint8Array(12 + ct.length); out.set(iv); out.set(ct, 12); return b64u(out);
+  }
+  async function decifra(k, s) {
+    const b = deb64u(s);
+    return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: b.slice(0, 12) }, await chiaveDa(k), b.slice(12))));
+  }
+  // ogni dato diventa una voce indipendente: vince la modifica più recente, voce per voce
+  function piatto(k, v) {
+    const o = {};
+    if (k === "profilo") { if (v) o.profilo = v; }
+    else if (k === "nascita") {
+      if (!v) return o;
+      if (v.titolo) o["nascita.titolo"] = v.titolo;
+      if (v.messaggio) o["nascita.messaggio"] = v.messaggio;
+      for (const [id, st] of Object.entries(v.voci || {})) o["nascita.voce." + id] = st;
+      for (const e of v.extra || []) o["nascita.extra." + e.id] = e;
+    } else if (k === "cal") { for (const e of v || []) o["cal." + e.id] = e; }
+    else for (const [kk, x] of Object.entries(v || {})) if (x) o[k + "." + kk] = x;
+    return o;
+  }
+  function ricomponi(k, flat) {
+    const pre = k === "profilo" ? null : k + ".";
+    const ent = Object.entries(flat).filter(([p, v]) => v != null && (pre ? p.startsWith(pre) : p === "profilo"));
+    if (k === "profilo") return ent[0]?.[1] ?? null;
+    if (k === "nascita") {
+      const o = { titolo: "", messaggio: "", voci: {}, extra: [] };
+      for (const [p, v] of ent) {
+        if (p === "nascita.titolo") o.titolo = v; else if (p === "nascita.messaggio") o.messaggio = v;
+        else if (p.startsWith("nascita.voce.")) o.voci[p.slice(13)] = v;
+        else if (p.startsWith("nascita.extra.")) o.extra.push(v);
+      }
+      o.extra.sort((a, b) => a.id.localeCompare(b.id)); return o;
+    }
+    if (k === "cal") return ent.map(([, v]) => v).sort((a, b) => (a.data + (a.ora || "")).localeCompare(b.data + (b.ora || "")));
+    return Object.fromEntries(ent.map(([p, v]) => [p.slice(pre.length), v]));
+  }
+  const tuttoPiatto = () => Object.assign({}, ...SINC.map(k => piatto(k, store.get(k, null))));
+  const stessa = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  let timerPush = null;
+  function segnaModifiche(k, v) {
+    const S = store.get("sync", null); if (!S || S.perso) return;
+    const prima = piatto(k, store.get(k, null)), dopo = piatto(k, v), ts = store.get("sync:ts", {}), ora = Date.now();
+    let cambi = false;
+    for (const p of new Set([...Object.keys(prima), ...Object.keys(dopo)])) if (!stessa(prima[p], dopo[p])) { ts[p] = ora; cambi = true; }
+    if (!cambi) return;
+    store.set("sync:ts", ts); store.set("sync:sporco", true);
+    clearTimeout(timerPush); timerPush = setTimeout(sincronizza, 700);
+  }
+  function docLocale() {
+    const flat = tuttoPiatto(), ts = store.get("sync:ts", {}), campi = {};
+    for (const p of new Set([...Object.keys(flat), ...Object.keys(ts)])) campi[p] = { v: flat[p] ?? null, t: ts[p] || 0 };
+    return { v: 1, campi };
+  }
+  // riunisce i dati remoti con quelli del telefono; restituisce se è cambiato qualcosa qui e se serve inviare
+  function unisci(remoto) {
+    const R = remoto?.campi || {}, L = docLocale().campi, ts = store.get("sync:ts", {});
+    const flat = tuttoPiatto(); let cambiato = false, push = false;
+    for (const p of new Set([...Object.keys(R), ...Object.keys(L)])) {
+      const r = R[p], l = L[p] || { v: null, t: 0 };
+      if (r && (r.t > l.t || (r.t === l.t && !stessa(r.v, l.v) && JSON.stringify(r.v) > JSON.stringify(l.v)))) {
+        if (!stessa(flat[p], r.v)) { flat[p] = r.v; cambiato = true; }
+        ts[p] = r.t;
+      } else if (!r || l.t > r.t || !stessa(r.v, l.v)) push = true;
+    }
+    if (cambiato) for (const k of SINC) { const nuovo = ricomponi(k, flat); if (!stessa(nuovo, ricomponi(k, tuttoPiatto()))) store.set(k, nuovo, true); }
+    store.set("sync:ts", ts);
+    return { cambiato, push };
+  }
+  let inCorso = false, ancora = false, statoSync = "";
+  async function sincronizza() {
+    const S = store.get("sync", null), base = urlSync();
+    if (!S || S.perso || !base) return;
+    if (inCorso) { ancora = true; return; }
+    inCorso = true;
+    try {
+      const r = await fetch(`${base}/s/${S.id}?rev=${S.rev || 0}`, { cache: "no-store" });
+      if (r.status === 404) { perso(S); return; }
+      if (!r.ok) throw new Error(r.status);
+      const j = await r.json();
+      let rev = S.rev || 0, esito = { cambiato: false, push: false };
+      if (!j.uguale) { esito = unisci(await decifra(S.chiave, j.dati)); rev = j.rev; }
+      if (esito.push || store.get("sync:sporco", false)) {
+        for (let i = 0; i < 4; i++) {
+          const dati = await cifra(S.chiave, docLocale());
+          const p = await fetch(`${base}/s/${S.id}`, { method: "PUT", headers: { "Content-Type": "application/json", Authorization: "Bearer " + S.token }, body: JSON.stringify({ dati, rev }) });
+          if (p.ok) { rev = (await p.json()).rev; store.set("sync:sporco", false); break; }
+          if (p.status === 409) { const c = await p.json(); const e2 = unisci(await decifra(S.chiave, c.dati)); esito.cambiato ||= e2.cambiato; rev = c.rev; continue; }
+          if (p.status === 404) { perso(S); return; }
+          throw new Error(p.status);
+        }
+      }
+      const S2 = store.get("sync", null);
+      if (S2 && S2.id === S.id) { S2.rev = rev; S2.ultimo = Date.now(); store.set("sync", S2); }
+      statoSync = "ok";
+      if (esito.cambiato) aggiornaVista();
+    } catch { statoSync = "offline"; }
+    finally { inCorso = false; if (ancora) { ancora = false; sincronizza(); } }
+  }
+  function perso(S) { S.perso = true; store.set("sync", S); toast("Il profilo condiviso non esiste più: chiedi un nuovo link all'altro genitore."); aggiornaVista(); }
+  // ridisegna la pagina con i dati arrivati dall'altro telefono, senza disturbare chi sta scrivendo
+  let vistaInSospeso = false;
+  function aggiornaVista() {
+    const a = document.activeElement;
+    if (document.querySelector(".sheet-bg") || (a && $app.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))) { vistaInSospeso = true; return; }
+    vistaInSospeso = false; const y = scrollY; render(); scrollTo(0, y);
+  }
+  document.addEventListener("focusout", () => setTimeout(() => { if (vistaInSospeso) aggiornaVista(); }, 300));
+  setInterval(() => { if (document.visibilityState === "visible") sincronizza(); }, 8000);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") sincronizza(); });
+  window.addEventListener("online", sincronizza);
+
+  const linkInvito = S => `${location.origin}${location.pathname}#/unisciti/${S.id}.${S.chiave}.${S.token}`;
+  async function creaSpazio(motivo) {
+    const base = urlSync(); if (!base) return null;
+    const vecchio = store.get("sync", null);
+    const S = { id: casuale(16), chiave: casuale(32), token: casuale(24), rev: 0 };
+    // al primo collegamento tutti i dati del telefono diventano "nuovi"
+    if (!vecchio) { const ts = {}, ora = Date.now(); for (const p of Object.keys(tuttoPiatto())) ts[p] = ora; store.set("sync:ts", ts); }
+    const dati = await cifra(S.chiave, docLocale());
+    const r = await fetch(`${base}/s/${S.id}`, { method: "PUT", headers: { "Content-Type": "application/json", Authorization: "Bearer " + S.token }, body: JSON.stringify({ dati }) });
+    if (!r.ok) throw new Error(r.status);
+    S.rev = (await r.json()).rev; S.ultimo = Date.now();
+    store.set("sync", S); store.set("sync:sporco", false);
+    if (vecchio && motivo === "nuovo" && !vecchio.perso) fetch(`${base}/s/${vecchio.id}`, { method: "DELETE", headers: { Authorization: "Bearer " + vecchio.token } }).catch(() => {});
+    return S;
+  }
+  async function unisciti(arg) {
+    const [id, chiave, token] = (arg || "").split(".");
+    history.replaceState(null, "", location.pathname + "#/oggi");
+    if (!id || !chiave || !token) { toast("Link d'invito non valido."); render(); return; }
+    const att = store.get("sync", null);
+    if (att && att.id === id) { render(); return; }
+    if (att && !att.perso && !confirm("Questo telefono è già collegato a un altro profilo condiviso. Vuoi passare a quello nuovo?")) { render(); return; }
+    if (!urlSync()) { toast("La condivisione non è ancora attiva in questa versione."); render(); return; }
+    $app.innerHTML = `<div class="card empty" style="margin-top:24px"><span class="spin"></span> Collego il profilo condiviso…</div>`;
+    try {
+      const r = await fetch(`${urlSync()}/s/${id}`, { cache: "no-store" });
+      if (r.status === 404) throw new Error("perso");
+      const j = await r.json(), remoto = await decifra(chiave, j.dati);
+      store.set("sync:ts", {}); // i dati remoti hanno la precedenza su quelli già presenti qui
+      store.set("sync", { id, chiave, token, rev: 0 });
+      unisci(remoto);
+      const S = store.get("sync", null); S.rev = j.rev; S.ultimo = Date.now(); store.set("sync", S);
+      store.set("sync:sporco", true); sincronizza();
+      toast("Profilo condiviso collegato ✓");
+    } catch (e) {
+      toast(e.message === "perso" ? "Questo link non è più valido: chiedi quello nuovo." : "Non riesco a collegarmi: controlla la connessione e riapri il link.");
+    }
+    render();
+  }
+  function foglioInvito(S) {
+    const link = linkInvito(S), e = encodeURIComponent;
+    const testo = "Ti invito a condividere il nostro profilo su Giry toolbox: lista nascita e calendario si aggiornano su entrambi i telefoni. Apri questo link:";
+    const bg = document.createElement("div"); bg.className = "sheet-bg";
+    bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="inv-t"><div class="grab"></div>
+      <h2 id="inv-t">Invita l'altro genitore</h2>
+      <p class="muted small" style="margin:0">Aprendo il link, il suo telefono vedrà e potrà modificare profilo, lista nascita, calendario e liste. Mandalo solo a lui o a lei: vale come una chiave.</p>
+      <div class="share-grid">
+        ${navigator.share ? `<button type="button" data-a="nativo">${icona("altro")}<span>Condividi</span></button>` : ""}
+        <a href="https://wa.me/?text=${e(testo + "\n" + link)}" target="_blank" rel="noopener">${icona("wa")}<span>WhatsApp</span></a>
+        <a href="https://t.me/share/url?url=${e(link)}&text=${e(testo)}" target="_blank" rel="noopener">${icona("tg")}<span>Telegram</span></a>
+        <button type="button" data-a="copia">${icona("copia")}<span>Copia link</span></button>
+      </div>
+      <p class="hint">Se il link finisce nelle mani sbagliate, in Impostazioni tocca <strong>Nuovo link</strong>: quello vecchio smette di funzionare.</p>
+      <button class="btn ghost" type="button" data-a="chiudi">Chiudi</button></div>`;
+    const chiudi = () => { bg.remove(); if (vistaInSospeso) aggiornaVista(); };
+    bg.addEventListener("click", ev => {
+      if (ev.target === bg) return chiudi();
+      const b = ev.target.closest("[data-a]"); if (!b) return;
+      if (b.dataset.a === "chiudi") chiudi();
+      if (b.dataset.a === "copia") copia(link, b);
+      if (b.dataset.a === "nativo") navigator.share({ title: "Giry toolbox", text: testo, url: link }).catch(() => {});
+    });
+    document.body.appendChild(bg);
+  }
+  const oraBreve = t => t ? new Date(t).toLocaleString("it-IT", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "mai";
+  function bloccoSync() {
+    const S = store.get("sync", null);
+    if (!urlSync()) return `<section class="card soft c3"><p class="kicker">👫 Profilo condiviso</p><p style="margin:0">In arrivo: profilo, lista nascita e calendario in comune con l'altro genitore.</p></section>`;
+    if (!S) return `<section class="card soft c3"><p class="kicker">👫 Profilo condiviso</p>
+      <p>Usate l'app in due? Invita l'altro genitore: profilo, lista nascita, calendario e liste si aggiornano da soli su entrambi i telefoni.</p>
+      <p class="muted small">I dati sono cifrati sul telefono prima di partire: il server conserva solo un blocco illeggibile.</p>
+      <button class="btn small" type="button" id="sync-crea">Invita l'altro genitore</button></section>`;
+    if (S.perso) return `<section class="card soft c4"><p class="kicker">👫 Profilo condiviso</p>
+      <p>Il profilo condiviso non esiste più (forse è stato creato un nuovo link). I dati restano su questo telefono.</p>
+      <button class="btn small" type="button" id="sync-scollega">Scollega</button></section>`;
+    return `<section class="card soft c3"><p class="kicker">👫 Profilo condiviso · attivo</p>
+      <p style="margin:0 0 4px">Profilo, lista nascita, calendario e liste si aggiornano su tutti i telefoni collegati.</p>
+      <p class="muted small">Ultimo aggiornamento: ${esc(oraBreve(S.ultimo))}${statoSync === "offline" ? " · senza connessione, riprovo da solo" : ""}</p>
+      <div class="row2"><button class="btn small" type="button" id="sync-invita">Rimanda il link</button><button class="btn small ghost" type="button" id="sync-nuovo">Nuovo link</button></div>
+      <button class="linkbtn" type="button" id="sync-scollega">Scollega questo telefono</button></section>`;
+  }
+  function eventiSync(rifai) {
+    document.getElementById("sync-crea")?.addEventListener("click", async e => {
+      e.target.disabled = true; e.target.textContent = "Preparo il link…";
+      try { const S = await creaSpazio(); rifai(); foglioInvito(S); }
+      catch { toast("Non riesco a raggiungere il server: riprova tra poco."); rifai(); }
+    });
+    document.getElementById("sync-invita")?.addEventListener("click", () => foglioInvito(store.get("sync", null)));
+    document.getElementById("sync-nuovo")?.addEventListener("click", async () => {
+      if (!confirm("Creo un nuovo link: quello vecchio smetterà di funzionare e dovrai rimandare il nuovo all'altro genitore. Procedo?")) return;
+      try { await sincronizza(); const S = await creaSpazio("nuovo"); rifai(); foglioInvito(S); }
+      catch { toast("Non riesco a raggiungere il server: riprova tra poco."); }
+    });
+    document.getElementById("sync-scollega")?.addEventListener("click", () => {
+      if (!confirm("Scollego questo telefono? I dati restano qui, ma non si aggiorneranno più con l'altro.")) return;
+      ["sync", "sync:ts", "sync:sporco"].forEach(k => { try { localStorage.removeItem("nido:" + k); } catch {} });
+      rifai();
+    });
+  }
+
+  // ---------- calendario ----------
+  const TIPI = [["visita", "Visita", "🩺"], ["eco", "Ecografia", "🔎"], ["esami", "Esami", "🧪"], ["corso", "Corso", "👥"],
+    ["pediatra", "Pediatra", "👶"], ["vaccino", "Vaccino", "💉"], ["pratiche", "Pratiche", "📄"], ["altro", "Altro", "📌"]];
+  const CHI = [["", "Tutti e due"], ["mamma", "Mamma"], ["papa", "Papà"], ["bimbo", "Con il bimbo"]];
+  const tipo = id => TIPI.find(t => t[0] === id) || TIPI.at(-1);
+  const oggiIso = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+  const pad = n => String(n).padStart(2, "0");
+  const stampLocale = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  function intervallo(e) {
+    if (!e.ora) { const d = new Date(e.data + "T12:00:00"), f = addDays(d, 1); return { tutto: true, da: e.data.replace(/-/g, ""), a: `${f.getFullYear()}${pad(f.getMonth() + 1)}${pad(f.getDate())}` }; }
+    const d = new Date(`${e.data}T${e.ora}:00`), f = new Date(d.getTime() + (e.durata || 60) * 60000);
+    return { tutto: false, da: stampLocale(d), a: stampLocale(f) };
+  }
+  const dettagli = e => [e.note, e.chi ? `Chi: ${CHI.find(c => c[0] === e.chi)?.[1]}` : "", "Da Giry toolbox"].filter(Boolean).join("\n");
+  function linkGoogle(e) {
+    const iv = intervallo(e);
+    const p = new URLSearchParams({ action: "TEMPLATE", text: e.titolo, dates: `${iv.da}/${iv.a}`, details: dettagli(e) });
+    if (e.luogo) p.set("location", e.luogo);
+    if (!iv.tutto) p.set("ctz", Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Rome");
+    return "https://calendar.google.com/calendar/render?" + p.toString();
+  }
+  function icsEvento(e) {
+    const iv = intervallo(e), q = s => String(s || "").replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/[,;]/g, m => "\\" + m);
+    return ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Giry Corporation//Giry toolbox//IT", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      `UID:${e.id}@giry-toolbox`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "")}`,
+      iv.tutto ? `DTSTART;VALUE=DATE:${iv.da}` : `DTSTART:${iv.da}`, iv.tutto ? `DTEND;VALUE=DATE:${iv.a}` : `DTEND:${iv.a}`,
+      `SUMMARY:${q(e.titolo)}`, e.luogo ? `LOCATION:${q(e.luogo)}` : "", `DESCRIPTION:${q(dettagli(e))}`,
+      "BEGIN:VALARM", "TRIGGER:-P1D", "ACTION:DISPLAY", `DESCRIPTION:${q(e.titolo)}`, "END:VALARM",
+      "END:VEVENT", "END:VCALENDAR"].filter(Boolean).join("\r\n");
+  }
+  async function esportaIcs(e) {
+    const nome = (e.titolo.toLowerCase().normalize("NFD").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-") || "appuntamento") + ".ics";
+    const blob = new Blob([icsEvento(e)], { type: "text/calendar" }), file = new File([blob], nome, { type: "text/calendar" });
+    if (navigator.canShare?.({ files: [file] }) && matchMedia("(pointer: coarse)").matches) {
+      try { await navigator.share({ files: [file], title: e.titolo }); return; } catch (err) { if (err?.name === "AbortError") return; }
+    }
+    const url = URL.createObjectURL(blob), a = document.createElement("a"); a.href = url; a.download = nome;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 10000);
+  }
+  const giornoBreve = iso => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { weekday: "short" }).replace(".", "");
+  const meseBreve = iso => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { month: "short" }).replace(".", "");
+  function cardEventoCal(e, passato) {
+    const t = tipo(e.tipo), chi = CHI.find(c => c[0] === e.chi);
+    const tra = Math.round((new Date(e.data + "T12:00:00") - oggi()) / DAY);
+    const quando = tra === 0 ? "Oggi" : tra === 1 ? "Domani" : tra > 1 && tra < 7 ? `Tra ${tra} giorni` : "";
+    return `<div class="ev${passato ? " passato" : ""}" data-ev="${esc(e.id)}">
+      <button type="button" class="ev-main" data-apri="${esc(e.id)}" aria-label="Modifica ${esc(e.titolo)}">
+        <span class="ev-d"><small>${esc(giornoBreve(e.data))}</small><b>${new Date(e.data + "T12:00:00").getDate()}</b><small>${esc(meseBreve(e.data))}</small></span>
+        <span class="ev-b"><strong>${t[2]} ${esc(e.titolo)}</strong>
+          <small>${[quando, e.ora || "Tutto il giorno", e.luogo].filter(Boolean).map(esc).join(" · ")}</small>
+          ${e.chi ? `<small class="ev-chi">${esc(chi?.[1] || "")}</small>` : ""}</span>
+      </button>
+      ${passato ? "" : `<a class="ev-g" href="${esc(linkGoogle(e))}" target="_blank" rel="noopener" aria-label="Aggiungi a Google Calendar">${ICONA_GCAL}<span>Google</span></a>`}
+    </div>`;
+  }
+  const ICONA_GCAL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>`;
+  function prossimiEventi() { const o = oggiIso(); return (store.get("cal", []) || []).filter(e => e.data >= o).sort((a, b) => (a.data + (a.ora || "")).localeCompare(b.data + (b.ora || ""))); }
+  function vistaCalendario(f) {
+    const tutti = (store.get("cal", []) || []).slice().sort((a, b) => (a.data + (a.ora || "")).localeCompare(b.data + (b.ora || "")));
+    const o = oggiIso(), futuri = tutti.filter(e => e.data >= o), passati = tutti.filter(e => e.data < o).reverse();
+    const S = store.get("sync", null);
+    const mesi = [...new Set(futuri.map(e => e.data.slice(0, 7)))];
+    $app.innerHTML = testata("calendario", "Calendario", SEZ.calendario.sub) + `
+      <p class="sync-line">${S && !S.perso ? `👫 Condiviso con l'altro genitore · aggiornato ${esc(oraBreve(S.ultimo))}` : `Solo su questo telefono · <a href="#/profilo">condividilo con l'altro genitore</a>`}</p>
+      <button class="btn" type="button" id="cal-nuovo" style="margin-top:4px">＋ Nuovo appuntamento</button>
+      ${futuri.length ? mesi.map(m => `<h2 class="sec">${esc(new Date(m + "-15T12:00:00").toLocaleDateString("it-IT", { month: "long", year: "numeric" }))}</h2>
+        <div class="glist evlist">${futuri.filter(e => e.data.startsWith(m)).map(e => cardEventoCal(e)).join("")}</div>`).join("")
+        : `<div class="card empty" style="margin-top:16px">Nessun appuntamento in programma.<br>Aggiungi visite, ecografie, esami, corsi e pratiche: li vedrete entrambi.</div>`}
+      ${passati.length ? `<details class="card acc" style="margin-top:18px"><summary><div><span class="pill">${passati.length}</span><h3>Appuntamenti passati</h3></div></summary>
+        <div class="glist evlist flat">${passati.map(e => cardEventoCal(e, true)).join("")}</div></details>` : ""}
+      <p class="foot">Il tasto Google apre l'evento già compilato nel Google Calendar del telefono: basta salvarlo.</p>`;
+    document.getElementById("cal-nuovo").addEventListener("click", () => formEvento(null, f));
+    $app.querySelectorAll("[data-apri]").forEach(b => b.addEventListener("click", () => formEvento(tutti.find(e => e.id === b.dataset.apri), f)));
+  }
+  function formEvento(e, f) {
+    const nuovo = !e; e = e || { id: "e" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), titolo: "", tipo: "visita", data: oggiIso(), ora: "", durata: 60, luogo: "", note: "", chi: "" };
+    const bg = document.createElement("div"); bg.className = "sheet-bg";
+    bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ev-t"><div class="grab"></div>
+      <h2 id="ev-t">${nuovo ? "Nuovo appuntamento" : "Appuntamento"}</h2>
+      <form id="ev-f" class="ln evf">
+        <label class="fl" for="ev-titolo">Cosa</label>
+        <input type="text" id="ev-titolo" name="titolo" value="${esc(e.titolo)}" placeholder="Es. Ecografia morfologica" required maxlength="80">
+        <div class="tipi">${TIPI.map(t => `<label><input type="radio" name="tipo" value="${t[0]}" ${e.tipo === t[0] ? "checked" : ""}><span>${t[2]} ${t[1]}</span></label>`).join("")}</div>
+        <div class="row2"><div><label class="fl" for="ev-data">Giorno</label><input type="date" id="ev-data" name="data" value="${esc(e.data)}" required></div>
+          <div><label class="fl" for="ev-ora">Ora</label><input type="time" id="ev-ora" name="ora" value="${esc(e.ora)}"></div></div>
+        <div class="row2"><div><label class="fl" for="ev-durata">Durata</label><select id="ev-durata" name="durata">${[[30, "30 minuti"], [60, "1 ora"], [90, "1 ora e mezza"], [120, "2 ore"], [180, "3 ore"]].map(([v, t]) => `<option value="${v}" ${+e.durata === v ? "selected" : ""}>${t}</option>`).join("")}</select></div>
+          <div><label class="fl" for="ev-chi">Chi va</label><select id="ev-chi" name="chi">${CHI.map(([v, t]) => `<option value="${v}" ${e.chi === v ? "selected" : ""}>${t}</option>`).join("")}</select></div></div>
+        <label class="fl" for="ev-luogo">Dove</label>
+        <input type="text" id="ev-luogo" name="luogo" value="${esc(e.luogo)}" placeholder="Es. Ospedale Sant'Anna, ambulatorio 3" maxlength="120">
+        <label class="fl" for="ev-note">Note</label>
+        <textarea id="ev-note" name="note" rows="2" maxlength="400" placeholder="Es. portare impegnativa e esami precedenti">${esc(e.note)}</textarea>
+        <button class="btn" type="submit">Salva</button>
+        ${nuovo ? "" : `<div class="row2 evexp"><a class="btn ghost" href="${esc(linkGoogle(e))}" target="_blank" rel="noopener">Google Calendar</a><button class="btn ghost" type="button" data-a="ics">Calendario iPhone</button></div>
+          <button type="button" class="linkbtn danger" data-a="elimina">Elimina appuntamento</button>`}
+        <button class="btn ghost" type="button" data-a="chiudi">Annulla</button>
+      </form></div>`;
+    const chiudi = () => { bg.remove(); if (vistaInSospeso) aggiornaVista(); };
+    const form = bg.querySelector("form");
+    form.querySelector("#ev-ora").addEventListener("input", ev => { form.querySelector("#ev-durata").disabled = !ev.target.value; });
+    form.querySelector("#ev-durata").disabled = !e.ora;
+    form.addEventListener("submit", ev => {
+      ev.preventDefault();
+      const d = new FormData(form);
+      const nuovoE = { id: e.id, titolo: (d.get("titolo") || "").trim(), tipo: d.get("tipo") || "altro", data: d.get("data"), ora: d.get("ora") || "",
+        durata: +(d.get("durata") || 60), luogo: (d.get("luogo") || "").trim(), note: (d.get("note") || "").trim(), chi: d.get("chi") || "" };
+      if (!nuovoE.titolo || !nuovoE.data) return;
+      const cal = (store.get("cal", []) || []).filter(x => x.id !== e.id); cal.push(nuovoE);
+      store.set("cal", cal); chiudi(); render();
+      toast(nuovo ? "Appuntamento aggiunto" : "Appuntamento aggiornato");
+    });
+    bg.addEventListener("click", ev => {
+      if (ev.target === bg) return chiudi();
+      const b = ev.target.closest("[data-a]"); if (!b) return;
+      if (b.dataset.a === "chiudi") chiudi();
+      if (b.dataset.a === "ics") esportaIcs(e);
+      if (b.dataset.a === "elimina" && confirm(`Eliminare "${e.titolo}"? Sparirà anche dall'altro telefono.`)) {
+        store.set("cal", (store.get("cal", []) || []).filter(x => x.id !== e.id)); chiudi(); render(); toast("Appuntamento eliminato");
+      }
+    });
+    document.body.appendChild(bg);
+    if (nuovo) setTimeout(() => form.querySelector("#ev-titolo").focus(), 250);
+  }
+
   // ---------- liste ----------
   function vistaListe() {
     const check = store.get("check", {});
@@ -1071,12 +1428,13 @@
   function render() {
     if (!C) { $app.innerHTML = `<div class="empty">Impossibile caricare i contenuti. Controlla la connessione e riapri l'app.</div>`; return; }
     const [, rotta = "oggi", arg] = location.hash.split("/");
+    if (rotta === "unisciti") { unisciti(arg); return; }
     const f = fase();
     applicaTema(store.get("profilo", {})?.sesso);
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 
@@ -1084,6 +1442,6 @@
   document.getElementById("btn-condividi").addEventListener("click", condividi);
   window.addEventListener("hashchange", render);
   applicaTema(store.get("profilo", {})?.sesso);
-  carica().then(render);
+  carica().then(() => { render(); sincronizza(); });
   if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 })();

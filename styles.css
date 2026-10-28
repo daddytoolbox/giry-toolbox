@@ -340,7 +340,6 @@ a, button, label, summary, .chip, .hubtile { touch-action: manipulation; }
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent); outline-offset: 2px; }
 img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
-@media (min-width: 700px) { .hub { grid-template-columns: repeat(6, 1fr); } }
 .top-acts { display: flex; gap: 10px; }
 
 /* ---------- condividi ---------- */
@@ -395,3 +394,29 @@ img { max-width: 100%; }
 .sharebox .btn:first-of-type { margin-top: 12px; }
 .toast { position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 30; max-width: min(92vw, 480px);
   background: var(--ink); color: var(--bg); padding: 12px 18px; border-radius: 16px; font-weight: 700; font-size: 14.5px; box-shadow: 0 8px 24px rgba(0,0,0,.2); animation: fade .2s ease; text-align: center; }
+
+/* ---------- calendario ---------- */
+.sync-line { font-size: 13.5px; color: var(--ink-2); margin: -6px 2px 10px; }
+.evlist .ev { display: flex; align-items: stretch; border-top: 1px solid var(--line); }
+.evlist .ev:first-child { border-top: none; }
+.evlist.flat { box-shadow: none; background: transparent; }
+.ev-main { flex: 1; min-width: 0; display: flex; gap: 14px; align-items: center; text-align: left; background: none; border: none; padding: 14px 6px 14px 16px; cursor: pointer; color: var(--ink); }
+.ev-d { flex: none; width: 52px; border-radius: 14px; background: var(--c3); color: var(--c3i); display: flex; flex-direction: column; align-items: center; padding: 5px 0; line-height: 1.1; }
+.ev-d b { font-size: 22px; font-weight: 900; }
+.ev-d small { font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.ev-b { display: flex; flex-direction: column; min-width: 0; }
+.ev-b strong { font-size: 16px; }
+.ev-b small { color: var(--ink-2); font-size: 13.5px; line-height: 1.35; }
+.ev-chi { font-weight: 800; color: var(--accent) !important; }
+.ev-g { flex: none; width: 68px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--accent); font-size: 11px; font-weight: 800; border-left: 1px solid var(--line); }
+.ev-g svg { width: 24px; height: 24px; }
+.ev.passato { opacity: .65; }
+.evf .tipi { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; }
+.evf .tipi label { margin: 0; }
+.evf .tipi input { position: absolute; opacity: 0; }
+.evf .tipi span { display: inline-block; padding: 7px 12px; border-radius: 999px; background: var(--bg); border: 2px solid var(--line); font-size: 13.5px; font-weight: 800; cursor: pointer; }
+.evf .tipi input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.evf input[type=date], .evf input[type=time] { width: 100%; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 16px; min-height: 50px; }
+.evf select:disabled { opacity: .5; }
+.evexp .btn { margin-top: 10px; padding: 13px 8px; font-size: 15px; text-align: center; text-decoration: none; }
+.linkbtn.danger { color: #B3261E; }
