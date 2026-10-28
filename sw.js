@@ -1,6 +1,6 @@
 // Service worker: app shell in cache, dati sempre freschi quando c'è rete
-const VERSIONE = "nido-v9";
-const SHELL = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "contenuti.json", "eventi.json"];
+const VERSIONE = "nido-v10";
+const SHELL = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "contenuti.json", "eventi.json", "acquisti.json"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSIONE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

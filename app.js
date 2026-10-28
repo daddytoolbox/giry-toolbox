@@ -5,7 +5,7 @@
   const $app = document.getElementById("app");
   const $tab = document.getElementById("tabbar");
   const DAY = 86400000;
-  let C = null, E = null;
+  let C = null, E = null, A = null;
 
   // ---------- storage ----------
   const store = {
@@ -57,7 +57,8 @@
     papa:      { nome: "Papà",      emo: "🧔", col: "c1", sub: "Consigli e giochi" },
     attivita:  { nome: "Attività",  emo: "🎈", col: "c0", sub: "Giochi e iniziative in zona" },
     liste:     { nome: "Liste",     emo: "✅", col: "c5", sub: "Da spuntare" },
-    vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" }
+    vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
+    acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" }
   };
   const ICON = {
     oggi: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
@@ -123,13 +124,14 @@
     const get = async u => (await fetch(u, { cache: "no-cache" })).json();
     try { C = await get("contenuti.json"); } catch { C = null; }
     try { E = await get("eventi.json"); } catch { E = { eventi: [] }; }
+    try { A = await get("acquisti.json"); } catch { A = null; }
   }
 
   // ---------- profilo ----------
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=9" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=10" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -210,7 +212,7 @@
     }
 
     const td = store.get("todo", {});
-    const hub = ["vicino", "attivita", "organizza", "mamma", "papa", "guide"];
+    const hub = f.stato === "nato" ? ["acquisti", "guide", "vicino", "organizza", "mamma", "papa"] : ["acquisti", "vicino", "attivita", "organizza", "mamma", "papa"];
     const ev = filtraEventi(f)[0];
     const st = C.organizza.stagioni[stagione(oggi())];
 
@@ -342,6 +344,7 @@
         <p>Copia e manda a nonni e amici:</p>
         <div class="regali" id="regali">${regali.map(r => `<div>${esc(r)}</div>`).join("")}</div>
         <button class="btn small" id="copia">Copia la lista</button></section>` : ""}
+      <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Acquisti smart</p><h2>Seggiolino, passeggino, culla, marsupio</h2><p>Scelti dai test di laboratorio, non dal marchio →</p></a>
       <h2 class="sec">💡 Consigli smart</h2>
       <div class="card">${C.organizza.smart.map(ideaRow).join("")}</div>
       <a class="card link soft c5" href="#/liste"><p class="kicker">✅ Liste</p><h2>Lista nascita, borsa, pratiche</h2><p>Da spuntare man mano →</p></a>
@@ -592,6 +595,62 @@
     });
   }
 
+  // ---------- acquisti smart ----------
+  const meseIso = ym => { const [y, m] = ym.split("-").map(Number); return new Date(y, m - 1, 15).toLocaleDateString("it-IT", { month: "long", year: "numeric" }); };
+  const idealo = q => `https://www.idealo.it/MainSearchProductCategory.html?q=${encodeURIComponent(q)}`;
+  const SCALA = { ADAC: "voto ADAC · 0,5 ottimo → 5,5 insufficiente", Warentest: "voto Stiftung Warentest · 0,5 ottimo → 5,5 insufficiente", Altroconsumo: "punteggio Altroconsumo su 100" };
+  function cardScelta(x) {
+    const badge = [x.top ? `<span class="badge b-top">La nostra scelta</span>` : "", x.conv ? `<span class="badge b-conv">Miglior rapporto</span>` : "", x.piccolo ? `<span class="badge b-small">Marchio piccolo</span>` : ""].join("");
+    return `<div class="pick">
+      <div class="voto" title="${esc(SCALA[x.scala] || "")}"><b>${esc(x.voto)}</b><small>${esc(x.scala)}</small></div>
+      <div class="pick-b">
+        ${badge ? `<div class="badges">${badge}</div>` : ""}
+        <h3>${esc(x.nome)}</h3>
+        <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))} · <strong>${esc(x.prezzo)}</strong></p>
+        ${x.nota ? `<p class="pn">${inline(x.nota)}</p>` : ""}
+        <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Il test</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}</p>
+      </div>
+    </div>`;
+  }
+  function gruppoAdesso(cat, f) {
+    if (cat.id !== "seggiolino" || f.stato !== "nato") return 0;
+    return f.mesi < 12 ? 0 : f.mesi < 42 ? 1 : 2;
+  }
+  function vistaAcquisti(f) {
+    if (!A) { $app.innerHTML = testata("acquisti") + `<div class="card empty">Non riesco a caricare i consigli d'acquisto. Controlla la connessione.</div>`; return; }
+    const scelta = store.get("acqCat", A.categorie[0].id);
+    const cats = [...A.categorie.map(c => ({ id: c.id, nome: c.nome, emo: c.emo })), { id: "tessili", nome: "Tessili", emo: "🧦" }];
+    const cat = A.categorie.find(c => c.id === scelta);
+    let corpo;
+    if (scelta === "tessili") {
+      const T = A.tessili;
+      corpo = `<section class="card"><h2>🧦 ${esc(T.titolo)}</h2><p class="muted">${esc(T.intro)}</p>${lista(T.punti)}${fonti(T.fonti)}</section>`;
+    } else {
+      const ga = gruppoAdesso(cat, f);
+      corpo = `
+        <section class="card soft c2"><p class="kicker">${cat.emo} ${esc(cat.nome)}</p><p style="margin:0 0 8px"><strong>${esc(cat.quando)}</strong></p>
+          <p class="muted small" style="margin:0">Norma: ${esc(cat.norma)}</p></section>
+        ${cat.nessunTest ? `<div class="card empty left">${esc(cat.nessunTest)}</div>` : ""}
+        ${cat.gruppi.map((g, i) => `<h2 class="sec">${esc(g.nome)}${i === ga && f.stato === "nato" && cat.id === "seggiolino" ? ` <span class="pill on">Adesso</span>` : ""}</h2>
+          <div class="glist picks">${g.scelte.map(cardScelta).join("")}</div>`).join("")}
+        ${cat.avviso ? `<p class="hint">${esc(cat.avviso)}</p>` : ""}
+        <section class="card"><h2>Come scegliere</h2>${lista(cat.consigli)}</section>
+        ${cat.evitare.length ? `<h2 class="sec">⛔ Da evitare</h2><div class="glist">${cat.evitare.map(e => `
+          <div class="grow avoid"><span class="gi ${e.richiamo ? "c4" : "c0"}">${e.richiamo ? "⚠️" : "✋"}</span>
+            <span class="gt"><strong>${esc(e.nome)}</strong><small>${inline(e.motivo)}</small>
+            <span class="acts">${e.richiamo ? `<span class="badge b-rec">Richiamo</span> ` : ""}${esc(meseIso(e.data))} · <a href="${esc(e.link)}" target="_blank" rel="noopener">Fonte</a></span></span></div>`).join("")}</div>` : ""}
+        ${fonti(cat.fonti)}`;
+    }
+    $app.innerHTML = `<a class="back" href="#/organizza">← Organizza</a>` + testata("acquisti", "Acquisti smart", SEZ.acquisti.sub) + `
+      <p class="muted">${esc(A.intro)}</p>
+      <div class="chips">${cats.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${c.id === scelta}">${c.emo} ${esc(c.nome)}</button>`).join("")}</div>
+      ${corpo}
+      <details class="card acc"><summary><div><span class="pill">Metodo</span><h3>Come scegliamo</h3></div></summary>${lista(A.metodo)}</details>
+      <p class="foot">Consigli aggiornati il ${fmtData(A.aggiornato)} · richiami Safety Gate verificati il ${fmtData(A.richiamiVerificati)}.<br>Prima di comprare controlla sempre il prezzo di oggi e che il modello non sia stato richiamato.</p>
+      <details class="sources"><summary>Dove controlliamo i richiami</summary><ol>${A.fontiRichiami.map(x => `<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join("")}</ol></details>`;
+    $app.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { store.set("acqCat", b.dataset.c); vistaAcquisti(f); }));
+  }
+
   // ---------- liste ----------
   function vistaListe() {
     const check = store.get("check", {});
@@ -616,7 +675,7 @@
   function barra(f, rotta) {
     const quinta = f && f.stato === "nato" ? "attivita" : "guide";
     const tabs = ["oggi", quinta, "organizza", "mamma", "papa"];
-    const attiva = rotta === "guida" ? "guide" : rotta === "liste" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
+    const attiva = rotta === "guida" ? "guide" : rotta === "liste" || rotta === "acquisti" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
     $tab.innerHTML = tabs.map(k => `<a href="#/${k}" class="${k === attiva ? "on" : ""}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>
       <span>${SEZ[k].nome}</span></a>`).join("");
@@ -629,7 +688,7 @@
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 
