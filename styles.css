@@ -7,6 +7,7 @@
   --accent: #F2704A;
   --accent-2: #E5577A;
   --on-accent: #FFFFFF;
+  --hero-1: var(--accent); --hero-2: var(--accent-2); --hl: var(--accent);
   --shadow: 0 2px 6px rgba(120,60,20,.05), 0 10px 24px rgba(120,60,20,.07);
   /* colori sezione: fondo / testo */
   --c0: #FFE4D6; --c0i: #C2481F;
@@ -23,6 +24,7 @@
   :root {
     --bg: #1A1614; --surface: #252020; --ink: #F6EEE8; --ink-2: #B9ABA1; --line: #382F2B;
     --accent: #FF8A62; --accent-2: #F0708F; --on-accent: #2A140C;
+    --hero-1: #C9542F; --hero-2: #B23F62;
     --shadow: 0 2px 6px rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.25);
     --c0: #45281C; --c0i: #FFB08E;
     --c1: #1F3A29; --c1i: #8EDCAB;
@@ -91,11 +93,10 @@ main { max-width: 600px; margin: 0 auto; padding: 4px 16px 24px; outline: none; 
 /* hero */
 .hero {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
   color: #fff; border-radius: 28px; padding: 22px; margin: 6px 0 16px;
   box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-2) 30%, transparent);
 }
-@media (prefers-color-scheme: dark) { .hero { background: linear-gradient(135deg, #C9542F, #B23F62); } }
 .hero .kicker { color: #fff; }
 .big { font-size: 64px; font-weight: 900; line-height: 1; letter-spacing: -0.03em; }
 .big small { font-size: 20px; font-weight: 800; letter-spacing: 0; margin-left: 6px; }
@@ -250,10 +251,10 @@ form input[type=date], form input[type=text] { width: 100%; padding: 14px; borde
 .giry-mark { width: 38px; height: 38px; }
 .giry-text { display: flex; flex-direction: column; line-height: 1; }
 .giry-name { font-weight: 900; font-size: 24px; color: var(--ink); }
-.giry-sub { font-size: 9.5px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); margin-top: 3px; }
+.giry-sub { font-size: 9.5px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; color: var(--hl); margin-top: 3px; }
 .giry-sub sup { font-size: 8px; letter-spacing: 0; margin-left: 1px; vertical-align: 4px; }
 
-.brand b { font-weight: 900; color: var(--accent); }
+.brand b { font-weight: 900; color: var(--hl); }
 
 /* vicino a te */
 form.inline { display: flex; gap: 8px; margin-top: 12px; }
@@ -287,3 +288,44 @@ form.inline input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 14
 .grow.avoid { align-items: flex-start; }
 .card.empty.left { text-align: left; }
 .sec .pill { vertical-align: middle; margin-left: 6px; }
+
+/* ---------- palette per sesso (solo se indicato nel profilo) ----------
+   Fondo ispirato a Pantone 2026 "Cloud Dancer"; tinte dalle passerelle FW26.
+   Bosco: verde bottiglia, petrolio, ocra. Prugna: prugna, bordeaux, ocra. */
+:root[data-sesso="m"] {
+  --bg: #F4F1EA; --line: #E4DED1; --ink: #1F2622; --ink-2: #66706A;
+  --accent: #2E6B57; --accent-2: #1F4E5A; --on-accent: #FFFFFF; --hl: #A9771F;
+  --hero-1: #2E6B57; --hero-2: #1F4E5A;
+  --c0: #DCEAE2; --c0i: #2E6B57;
+  --c1: #E3EBDA; --c1i: #4A6B3A; --c2: #F3E7CC; --c2i: #85601A; --c3: #DCE7EA; --c3i: #1F5560;
+  --c4: #F2E2D8; --c4i: #964A2E; --c5: #E2E7EE; --c5i: #3D5470;
+  --shadow: 0 2px 6px rgba(30,50,40,.05), 0 10px 24px rgba(30,50,40,.07);
+}
+:root[data-sesso="f"] {
+  --bg: #F6F2EF; --line: #E8DFDB; --ink: #2A2026; --ink-2: #74666E;
+  --accent: #6E3A6B; --accent-2: #8E3440; --on-accent: #FFFFFF; --hl: #A9771F;
+  --hero-1: #6E3A6B; --hero-2: #8E3440;
+  --c0: #EEDFEA; --c0i: #6E3A6B;
+  --c1: #E6EADB; --c1i: #56663A; --c2: #F4E8CF; --c2i: #85601A; --c3: #E6E2EE; --c3i: #5A4B82;
+  --c4: #F2DFE0; --c4i: #8E3440; --c5: #E2E7EC; --c5i: #3F566B;
+  --shadow: 0 2px 6px rgba(60,30,50,.05), 0 10px 24px rgba(60,30,50,.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-sesso="m"] {
+    --bg: #121714; --surface: #1B221E; --line: #2C3630; --ink: #EDF1EC; --ink-2: #A5B0A9;
+    --accent: #8CC5AE; --accent-2: #7FB3BF; --on-accent: #0E1F18; --hl: #E2B65E;
+    --hero-1: #24574A; --hero-2: #1B4350;
+    --c0: #1F3A2F; --c0i: #8CC5AE;
+    --c1: #26321F; --c1i: #A9C995; --c2: #372D17; --c2i: #E2B65E; --c3: #183238; --c3i: #8CC4CF;
+    --c4: #3A2519; --c4i: #E5A486; --c5: #1E2838; --c5i: #9FB6D6;
+  }
+  :root[data-sesso="f"] {
+    --bg: #171215; --surface: #221B1F; --line: #372D33; --ink: #F3ECEF; --ink-2: #B7A8B0;
+    --accent: #D7A3CF; --accent-2: #E3A0A8; --on-accent: #2A1029; --hl: #E2B65E;
+    --hero-1: #5A2F58; --hero-2: #742B35;
+    --c0: #3A2337; --c0i: #D7A3CF;
+    --c1: #2A2F1E; --c1i: #B8C796; --c2: #372D17; --c2i: #E2B65E; --c3: #29243A; --c3i: #BDB0E3;
+    --c4: #3B1F23; --c4i: #E7A1A9; --c5: #1F2832; --c5i: #A3B8CC;
+  }
+}
+.palette-hint { font-size: 13px; color: var(--ink-2); margin: 8px 2px 0; }

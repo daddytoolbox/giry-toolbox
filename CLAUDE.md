@@ -23,7 +23,8 @@ Marchio: "un'app di Giry Corporation™". Pubblicata con GitHub Pages su https:/
 - Profilo: stato (attesa/nato), data presunta o di nascita, sesso (m/f/vuoto), nome, città
 - Organizza: stagioni calcolate dalle date; taglie 50→92 con date previste (correzione ±0,25 mesi per sesso, curve OMS); lista regali copiabile
 - Vicino a te: Photon (photon.komoot.io/reverse con osm_tag per categoria, 3 richieste in parallelo, timeout 8 s, risultati progressivi, cache 7 giorni). Overpass è stato abbandonato (errore 406).
-- Sesso: usato solo per taglie, igiene al cambio (guida bagnetto) e testi. Mai per colori o stereotipi.
+- Sesso: usato per taglie, igiene al cambio (guida bagnetto), testi e **palette** (richiesta di Marco, ott 2026). Mai rosa/azzurro da cliché né stereotipi nei contenuti.
+- Palette: `data-sesso` su `<html>` (funzione `applicaTema` in app.js, aggiorna anche `theme-color`). Senza sesso: corallo originale. "Bosco" (m): verde bottiglia #2E6B57, petrolio, ocra. "Prugna" (f): prugna #6E3A6B, bordeaux, ocra. Fondo ispirato a Pantone 2026 Cloud Dancer, tinte da passerelle FW26; anche `--c0..--c5` sono ritinte in toni spenti. Varianti per tema scuro in styles.css.
 
 ## Da fare (priorità)
 1. **Sezione Acquisti smart** — FATTA (v10, 28/10/2026). Mantenere questi criteri a ogni aggiornamento:

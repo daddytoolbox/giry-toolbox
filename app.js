@@ -119,6 +119,17 @@
   const periodo = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth()
     ? meseAnno(a) : `${mese(a)}${a.getFullYear() !== b.getFullYear() ? " " + a.getFullYear() : ""} – ${meseAnno(b)}`;
 
+  // ---------- palette per sesso ----------
+  const TEMA = { m: { nome: "Bosco", desc: "verde bottiglia, petrolio e ocra", bg: ["#F4F1EA", "#121714"] },
+                 f: { nome: "Prugna", desc: "prugna, bordeaux e ocra", bg: ["#F6F2EF", "#171215"] } };
+  function applicaTema(sx) {
+    const r = document.documentElement;
+    if (TEMA[sx]) r.dataset.sesso = sx; else delete r.dataset.sesso;
+    const bg = TEMA[sx]?.bg || ["#FFF7F0", "#1A1614"];
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m, i) => m.setAttribute("content", bg[i] || bg[0]));
+  }
+  const notaTema = sx => TEMA[sx] ? `Palette dell'app: <strong>${TEMA[sx].nome}</strong> · ${TEMA[sx].desc}.` : "Senza sesso indicato resta la palette corallo.";
+
   // ---------- dati ----------
   async function carica() {
     const get = async u => (await fetch(u, { cache: "no-cache" })).json();
@@ -131,7 +142,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=11" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=12" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -146,6 +157,7 @@
           <label><input type="radio" name="sesso" value="f" ${p.sesso === "f" ? "checked" : ""}><span>Femmina</span></label>
           <label><input type="radio" name="sesso" value="" ${!p.sesso ? "checked" : ""}><span>Non so</span></label>
         </div>
+        <p class="palette-hint" id="palette-hint">${notaTema(p.sesso)}</p>
         <label for="data" id="lbl-data">${p.stato === "nato" ? "Data di nascita" : "Data presunta del parto"}</label>
         <input type="date" id="data" name="data" value="${esc(p.data)}" required>
         <label for="nome">Nome o soprannome <span class="muted">(facoltativo)</span></label>
@@ -158,7 +170,7 @@
       <p class="foot">I dati restano solo su questo telefono.</p>
       ${firma()}`;
     const f = document.getElementById("f");
-    f.addEventListener("change", e => { if (e.target.name === "stato") document.getElementById("lbl-data").textContent = e.target.value === "nato" ? "Data di nascita" : "Data presunta del parto"; });
+    f.addEventListener("change", e => { if (e.target.name === "sesso") { applicaTema(e.target.value); document.getElementById("palette-hint").innerHTML = notaTema(e.target.value); } if (e.target.name === "stato") document.getElementById("lbl-data").textContent = e.target.value === "nato" ? "Data di nascita" : "Data presunta del parto"; });
     f.addEventListener("submit", e => {
       e.preventDefault();
       const d = new FormData(f);
@@ -685,6 +697,7 @@
     if (!C) { $app.innerHTML = `<div class="empty">Impossibile caricare i contenuti. Controlla la connessione e riapri l'app.</div>`; return; }
     const [, rotta = "oggi", arg] = location.hash.split("/");
     const f = fase();
+    applicaTema(store.get("profilo", {})?.sesso);
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
@@ -694,6 +707,7 @@
 
   document.getElementById("btn-profilo").addEventListener("click", () => { location.hash = "#/profilo"; });
   window.addEventListener("hashchange", render);
+  applicaTema(store.get("profilo", {})?.sesso);
   carica().then(render);
   if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 })();
