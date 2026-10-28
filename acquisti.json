@@ -694,5 +694,275 @@
       "t": "MIMIT – Sistema di allarme rapido Safety Gate",
       "u": "https://www.mimit.gov.it/it/mercato-e-consumatori/sicurezza-prodotti/sistema-di-allarme-rapido-safety-gate"
     }
-  ]
+  ],
+  "listaNascita": {
+    "intro": "Parti dalle voci essenziali: per ognuna ti proponiamo i primi tre prodotti consigliati dai test, oppure scrivi il tuo. Aggiungi le voci che vuoi e condividi la lista in PDF.",
+    "gruppi": [
+      "In auto e a spasso",
+      "Nanna",
+      "Cambio e bagnetto",
+      "Vestiti",
+      "Casa"
+    ],
+    "voci": [
+      {
+        "id": "ovetto",
+        "gruppo": "In auto e a spasso",
+        "nome": "Seggiolino auto (ovetto)",
+        "qta": 1,
+        "cat": "seggiolino",
+        "rif": [
+          "Foppapedretti Disk Infant i-Size + base Tech i-Size",
+          "Nuna Pipa Urbn",
+          "Joie i-Gemm 3 + i-Base Encore"
+        ]
+      },
+      {
+        "id": "antiabbandono",
+        "gruppo": "In auto e a spasso",
+        "nome": "Dispositivo antiabbandono",
+        "qta": 1,
+        "nota": "Obbligatorio in Italia in auto per i bambini sotto i 4 anni.",
+        "fonte": {
+          "t": "DM 2 ottobre 2019, n. 122 (Normattiva)",
+          "u": "https://www.normattiva.it/eli/id/2019/10/23//19G00130/CONSOLIDATED"
+        },
+        "opzioni": [
+          {
+            "nome": "Integrato nel seggiolino",
+            "nota": "Il più comodo: verifica che il modello lo preveda."
+          },
+          {
+            "nome": "Cuscino con sensore e app",
+            "nota": "Si usa con qualsiasi seggiolino e passa al successivo."
+          },
+          {
+            "nome": "Dispositivo con allarme acustico e sul telefono",
+            "nota": "Controlla la dichiarazione di conformità al decreto."
+          }
+        ]
+      },
+      {
+        "id": "trio",
+        "gruppo": "In auto e a spasso",
+        "nome": "Passeggino con navicella o trio",
+        "qta": 1,
+        "cat": "passeggino",
+        "rif": [
+          "Britax Römer Rio (con navicella)",
+          "Joolz Hub2 con navicella",
+          "Hauck Move N Care Set"
+        ]
+      },
+      {
+        "id": "marsupio",
+        "gruppo": "In auto e a spasso",
+        "nome": "Fascia o marsupio",
+        "qta": 1,
+        "cat": "marsupio",
+        "rif": [
+          "Didymos fascia tessuta",
+          "Hoppediz fascia tessuta",
+          "Lennylamb Lennyupgrade Pro"
+        ]
+      },
+      {
+        "id": "culla",
+        "gruppo": "Nanna",
+        "nome": "Culla o next-to-me",
+        "qta": 1,
+        "cat": "culla",
+        "opzioni": [
+          {
+            "nome": "Next-to-me a norma EN 16781",
+            "nota": "Con cinghie di fissaggio al letto e materasso rigido su misura."
+          },
+          {
+            "nome": "Culla o cesta classica (EN 1130)",
+            "nota": "Semplice e spesso economica, anche usata."
+          },
+          {
+            "nome": "Lettino con sponde (EN 716) da subito",
+            "nota": "Una spesa sola fino ai 2-3 anni, ma occupa più spazio."
+          }
+        ]
+      },
+      {
+        "id": "materasso",
+        "gruppo": "Nanna",
+        "nome": "Materasso per la culla",
+        "qta": 1,
+        "opzioni": [
+          {
+            "nome": "Quello in dotazione",
+            "nota": "Va bene se è rigido, piatto e senza spazi ai bordi."
+          },
+          {
+            "nome": "Materasso nuovo della misura esatta (EN 16890)",
+            "nota": "Obbligatorio se la culla è usata."
+          }
+        ]
+      },
+      {
+        "id": "lenzuola",
+        "gruppo": "Nanna",
+        "nome": "Lenzuola con angoli",
+        "qta": 3,
+        "opzioni": [
+          {
+            "nome": "Cotone OEKO-TEX 100 classe I",
+            "nota": ""
+          },
+          {
+            "nome": "Cotone biologico GOTS",
+            "nota": ""
+          }
+        ]
+      },
+      {
+        "id": "sacconanna",
+        "gruppo": "Nanna",
+        "nome": "Sacco nanna",
+        "qta": 2,
+        "nota": "Al posto di coperte e piumoni.",
+        "opzioni": [
+          {
+            "nome": "2,5 TOG",
+            "nota": "Per l'inverno, con stanza a 16-20 °C."
+          },
+          {
+            "nome": "1 TOG",
+            "nota": "Mezza stagione."
+          },
+          {
+            "nome": "0,5 TOG",
+            "nota": "Estate."
+          }
+        ]
+      },
+      {
+        "id": "pannolini",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Pannolini taglia 1",
+        "qta": 1,
+        "nota": "Pochi pacchi: si cambia taglia in poche settimane.",
+        "cat": "pannolini",
+        "rif": [
+          "Lupilu Premium (Lidl)",
+          "Pampers Progressi Newborn",
+          "Coop Crescendo Advance primi giorni"
+        ]
+      },
+      {
+        "id": "fasciatoio",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Fasciatoio o materassino",
+        "qta": 1,
+        "opzioni": [
+          {
+            "nome": "Materassino su un mobile che avete già",
+            "nota": "Cassettiera all'altezza del bacino: la soluzione più economica."
+          },
+          {
+            "nome": "Fasciatoio da vasca",
+            "nota": "Utile se il bagno è piccolo."
+          },
+          {
+            "nome": "Fasciatoio con mobile",
+            "nota": "Comodo ma ingombrante: dopo l'anno serve poco."
+          }
+        ]
+      },
+      {
+        "id": "vaschetta",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Vaschetta per il bagnetto",
+        "qta": 1,
+        "opzioni": [
+          {
+            "nome": "Vaschetta rigida semplice",
+            "nota": ""
+          },
+          {
+            "nome": "Vaschetta pieghevole",
+            "nota": "Per case piccole."
+          },
+          {
+            "nome": "Riduttore per la vasca",
+            "nota": ""
+          }
+        ]
+      },
+      {
+        "id": "salviette",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Cotone o salviette e crema per il cambio",
+        "qta": 1
+      },
+      {
+        "id": "termometro",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Termometro digitale",
+        "qta": 1
+      },
+      {
+        "id": "forbicine",
+        "gruppo": "Cambio e bagnetto",
+        "nome": "Forbicine a punta tonda o limetta",
+        "qta": 1
+      },
+      {
+        "id": "body",
+        "gruppo": "Vestiti",
+        "nome": "Body taglia 50-56",
+        "qta": 7,
+        "opzioni": [
+          {
+            "nome": "Cotone OEKO-TEX 100 classe I",
+            "nota": ""
+          },
+          {
+            "nome": "Cotone biologico GOTS",
+            "nota": ""
+          },
+          {
+            "nome": "Usati da amici o mercatini",
+            "nota": "Lavati tante volte: spesso i più sicuri."
+          }
+        ]
+      },
+      {
+        "id": "tutine",
+        "gruppo": "Vestiti",
+        "nome": "Tutine taglia 50-56",
+        "qta": 7,
+        "opzioni": [
+          {
+            "nome": "Cotone OEKO-TEX 100 classe I",
+            "nota": ""
+          },
+          {
+            "nome": "Cotone biologico GOTS",
+            "nota": ""
+          },
+          {
+            "nome": "Usate da amici o mercatini",
+            "nota": ""
+          }
+        ]
+      },
+      {
+        "id": "monitor",
+        "gruppo": "Casa",
+        "nome": "Baby monitor (solo se dorme lontano da voi)",
+        "qta": 1,
+        "cat": "monitor",
+        "rif": [
+          "Reer Nova (solo audio)",
+          "Philips Avent SCD713 (solo audio)",
+          "Philips Avent SCD833 (video)"
+        ]
+      }
+    ]
+  }
 }

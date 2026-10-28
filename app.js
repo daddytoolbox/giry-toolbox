@@ -58,7 +58,8 @@
     attivita:  { nome: "Attività",  emo: "🎈", col: "c0", sub: "Giochi e iniziative in zona" },
     liste:     { nome: "Liste",     emo: "✅", col: "c5", sub: "Da spuntare" },
     vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
-    acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" }
+    acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" },
+    nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" }
   };
   const ICON = {
     oggi: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
@@ -214,7 +215,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=14" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=15" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -299,7 +300,7 @@
     }
 
     const td = store.get("todo", {});
-    const hub = f.stato === "nato" ? ["acquisti", "guide", "vicino", "organizza", "mamma", "papa"] : ["acquisti", "vicino", "attivita", "organizza", "mamma", "papa"];
+    const hub = f.stato === "nato" ? ["acquisti", "guide", "vicino", "organizza", "mamma", "papa"] : ["nascita", "acquisti", "vicino", "organizza", "mamma", "papa"];
     const ev = filtraEventi(f)[0];
     const st = C.organizza.stagioni[stagione(oggi())];
 
@@ -431,10 +432,11 @@
         <p>Copia e manda a nonni e amici:</p>
         <div class="regali" id="regali">${regali.map(r => `<div>${esc(r)}</div>`).join("")}</div>
         <button class="btn small" id="copia">Copia la lista</button></section>` : ""}
+      <a class="card link soft c4" href="#/nascita"><p class="kicker">🎁 Lista nascita</p><h2>La vostra lista, pronta da condividere</h2><p>Tre prodotti consigliati per voce, oppure il vostro. PDF per WhatsApp →</p></a>
       <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Acquisti smart</p><h2>Seggiolino, passeggino, culla, marsupio</h2><p>Scelti dai test di laboratorio, non dal marchio →</p></a>
       <h2 class="sec">💡 Consigli smart</h2>
       <div class="card">${C.organizza.smart.map(ideaRow).join("")}</div>
-      <a class="card link soft c5" href="#/liste"><p class="kicker">✅ Liste</p><h2>Lista nascita, borsa, pratiche</h2><p>Da spuntare man mano →</p></a>
+      <a class="card link soft c5" href="#/liste"><p class="kicker">✅ Liste</p><h2>Borsa per l'ospedale, casa, pratiche</h2><p>Da spuntare man mano →</p></a>
       <p class="hint">${esc(O.notaTog)}</p>
       ${fonti(O.fonti)}`;
 
@@ -695,7 +697,7 @@
         <h3>${esc(x.nome)}</h3>
         <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))} · <strong>${esc(x.prezzo)}</strong>${x.prezzoOggi ? ` · oggi da <strong>${esc(x.prezzoOggi.valore)}</strong> (${esc(fmtData(x.prezzoOggi.data))})` : ""}</p>
         ${x.nota ? `<p class="pn">${inline(x.nota)}</p>` : ""}
-        <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Il test</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}</p>
+        <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Il test</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}${voceDaProdotto(x.nome) ? ` · <button type="button" class="linkbtn inl" data-ln="${esc(x.nome)}">＋ Lista nascita</button>` : ""}</p>
       </div>
     </div>`;
   }
@@ -740,13 +742,307 @@
       <p class="foot">Consigli aggiornati il ${fmtData(A.aggiornato)} · richiami Safety Gate verificati il ${fmtData(A.richiamiVerificati)}.<br>Prima di comprare controlla sempre il prezzo di oggi e che il modello non sia stato richiamato.</p>
       <details class="sources"><summary>Dove controlliamo i richiami</summary><ol>${A.fontiRichiami.map(x => `<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join("")}</ol></details>`;
     $app.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { store.set("acqCat", b.dataset.c); vistaAcquisti(f); }));
+    $app.querySelectorAll("[data-ln]").forEach(b => b.addEventListener("click", () => mettiInLista(b.dataset.ln)));
+  }
+
+  // ---------- lista nascita ----------
+  const LN = () => A?.listaNascita;
+  const statoLN = () => { const s = store.get("nascita", null) || {}; return { titolo: s.titolo || "", messaggio: s.messaggio || "", voci: s.voci || {}, extra: s.extra || [] }; };
+  function toast(t) {
+    document.querySelector(".toast")?.remove();
+    const d = document.createElement("div"); d.className = "toast"; d.setAttribute("role", "status"); d.textContent = t;
+    document.body.appendChild(d); setTimeout(() => d.remove(), 3800);
+  }
+  function trovaScelta(cat, nome) {
+    const c = A?.categorie.find(x => x.id === cat);
+    for (const g of c?.gruppi || []) { const x = g.scelte.find(y => y.nome === nome); if (x) return x; }
+    return null;
+  }
+  function opzioniVoce(v) {
+    if (v.rif) return v.rif.map(n => trovaScelta(v.cat, n)).filter(Boolean).map(x => ({
+      nome: x.nome, voto: x.voto, scala: x.scala, prezzo: x.prezzoOggi?.valore || x.prezzo, link: x.link, q: x.q, test: true }));
+    return (v.opzioni || []).map(o => ({ nome: o.nome, nota: o.nota }));
+  }
+  function vociLN(s) {
+    return [...LN().voci.map(v => ({ ...v, base: true })),
+      ...s.extra.map(e => ({ id: e.id, gruppo: e.gruppo, nome: e.nome, qta: 1, base: false }))];
+  }
+  function sceltaDi(v, st) {
+    const o = opzioniVoce(v);
+    if (st.scelta === "altro" || !o.length) return st.altro?.nome ? { nome: st.altro.nome, prezzo: st.altro.prezzo, link: st.altro.link, mio: true } : null;
+    return typeof st.scelta === "number" && o[st.scelta] ? o[st.scelta] : null;
+  }
+  // mappa prodotto consigliato -> voce della lista (per il pulsante in Acquisti smart)
+  function voceDaProdotto(nome) {
+    for (const v of LN()?.voci || []) { const i = (v.rif || []).indexOf(nome); if (i >= 0) return { id: v.id, i, voce: v.nome }; }
+    return null;
+  }
+  function mettiInLista(nome) {
+    const r = voceDaProdotto(nome); if (!r) return;
+    const s = statoLN(); const st = s.voci[r.id] = s.voci[r.id] || {};
+    st.scelta = r.i; st.tolta = false; store.set("nascita", s);
+    toast(`In lista nascita: ${nome}`);
+  }
+  function gruppiLN(s) { return [...new Set([...LN().gruppi, ...s.extra.map(e => e.gruppo)])]; }
+  function titoloLN(s, f) { return s.titolo || `Lista nascita${f.p.nome ? " di " + f.p.nome : ""}`; }
+
+  function cardVoce(v, s) {
+    const st = s.voci[v.id] || {}, o = opzioniVoce(v), sc = sceltaDi(v, st);
+    const qta = st.qta || v.qta || 1, altro = st.scelta === "altro" || !o.length;
+    return `<details class="card acc voce${st.preso ? " preso" : ""}" data-id="${esc(v.id)}">
+      <summary><div><div class="vh"><h3>${esc(v.nome)}</h3><span class="qx" ${qta > 1 ? "" : "hidden"}>×${qta}</span></div>
+        <p class="vs">${vsTesto(sc, st)}</p></div></summary>
+      ${v.nota ? `<p class="hint" style="margin:0 0 10px">${esc(v.nota)}${v.fonte ? ` <a href="${esc(v.fonte.u)}" target="_blank" rel="noopener">Fonte</a>` : ""}</p>` : ""}
+      ${o.length ? `<p class="lbl" style="margin-top:0">${v.rif ? "I tre consigliati dai test" : "Che tipo scegliere"}</p>
+      <div class="opts">${o.map((x, i) => `<label class="opt"><input type="radio" name="r-${esc(v.id)}" value="${i}" ${st.scelta === i ? "checked" : ""}>
+        <span><strong>${esc(x.nome)}</strong>${x.test ? `<small>${esc(x.voto)} ${esc(x.scala)} · ${esc(x.prezzo)} · <a href="${esc(x.link)}" target="_blank" rel="noopener">il test</a></small>` : x.nota ? `<small>${esc(x.nota)}</small>` : ""}</span></label>`).join("")}
+        <label class="opt"><input type="radio" name="r-${esc(v.id)}" value="altro" ${st.scelta === "altro" ? "checked" : ""}><span><strong>Un altro prodotto</strong><small>Scrivi tu marca e modello</small></span></label>
+      </div>` : ""}
+      <div class="altro" ${altro ? "" : "hidden"}>
+        <input type="text" data-f="altro.nome" placeholder="${o.length ? "Marca e modello" : "Prodotto (facoltativo)"}" value="${esc(st.altro?.nome || "")}" maxlength="80">
+        <div class="row2"><input type="text" data-f="altro.prezzo" placeholder="Prezzo" value="${esc(st.altro?.prezzo || "")}" maxlength="20">
+          <input type="url" data-f="altro.link" placeholder="Link (facoltativo)" value="${esc(st.altro?.link || "")}"></div>
+      </div>
+      <div class="row2 vfoot">
+        <label class="mini">Quantità <input type="number" min="1" max="99" data-f="qta" value="${qta}" inputmode="numeric"></label>
+        <label class="mini chk"><input type="checkbox" data-f="preso" ${st.preso ? "checked" : ""}><span>Già preso</span></label>
+      </div>
+      <input type="text" data-f="nota" placeholder="Nota per chi regala: colore, taglia, negozio…" value="${esc(st.nota || "")}" maxlength="140">
+      <button type="button" class="linkbtn" data-a="${v.base ? "togli" : "elimina"}">${v.base ? "Togli dalla lista" : "Elimina questa voce"}</button>
+    </details>`;
+  }
+  const vsTesto = (sc, st) => `${st.preso ? `<span class="ok">✓ Già preso</span> · ` : ""}${sc ? esc(sc.nome) : `<span class="muted">Da scegliere</span>`}`;
+
+  function vistaNascita(f) {
+    if (!LN()) { $app.innerHTML = testata("nascita") + `<div class="card empty">Non riesco a caricare la lista. Controlla la connessione.</div>`; return; }
+    caricaPdf().catch(() => {});
+    const s = statoLN();
+    const aperte = new Set([...$app.querySelectorAll("details.voce[open]")].map(d => d.dataset.id));
+    const voci = vociLN(s), att = voci.filter(v => !s.voci[v.id]?.tolta), tolte = voci.filter(v => s.voci[v.id]?.tolta);
+    const grp = gruppiLN(s);
+    $app.innerHTML = `<div class="ln"><a class="back" href="#/organizza">← Organizza</a>` + testata("nascita", "Lista nascita", SEZ.nascita.sub) + `
+      <p class="muted">${esc(LN().intro)}</p>
+      <section class="card">
+        <label class="fl" for="ln-titolo">Titolo</label>
+        <input type="text" id="ln-titolo" value="${esc(titoloLN(s, f))}" maxlength="60">
+        <label class="fl" for="ln-msg">Messaggio per chi regala <span class="muted">(facoltativo)</span></label>
+        <textarea id="ln-msg" rows="2" maxlength="300" placeholder="Es. Scriveteci prima di comprare, così evitiamo doppioni.">${esc(s.messaggio)}</textarea>
+        <div class="bar"><span id="ln-bar"></span></div><small class="muted" id="ln-prog"></small>
+      </section>
+      ${grp.map(g => { const vs = att.filter(v => v.gruppo === g); return vs.length ? `<h2 class="sec">${esc(g)}</h2>${vs.map(v => cardVoce(v, s)).join("")}` : ""; }).join("")}
+      <section class="card soft c4"><h2>➕ Aggiungi una voce</h2>
+        <form id="ln-add" class="addv">
+          <input type="text" name="nome" placeholder="Es. Cuscino per l'allattamento" required maxlength="60" aria-label="Nome della voce">
+          <select name="gruppo" aria-label="Sezione">${grp.map(g => `<option>${esc(g)}</option>`).join("")}</select>
+          <button class="btn small" type="submit">Aggiungi</button>
+        </form>
+      </section>
+      ${tolte.length ? `<details class="card acc"><summary><div><span class="pill">${tolte.length}</span><h3>Voci tolte</h3></div></summary>
+        ${tolte.map(v => `<div class="row-h tolta"><span>${esc(v.nome)}</span><button type="button" class="btn small ghost" data-rip="${esc(v.id)}">Rimetti</button></div>`).join("")}</details>` : ""}
+      <section class="card sharebox">
+        <h2>📤 Condividi la lista</h2>
+        <p class="muted small">Il PDF si apre su qualsiasi telefono: mandalo su WhatsApp, Telegram o per email.</p>
+        <button class="btn" type="button" id="ln-pdf">Condividi il PDF</button>
+        <div class="row2"><button class="btn ghost" type="button" id="ln-scarica">Scarica PDF</button><button class="btn ghost" type="button" id="ln-testo">Invia come testo</button></div>
+      </section>
+      <p class="foot">La lista resta su questo telefono. Nel PDF ci sono solo le voci non tolte.</p></div>`;
+    aperte.forEach(id => $app.querySelector(`details.voce[data-id="${CSS.escape(id)}"]`)?.setAttribute("open", ""));
+
+    const salva = () => store.set("nascita", s);
+    const progresso = () => {
+      const n = att.length, k = att.filter(v => sceltaDi(v, s.voci[v.id] || {})).length;
+      document.getElementById("ln-bar").style.width = (n ? Math.round(k / n * 100) : 0) + "%";
+      document.getElementById("ln-prog").textContent = `${k} di ${n} voci con un prodotto scelto`;
+    };
+    progresso();
+    const ridisegna = () => { const y = scrollY; vistaNascita(f); scrollTo(0, y); };
+    const voceDi = el => { const d = el.closest("details.voce"); if (!d) return null; const v = voci.find(x => x.id === d.dataset.id); return { d, v, st: (s.voci[v.id] = s.voci[v.id] || {}) }; };
+    const aggiornaRiga = ({ d, v, st }) => {
+      d.querySelector(".vs").innerHTML = vsTesto(sceltaDi(v, st), st);
+      const q = st.qta || v.qta || 1, qx = d.querySelector(".qx"); qx.textContent = "×" + q; qx.hidden = q <= 1;
+      d.classList.toggle("preso", !!st.preso); progresso();
+    };
+    let timer;
+    $app.querySelector(".ln").addEventListener("input", e => {
+      const t = e.target;
+      if (t.id === "ln-titolo") { s.titolo = t.value.trim(); }
+      else if (t.id === "ln-msg") { s.messaggio = t.value; }
+      else if (t.dataset.f) {
+        const x = voceDi(t); if (!x) return;
+        const f_ = t.dataset.f;
+        if (f_.startsWith("altro.")) { x.st.altro = x.st.altro || {}; x.st.altro[f_.slice(6)] = t.value.trim(); if (f_ === "altro.nome" && opzioniVoce(x.v).length) x.st.scelta = "altro"; }
+        else if (f_ === "qta") x.st.qta = Math.max(1, Math.min(99, parseInt(t.value, 10) || 1));
+        else if (f_ === "preso") x.st.preso = t.checked;
+        else x.st[f_] = t.value.trim();
+        aggiornaRiga(x);
+      } else return;
+      clearTimeout(timer); timer = setTimeout(salva, 250);
+    });
+    $app.querySelector(".ln").addEventListener("change", e => {
+      const t = e.target;
+      if (t.type === "radio") {
+        const x = voceDi(t); x.st.scelta = t.value === "altro" ? "altro" : +t.value;
+        const box = x.d.querySelector(".altro"); box.hidden = t.value !== "altro";
+        if (t.value === "altro") box.querySelector("input").focus();
+        aggiornaRiga(x); salva();
+      } else if (t.type === "checkbox") { const x = voceDi(t); x.st.preso = t.checked; aggiornaRiga(x); salva(); }
+      else if (t.id === "ln-titolo" && !t.value.trim()) { t.value = titoloLN(s, f); }
+    });
+    $app.querySelector(".ln").addEventListener("click", e => {
+      const a = e.target.closest("[data-a]"), r = e.target.closest("[data-rip]");
+      if (a) {
+        const x = voceDi(a);
+        if (a.dataset.a === "togli") x.st.tolta = true;
+        else if (confirm(`Eliminare "${x.v.nome}"?`)) { s.extra = s.extra.filter(z => z.id !== x.v.id); delete s.voci[x.v.id]; }
+        else return;
+        salva(); ridisegna();
+      } else if (r) { (s.voci[r.dataset.rip] = s.voci[r.dataset.rip] || {}).tolta = false; salva(); ridisegna(); }
+    });
+    document.getElementById("ln-add").addEventListener("submit", e => {
+      e.preventDefault();
+      const fd = new FormData(e.target), nome = (fd.get("nome") || "").trim(); if (!nome) return;
+      const id = "x" + Date.now().toString(36);
+      s.extra.push({ id, gruppo: fd.get("gruppo"), nome }); s.voci[id] = { scelta: "altro" }; salva();
+      vistaNascita(f);
+      const d = $app.querySelector(`details.voce[data-id="${id}"]`);
+      if (d) { d.open = true; d.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      toast(`Aggiunta: ${nome}`);
+    });
+    document.getElementById("ln-pdf").addEventListener("click", () => { clearTimeout(timer); salva(); condividiPdf(s, f, "condividi"); });
+    document.getElementById("ln-scarica").addEventListener("click", () => { clearTimeout(timer); salva(); condividiPdf(s, f, "scarica"); });
+    document.getElementById("ln-testo").addEventListener("click", () => { clearTimeout(timer); salva(); condividiTesto(s, f); });
+  }
+
+  // righe della lista pronte per PDF e testo
+  function righeLN(s) {
+    const voci = vociLN(s).filter(v => !s.voci[v.id]?.tolta);
+    return gruppiLN(s).map(g => ({ g, voci: voci.filter(v => v.gruppo === g).map(v => {
+      const st = s.voci[v.id] || {}; return { v, st, sc: sceltaDi(v, st), qta: st.qta || v.qta || 1 };
+    }) })).filter(x => x.voci.length);
+  }
+  function sottotitoloLN(f) {
+    return f.stato === "attesa" ? `Nascita prevista: ${fmtData(f.p.data)}` : `Nato il ${fmtData(f.p.data)}`;
+  }
+  function condividiTesto(s, f) {
+    const L = [`*${titoloLN(s, f)}*`, sottotitoloLN(f)];
+    if (s.messaggio.trim()) L.push("", s.messaggio.trim());
+    for (const { g, voci } of righeLN(s)) {
+      L.push("", `_${g}_`);
+      for (const { v, st, sc, qta } of voci) {
+        L.push(`${st.preso ? "✓" : "•"} ${v.nome}${qta > 1 ? ` ×${qta}` : ""}${sc ? `: ${sc.nome}` : ""}${sc?.prezzo && !/^non indicato/i.test(sc.prezzo) ? ` (${sc.prezzo})` : ""}${st.preso ? " – già preso" : ""}`);
+        if (st.nota) L.push(`   ${st.nota}`);
+        if (sc?.mio && sc.link) L.push(`   ${sc.link}`);
+      }
+    }
+    L.push("", `Lista creata con Giry toolbox: ${URL_APP}`);
+    const testo = L.join("\n");
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) navigator.share({ title: titoloLN(s, f), text: testo }).catch(() => {});
+    else window.open(`https://wa.me/?text=${encodeURIComponent(testo)}`, "_blank", "noopener");
+  }
+
+  let pdfPronto = null;
+  function caricaPdf() {
+    if (window.jspdf) return Promise.resolve();
+    return pdfPronto = pdfPronto || new Promise((ok, ko) => {
+      const sc = document.createElement("script"); sc.src = "jspdf.min.js?v=1"; sc.async = true;
+      sc.onload = ok; sc.onerror = () => { pdfPronto = null; sc.remove(); ko(new Error("jspdf")); };
+      document.head.appendChild(sc);
+    });
+  }
+  // i caratteri fuori dalla codifica dei font PDF standard (emoji ecc.) vengono tolti
+  const perPdf = t => String(t ?? "").replace(/[^\x20-\x7E -ÿ€–—‘’“”•…]/g, "").replace(/\s+/g, " ").trim();
+  function pdfLN(s, f) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+    const W = 210, M = 16, CW = W - 2 * M, FONDO = 280;
+    const css = getComputedStyle(document.documentElement);
+    const hex = (k, d) => { const v = css.getPropertyValue(k).trim(); return /^#[0-9a-f]{6}$/i.test(v) ? v : d; };
+    const rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+    const scuro = matchMedia("(prefers-color-scheme: dark)").matches;
+    const ACC = rgb(scuro ? (TEMA[f.p.sesso] ? (f.p.sesso === "m" ? "#6B4F3F" : "#7A5548") : "#E0603A") : hex("--accent", "#E0603A"));
+    const INK = [42, 35, 32], GRIGIO = [118, 106, 98], LINEA = [226, 218, 208];
+    let y = 0;
+    const testata_ = () => {
+      doc.setFillColor(...ACC); doc.rect(0, 0, W, 32, "F");
+      doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(20);
+      doc.text(perPdf(titoloLN(s, f)), M, 16);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.text(perPdf(sottotitoloLN(f)), M, 24);
+      y = 42;
+    };
+    const nuova = h => { if (y + h > FONDO) { doc.addPage(); y = 18; } };
+    testata_();
+    if (s.messaggio.trim()) {
+      doc.setFont("helvetica", "italic"); doc.setFontSize(11); doc.setTextColor(...INK);
+      const w = doc.splitTextToSize(perPdf(s.messaggio), CW); doc.text(w, M, y); y += w.length * 5 + 5;
+    }
+    for (const { g, voci } of righeLN(s)) {
+      nuova(22);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(...ACC);
+      doc.text(perPdf(g).toUpperCase(), M, y, { charSpace: 0.4 }); y += 2;
+      doc.setDrawColor(...ACC); doc.setLineWidth(0.5); doc.line(M, y, W - M, y); y += 7;
+      for (const { v, st, sc, qta } of voci) {
+        const X = M + 8, TW = CW - 8 - 16;
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5);
+        const prod = sc ? doc.splitTextToSize(perPdf(sc.nome), TW) : ["Da scegliere"];
+        const det = [];
+        if (sc?.test) det.push(`Voto ${sc.voto} ${sc.scala}`);
+        if (sc?.prezzo && !/^non indicato/i.test(sc.prezzo)) det.push(perPdf(sc.prezzo));
+        doc.setFontSize(9);
+        const nota = st.nota ? doc.splitTextToSize("Nota: " + perPdf(st.nota), TW) : [];
+        const link = sc?.mio && sc.link ? sc.link : sc?.test && sc.q ? `https://www.idealo.it/MainSearchProductCategory.html?q=${encodeURIComponent(sc.q)}` : null;
+        const h = 6 + prod.length * 4.8 + (det.length ? 4.2 : 0) + nota.length * 4.2 + (link ? 4.2 : 0) + 4;
+        nuova(h);
+        const y0 = y;
+        // casella
+        doc.setDrawColor(...(st.preso ? ACC : GRIGIO)); doc.setLineWidth(0.4); doc.roundedRect(M, y - 3.6, 4.6, 4.6, 0.8, 0.8, st.preso ? "FD" : "S");
+        if (st.preso) { doc.setFillColor(...ACC); doc.roundedRect(M, y - 3.6, 4.6, 4.6, 0.8, 0.8, "F"); doc.setDrawColor(255, 255, 255); doc.setLineWidth(0.6); doc.line(M + 1, y - 1.3, M + 2, y - 0.2); doc.line(M + 2, y - 0.2, M + 3.7, y - 2.6); }
+        doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(...INK);
+        doc.text(perPdf(v.nome), X, y);
+        doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(...ACC);
+        if (qta > 1) doc.text(`×${qta}`, W - M, y, { align: "right" });
+        y += 5.2;
+        doc.setFont("helvetica", sc ? "normal" : "italic"); doc.setFontSize(10.5); doc.setTextColor(...(sc ? INK : GRIGIO));
+        doc.text(prod, X, y); y += prod.length * 4.8;
+        doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(...GRIGIO);
+        if (det.length) { doc.text(det.join("  ·  "), X, y); y += 4.2; }
+        if (nota.length) { doc.text(nota, X, y); y += nota.length * 4.2; }
+        if (link) { doc.setTextColor(...ACC); doc.textWithLink(sc.mio ? "Link al prodotto" : "Confronta i prezzi", X, y, { url: link }); y += 4.2; }
+        if (st.preso) { doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(...ACC); doc.text("GIÀ PRESO", W - M, y0 + 5.2, { align: "right" }); }
+        y += 1.5; doc.setDrawColor(...LINEA); doc.setLineWidth(0.2); doc.line(X, y, W - M, y); y += 5.5;
+      }
+      y += 2;
+    }
+    const n = doc.getNumberOfPages();
+    for (let i = 1; i <= n; i++) {
+      doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(...GRIGIO);
+      doc.text("Creata con Giry toolbox · consigli dai test di laboratorio indipendenti, senza sponsor", M, 290);
+      doc.textWithLink("daddytoolbox.github.io/giry-toolbox", M, 294, { url: URL_APP });
+      doc.text(`${i}/${n}`, W - M, 294, { align: "right" });
+    }
+    return doc;
+  }
+  async function condividiPdf(s, f, modo) {
+    let doc;
+    try { await caricaPdf(); doc = pdfLN(s, f); }
+    catch { toast("Non riesco a creare il PDF: controlla la connessione e riprova."); return; }
+    const nome = (perPdf(titoloLN(s, f)).toLowerCase().normalize("NFD").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-") || "lista-nascita") + ".pdf";
+    const blob = doc.output("blob"), file = new File([blob], nome, { type: "application/pdf" });
+    if (modo === "condividi" && navigator.canShare?.({ files: [file] })) {
+      try { await navigator.share({ files: [file], title: titoloLN(s, f) }); return; }
+      catch (e) { if (e?.name === "AbortError") return; }
+    }
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = nome; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    toast(modo === "condividi" ? "PDF scaricato: allegalo nella chat da WhatsApp o Telegram (cartella Download)." : "PDF scaricato.");
   }
 
   // ---------- liste ----------
   function vistaListe() {
     const check = store.get("check", {});
     $app.innerHTML = `<a class="back" href="#/organizza">← Organizza</a>` + testata("liste", "Liste", "Si salvano su questo telefono") +
-      C.liste.map(l => {
+      `<a class="card link soft c4" href="#/nascita"><p class="kicker">🎁 Lista nascita</p><h2>Scegli i prodotti e condividila in PDF</h2><p>Apri la lista nascita →</p></a>` +
+      C.liste.filter(l => l.id !== "nascita").map(l => {
         const fatte = l.voci.filter((_, i) => check[`${l.id}:${i}`]).length, pct = Math.round(fatte / l.voci.length * 100);
         return `<details class="card acc" ${fatte < l.voci.length ? "" : ""}>
           <summary><div><h3>${esc(l.nome)}</h3><div class="bar"><span style="width:${pct}%"></span></div><small class="muted">${fatte} di ${l.voci.length}</small></div></summary>
@@ -766,7 +1062,7 @@
   function barra(f, rotta) {
     const quinta = f && f.stato === "nato" ? "attivita" : "guide";
     const tabs = ["oggi", quinta, "organizza", "mamma", "papa"];
-    const attiva = rotta === "guida" ? "guide" : rotta === "liste" || rotta === "acquisti" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
+    const attiva = rotta === "guida" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
     $tab.innerHTML = tabs.map(k => `<a href="#/${k}" class="${k === attiva ? "on" : ""}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>
       <span>${SEZ[k].nome}</span></a>`).join("");
@@ -780,7 +1076,7 @@
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 
