@@ -221,7 +221,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=17" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=18" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -318,6 +318,7 @@
       <div class="hub">${hub.map(k => `<a class="hubtile ${SEZ[k].col}" href="#/${k}"><span>${SEZ[k].emo}</span>${SEZ[k].nome}</a>`).join("")}</div>
       ${pe ? `<a class="card link soft c3" href="#/calendario"><p class="kicker">📅 Prossimo appuntamento</p><h2>${tipo(pe.tipo)[2]} ${esc(pe.titolo)}</h2>
         <p>${esc(fmtData(pe.data))}${pe.ora ? ", ore " + esc(pe.ora) : ""}${pe.luogo ? " · " + esc(pe.luogo) : ""} →</p></a>` : ""}
+      ${store.get("leggimiVisto", false) ? "" : leggimi()}
 
       ${s ? `<section class="card">
         <div class="row-h"><h2>${esc(s.titolo)}</h2><span class="pill">Questa fase</span></div>
@@ -338,11 +339,27 @@
 
       <h2 class="sec">Da leggere</h2>
       <div class="glist">${schedePerFase(f).slice(0, 3).map(riga).join("")}</div>
+      ${store.get("leggimiVisto", false) ? `<div style="margin-top:14px">${leggimi()}</div>` : ""}
       ${firma()}`;
 
+    document.getElementById("lg-ok")?.addEventListener("click", () => { store.set("leggimiVisto", true); const d = document.getElementById("leggimi"); d.open = false; d.scrollIntoView({ block: "nearest" }); document.getElementById("lg-ok").remove(); });
     $app.querySelectorAll(".todo input").forEach(cb => cb.addEventListener("change", () => {
       const t = store.get("todo", {}); if (cb.checked) t[cb.dataset.k] = 1; else delete t[cb.dataset.k]; store.set("todo", t);
     }));
+  }
+
+  // ---------- leggimi ----------
+  function leggimi() {
+    const L = C.leggimi; if (!L) return "";
+    const visto = store.get("leggimiVisto", false);
+    const blocco = x => `<p class="lbl">${esc(x.t)}</p>${x.p.map(t => `<p>${inline(t)}</p>`).join("")}`;
+    return `<details class="card acc leggimi" id="leggimi" ${visto ? "" : "open"}>
+      <summary><div><span class="pill">${visto ? "Leggimi" : "Nuovo qui?"}</span><h3>ℹ️ ${esc(L.titolo)}</h3></div></summary>
+      <p class="muted">${esc(L.intro)}</p>
+      ${L.sezioni.map(blocco).join("")}
+      <div class="disc">${blocco(L.disclaimer)}<p class="small"><a href="#/acquisti">Il metodo completo è in Acquisti smart → Come scegliamo</a></p></div>
+      ${visto ? "" : `<button class="btn small" type="button" id="lg-ok">Ho capito</button>`}
+    </details>`;
   }
 
   // ---------- guide ----------

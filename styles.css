@@ -420,3 +420,11 @@ img { max-width: 100%; }
 .evf select:disabled { opacity: .5; }
 .evexp .btn { margin-top: 10px; padding: 13px 8px; font-size: 15px; text-align: center; text-decoration: none; }
 .linkbtn.danger { color: #B3261E; }
+
+/* ---------- leggimi ---------- */
+.leggimi p { font-size: 15px; line-height: 1.5; margin: 0 0 8px; }
+.leggimi .lbl { margin: 14px 0 4px; font-size: 15.5px; }
+.leggimi .disc { background: var(--bg); border-radius: 16px; padding: 4px 14px 8px; margin-top: 14px; }
+.leggimi .disc p { font-size: 14px; color: var(--ink-2); }
+.leggimi .disc .lbl { color: var(--ink); }
+.leggimi .btn { margin-top: 8px; }

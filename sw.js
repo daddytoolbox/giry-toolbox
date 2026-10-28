@@ -1,5 +1,5 @@
 // Service worker: app shell in cache, dati sempre freschi quando c'è rete
-const VERSIONE = "nido-v17";
+const VERSIONE = "nido-v18";
 const SHELL = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "qr.png", "jspdf.min.js?v=1", "contenuti.json", "eventi.json", "acquisti.json"];
 
 self.addEventListener("install", e => {
