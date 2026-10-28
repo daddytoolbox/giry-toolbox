@@ -129,7 +129,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=6" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=9" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -137,6 +137,12 @@
         <div class="seg">
           <label><input type="radio" name="stato" value="attesa" ${p.stato === "attesa" ? "checked" : ""}><span>🤰 In attesa</span></label>
           <label><input type="radio" name="stato" value="nato" ${p.stato === "nato" ? "checked" : ""}><span>👶 È nato</span></label>
+        </div>
+        <label>Sesso <span class="muted">(facoltativo)</span></label>
+        <div class="seg seg3">
+          <label><input type="radio" name="sesso" value="m" ${p.sesso === "m" ? "checked" : ""}><span>Maschio</span></label>
+          <label><input type="radio" name="sesso" value="f" ${p.sesso === "f" ? "checked" : ""}><span>Femmina</span></label>
+          <label><input type="radio" name="sesso" value="" ${!p.sesso ? "checked" : ""}><span>Non so</span></label>
         </div>
         <label for="data" id="lbl-data">${p.stato === "nato" ? "Data di nascita" : "Data presunta del parto"}</label>
         <input type="date" id="data" name="data" value="${esc(p.data)}" required>
@@ -154,7 +160,7 @@
     f.addEventListener("submit", e => {
       e.preventDefault();
       const d = new FormData(f);
-      store.set("profilo", { stato: d.get("stato"), data: d.get("data"), nome: (d.get("nome") || "").trim(), citta: (d.get("citta") || "").trim() });
+      store.set("profilo", { stato: d.get("stato"), sesso: d.get("sesso") || "", data: d.get("data"), nome: (d.get("nome") || "").trim(), citta: (d.get("citta") || "").trim() });
       location.hash = "#/oggi"; render();
     });
     document.getElementById("reset")?.addEventListener("click", () => { if (confirm("Vuoi togliere tutte le spunte?")) { store.set("check", {}); store.set("todo", {}); } });
@@ -185,7 +191,7 @@
       const et = etichetta(f), m = et.match(/^(\d+)\s(.*)$/);
       hero = `<section class="hero">
         <div class="hero-txt">
-          <p class="kicker">${p.nome ? esc(p.nome) : "Il vostro bimbo"} ha</p>
+          <p class="kicker">${p.nome ? esc(p.nome) : p.sesso === "f" ? "La vostra bimba" : "Il vostro bimbo"} ha</p>
           <div class="big">${m ? `${m[1]}<small>${esc(m[2])}</small>` : esc(et)}</div>
           <p class="hero-sub">Nato il ${fmtData(p.data)}</p>
         </div>
@@ -254,6 +260,13 @@
     $app.innerHTML = testata("guide", "Guide", SEZ.guide.sub) +
       fasi.map(fs => `<h2 class="sec">${esc(fs)}</h2><div class="glist">${C.schede.filter(s => s.fase === fs).map(riga).join("")}</div>`).join("");
   }
+  function notaSesso() {
+    const sx = store.get("profilo", {}).sesso;
+    const M = `<p class="kicker">Se è un maschio</p><ul class="dots"><li>Il prepuzio <strong>non va retratto</strong>: si stacca da solo nel corso degli anni. Si lava solo l'esterno con acqua.</li><li>Una piccola sacca di sebo biancastro sotto la pelle è normale.</li></ul>`;
+    const F = `<p class="kicker">Se è una femmina</p><ul class="dots"><li>Pulisci sempre <strong>dal davanti verso il dietro</strong>.</li><li>Nei primi giorni piccole perdite biancastre o un po' di sangue sono normali: sono gli ormoni della mamma.</li></ul>`;
+    const fonti_ = fonti([{ t: "HealthyChildren (AAP) – Care for an uncircumcised penis", u: "https://www.healthychildren.org/English/ages-stages/baby/bathing-skin-care/Pages/Care-for-an-uncircumcised-penis.aspx" }, { t: "NHS – Washing and bathing your baby", u: "https://www.nhs.uk/baby/caring-for-a-newborn/washing-and-bathing-your-baby/" }]);
+    return `<section class="card soft c3">${sx === "m" ? M : sx === "f" ? F : M + F}${fonti_}</section>`;
+  }
   function vistaGuida(id) {
     const s = C.schede.find(x => x.id === id);
     if (!s) { location.hash = "#/guide"; return; }
@@ -261,6 +274,7 @@
       <a class="back" href="#/guide">← Guide</a>
       <header class="pagehead ${tinta(s.id)}"><span class="pe">${s.icona}</span><div><h1>${esc(s.titolo)}</h1><p>${esc(s.fase)}</p></div></header>
       <article class="card article">${rich(s.testo)}</article>
+      ${s.id === "bagnetto" ? notaSesso() : ""}
       ${fonti(s.fonti)}
       <p class="foot">Informazioni generali: per dubbi sul tuo bambino il riferimento è il pediatra.</p>`;
   }
@@ -291,7 +305,9 @@
     }
 
     // bimbo per taglie
-    const bande = O.taglie.map(tg => ({ ...tg, d0: addDays(B, tg.mesi[0] * 30.44), d1: addDays(B, tg.mesi[1] * 30.44) }))
+    const sx = f.p.sesso === "m" ? -0.25 : f.p.sesso === "f" ? 0.25 : 0;
+    const spost = m => m === 0 ? 0 : Math.max(0, m + sx * Math.min(1, m));
+    const bande = O.taglie.map(tg => ({ ...tg, d0: addDays(B, spost(tg.mesi[0]) * 30.44), d1: addDays(B, spost(tg.mesi[1]) * 30.44) }))
       .filter(tg => tg.d1 >= t);
     const bimboHtml = bande.map((tg, i) => {
       const ss = stagioniTra(tg.d0 < t ? t : tg.d0, tg.d1);
@@ -320,7 +336,7 @@
       </section>
       ${mammaHtml}
       <h2 class="sec">👶 Per il bimbo, taglia per taglia</h2>
-      <p class="muted small">Le date sono calcolate dalla ${f.stato === "attesa" ? "data presunta del parto" : "data di nascita"}: ogni bambino cresce a modo suo, controlla sempre la lunghezza in cm sull'etichetta.</p>
+      <p class="muted small">Le date sono calcolate dalla ${f.stato === "attesa" ? "data presunta del parto" : "data di nascita"}: ogni bambino cresce a modo suo, controlla sempre la lunghezza in cm sull'etichetta.${f.p.sesso ? ` Calcolo corretto per ${f.p.sesso === "m" ? "un maschio" : "una femmina"} secondo le curve di crescita OMS.` : ""}</p>
       ${bimboHtml}
       ${regali.length ? `<section class="card soft c4"><p class="kicker">🎁 Da chiedere in regalo</p>
         <p>Copia e manda a nonni e amici:</p>
@@ -424,21 +440,21 @@
 
   // ---------- vicino a te (OpenStreetMap) ----------
   const CAT = [
-    { id: "giochi", uno: "Parco giochi",  nome: "Parchi giochi", emo: "🛝", sel: ['nwr["leisure"="playground"]'], nota: "Altalene a cestello e sabbia: dai 6 mesi circa, sempre con un adulto vicino." },
-    { id: "ludo", uno: "Ludoteca",    nome: "Ludoteche",     emo: "🧩", sel: ['nwr["amenity"="toy_library"]', 'nwr["name"~"ludoteca",i]'], nota: "Giochi diversi da casa e altri bambini: spesso c'è uno spazio 0-3." },
-    { id: "biblio", uno: "Biblioteca",  nome: "Biblioteche",   emo: "📚", sel: ['nwr["amenity"="library"]'], nota: "Chiedi della sezione 0-6 e delle letture Nati per Leggere." },
-    { id: "musei", uno: "Museo",   nome: "Musei",         emo: "🏛️", sel: ['nwr["tourism"="museum"]'], nota: "Spesso gratis per i più piccoli: cerca i laboratori per famiglie." },
-    { id: "parchi", uno: "Parco",  nome: "Parchi",        emo: "🌳", sel: ['nwr["leisure"="park"]["name"]'], nota: "Passeggiate con carrozzina o fascia, picnic all'ombra." },
-    { id: "piscine", uno: "Piscina", nome: "Piscine",       emo: "🏊", sel: ['nwr["leisure"="sports_centre"]["sport"~"swimming"]', 'nwr["leisure"="swimming_pool"]["name"]["access"!~"private|customers"]'], nota: "Chiedi dei corsi di acquaticità neonatale o prenatale." },
-    { id: "animali", uno: "Fattoria o zoo", nome: "Animali",       emo: "🐐", sel: ['nwr["tourism"="zoo"]', 'nwr["name"~"fattoria didattica",i]'], nota: "Fattorie didattiche e piccoli zoo: ottimi dai 18 mesi." }
+    { id: "giochi", uno: "Parco giochi",  nome: "Parchi giochi", emo: "🛝", sel: ['nwr[leisure=playground]'], nota: "Altalene a cestello e sabbia: dai 6 mesi circa, sempre con un adulto vicino." },
+    { id: "ludo", uno: "Ludoteca",    nome: "Ludoteche",     emo: "🧩", sel: ['nwr[amenity=toy_library]', 'nwr[leisure=indoor_play]'], nota: "Giochi diversi da casa e altri bambini: spesso c'è uno spazio 0-3." },
+    { id: "biblio", uno: "Biblioteca",  nome: "Biblioteche",   emo: "📚", sel: ['nwr[amenity=library]'], nota: "Chiedi della sezione 0-6 e delle letture Nati per Leggere." },
+    { id: "musei", uno: "Museo",   nome: "Musei",         emo: "🏛️", sel: ['nwr[tourism=museum]'], nota: "Spesso gratis per i più piccoli: cerca i laboratori per famiglie." },
+    { id: "parchi", uno: "Parco",  nome: "Parchi",        emo: "🌳", sel: ['nwr[leisure=park][name]'], nota: "Passeggiate con carrozzina o fascia, picnic all'ombra." },
+    { id: "piscine", uno: "Piscina", nome: "Piscine",       emo: "🏊", sel: ['nwr[leisure=sports_centre][sport=swimming]', 'nwr[leisure=water_park]'], nota: "Chiedi dei corsi di acquaticità neonatale o prenatale." },
+    { id: "animali", uno: "Fattoria o zoo", nome: "Animali",       emo: "🐐", sel: ['nwr[tourism=zoo]', 'nwr[tourism=farm]'], nota: "Fattorie didattiche e piccoli zoo: ottimi dai 18 mesi." }
   ];
   function categoria(t) {
-    if (t.amenity === "toy_library" || /ludoteca/i.test(t.name || "")) return "ludo";
+    if (t.amenity === "toy_library" || t.leisure === "indoor_play" || /ludoteca/i.test(t.name || "")) return "ludo";
     if (t.leisure === "playground") return "giochi";
     if (t.amenity === "library") return "biblio";
     if (t.tourism === "museum") return "musei";
-    if (t.leisure === "sports_centre" || t.leisure === "swimming_pool") return "piscine";
-    if (t.tourism === "zoo" || /fattoria/i.test(t.name || "")) return "animali";
+    if (t.leisure === "sports_centre" || t.leisure === "swimming_pool" || t.leisure === "water_park") return "piscine";
+    if (t.tourism === "zoo" || t.tourism === "farm" || /fattoria/i.test(t.name || "")) return "animali";
     if (t.leisure === "park") return "parchi";
     return null;
   }
@@ -446,24 +462,57 @@
     const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(dg / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
   const fmtDist = m => m < 1000 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1).replace(".", ",")} km`;
 
-  async function cercaLuoghi(lat, lon, raggio) {
-    const key = `luoghi:${lat.toFixed(3)},${lon.toFixed(3)},${raggio}`;
+  // Photon (komoot): ricerca di luoghi OpenStreetMap per categoria, veloce e con CORS
+  const TAG = {
+    giochi: ["leisure:playground"], ludo: ["amenity:toy_library", "leisure:indoor_play"], biblio: ["amenity:library"],
+    musei: ["tourism:museum"], parchi: ["leisure:park"], piscine: ["leisure:sports_centre", "leisure:water_park", "leisure:swimming_pool"],
+    animali: ["tourism:zoo", "tourism:farm"]
+  };
+  function catDa(k, v, nome) {
+    if (k === "leisure" && v === "sports_centre" && !/piscin|nuoto|acqu|swim/i.test(nome || "")) return null;
+    for (const [c, tags] of Object.entries(TAG)) if (tags.includes(`${k}:${v}`)) return c;
+    return null;
+  }
+  function conTimeout(url, ms) {
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), ms);
+    return fetch(url, { signal: ctl.signal }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).finally(() => clearTimeout(t));
+  }
+  async function unaCategoria(c, lat, lon, raggio) {
+    const url = `https://photon.komoot.io/reverse?lat=${lat}&lon=${lon}&radius=${raggio / 1000}&limit=50${TAG[c].map(t => "&osm_tag=" + t).join("")}`;
+    for (let i = 0; i < 2; i++) {
+      try { return (await conTimeout(url, 8000)).features || []; }
+      catch { await new Promise(z => setTimeout(z, 500)); }
+    }
+    throw new Error("categoria " + c);
+  }
+  // restituisce i risultati man mano che arrivano: onDati(lista, finito, errori)
+  async function cercaLuoghi(lat, lon, raggio, ordine, onDati) {
+    const key = `luoghi2:${lat.toFixed(3)},${lon.toFixed(3)},${raggio}`;
     const cache = store.get(key, null);
-    if (cache && Date.now() - cache.t < 7 * DAY) return cache.r;
-    const sel = CAT.flatMap(c => c.sel).map(s => `${s}(around:${raggio},${lat},${lon});`).join("");
-    const q = `[out:json][timeout:25];(${sel});out center tags 400;`;
-    const res = await fetch("https://overpass-api.de/api/interpreter", { method: "POST", body: "data=" + encodeURIComponent(q), headers: { "Content-Type": "application/x-www-form-urlencoded" } });
-    if (!res.ok) throw new Error("overpass " + res.status);
-    const js = await res.json();
-    const visti = new Set();
-    const r = js.elements.map(e => {
-      const t = e.tags || {}, la = e.lat ?? e.center?.lat, lo = e.lon ?? e.center?.lon, cat = categoria(t);
-      if (la == null || !cat) return null;
-      const id = `${cat}:${(t.name || "").toLowerCase()}:${la.toFixed(3)}`; if (t.name && visti.has(id)) return null; visti.add(id);
-      return { cat, nome: t.name || null, lat: la, lon: lo, sito: t.website || t["contact:website"] || null, d: Math.round(distanza(lat, lon, la, lo)) };
-    }).filter(Boolean).sort((x, y) => x.d - y.d);
-    store.set(key, { t: Date.now(), r });
-    return r;
+    if (cache && Date.now() - cache.t < 7 * DAY) { onDati(cache.r, true, 0); return; }
+    const tutti = [], visti = new Set(); let errori = 0;
+    const coda = [...ordine, ...Object.keys(TAG).filter(c => !ordine.includes(c))];
+    const lavora = async () => {
+      while (coda.length) {
+        const c = coda.shift();
+        try {
+          for (const ft of await unaCategoria(c, lat, lon, raggio)) {
+            const p = ft.properties || {}, [lo, la] = ft.geometry?.coordinates || [];
+            const cat = catDa(p.osm_key, p.osm_value, p.name);
+            if (la == null || !cat) continue;
+            const id = `${p.osm_type}${p.osm_id}`; if (visti.has(id)) continue; visti.add(id);
+            const d = Math.round(distanza(lat, lon, la, lo)); if (d > raggio) continue;
+            tutti.push({ cat, nome: p.name || null, lat: la, lon: lo, via: [p.street, p.housenumber].filter(Boolean).join(" "), d });
+          }
+        } catch { errori++; }
+        tutti.sort((x, y) => x.d - y.d);
+        onDati([...tutti], coda.length === 0 && attivi === 1, errori);
+      }
+    };
+    let attivi = 0;
+    await Promise.all([0, 1, 2].map(async () => { attivi++; await lavora(); attivi--; }));
+    onDati([...tutti], true, errori);
+    if (!errori) store.set(key, { t: Date.now(), r: tutti });
   }
   async function geocodifica(testo) {
     const u = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=it&accept-language=it&q=${encodeURIComponent(testo)}`;
@@ -487,8 +536,8 @@
         <div class="chips tight" style="margin-top:12px">${[1000, 3000, 10000].map(r => `<button class="chip" data-r="${r}" aria-pressed="${r === raggio}">${r / 1000} km</button>`).join("")}</div>
         ${pos ? `<p class="muted small" style="margin:0">Intorno a: <strong>${esc(pos.label)}</strong></p>` : ""}
       </section>
-      <div id="risultati">${pos ? `<div class="card empty">Cerco i luoghi vicini…</div>` : `<div class="card soft c3"><p class="kicker">Come funziona</p><p>Tocca il pulsante o scrivi un luogo: ti mostro parchi giochi, biblioteche, musei, piscine e parchi intorno a te, in ordine di distanza.</p><p class="muted small" style="margin:0">La posizione serve solo per la ricerca e resta sul telefono.</p></div>`}</div>
-      <p class="foot">Dati luoghi © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></p>`;
+      <div id="risultati">${pos ? `<div class="card empty"><span class="spin"></span> Cerco i luoghi vicini…</div>` : `<div class="card soft c3"><p class="kicker">Come funziona</p><p>Tocca il pulsante o scrivi un luogo: ti mostro parchi giochi, biblioteche, musei, piscine e parchi intorno a te, in ordine di distanza.</p><p class="muted small" style="margin:0">La posizione serve solo per la ricerca e resta sul telefono.</p></div>`}</div>
+      <p class="foot">Dati luoghi © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · ricerca <a href="https://photon.komoot.io" target="_blank" rel="noopener">Photon</a></p>`;
 
     const salva = p => { store.set("posizione", { lat: +p.lat.toFixed(3), lon: +p.lon.toFixed(3), label: p.label, manuale: !!p.manuale }); vistaVicino(f); };
     document.getElementById("geo").addEventListener("click", e => {
@@ -508,29 +557,38 @@
     if (!pos) return;
 
     const box = document.getElementById("risultati");
-    cercaLuoghi(pos.lat, pos.lon, raggio).then(r => {
-      const conta = Object.fromEntries(CAT.map(c => [c.id, r.filter(x => x.cat === c.id).length]));
+    let lista = [], finito = false, errori = 0, cat = filtro;
+    const disegna = () => {
+      if (!lista.length) {
+        box.innerHTML = finito
+          ? `<div class="card empty">${errori ? "Il servizio mappe non risponde in questo momento. Riprova tra poco." : "Nessun luogo trovato in questo raggio: prova ad allargarlo."}</div>`
+          : `<div class="card empty"><span class="spin"></span> Cerco i luoghi vicini…</div>`;
+        return;
+      }
+      const conta = Object.fromEntries(CAT.map(c => [c.id, lista.filter(x => x.cat === c.id).length]));
       const cats = CAT.filter(c => conta[c.id]).sort((a, b) => (suggerite.includes(b.id) - suggerite.includes(a.id)) || suggerite.indexOf(a.id) - suggerite.indexOf(b.id));
-      if (!r.length) { box.innerHTML = `<div class="card empty">Nessun luogo trovato in questo raggio: prova ad allargarlo.</div>`; return; }
-      const vis = filtro === "tutti" ? r.filter(x => suggerite.includes(x.cat)).concat(r.filter(x => !suggerite.includes(x.cat))) : r.filter(x => x.cat === filtro);
-      const nota = filtro !== "tutti" ? CAT.find(c => c.id === filtro)?.nota : null;
+      const vis = cat === "tutti" ? lista.filter(x => suggerite.includes(x.cat)).concat(lista.filter(x => !suggerite.includes(x.cat))) : lista.filter(x => x.cat === cat);
+      const nota = cat !== "tutti" ? CAT.find(c => c.id === cat)?.nota : null;
       box.innerHTML = `
         <div class="chips">
-          <button class="chip" data-c="tutti" aria-pressed="${filtro === "tutti"}">✨ Consigliati</button>
-          ${cats.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${filtro === c.id}">${c.emo} ${c.nome} <span class="cnt">${conta[c.id]}</span></button>`).join("")}
+          <button class="chip" data-c="tutti" aria-pressed="${cat === "tutti"}">✨ Consigliati</button>
+          ${cats.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${cat === c.id}">${c.emo} ${c.nome} <span class="cnt">${conta[c.id]}</span></button>`).join("")}
         </div>
+        ${!finito ? `<p class="hint" style="margin:0 0 12px"><span class="spin"></span> Sto ancora cercando altri luoghi…</p>` : errori ? `<p class="hint" style="margin:0 0 12px">Alcune categorie non hanno risposto: riapri la pagina per riprovare.</p>` : ""}
         ${nota ? `<p class="hint" style="margin:0 0 12px">${esc(nota)}</p>` : ""}
-        <div class="glist">${vis.slice(0, 50).map(x => { const c = CAT.find(k => k.id === x.cat); return `
+        <div class="glist">${vis.slice(0, 50).map(x => { const c = CAT.find(k => k.id === x.cat); const nome = x.nome || c.uno; return `
           <div class="grow place">
             <span class="gi ${tinta(c.id)}">${c.emo}</span>
-            <span class="gt"><strong>${esc(x.nome || c.uno)}</strong>
-              <small>${c.nome} · ${fmtDist(x.d)}</small>
-              <span class="acts"><a href="https://www.google.com/maps/dir/?api=1&destination=${x.lat},${x.lon}" target="_blank" rel="noopener">Indicazioni</a>${x.sito ? ` · <a href="${esc(x.sito)}" target="_blank" rel="noopener">Sito</a>` : ""}</span></span>
+            <span class="gt"><strong>${esc(nome)}</strong>
+              <small>${c.nome} · ${fmtDist(x.d)}${x.via ? " · " + esc(x.via) : ""}</small>
+              <span class="acts"><a href="https://www.google.com/maps/dir/?api=1&destination=${x.lat},${x.lon}" target="_blank" rel="noopener">Indicazioni</a> · <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nome + " " + x.lat + "," + x.lon)}" target="_blank" rel="noopener">Info e orari</a></span></span>
           </div>`; }).join("")}</div>
         ${vis.length > 50 ? `<p class="foot">Mostro i 50 più vicini.</p>` : ""}`;
-      box.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => { store.set("catVicino", b.dataset.c); vistaVicino(f); }));
-    }).catch(() => {
-      box.innerHTML = `<div class="card empty">Il servizio mappe non risponde in questo momento. Riprova tra qualche minuto.</div>`;
+      box.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => { cat = b.dataset.c; store.set("catVicino", cat); disegna(); }));
+    };
+    cercaLuoghi(pos.lat, pos.lon, raggio, suggerite, (r, fin, err) => {
+      if (location.hash !== "#/vicino") return;
+      lista = r; finito = fin; errori = err; disegna();
     });
   }
 

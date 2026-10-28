@@ -264,3 +264,6 @@ form.inline input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 14
 .acts { margin-top: 4px; font-size: 14px; font-weight: 800; }
 .acts a { text-decoration: none; }
 .hub { grid-template-columns: repeat(3, 1fr); }
+.spin { display: inline-block; width: 18px; height: 18px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; vertical-align: -3px; margin-right: 6px; animation: gira .8s linear infinite; }
+@keyframes gira { to { transform: rotate(360deg); } }
+.seg3 { grid-template-columns: 1fr 1fr 1fr; }
