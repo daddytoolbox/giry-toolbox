@@ -221,7 +221,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=16" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=17" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
@@ -1050,7 +1050,7 @@
 
   // ---------- profilo condiviso (sincronizzazione cifrata) ----------
   // I dati vengono cifrati qui con AES-GCM; la chiave viaggia solo nel link d'invito (dopo #).
-  const SYNC_URL = "";
+  const SYNC_URL = "https://giry-sync.marco-fronda87.workers.dev";
   const urlSync = () => (store.get("syncUrl", "") || SYNC_URL).replace(/\/+$/, "");
   const SINC = ["profilo", "nascita", "cal", "check", "todo"];
   const b64u = buf => { const b = new Uint8Array(buf); let s = ""; for (let i = 0; i < b.length; i += 0x8000) s += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); };
