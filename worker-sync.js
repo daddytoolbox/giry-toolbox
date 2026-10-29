@@ -5,16 +5,64 @@
 // Privacy: i dati arrivano GIÀ CIFRATI dal telefono (AES-GCM). La chiave sta
 // nel link d'invito dopo il simbolo #, che il browser non invia mai al server:
 // qui si conserva solo un blocco illeggibile. Nessun log, nessun tracciamento.
+//
+// Richieste di nuove province (POST /richiesta): arriva SOLO la sigla della
+// provincia e il suo nome. Si conserva un contatore per provincia e, alla prima
+// richiesta, si apre una segnalazione (issue) su GitHub per avvisare Marco.
+// Serve il segreto GITHUB_TOKEN (token con permesso Issues: lettura e scrittura
+// solo sul repository giry-toolbox). Senza token le richieste vengono comunque
+// contate e la segnalazione parte alla richiesta successiva dopo la configurazione.
 
 const ORIGINI = ["https://daddytoolbox.github.io", "http://localhost:8770"];
 const MAX = 512 * 1024; // dimensione massima di un profilo cifrato
 const ID = /^[A-Za-z0-9_-]{22}$/;
+const REPO = "daddytoolbox/giry-toolbox";
+const MAX_NUOVE_AL_GIORNO = 10; // protezione anti-abuso: nuove segnalazioni al massimo al giorno
 
 let pronto = false;
 async function prepara(db) {
   if (pronto) return;
   await db.prepare("CREATE TABLE IF NOT EXISTS spazi (id TEXT PRIMARY KEY, token TEXT NOT NULL, dati TEXT NOT NULL, rev INTEGER NOT NULL, agg INTEGER NOT NULL)").run();
+  await db.prepare("CREATE TABLE IF NOT EXISTS richieste (prov TEXT PRIMARY KEY, nome TEXT NOT NULL, n INTEGER NOT NULL, issue INTEGER, creato INTEGER NOT NULL, agg INTEGER NOT NULL)").run();
   pronto = true;
+}
+async function github(env, metodo, percorso, corpo) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}${percorso}`, {
+    method: metodo,
+    headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "giry-sync", "Content-Type": "application/json" },
+    body: JSON.stringify(corpo)
+  });
+  if (!r.ok) throw new Error("github " + r.status);
+  return r.json();
+}
+const titolo = (nome, prov, n) => `[Provincia] ${nome} (${prov}) · ${n} ${n === 1 ? "richiesta" : "richieste"}`;
+async function richiesta(req, env, json) {
+  let c; try { c = await req.json(); } catch { return json({ errore: "formato non valido" }, 400); }
+  const prov = String(c.prov || "").toUpperCase();
+  const nome = String(c.nome || "").replace(/[^\p{L}\p{M} '’-]/gu, "").trim().slice(0, 40) || prov;
+  if (!/^[A-Z]{2}$/.test(prov)) return json({ errore: "provincia non valida" }, 400);
+  const ora = Date.now();
+  let r = await env.DB.prepare("SELECT n, issue FROM richieste WHERE prov = ?").bind(prov).first();
+  if (r) await env.DB.prepare("UPDATE richieste SET n = n + 1, agg = ? WHERE prov = ?").bind(ora, prov).run();
+  else await env.DB.prepare("INSERT INTO richieste (prov, nome, n, issue, creato, agg) VALUES (?, ?, 1, NULL, ?, ?)").bind(prov, nome, ora, ora).run();
+  const n = r ? r.n + 1 : 1;
+  if (!env.GITHUB_TOKEN) return json({ ok: true, n });
+  try {
+    if (r && r.issue) {
+      // stessa provincia: aggiorna solo il contatore nel titolo (nessuna nuova notifica)
+      await github(env, "PATCH", `/issues/${r.issue}`, { title: titolo(nome, prov, n) });
+    } else {
+      const oggi = await env.DB.prepare("SELECT COUNT(*) AS k FROM richieste WHERE issue IS NOT NULL AND creato > ?").bind(ora - 86400000).first();
+      if ((oggi?.k || 0) < MAX_NUOVE_AL_GIORNO) {
+        const i = await github(env, "POST", "/issues", {
+          title: titolo(nome, prov, n),
+          body: `Qualcuno ha chiesto le attività per **${nome} (${prov})** dall'app.\n\nL'aggiornamento settimanale preparerà le risorse stabili per questa provincia (consultori e corsi preparto, biblioteche con Nati per Leggere, ludoteche e centri per le famiglie, musei con laboratori, piscine con acquaticità) e chiuderà questa segnalazione.\n\nPer rifiutarla basta chiuderla con un commento.\n\n_Dati ricevuti: solo sigla e nome della provincia._`
+        });
+        await env.DB.prepare("UPDATE richieste SET issue = ? WHERE prov = ?").bind(i.number, prov).run();
+      }
+    }
+  } catch { /* GitHub non raggiungibile: il contatore resta, si riprova alla prossima richiesta */ }
+  return json({ ok: true, n });
 }
 async function sha256(t) {
   const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
@@ -26,7 +74,7 @@ export default {
     const origine = req.headers.get("Origin") || "";
     const cors = {
       "Access-Control-Allow-Origin": ORIGINI.includes(origine) ? origine : ORIGINI[0],
-      "Access-Control-Allow-Methods": "GET, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Max-Age": "86400",
       "Vary": "Origin"
@@ -35,7 +83,13 @@ export default {
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
 
     const url = new URL(req.url);
-    if (url.pathname === "/" || url.pathname === "/ping") return json({ ok: true, servizio: "giry-sync" });
+    if (url.pathname === "/" || url.pathname === "/ping") return json({ ok: true, servizio: "giry-sync", segnalazioni: !!env.GITHUB_TOKEN });
+    if (url.pathname === "/richiesta") {
+      if (req.method !== "POST") return json({ errore: "metodo non ammesso" }, 405);
+      if (!env.DB) return json({ errore: "database non collegato: aggiungi il binding D1 chiamato DB" }, 500);
+      await prepara(env.DB);
+      return richiesta(req, env, json);
+    }
     const m = url.pathname.match(/^\/s\/([^/]+)$/);
     if (!m || !ID.test(m[1])) return json({ errore: "non trovato" }, 404);
     if (!env.DB) return json({ errore: "database non collegato: aggiungi il binding D1 chiamato DB" }, 500);

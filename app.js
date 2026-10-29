@@ -221,7 +221,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=19" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=20" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -257,7 +257,9 @@
     f.addEventListener("submit", e => {
       e.preventDefault();
       const d = new FormData(f);
+      const cittaPrima = (store.get("profilo", {})?.citta || "").trim().toLowerCase();
       store.set("profilo", { stato: d.get("stato"), sesso: d.get("sesso") || "", data: d.get("data"), nome: (d.get("nome") || "").trim(), citta: (d.get("citta") || "").trim() });
+      if ((d.get("citta") || "").trim().toLowerCase() !== cittaPrima) { try { localStorage.removeItem("nido:prov"); } catch {} risolviProv(); }
       location.hash = "#/oggi"; render();
     });
     document.getElementById("condividi2")?.addEventListener("click", condividi);
@@ -523,9 +525,13 @@
   }
 
   // ---------- attività ----------
+  const provCoperte = () => E?.province || { TO: { nome: "Torino" } };
   function filtraEventi(f, solo) {
     const l = E?.eventi || [], oggiIso = new Date().toISOString().slice(0, 10);
+    const P = provAttuale(); if (!P) risolviProv();
+    const sigla = P?.sigla || "TO";
     return l.filter(e => {
+      if ((e.prov || "TO") !== sigla) return false;
       if (e.data && e.data < oggiIso) return false;
       if (solo) return e.eta === solo;
       if (e.eta === "tutti") return true;
@@ -545,6 +551,39 @@
       ${e.link ? `<a class="more" href="${esc(e.link)}" target="_blank" rel="noopener">Dettagli →</a>` : ""}
     </section>`;
   }
+  function bloccoIniziative(f, ev) {
+    const P = provAttuale(), cop = provCoperte();
+    if (!P && !store.get("profilo", {})?.citta) return `<h2 class="sec">📅 Iniziative in provincia</h2>
+      <section class="card soft c3"><p>Per mostrarti corsi, letture e attività della tua provincia mi serve sapere dove siete.</p>
+        <button class="btn small" type="button" id="prov-pos">📍 Usa la mia posizione</button>
+        <p class="muted small" style="margin:10px 0 0">Oppure scrivi la città in <a href="#/profilo">Impostazioni</a>. Resta sul telefono.</p></section>`;
+    const sigla = P?.sigla || "TO", nome = P?.nome || cop[sigla]?.nome || sigla;
+    const cambia = `<p class="foot" style="margin-top:4px">${esc(nome)} non è la vostra provincia? <a href="#/profilo">Cambia città</a></p>`;
+    if (cop[sigla]) return `<h2 class="sec">📅 Iniziative · ${esc(nome)}</h2>
+      ${ev.length ? ev.map(cardEvento).join("") : `<div class="card empty">Nessuna iniziativa in elenco per questa fase.</div>`}
+      ${E?.aggiornato ? `<p class="foot">Aggiornato il ${fmtData(E.aggiornato)}</p>` : ""}${cambia}`;
+    const gia = store.get("richiesteProv", {})[sigla];
+    return `<h2 class="sec">📅 Iniziative · ${esc(nome)}</h2>
+      <section class="card soft c3">
+        <p class="kicker">🗺️ Provincia non ancora coperta</p>
+        ${gia ? `<p style="margin:0">Richiesta inviata il ${fmtData(gia)} ✓. Di solito aggiungiamo le iniziative entro una settimana: compariranno qui da sole.</p>`
+          : `<p>Per ${esc(nome)} non abbiamo ancora raccolto corsi, letture e attività. Vuoi chiederle?</p>
+             <button class="btn small" type="button" id="chiedi-prov" data-s="${esc(sigla)}" data-n="${esc(nome)}">Chiedi ${esc(nome)}</button>
+             <p class="muted small" style="margin:10px 0 0">Viene inviata solo la sigla della provincia (${esc(sigla)}) e il suo nome, nient'altro.</p>`}
+      </section>
+      <a class="card link soft c5" href="#/vicino"><p class="kicker">Nel frattempo</p><h2>Vicino a te</h2><p>Parchi, biblioteche, musei e piscine funzionano già in tutta Italia →</p></a>${cambia}`;
+  }
+  async function chiediProvincia(btn, rifai) {
+    const sigla = btn.dataset.s, nome = btn.dataset.n;
+    btn.disabled = true; btn.textContent = "Invio…";
+    try {
+      const r = await fetch(`${urlSync()}/richiesta`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ prov: sigla, nome }) });
+      if (!r.ok) throw new Error(r.status);
+      const R = store.get("richiesteProv", {}); R[sigla] = new Date().toISOString().slice(0, 10); store.set("richiesteProv", R);
+      toast("Richiesta inviata ✓");
+    } catch { toast("Non riesco a inviare la richiesta: riprova tra poco."); }
+    rifai();
+  }
   function vistaAttivita(f) {
     const fasce = C.attivitaBimbo;
     const auto = f.stato === "nato" ? (fasce.find(a => f.mesi >= a.da && f.mesi < a.a) || fasce.at(-1)) : fasce[0];
@@ -555,9 +594,15 @@
       <div class="chips">${fasce.map(a => `<button class="chip" data-f="${esc(a.nome)}" aria-pressed="${a === fascia}">${esc(a.nome)}</button>`).join("")}</div>
       <section class="card">${fascia.idee.map(ideaRow).join("")}</section>
       <a class="card link soft c5" href="#/vicino"><p class="kicker">📍 In tutta Italia</p><h2>Vicino a te</h2><p>Parchi giochi, biblioteche, musei e piscine intorno a te →</p></a>
-      <h2 class="sec">📅 Iniziative${E?.citta ? ` · ${esc(E.citta)}` : ""}</h2>
-      ${ev.length ? ev.map(cardEvento).join("") : `<div class="card empty">Nessuna iniziativa in elenco per questa fase.</div>`}
-      ${E?.aggiornato ? `<p class="foot">Aggiornato il ${fmtData(E.aggiornato)}</p>` : ""}`;
+      ${bloccoIniziative(f, ev)}`;
+    document.getElementById("chiedi-prov")?.addEventListener("click", e => chiediProvincia(e.currentTarget, () => vistaAttivita(f)));
+    document.getElementById("prov-pos")?.addEventListener("click", e => {
+      if (!navigator.geolocation) { location.hash = "#/profilo"; return; }
+      e.currentTarget.textContent = "Cerco la provincia…";
+      navigator.geolocation.getCurrentPosition(
+        async p => { try { salvaProv(await provinciaDaPunto(p.coords.latitude, p.coords.longitude)); } catch {} vistaAttivita(f); },
+        () => { toast("Posizione non disponibile: scrivi la città in Impostazioni."); vistaAttivita(f); }, { timeout: 15000, maximumAge: 600000 });
+    });
     $app.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { store.set("fascia", b.dataset.f); vistaAttivita(f); }));
   }
 
@@ -638,11 +683,38 @@
     onDati([...tutti], true, errori);
     if (!errori) store.set(key, { t: Date.now(), r: tutti });
   }
+  // ---------- provincia (da posizione o città, con Nominatim/OpenStreetMap) ----------
+  function provinciaDaIndirizzo(ad) {
+    if (!ad || (ad.country_code && ad.country_code !== "it")) return null;
+    const cod = [ad["ISO3166-2-lvl6"], ad["ISO3166-2-lvl5"], ad["ISO3166-2-lvl4"]].find(c => /^IT-[A-Z]{2}$/.test(c || ""));
+    let sigla = cod ? cod.slice(3) : null;
+    if (!sigla && /aosta|aoste/i.test(ad.state || "")) sigla = "AO";
+    if (!sigla) return null;
+    const nome = (ad.county || ad.province || ad.state_district || ad.city || ad.town || sigla)
+      .replace(/^(città metropolitana di|provincia autonoma di|provincia di|libero consorzio comunale di)\s+/i, "").split(" - ")[0];
+    return { sigla, nome };
+  }
+  const NOM = "https://nominatim.openstreetmap.org";
+  async function provinciaDaPunto(lat, lon) {
+    const j = await (await fetch(`${NOM}/reverse?format=jsonv2&zoom=10&addressdetails=1&accept-language=it&lat=${lat}&lon=${lon}`)).json();
+    return provinciaDaIndirizzo(j.address);
+  }
+  const provAttuale = () => store.get("prov", null);
+  function salvaProv(p) { if (p) { store.set("prov", { ...p, t: Date.now() }); } }
+  let provInCorso = false;
+  async function risolviProv() {
+    // se manca la provincia, la ricava dalla città del profilo (una volta)
+    if (provAttuale() || provInCorso) return;
+    const citta = store.get("profilo", {})?.citta; if (!citta) return;
+    provInCorso = true;
+    try { const g = await geocodifica(citta); if (g.prov) { salvaProv(g.prov); aggiornaVista(); } } catch {}
+    provInCorso = false;
+  }
   async function geocodifica(testo) {
-    const u = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=it&accept-language=it&q=${encodeURIComponent(testo)}`;
+    const u = `${NOM}/search?format=jsonv2&limit=1&countrycodes=it&addressdetails=1&accept-language=it&q=${encodeURIComponent(testo)}`;
     const js = await (await fetch(u)).json();
     if (!js.length) throw new Error("non trovato");
-    return { lat: +js[0].lat, lon: +js[0].lon, label: js[0].display_name.split(",").slice(0, 2).join(",") };
+    return { lat: +js[0].lat, lon: +js[0].lon, label: js[0].display_name.split(",").slice(0, 2).join(","), prov: provinciaDaIndirizzo(js[0].address) };
   }
 
   function vistaVicino(f) {
@@ -663,7 +735,11 @@
       <div id="risultati">${pos ? `<div class="card empty"><span class="spin"></span> Cerco i luoghi vicini…</div>` : `<div class="card soft c3"><p class="kicker">Come funziona</p><p>Tocca il pulsante o scrivi un luogo: ti mostro parchi giochi, biblioteche, musei, piscine e parchi intorno a te, in ordine di distanza.</p><p class="muted small" style="margin:0">La posizione serve solo per la ricerca e resta sul telefono.</p></div>`}</div>
       <p class="foot">Dati luoghi © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · ricerca <a href="https://photon.komoot.io" target="_blank" rel="noopener">Photon</a></p>`;
 
-    const salva = p => { store.set("posizione", { lat: +p.lat.toFixed(3), lon: +p.lon.toFixed(3), label: p.label, manuale: !!p.manuale }); vistaVicino(f); };
+    const salva = p => {
+      store.set("posizione", { lat: +p.lat.toFixed(3), lon: +p.lon.toFixed(3), label: p.label, manuale: !!p.manuale });
+      if (p.prov) salvaProv(p.prov); else provinciaDaPunto(p.lat, p.lon).then(salvaProv).catch(() => {});
+      vistaVicino(f);
+    };
     document.getElementById("geo").addEventListener("click", e => {
       if (!navigator.geolocation) { alert("Posizione non disponibile su questo dispositivo: scrivi la città."); return; }
       e.target.textContent = "📍 Rilevo la posizione…";

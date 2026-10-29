@@ -1,6 +1,5 @@
 {
   "aggiornato": "2026-10-27",
-  "citta": "Torino",
   "nota": "Prima versione: risorse ricorrenti. Gli eventi della settimana verranno aggiunti dall'aggiornamento automatico.",
   "eventi": [
     {
@@ -12,7 +11,8 @@
       "descr": "Incontri gratuiti con ostetriche per entrambi i genitori. Chiedi al consultorio di zona quando aprono le iscrizioni.",
       "link": "https://www.aslcittaditorino.it",
       "gratuito": true,
-      "ricorrente": true
+      "ricorrente": true,
+      "prov": "TO"
     },
     {
       "titolo": "Letture Nati per Leggere",
@@ -23,7 +23,8 @@
       "descr": "Letture ad alta voce per i più piccoli e sezioni 0-6 con libri da prendere in prestito.",
       "link": "https://bct.comune.torino.it",
       "gratuito": true,
-      "ricorrente": true
+      "ricorrente": true,
+      "prov": "TO"
     },
     {
       "titolo": "Attività per famiglie nelle Case del Quartiere",
@@ -34,7 +35,8 @@
       "descr": "Gruppi per neogenitori, laboratori, scambio di abiti e attrezzatura.",
       "link": "https://www.retecasedelquartiere.org",
       "gratuito": true,
-      "ricorrente": true
+      "ricorrente": true,
+      "prov": "TO"
     },
     {
       "titolo": "Corso di disostruzione pediatrica",
@@ -45,7 +47,8 @@
       "descr": "Manovre salvavita per lattanti e bambini, in poche ore. Ottimo da fare in coppia.",
       "link": "https://cri.it/torino",
       "gratuito": false,
-      "ricorrente": true
+      "ricorrente": true,
+      "prov": "TO"
     },
     {
       "titolo": "Musei con l'Abbonamento Musei",
@@ -56,7 +59,14 @@
       "descr": "Ingressi illimitati per un anno in centinaia di musei e residenze. Molti hanno laboratori per famiglie.",
       "link": "https://www.abbonamentomusei.it",
       "gratuito": false,
-      "ricorrente": true
+      "ricorrente": true,
+      "prov": "TO"
     }
-  ]
+  ],
+  "province": {
+    "TO": {
+      "nome": "Torino",
+      "dal": "2026-10-27"
+    }
+  }
 }
