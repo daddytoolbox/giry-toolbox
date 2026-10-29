@@ -221,7 +221,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=20" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=21" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -796,17 +796,31 @@
   const meseIso = ym => { const [y, m] = ym.split("-").map(Number); return new Date(y, m - 1, 15).toLocaleDateString("it-IT", { month: "long", year: "numeric" }); };
   const idealo = q => `https://www.idealo.it/MainSearchProductCategory.html?q=${encodeURIComponent(q)}`;
   const SCALA = { ADAC: "voto ADAC · 0,5 ottimo → 5,5 insufficiente", Warentest: "voto Stiftung Warentest · 0,5 ottimo → 5,5 insufficiente", Altroconsumo: "punteggio Altroconsumo su 100" };
-  function cardScelta(x) {
+  const prezzoNoto = p => p && !/non (pubblicato|indicato)/i.test(p);
+  function cardScelta(x, i) {
     const badge = [x.top ? `<span class="badge b-top">La nostra scelta</span>` : "", x.conv ? `<span class="badge b-conv">Miglior rapporto</span>` : "", x.piccolo ? `<span class="badge b-small">Marchio piccolo</span>` : ""].join("");
+    const prezzo = prezzoNoto(x.prezzo)
+      ? `Prezzo medio <strong>${esc(x.prezzo)}</strong> <small>(rilevato dal test, ${esc(meseIso(x.data))})</small>`
+      : `Prezzo medio <small>non pubblicato dal test</small>`;
+    const oggi = x.prezzoOggi ? `<br>In Italia oggi da <strong>${esc(x.prezzoOggi.valore)}</strong> <small>(${esc(fmtData(x.prezzoOggi.data))})</small>` : "";
+    const pc = (x.pro?.length || x.contro?.length) ? `<div class="pc">
+        ${x.pro?.length ? `<ul class="pro">${x.pro.map(p => `<li>${inline(p)}</li>`).join("")}</ul>` : ""}
+        ${x.contro?.length ? `<ul class="con">${x.contro.map(p => `<li>${inline(p)}</li>`).join("")}</ul>` : ""}
+      </div>` : "";
     return `<div class="pick">
-      <div class="voto" title="${esc(SCALA[x.scala] || "")}"><b>${esc(x.voto)}</b><small>${esc(x.scala)}</small></div>
-      <div class="pick-b">
-        ${badge ? `<div class="badges">${badge}</div>` : ""}
-        <h3>${esc(x.nome)}</h3>
-        <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))} · <strong>${esc(x.prezzo)}</strong>${x.prezzoOggi ? ` · oggi da <strong>${esc(x.prezzoOggi.valore)}</strong> (${esc(fmtData(x.prezzoOggi.data))})` : ""}</p>
-        ${x.nota ? `<p class="pn">${inline(x.nota)}</p>` : ""}
-        <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Il test</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}${voceDaProdotto(x.nome) ? ` · <button type="button" class="linkbtn inl" data-ln="${esc(x.nome)}">＋ Lista nascita</button>` : ""}</p>
+      <div class="pick-h">
+        <div class="voto" title="${esc(SCALA[x.scala] || "")}"><span class="pos">${i + 1}°</span><b>${esc(x.voto)}</b><small>${esc(x.scala)}</small></div>
+        <div class="pick-b">
+          ${badge ? `<div class="badges">${badge}</div>` : ""}
+          <h3>${esc(x.nome)}</h3>
+          <p class="meta">${esc(x.fonte)} · ${esc(meseIso(x.data))}${x.dettagli ? ` · ${esc(x.dettagli)}` : ""}</p>
+        </div>
       </div>
+      ${x.perche ? `<p class="why"><strong>Perché è qui</strong> ${inline(x.perche)}</p>` : x.nota ? `<p class="why">${inline(x.nota)}</p>` : ""}
+      ${pc}
+      <p class="price">💶 ${prezzo}${oggi}</p>
+      ${x.riassuntoDa ? `<p class="meta small">Pro e contro riassunti da: ${esc(x.riassuntoDa)} (fonte secondaria).</p>` : ""}
+      <p class="acts"><a href="${esc(x.link)}" target="_blank" rel="noopener">Fonte originale</a>${x.q ? ` · <a href="${idealo(x.q)}" target="_blank" rel="noopener">Prezzo di oggi</a>` : ""}${voceDaProdotto(x.nome) ? ` · <button type="button" class="linkbtn inl" data-ln="${esc(x.nome)}">＋ Lista nascita</button>` : ""}</p>
     </div>`;
   }
   function gruppoAdesso(cat, f) {
@@ -829,7 +843,7 @@
           <p class="muted small" style="margin:0">Norma: ${esc(cat.norma)}</p></section>
         ${cat.nessunTest ? `<div class="card empty left">${esc(cat.nessunTest)}</div>` : ""}
         ${cat.gruppi.map((g, i) => `<h2 class="sec">${esc(g.nome)}${i === ga && f.stato === "nato" && cat.id === "seggiolino" ? ` <span class="pill on">Adesso</span>` : ""}</h2>
-          <div class="glist picks">${g.scelte.map(cardScelta).join("")}</div>`).join("")}
+          <div class="glist picks">${g.scelte.map((x, i) => cardScelta(x, i)).join("")}</div>`).join("")}
         ${cat.avviso ? `<p class="hint">${esc(cat.avviso)}</p>` : ""}
         <section class="card"><h2>Come scegliere</h2>${lista(cat.consigli)}</section>
         ${cat.altri?.length ? `<h2 class="sec">🔎 E i marchi noti?</h2><div class="glist">${cat.altri.map(x => `
