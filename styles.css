@@ -428,3 +428,8 @@ img { max-width: 100%; }
 .leggimi .disc p { font-size: 14px; color: var(--ink-2); }
 .leggimi .disc .lbl { color: var(--ink); }
 .leggimi .btn { margin-top: 8px; }
+
+/* passi numerati (istruzioni invito iPhone) */
+ol.passi { padding-left: 22px; margin: 10px 0 4px; }
+ol.passi li { margin-bottom: 8px; }
+.sheet input[type=text] { width: 100%; padding: 13px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 16px; }

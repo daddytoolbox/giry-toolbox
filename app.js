@@ -221,8 +221,11 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=18" alt=""><h1>Benvenuti in Giry toolbox</h1>
-        <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>`
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=19" alt=""><h1>Benvenuti in Giry toolbox</h1>
+        <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
+      <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
+        <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
+        <button class="btn small" type="button" id="ho-invito">Ho un invito</button></section>`
         : `<a class="back" href="#/oggi">← Indietro</a><h1 class="plain">Impostazioni</h1>`}
       <form id="f" class="card">
         <label>Situazione</label>
@@ -258,6 +261,7 @@
       location.hash = "#/oggi"; render();
     });
     document.getElementById("condividi2")?.addEventListener("click", condividi);
+    document.getElementById("ho-invito")?.addEventListener("click", foglioHoInvito);
     eventiSync(() => vistaProfilo(false));
     document.getElementById("installa")?.addEventListener("click", async () => { if (!installa) return; installa.prompt(); try { await installa.userChoice; } catch {} installa = null; vistaProfilo(false); });
     document.getElementById("reset")?.addEventListener("click", () => { if (confirm("Vuoi togliere tutte le spunte?")) { store.set("check", {}); store.set("todo", {}); } });
@@ -1221,15 +1225,68 @@
       unisci(remoto);
       const S = store.get("sync", null); S.rev = j.rev; S.ultimo = Date.now(); store.set("sync", S);
       store.set("sync:sporco", true); sincronizza();
+      if (iOS() && !installata()) { dopoInvitoSafari(`${id}.${chiave}.${token}`); return; }
       toast("Profilo condiviso collegato ✓");
     } catch (e) {
       toast(e.message === "perso" ? "Questo link non è più valido: chiedi quello nuovo." : "Non riesco a collegarmi: controlla la connessione e riapri il link.");
     }
     render();
   }
+  // accetta il link completo o solo il codice id.chiave.token
+  const codiceDa = t => {
+    const s = (t || "").trim();
+    const m = s.match(/unisciti\/([\w-]+\.[\w-]+\.[\w-]+)/) || s.match(/^([\w-]{8,}\.[\w-]{20,}\.[\w-]{8,})$/);
+    return m ? m[1] : null;
+  };
+  function foglioHoInvito() {
+    const bg = document.createElement("div"); bg.className = "sheet-bg";
+    bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="hi-t"><div class="grab"></div>
+      <h2 id="hi-t">Hai ricevuto un invito?</h2>
+      <p class="muted small" style="margin:0 0 10px">Tieni premuto sul link nel messaggio dell'altro genitore, scegli <strong>Copia</strong> e torna qui.</p>
+      ${navigator.clipboard?.readText ? `<button class="btn" type="button" data-a="incolla" style="margin-top:0">📋 Incolla l'invito</button>` : ""}
+      <label for="hi-in" class="muted small" style="display:block;margin:12px 0 6px">oppure incollalo qui</label>
+      <input type="text" id="hi-in" placeholder="https://…#/unisciti/…" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="btn" type="button" data-a="collega">Collega</button>
+      <button class="btn ghost" type="button" data-a="chiudi">Annulla</button></div>`;
+    const vai = t => {
+      const c = codiceDa(t);
+      if (!c) { toast("Non trovo un invito valido: copia il link intero."); return; }
+      bg.remove(); location.hash = "#/unisciti/" + c;
+    };
+    bg.addEventListener("click", async ev => {
+      if (ev.target === bg) return bg.remove();
+      const b = ev.target.closest("[data-a]"); if (!b) return;
+      if (b.dataset.a === "chiudi") bg.remove();
+      if (b.dataset.a === "collega") vai(bg.querySelector("#hi-in").value);
+      if (b.dataset.a === "incolla") {
+        try { const t = await navigator.clipboard.readText(); bg.querySelector("#hi-in").value = t; vai(t); }
+        catch { toast("Non posso leggere gli appunti: incolla il link nel campo."); bg.querySelector("#hi-in").focus(); }
+      }
+    });
+    document.body.appendChild(bg);
+  }
+  // iPhone: Safari e l'app sulla schermata Home hanno memorie separate
+  function dopoInvitoSafari(codice) {
+    const link = `${location.origin}${location.pathname}#/unisciti/${codice}`;
+    $app.innerHTML = `
+      <section class="card soft c1" style="margin-top:16px"><p class="kicker">✓ Profilo condiviso collegato</p>
+        <p style="margin:0">Funziona già qui in Safari.</p></section>
+      <section class="card">
+        <h2>Per averla come app sull'iPhone</h2>
+        <p class="muted small">Su iPhone l'app sulla schermata Home non vede quello che fai in Safari: serve passarle l'invito una volta.</p>
+        <ol class="passi">
+          <li>Tocca <strong>Copia l'invito</strong> qui sotto.</li>
+          <li>Se l'app non è ancora installata: <strong>Condividi</strong> (quadrato con la freccia) → <strong>Aggiungi alla schermata Home</strong>.</li>
+          <li>Apri l'app dalla Home e tocca <strong>Ho un invito</strong> → <strong>Incolla l'invito</strong>.</li>
+        </ol>
+        <button class="btn" type="button" id="copia-inv"><span>📋</span><span>Copia l'invito</span></button>
+        <a class="btn ghost" href="#/oggi" style="text-align:center;text-decoration:none">Continua in Safari</a>
+      </section>`;
+    document.getElementById("copia-inv").addEventListener("click", e => copia(link, e.currentTarget));
+  }
   function foglioInvito(S) {
     const link = linkInvito(S), e = encodeURIComponent;
-    const testo = "Ti invito a condividere il nostro profilo su Giry toolbox: lista nascita e calendario si aggiornano su entrambi i telefoni. Apri questo link:";
+    const testo = "Ti invito a condividere il nostro profilo su Giry toolbox: lista nascita e calendario si aggiornano su entrambi i telefoni. Apri questo link (su iPhone, se hai già l'app sulla schermata Home: copia il link, apri l'app e tocca \"Ho un invito\"):";
     const bg = document.createElement("div"); bg.className = "sheet-bg";
     bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="inv-t"><div class="grab"></div>
       <h2 id="inv-t">Invita l'altro genitore</h2>
@@ -1259,7 +1316,7 @@
     if (!S) return `<section class="card soft c3"><p class="kicker">👫 Profilo condiviso</p>
       <p>Usate l'app in due? Invita l'altro genitore: profilo, lista nascita, calendario e liste si aggiornano da soli su entrambi i telefoni.</p>
       <p class="muted small">I dati sono cifrati sul telefono prima di partire: il server conserva solo un blocco illeggibile.</p>
-      <button class="btn small" type="button" id="sync-crea">Invita l'altro genitore</button></section>`;
+      <div class="row2"><button class="btn small" type="button" id="sync-crea">Invita l'altro genitore</button><button class="btn small ghost" type="button" id="sync-ho">Ho un invito</button></div></section>`;
     if (S.perso) return `<section class="card soft c4"><p class="kicker">👫 Profilo condiviso</p>
       <p>Il profilo condiviso non esiste più (forse è stato creato un nuovo link). I dati restano su questo telefono.</p>
       <button class="btn small" type="button" id="sync-scollega">Scollega</button></section>`;
@@ -1276,6 +1333,7 @@
       catch { toast("Non riesco a raggiungere il server: riprova tra poco."); rifai(); }
     });
     document.getElementById("sync-invita")?.addEventListener("click", () => foglioInvito(store.get("sync", null)));
+    document.getElementById("sync-ho")?.addEventListener("click", foglioHoInvito);
     document.getElementById("sync-nuovo")?.addEventListener("click", async () => {
       if (!confirm("Creo un nuovo link: quello vecchio smetterà di funzionare e dovrai rimandare il nuovo all'altro genitore. Procedo?")) return;
       try { await sincronizza(); const S = await creaSpazio("nuovo"); rifai(); foglioInvito(S); }
