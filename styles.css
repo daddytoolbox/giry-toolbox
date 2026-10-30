@@ -450,3 +450,10 @@ ol.passi li { margin-bottom: 8px; }
 .pick .price { font-size: 14.5px; margin: 0 0 6px; padding: 8px 12px; border-radius: 12px; background: var(--bg); }
 .pick .price small { color: var(--ink-2); }
 .pick .meta.small { font-size: 12.5px; }
+
+/* farmaci in gravidanza */
+.card.disclaimer { border: 2px solid var(--c4i); background: var(--c4); }
+.card.disclaimer .kicker { color: var(--c4i); }
+.card.disclaimer p { font-size: 15px; }
+.hint.warn { background: var(--c4); color: var(--ink); }
+.hint.warn ul.dots li::before { background: var(--c4i); }

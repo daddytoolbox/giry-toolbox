@@ -65,6 +65,7 @@
     vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
     acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" },
     nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" },
+    farmaci:   { nome: "Farmaci in gravidanza", emo: "💊", col: "c3", sub: "Cosa dicono AIFA, EMA e ISS" },
     calendario: { nome: "Calendario", emo: "📅", col: "c3", sub: "Visite, ecografie e appuntamenti, per entrambi" }
   };
   const ICON = {
@@ -221,7 +222,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=21" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=22" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -382,7 +383,8 @@
   function vistaGuide(f) {
     const fasi = [...new Set(schedePerFase(f).map(s => s.fase))];
     $app.innerHTML = testata("guide", "Guide", SEZ.guide.sub) +
-      fasi.map(fs => `<h2 class="sec">${esc(fs)}</h2><div class="glist">${C.schede.filter(s => s.fase === fs).map(riga).join("")}</div>`).join("");
+      fasi.map(fs => `<h2 class="sec">${esc(fs)}</h2><div class="glist">${C.schede.filter(s => s.fase === fs).map(riga).join("")}</div>`).join("") +
+      (C.farmaci ? `<h2 class="sec">Salute</h2><a class="card link soft c3" href="#/farmaci"><p class="kicker">💊 Informazione generale</p><h2>Farmaci in gravidanza</h2><p>Disturbi comuni, vaccini e integratori: cosa dicono le fonti ufficiali →</p></a>` : "");
   }
   function notaSesso() {
     const sx = store.get("profilo", {}).sesso;
@@ -497,6 +499,7 @@
         <section class="card"><h2>${c.icona} ${esc(c.nome)}</h2>${idee.map(ideaRow).join("")}
           ${c.avvertenza ? `<p class="hint">${esc(c.avvertenza)}</p>` : ""}${fonti(c.fonti)}</section>`; }).join("")}
       ${f.stato === "attesa" && filtraEventi(f, "gravidanza").length ? `<h2 class="sec">In zona</h2>${filtraEventi(f, "gravidanza").map(cardEvento).join("")}` : ""}
+      ${C.farmaci && f.stato === "attesa" ? `<a class="card link soft c3" href="#/farmaci"><p class="kicker">💊 Informazione generale</p><h2>Farmaci in gravidanza</h2><p>Disturbi comuni, vaccini e integratori: cosa dicono le fonti ufficiali →</p></a>` : ""}
       <div class="card soft c4">${esc(C.perTe.nota)}</div>`;
     $app.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { store.set("perteCat", b.dataset.c); vistaMamma(f); }));
   }
@@ -790,6 +793,39 @@
       if (location.hash !== "#/vicino") return;
       lista = r; finito = fin; errori = err; disegna();
     });
+  }
+
+
+  // ---------- farmaci in gravidanza (solo informazione generale) ----------
+  function vistaFarmaci() {
+    const F = C.farmaci; if (!F) { location.hash = "#/guide"; return; }
+    const ok = store.get("farmaciOk", false);
+    const blocco = (o, cls = "") => `<section class="card ${cls}"><h2>${esc(o.titolo)}</h2>${lista(o.punti)}${fonti(o.fonti)}</section>`;
+    const voce = v => `<details class="card acc">
+        <summary><div><h3>${v.emo} ${esc(v.titolo)}</h3></div></summary>
+        <p class="lbl">Prima di tutto</p>${lista(v.prima)}
+        <p class="lbl">Cosa dicono le fonti</p>${lista(v.fonti_dicono)}
+        ${v.attenzione?.length ? `<div class="hint warn">${lista(v.attenzione)}</div>` : ""}
+        ${fonti(v.fonti)}
+      </details>`;
+    $app.innerHTML = `<a class="back" href="#/guide">← Guide</a>` + testata("farmaci", F.titolo, "Informazione generale da fonti ufficiali") + `
+      <section class="card disclaimer" role="note" aria-labelledby="disc-t">
+        <p class="kicker" id="disc-t">⚠️ Leggi prima</p>
+        ${F.disclaimer.map(p => `<p>${inline(p)}</p>`).join("")}
+        ${ok ? "" : `<button class="btn" type="button" id="farm-ok">Ho letto e capito</button>`}
+      </section>
+      ${ok ? `
+        <p class="muted">${esc(F.intro)}</p>
+        <section class="card soft c4"><p class="kicker">🚑 Quando non cercare un farmaco</p><p style="margin:0">${esc(F.urgenze)}</p></section>
+        <h2 class="sec">Disturbi comuni</h2>
+        ${F.voci.map(voce).join("")}
+        <h2 class="sec">Prevenzione</h2>
+        ${blocco(F.integratori)}${blocco(F.vaccini)}
+        <h2 class="sec">Attenzione</h2>
+        ${blocco(F.evitare, "soft c4")}
+        ${blocco(F.chiedere, "soft c5")}
+        <p class="foot">Fonti verificate il ${fmtData(F.verificato)}. Le indicazioni possono cambiare: in caso di dubbio vale quello che dice chi ti segue.</p>` : ""}`;
+    document.getElementById("farm-ok")?.addEventListener("click", () => { store.set("farmaciOk", true); vistaFarmaci(); });
   }
 
   // ---------- acquisti smart ----------
@@ -1584,7 +1620,7 @@
   function barra(f, rotta) {
     const quinta = f && f.stato === "nato" ? "attivita" : "guide";
     const tabs = ["oggi", quinta, "organizza", "mamma", "papa"];
-    const attiva = rotta === "guida" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
+    const attiva = rotta === "guida" || rotta === "farmaci" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
     $tab.innerHTML = tabs.map(k => `<a href="#/${k}" class="${k === attiva ? "on" : ""}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>
       <span>${SEZ[k].nome}</span></a>`).join("");
@@ -1599,7 +1635,7 @@
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario, farmaci: vistaFarmaci }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 
