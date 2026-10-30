@@ -222,7 +222,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=22" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=23" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -797,6 +797,23 @@
 
 
   // ---------- farmaci in gravidanza (solo informazione generale) ----------
+  function bloccoAntibiotici(AB) {
+    const LIV = { prima: "c1", ok: "c3", periodo: "c2", ultima: "c4", cautela: "c0" };
+    const voce = v => `<details class="card acc ab">
+        <summary><div><span class="tag ${LIV[v.livello]}">${esc(AB.livelli[v.livello])}</span>
+          <h3>${esc(v.classe)}</h3><small class="muted">${esc(v.esempi)}</small></div></summary>
+        ${lista(v.punti)}${fonti(v.fonti)}
+      </details>`;
+    return `<h2 class="sec">💊 ${esc(AB.titolo)}</h2>
+      <section class="card soft c3"><p>${inline(AB.intro)}</p></section>
+      <section class="card"><h2>Prima di tutto</h2>${lista(AB.principi)}</section>
+      <div class="ab-leg">${Object.entries(AB.livelli).map(([k, t]) => `<span class="tag ${LIV[k]}">${esc(t)}</span>`).join("")}</div>
+      <h3 class="sub">Per bocca o in vena</h3>
+      ${AB.sistemici.map(voce).join("")}
+      <h3 class="sub">Sulla pelle, negli occhi</h3>
+      ${AB.topici.map(voce).join("")}
+      <p class="hint">${esc(AB.nota)}</p>`;
+  }
   function vistaFarmaci() {
     const F = C.farmaci; if (!F) { location.hash = "#/guide"; return; }
     const ok = store.get("farmaciOk", false);
@@ -819,6 +836,7 @@
         <section class="card soft c4"><p class="kicker">🚑 Quando non cercare un farmaco</p><p style="margin:0">${esc(F.urgenze)}</p></section>
         <h2 class="sec">Disturbi comuni</h2>
         ${F.voci.map(voce).join("")}
+        ${F.antibiotici ? bloccoAntibiotici(F.antibiotici) : ""}
         <h2 class="sec">Prevenzione</h2>
         ${blocco(F.integratori)}${blocco(F.vaccini)}
         <h2 class="sec">Attenzione</h2>

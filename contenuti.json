@@ -1589,6 +1589,230 @@
      "u": "https://www.policlinicogemelli.it/news-eventi/telefono-rosso-da-30-anni-un-servizio-a-domicilio-a-favore-della-maternita-e-della-vita-nascente"
     }
    ]
+  },
+  "antibiotici": {
+   "titolo": "Antibiotici",
+   "intro": "Gli antibiotici in gravidanza si prendono **solo su prescrizione**. Qui trovi cosa dicono le fonti ufficiali sulle classi più usate, per capire meglio la scelta del medico e fargli le domande giuste. Non serve per scegliere da sola.",
+   "principi": [
+    "Servono solo contro i **batteri**: raffreddore, influenza e la maggior parte dei mal di gola sono virali e non migliorano con un antibiotico.",
+    "**Un'infezione batterica non curata può essere più pericolosa del farmaco**: per esempio un'infezione urinaria può arrivare ai reni e aumentare il rischio di parto pretermine. Molti antibiotici sono ben studiati in gravidanza.",
+    "Di' sempre che sei incinta, anche al dentista, al dermatologo e in farmacia.",
+    "Segui durata e modalità indicate da chi li prescrive. Non usare antibiotici avanzati da cure precedenti e non darli ad altri.",
+    "Quale antibiotico usare dipende dal tipo di infezione, dalle allergie, dagli esami (per esempio l'urinocoltura) e dalla settimana di gravidanza: per questo la scelta spetta al medico."
+   ],
+   "livelli": {
+    "prima": "Tra i più usati",
+    "ok": "Usabile se prescritto",
+    "periodo": "Con limiti di periodo",
+    "ultima": "Solo se non ci sono alternative",
+    "cautela": "Su prescrizione, con cautela"
+   },
+   "sistemici": [
+    {
+     "classe": "Penicilline",
+     "esempi": "amoxicillina, ampicillina, amoxicillina + acido clavulanico, penicillina V",
+     "livello": "prima",
+     "punti": [
+      "Per l'AIFA amoxicillina e ampicillina sono antibiotici di **prima scelta** in gravidanza.",
+      "Il servizio di informazione teratologica britannico (UKTIS) non segnala preoccupazioni per il bambino; non servono controlli aggiuntivi oltre all'ecografia morfologica."
+     ],
+     "fonti": [
+      {
+       "t": "AIFA – Antibiotici in gravidanza? \"Sì, se necessario\"",
+       "u": "https://www.aifa.gov.it/-/antibiotici-in-gravidanza-si-se-necessario-aggiornate-le-schede-sul-sito-aifa-dedicato"
+      },
+      {
+       "t": "UKTIS/bumps – Penicillin antibiotics",
+       "u": "https://medicinesinpregnancy.org/leaflets-a-z/amoxicillin"
+      }
+     ]
+    },
+    {
+     "classe": "Cefalosporine",
+     "esempi": "cefalexina, cefuroxima, ceftriaxone",
+     "livello": "ok",
+     "punti": [
+      "La maggior parte degli studi non mostra danni per il bambino.",
+      "Alcuni studi hanno ipotizzato un lieve aumento di difetti cardiaci con l'uso nelle prime settimane, ma la maggioranza non lo conferma: il medico ne valuta rischi e benefici."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Cephalosporin antibiotics",
+       "u": "https://medicinesinpregnancy.org/leaflets-a-z/cephalosporins/"
+      }
+     ]
+    },
+    {
+     "classe": "Macrolidi",
+     "esempi": "eritromicina, azitromicina, claritromicina",
+     "livello": "ok",
+     "punti": [
+      "Nessun problema importante segnalato, in particolare per l'**eritromicina**, la più studiata in gravidanza.",
+      "Per azitromicina e claritromicina i dati sono meno numerosi; l'AIFA non ha trovato nuovi segnali e ne considera possibile l'uso su indicazione medica."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Macrolide antibiotics",
+       "u": "https://www.medicinesinpregnancy.org/leaflets-a-z/macrolides"
+      },
+      {
+       "t": "AIFA – Antibiotici in gravidanza? \"Sì, se necessario\"",
+       "u": "https://www.aifa.gov.it/-/antibiotici-in-gravidanza-si-se-necessario-aggiornate-le-schede-sul-sito-aifa-dedicato"
+      }
+     ]
+    },
+    {
+     "classe": "Clindamicina",
+     "esempi": "clindamicina per bocca o in vena",
+     "livello": "ok",
+     "punti": [
+      "L'AIFA la indica come **seconda scelta**, quando penicilline, cefalosporine e macrolidi non sono efficaci (per esempio in alcune infezioni delle membrane)."
+     ],
+     "fonti": [
+      {
+       "t": "AIFA – Antibiotici in gravidanza? \"Sì, se necessario\"",
+       "u": "https://www.aifa.gov.it/-/antibiotici-in-gravidanza-si-se-necessario-aggiornate-le-schede-sul-sito-aifa-dedicato"
+      }
+     ]
+    },
+    {
+     "classe": "Metronidazolo",
+     "esempi": "usato per vaginosi batterica, infezioni dentali e della pelle, Helicobacter",
+     "livello": "ok",
+     "punti": [
+      "Ben studiato in gravidanza: non è associato a malformazioni, morte fetale, basso peso o parto pretermine.",
+      "Alcuni studi indicano un possibile aumento di aborti spontanei se preso all'inizio, ma non è chiaro se dipenda dal farmaco o dall'infezione stessa."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Metronidazole (ottobre 2022)",
+       "u": "https://medicinesinpregnancy.org/leaflets-a-z/metronidazole/"
+      }
+     ]
+    },
+    {
+     "classe": "Nitrofurantoina",
+     "esempi": "per le infezioni urinarie",
+     "livello": "periodo",
+     "punti": [
+      "Spesso è la **prima scelta per le infezioni urinarie prima della 28ª settimana**; non sono noti problemi per il bambino.",
+      "Nel **terzo trimestre** di solito si evita, perché raramente può abbassare i globuli rossi del neonato. Può comunque essere prescritta se gli esami mostrano che è l'antibiotico migliore."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Nitrofurantoin",
+       "u": "https://medicinesinpregnancy.org/Medicine--pregnancy/Nitrofurantoin/"
+      }
+     ]
+    },
+    {
+     "classe": "Trimetoprim e co-trimossazolo",
+     "esempi": "trimetoprim, trimetoprim + sulfametossazolo",
+     "livello": "periodo",
+     "punti": [
+      "Di solito si **evita nel primo trimestre** perché può abbassare i folati, con un piccolo aumento del rischio di alcune malformazioni come la spina bifida.",
+      "Se serve nelle prime settimane, il medico lo associa ad acido folico ad alto dosaggio. In genere si scelgono prima altri antibiotici."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Trimethoprim",
+       "u": "https://www.medicinesinpregnancy.org/leaflets-a-z/trimethoprim/"
+      }
+     ]
+    },
+    {
+     "classe": "Tetracicline",
+     "esempi": "doxiciclina, minociclina, limeciclina (spesso usate per l'acne)",
+     "livello": "periodo",
+     "punti": [
+      "L'uso nelle prime settimane non risulta dannoso per il bambino.",
+      "Di solito si **evitano dopo circa la 13ª settimana**, perché possono macchiare i denti da latte che si stanno formando. Eccezione: infezioni gravi senza alternative.",
+      "Se le usavi per l'acne e scopri di essere incinta, parlane subito con il medico."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Doxycycline",
+       "u": "https://medicinesinpregnancy.org/leaflets-a-z/doxycycline"
+      }
+     ]
+    },
+    {
+     "classe": "Fluorochinoloni",
+     "esempi": "ciprofloxacina, levofloxacina, moxifloxacina, ofloxacina",
+     "livello": "ultima",
+     "punti": [
+      "Non ci sono buone prove che danneggino il bambino, ma possono dare **effetti collaterali seri alla mamma** (tendini, muscoli, nervi, umore).",
+      "Si usano solo per infezioni gravi quando non ci sono alternative adatte."
+     ],
+     "fonti": [
+      {
+       "t": "UKTIS/bumps – Quinolones (ofloxacin)",
+       "u": "https://www.medicinesinpregnancy.org/leaflets-a-z/ofloxacin/"
+      }
+     ]
+    }
+   ],
+   "topici": [
+    {
+     "classe": "Acido fusidico (crema)",
+     "esempi": "per infezioni della pelle come l'impetigine",
+     "livello": "ok",
+     "punti": [
+      "Secondo la scheda tecnica può essere usato in gravidanza: l'assorbimento attraverso la pelle è trascurabile."
+     ],
+     "fonti": [
+      {
+       "t": "Scheda tecnica Fucidin crema, sez. 4.6 (EMC)",
+       "u": "https://www.medicines.org.uk/emc/product/5510/smpc"
+      }
+     ]
+    },
+    {
+     "classe": "Mupirocina (pomata o crema)",
+     "esempi": "per impetigine e piccole infezioni cutanee, anche nel naso",
+     "livello": "cautela",
+     "punti": [
+      "Gli studi sugli animali non mostrano danni, ma **non c'è esperienza clinica** in gravidanza: la scheda tecnica dice di usarla solo se il beneficio supera il possibile rischio."
+     ],
+     "fonti": [
+      {
+       "t": "Scheda tecnica Bactroban pomata, sez. 4.6 (EMC)",
+       "u": "https://www.medicines.org.uk/emc/product/1156/smpc/print"
+      }
+     ]
+    },
+    {
+     "classe": "Clindamicina (gel per l'acne)",
+     "esempi": "da sola o con benzoile perossido",
+     "livello": "cautela",
+     "punti": [
+      "Non ci sono dati sull'uso sulla pelle in gravidanza; quelli per le altre vie non mostrano effetti avversi. La scheda tecnica chiede cautela: decide il medico.",
+      "Ricorda che altri prodotti per l'acne, come i retinoidi, vanno evitati (vedi \"Da evitare\")."
+     ],
+     "fonti": [
+      {
+       "t": "Scheda tecnica Zindaclin gel, sez. 4.6 (EMC)",
+       "u": "https://www.medicines.org.uk/emc/product/101155/smpc"
+      }
+     ]
+    },
+    {
+     "classe": "Cloramfenicolo (collirio o pomata oftalmica)",
+     "esempi": "per congiuntiviti batteriche",
+     "livello": "ok",
+     "punti": [
+      "Secondo il servizio sanitario inglese si può usare in gravidanza: ne passa nel sangue una quantità minima.",
+      "La scelta dipende dalla gravità dell'infezione: chiedi al medico o al farmacista."
+     ],
+     "fonti": [
+      {
+       "t": "NHS – Chloramphenicol: pregnancy, breastfeeding and fertility",
+       "u": "https://www.nhs.uk/medicines/chloramphenicol/pregnancy-breastfeeding-and-fertility-while-taking-chloramphenicol/"
+      }
+     ]
+    }
+   ],
+   "nota": "Mancano antibiotici usati soprattutto in ospedale (per esempio aminoglicosidi e vancomicina): in quei casi la scelta è sempre dello specialista. Per qualsiasi principio attivo trovi la scheda ufficiale sul sito AIFA farmaciegravidanza.gov.it."
   }
  }
 }
