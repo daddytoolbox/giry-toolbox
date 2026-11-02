@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-10-29",
- "richiamiVerificati": "2026-10-28",
+ "aggiornato": "2026-11-02",
+ "richiamiVerificati": "2026-11-02",
  "intro": "Qui il marchio non conta: contano i test di laboratorio indipendenti, le sostanze nocive e il prezzo. Ogni consiglio riporta chi l'ha testato, quando e quanto costava.",
  "metodo": [
   "**Test indipendenti prima di tutto**: ADAC, ÖAMTC e TCS (seggiolini, due volte l'anno), Stiftung Warentest, Öko-Test, Altroconsumo, Which?.",
@@ -53,7 +53,11 @@
         "Senza base, attenzione al passaggio della cintura: è facile sbagliarlo"
        ],
        "dettagli": "Ovetto 4,4 kg, base 4,1 kg · 40–87 cm (fino a circa 15 mesi)",
-       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877"
+       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/foppapedretti-disk-infant-i-size-tech-i-size-87042877",
+       "prezzoOggi": {
+        "valore": "328 € (ovetto 179 € + base 149 €)",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Nuna Pipa Urbn",
@@ -72,7 +76,11 @@
         "Altroconsumo non pubblica gratis i voti parziali: punti deboli non verificabili.",
         "Per gli attacchi Isofix serve un'auto che li abbia"
        ],
-       "link": "https://www.greenme.it/?p=1359536"
+       "link": "https://www.greenme.it/?p=1359536",
+       "prezzoOggi": {
+        "valore": "299 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Joie i-Gemm 3 + i-Base Encore",
@@ -115,7 +123,11 @@
        "contro": [
         "Altroconsumo non pubblica gratis i voti parziali: punti deboli non verificabili."
        ],
-       "link": "https://www.greenme.it/?p=1359536"
+       "link": "https://www.greenme.it/?p=1359536",
+       "prezzoOggi": {
+        "valore": "194,99 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Britax Römer Baby-Safe Core",
@@ -135,7 +147,11 @@
         "Non confonderlo con il Baby-Safe Pro, richiamato nell'ottobre 2026",
         "Altroconsumo non pubblica gratis i voti parziali: punti deboli non verificabili."
        ],
-       "link": "https://www.greenme.it/?p=1359536"
+       "link": "https://www.greenme.it/?p=1359536",
+       "prezzoOggi": {
+        "valore": "159,90 € (senza base)",
+        "data": "2026-11-02"
+       }
       }
      ]
     },
@@ -188,7 +204,11 @@
         "Solo Isofix con piede, su posti i-Size o auto in lista"
        ],
        "dettagli": "40–105 cm · dalla nascita a circa 4 anni",
-       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/cybex-sirona-ti-87043263"
+       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/cybex-sirona-ti-87043263",
+       "prezzoOggi": {
+        "valore": "399 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Maxi-Cosi MobiFix Pro",
@@ -238,7 +258,11 @@
         "Istruzioni migliorabili"
        ],
        "dettagli": "100–150 cm · dai 4 anni circa",
-       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/kinderkraft-junior-fix-2-i-size-87042848"
+       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/kinderkraft-junior-fix-2-i-size-87042848",
+       "prezzoOggi": {
+        "valore": "89,90 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Cybex Pallas G3",
@@ -261,7 +285,11 @@
         "Imbottitura sottile, ingombrante, pesante (8,9 kg)"
        ],
        "dettagli": "76–150 cm · da circa 15 mesi a 12 anni",
-       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/cybex-pallas-g3-87043060"
+       "link": "https://www.oeamtc.at/tests/kindersitztest/kindersitztest-2026-fruehjahr/cybex-pallas-g3-87043060",
+       "prezzoOggi": {
+        "valore": "259 €",
+        "data": "2026-11-02"
+       }
       }
      ]
     }
@@ -415,10 +443,15 @@
         "Leggero e compatto da chiudere"
        ],
        "contro": [
-        "Stiftung Warentest non pubblica gratis i punti deboli dei singoli modelli."
+        "Stiftung Warentest non pubblica gratis i punti deboli dei singoli modelli.",
+        "Richiamo nel Regno Unito (ott 2025, OPSS 2510-0023) solo per i lotti HUB2CH-016488 – HUB2CH-016687: le ruote anteriori possono staccarsi. Il numero è sulla gamba posteriore destra, lato interno; se rientra, Joolz sostituisce gratis (gov.uk/product-safety-alerts-reports-recalls)."
        ],
        "riassuntoDa": "myPram (blog di un negozio)",
-       "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+       "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/",
+       "prezzoOggi": {
+        "valore": "849 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Maxi-Cosi Oxford+",
@@ -437,7 +470,11 @@
         "Stiftung Warentest non pubblica gratis i punti deboli dei singoli modelli."
        ],
        "riassuntoDa": "myPram (blog di un negozio)",
-       "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/"
+       "link": "https://www.test.de/Kinderwagen-im-Test-4805700-0/",
+       "prezzoOggi": {
+        "valore": "750 € (con navicella)",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Hauck Move N Care Set",
@@ -596,7 +633,11 @@
         "Il prezzo più alto tra le fasce promosse"
        ],
        "riassuntoDa": "heidelberg24 (giornale)",
-       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html",
+       "prezzoOggi": {
+        "valore": "127,90 € (taglia 6)",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Hoppediz fascia tessuta",
@@ -616,7 +657,11 @@
         "Bisogna imparare a legarla: conviene provarla con una consulente del portare"
        ],
        "riassuntoDa": "heidelberg24 (giornale)",
-       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html",
+       "prezzoOggi": {
+        "valore": "27 € (taglia 6, fine serie)",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Manduca Sling",
@@ -634,7 +679,11 @@
         "Bisogna imparare a legarla: conviene provarla con una consulente del portare"
        ],
        "riassuntoDa": "heidelberg24 (giornale)",
-       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html",
+       "prezzoOggi": {
+        "valore": "57,65 €",
+        "data": "2026-11-02"
+       }
       }
      ]
     },
@@ -681,7 +730,11 @@
         "Stiftung Warentest non pubblica gratis i punti deboli dei singoli modelli."
        ],
        "riassuntoDa": "myPram (blog di un negozio) e heidelberg24",
-       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html"
+       "link": "https://www.heidelberg24.de/verbraucher/einkauf-test/babytragen-im-test-stiftung-warentest-ergebnisse-mangelhaft-faellt-durch-94389618.html",
+       "prezzoOggi": {
+        "valore": "169 €",
+        "data": "2026-11-02"
+       }
       }
      ]
     }
@@ -773,7 +826,11 @@
         "Test del 2022: il modello in vendita oggi potrebbe essere cambiato"
        ],
        "riassuntoDa": "inFranken (giornale)",
-       "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576"
+       "link": "https://www.infranken.de/ratgeber/verbraucher/babyphones-bei-stiftung-warentest-das-sind-die-testsieger-art-5680576",
+       "prezzoOggi": {
+        "valore": "155 €",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "Philips Avent SCD833 (video)",
@@ -863,7 +920,11 @@
        "contro": [
         "Circa 78 € al mese in più del Lupilu"
        ],
-       "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test"
+       "link": "https://www.altroconsumo.it/vita-privata-famiglia/mamme-e-bimbi/consigli/pannolini-neonati-migliori-test",
+       "prezzoOggi": {
+        "valore": "≈ 0,36 € a pannolino (9,99 € per 28)",
+        "data": "2026-11-02"
+       }
       },
       {
        "nome": "By Amazon Ultra Dry",

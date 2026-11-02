@@ -222,7 +222,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=23" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=24" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
