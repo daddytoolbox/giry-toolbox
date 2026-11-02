@@ -222,7 +222,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=24" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=25" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -849,7 +849,7 @@
   // ---------- acquisti smart ----------
   const meseIso = ym => { const [y, m] = ym.split("-").map(Number); return new Date(y, m - 1, 15).toLocaleDateString("it-IT", { month: "long", year: "numeric" }); };
   const idealo = q => `https://www.idealo.it/MainSearchProductCategory.html?q=${encodeURIComponent(q)}`;
-  const SCALA = { ADAC: "voto ADAC · 0,5 ottimo → 5,5 insufficiente", Warentest: "voto Stiftung Warentest · 0,5 ottimo → 5,5 insufficiente", Altroconsumo: "punteggio Altroconsumo su 100" };
+  const SCALA = { ADAC: "voto ADAC · 0,5 ottimo → 5,5 insufficiente", Warentest: "voto Stiftung Warentest · 0,5 ottimo → 5,5 insufficiente", Altroconsumo: "punteggio Altroconsumo su 100", Consumentenbond: "test Consumentenbond (Paesi Bassi) · n.p. = voto numerico non pubblico, conta la posizione indicata dal laboratorio" };
   const prezzoNoto = p => p && !/non (pubblicato|indicato)/i.test(p);
   function cardScelta(x, i) {
     const badge = [x.top ? `<span class="badge b-top">La nostra scelta</span>` : "", x.conv ? `<span class="badge b-conv">Miglior rapporto</span>` : "", x.piccolo ? `<span class="badge b-small">Marchio piccolo</span>` : ""].join("");
@@ -863,7 +863,7 @@
       </div>` : "";
     return `<div class="pick">
       <div class="pick-h">
-        <div class="voto" title="${esc(SCALA[x.scala] || "")}"><span class="pos">${i + 1}°</span><b>${esc(x.voto)}</b><small>${esc(x.scala)}</small></div>
+        <div class="voto" title="${esc(SCALA[x.scala] || "")}"><span class="pos">${i + 1}°</span><b>${esc(x.voto)}</b><small${x.scala.length > 12 ? ` class="lunga"` : ""}>${esc(x.scala)}</small></div>
         <div class="pick-b">
           ${badge ? `<div class="badges">${badge}</div>` : ""}
           <h3>${esc(x.nome)}</h3>

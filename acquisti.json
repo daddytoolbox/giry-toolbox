@@ -777,13 +777,62 @@
    "quando": "Serve solo se il bimbo dorme lontano da voi. Nei primi 6 mesi dorme nella vostra stanza.",
    "norma": "Nessuna norma specifica di sicurezza: conta la qualità della trasmissione.",
    "consigli": [
-    "Un buon baby monitor solo audio batte quasi tutti i video: più portata, batteria più lunga, meno ritardi.",
+    "Un buon baby monitor solo audio batte quasi tutti i video: nel test Consumentenbond 2026 gli audio avevano in media 40 ore di batteria e 70 m di portata, i video 14 ore e spesso meno di 40 m.",
     "I modelli con app e Wi-Fi hanno ritardo nel suono e pongono problemi di privacy: scegli trasmissione radio diretta (DECT).",
     "Nessun monitor di respiro o di movimento riduce il rischio di SIDS: l'AAP sconsiglia di usarli con questo scopo."
    ],
    "gruppi": [
     {
-     "nome": "Ultimo test di laboratorio (Stiftung Warentest, 2022)",
+     "nome": "Test Consumentenbond (Paesi Bassi, luglio 2026) · 25 modelli",
+     "scelte": [
+      {
+       "nome": "Philips Avent SCD713 (solo audio)",
+       "voto": "n.p.",
+       "scala": "Consumentenbond",
+       "fonte": "Consumentenbond (sintesi di Stiftung Warentest)",
+       "data": "2026-07",
+       "prezzo": "da circa 90 € in Germania",
+       "q": "Philips Avent SCD713",
+       "top": true,
+       "perche": "Indicato dal Consumentenbond come il miglior baby monitor solo audio dei 25 provati; era tra i migliori anche nel test Warentest 2022.",
+       "pro": [
+        "Suono chiaro e nitido",
+        "Batteria della parte genitore di circa 113 ore",
+        "Portata ampia: collegamento perso solo a 130 m"
+       ],
+       "contro": [
+        "Possibili disturbi già da 60 m",
+        "Voto numerico del Consumentenbond non pubblico (a pagamento)"
+       ],
+       "riassuntoDa": "Stiftung Warentest (sintesi dei risultati del Consumentenbond)",
+       "link": "https://www.test.de/Babyphones-im-Test-Die-Einfachen-sind-die-Besten-6322300-0/"
+      },
+      {
+       "nome": "Alecto DVM2043 (video)",
+       "voto": "n.p.",
+       "scala": "Consumentenbond",
+       "fonte": "Consumentenbond (sintesi di Stiftung Warentest)",
+       "data": "2026-07",
+       "prezzo": "da circa 150 € in Germania",
+       "q": "Alecto DVM2043",
+       "perche": "Il migliore tra i 15 modelli con video; viene dopo il Philips perché, come tutti i video del test, ha batteria e portata molto inferiori a un buon audio e costa di più.",
+       "pro": [
+        "Buona qualità di suono e immagine",
+        "Immagine notturna particolarmente buona",
+        "Venduto anche in Italia (es. MediaWorld)"
+       ],
+       "contro": [
+        "Batteria di circa 21 ore",
+        "Portata media di soli 49 m",
+        "Voto numerico del Consumentenbond non pubblico (a pagamento)"
+       ],
+       "riassuntoDa": "Stiftung Warentest (sintesi dei risultati del Consumentenbond)",
+       "link": "https://www.test.de/Babyphones-im-Test-Die-Einfachen-sind-die-Besten-6322300-0/"
+      }
+     ]
+    },
+    {
+     "nome": "Test precedente (Stiftung Warentest, 2022)",
      "scelte": [
       {
        "nome": "Reer Nova (solo audio)",
@@ -855,9 +904,13 @@
      ]
     }
    ],
-   "avviso": "Test del 2022: alcuni modelli potrebbero essere usciti di produzione o aver cambiato prezzo.",
+   "avviso": "Il test più recente (Consumentenbond, luglio 2026) indica i migliori modelli ma non pubblica i voti numerici: li riportiamo come \"n.p.\" e mostriamo anche il test Warentest del 2022 con i voti. Alcuni modelli 2022 potrebbero essere usciti di produzione.",
    "evitare": [],
    "fonti": [
+    {
+     "t": "Stiftung Warentest – Babyphones im Test: Die Einfachen sind die Besten (risultati Consumentenbond, 26/07/2026)",
+     "u": "https://www.test.de/Babyphones-im-Test-Die-Einfachen-sind-die-Besten-6322300-0/"
+    },
     {
      "t": "Stiftung Warentest – Babyphones im Test (46 modelli)",
      "u": "https://www.test.de/Babyphones-im-Test-4840875-tabelle/"
@@ -865,6 +918,13 @@
     {
      "t": "AAP – Sleep-Related Infant Deaths: Updated 2022 Recommendations (PubMed)",
      "u": "https://pubmed.ncbi.nlm.nih.gov/35726558/"
+    }
+   ],
+   "altri": [
+    {
+     "nome": "Alecto DBX-125 (solo audio)",
+     "stato": "Indicato dal Consumentenbond (luglio 2026) come miglior rapporto qualità/prezzo tra gli audio (da circa 50 € in Germania; buona qualità del suono, batteria 42 ore, termometro preciso). Non è tra le scelte perché non l'abbiamo trovato in vendita in negozi italiani.",
+     "link": "https://www.test.de/Babyphones-im-Test-Die-Einfachen-sind-die-Besten-6322300-0/"
     }
    ]
   },
