@@ -5,7 +5,7 @@
   const $app = document.getElementById("app");
   const $tab = document.getElementById("tabbar");
   const DAY = 86400000;
-  let C = null, E = null, A = null;
+  let C = null, E = null, A = null; let O = null;
 
   // ---------- storage ----------
   const store = {
@@ -65,6 +65,7 @@
     vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
     acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" },
     nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" },
+    offerte:   { nome: "Offerte", emo: "🏷️", col: "c0", sub: "Volantini e promozioni per bambini in zona" },
     farmaci:   { nome: "Farmaci in gravidanza", emo: "💊", col: "c3", sub: "Cosa dicono AIFA, EMA e ISS" },
     calendario: { nome: "Calendario", emo: "📅", col: "c3", sub: "Visite, ecografie e appuntamenti, per entrambi" }
   };
@@ -216,13 +217,14 @@
     try { C = await get("contenuti.json"); } catch { C = null; }
     try { E = await get("eventi.json"); } catch { E = { eventi: [] }; }
     try { A = await get("acquisti.json"); } catch { A = null; }
+    try { O = await get("offerte.json"); } catch { O = null; }
   }
 
   // ---------- profilo ----------
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=25" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=26" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -468,6 +470,7 @@
         <p>Copia e manda a nonni e amici:</p>
         <div class="regali" id="regali">${regali.map(r => `<div>${esc(r)}</div>`).join("")}</div>
         <button class="btn small" id="copia">Copia la lista</button></section>` : ""}
+<a class="card link soft c0" href="#/offerte"><p class="kicker">🏷️ In zona</p><h2>Offerte per bambini</h2><p>Volantini attivi e prezzo al pezzo confrontato con i test →</p></a>
       <a class="card link soft c4" href="#/nascita"><p class="kicker">🎁 Lista nascita</p><h2>La vostra lista, pronta da condividere</h2><p>Tre prodotti consigliati per voce, oppure il vostro. PDF per WhatsApp →</p></a>
       <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Acquisti smart</p><h2>Seggiolino, passeggino, culla, marsupio</h2><p>Scelti dai test di laboratorio, non dal marchio →</p></a>
       <h2 class="sec">💡 Consigli smart</h2>
@@ -846,6 +849,53 @@
     document.getElementById("farm-ok")?.addEventListener("click", () => { store.set("farmaciOk", true); vistaFarmaci(); });
   }
 
+
+  // ---------- offerte (volantini e promozioni per bambini) ----------
+  const euro = n => n.toLocaleString("it-IT", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: n < 1 ? 3 : 2 });
+  const gg = iso => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "short" });
+  function vistaOfferte(f) {
+    if (!O) { $app.innerHTML = testata("offerte") + `<div class="card empty">Non riesco a caricare le offerte. Controlla la connessione.</div>`; return; }
+    const P = provAttuale(), sigla = P?.sigla || "TO", nome = P?.nome || O.province[sigla]?.nome || sigla;
+    const oggiIso = new Date().toISOString().slice(0, 10);
+    const attivo = x => (!x.al || x.al >= oggiIso) && (!x.dal || x.dal <= addDays(oggi(), 7).toISOString().slice(0, 10));
+    const testa = `<a class="back" href="#/organizza">← Organizza</a>` + testata("offerte", "Offerte per bambini", `${nome} · aggiornate il ${fmtData(O.aggiornato)}`);
+    if (!O.province[sigla]) {
+      $app.innerHTML = testa + `<section class="card soft c3"><p class="kicker">🗺️ Provincia non ancora coperta</p>
+        <p style="margin:0">Per ora raccogliamo le offerte solo per ${esc(Object.values(O.province).map(p => p.nome).join(", "))}. ${esc(nome)} non è la vostra provincia? <a href="#/profilo">Cambia città</a>.</p></section>`;
+      return;
+    }
+    const rif = O.riferimenti || [];
+    const conf = o => {
+      if (!o.pezzi) return "";
+      const u = o.prezzo / o.pezzi;
+      const r = o.cat === "pannolini" ? rif.find(x => x.cat === "pannolini") : null;
+      let verdetto = "";
+      if (r) verdetto = u <= r.unita ? `<span class="tag g">Conviene</span> sotto il prezzo normale del ${esc(r.nome)} (${euro(r.unita)})` : `<span class="tag c4">Non conviene</span> il ${esc(r.nome)} costa ${euro(r.unita)} a pezzo anche senza offerta`;
+      return `<p class="price">💶 <strong>${euro(u)}</strong> al pezzo${verdetto ? `<br>${verdetto}` : ""}</p>`;
+    };
+    const off = (O.offerte || []).filter(o => o.prov === sigla && attivo(o)).sort((x, y) => (x.al || "").localeCompare(y.al || ""));
+    const neg = (O.negozi || []).filter(n => n.prov === sigla && attivo(n));
+    const gruppo = (t, tipo) => { const l = neg.filter(n => tipo.includes(n.tipo)); return l.length ? `<h3 class="sub">${t}</h3><div class="glist">${l.map(n => `
+        <a class="grow" href="${esc(n.link)}" target="_blank" rel="noopener"><span class="gi ${n.tipo === "infanzia" ? "c4" : "c2"}">${n.tipo === "infanzia" ? "🧸" : "🛒"}</span>
+          <span class="gt"><strong>${esc(n.nome)}</strong><small>${esc(n.volantino)} · ${n.dal && n.dal > oggiIso ? `dal ${gg(n.dal)} ` : ""}fino al ${gg(n.al)}${n.dove ? ` · ${esc(n.dove)}` : ""}</small><small class="muted">${esc(n.fonte)}</small></span><span class="chev">›</span></a>`).join("")}</div>` : ""; };
+    $app.innerHTML = testa + `
+      <h2 class="sec">🔎 Offerte verificate</h2>
+      ${off.length ? off.map(o => `<section class="card">
+          <div class="tags"><span class="tag">${esc(o.negozio)}</span><span class="tag c2">fino al ${gg(o.al)}</span></div>
+          <h3>${esc(o.prodotto)}</h3>
+          <p class="meta">${esc(o.formato)} · <strong>${euro(o.prezzo)}</strong></p>
+          ${conf(o)}
+          <p class="meta small">Fonte: ${esc(o.fonte)}</p>
+          <a class="more" href="${esc(o.link)}" target="_blank" rel="noopener">Vedi la fonte →</a>
+        </section>`).join("") : `<div class="card empty">Nessuna offerta su singoli prodotti verificata in questi giorni. Sotto trovi i volantini attivi.</div>`}
+      <h2 class="sec">📰 Volantini attivi</h2>
+      ${gruppo("Negozi per l'infanzia", ["infanzia"])}
+      ${gruppo("Supermercati e discount", ["supermercato", "discount"])}
+      <p class="hint">${esc(O.nota)}</p>
+      <details class="card acc"><summary><div><span class="pill">Metodo</span><h3>Come le scegliamo</h3></div></summary>${lista(O.regole)}</details>
+      <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Prima di comprare</p><h2>Acquisti smart</h2><p>Quali prodotti vincono i test, a prescindere dalle offerte →</p></a>`;
+  }
+
   // ---------- acquisti smart ----------
   const meseIso = ym => { const [y, m] = ym.split("-").map(Number); return new Date(y, m - 1, 15).toLocaleDateString("it-IT", { month: "long", year: "numeric" }); };
   const idealo = q => `https://www.idealo.it/MainSearchProductCategory.html?q=${encodeURIComponent(q)}`;
@@ -912,6 +962,7 @@
     }
     $app.innerHTML = `<a class="back" href="#/organizza">← Organizza</a>` + testata("acquisti", "Acquisti smart", SEZ.acquisti.sub) + `
       <p class="muted">${esc(A.intro)}</p>
+      <a class="card link soft c0" href="#/offerte"><p class="kicker">🏷️ In zona</p><h2>Offerte per bambini</h2><p>Volantini attivi e prezzo al pezzo confrontato con i test →</p></a>
       <div class="chips">${cats.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${c.id === scelta}">${c.emo} ${esc(c.nome)}</button>`).join("")}</div>
       ${corpo}
       <details class="card acc"><summary><div><span class="pill">Metodo</span><h3>Come scegliamo</h3></div></summary>${lista(A.metodo)}</details>
@@ -1638,7 +1689,7 @@
   function barra(f, rotta) {
     const quinta = f && f.stato === "nato" ? "attivita" : "guide";
     const tabs = ["oggi", quinta, "organizza", "mamma", "papa"];
-    const attiva = rotta === "guida" || rotta === "farmaci" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
+    const attiva = rotta === "guida" || rotta === "farmaci" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" || rotta === "offerte" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
     $tab.innerHTML = tabs.map(k => `<a href="#/${k}" class="${k === attiva ? "on" : ""}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>
       <span>${SEZ[k].nome}</span></a>`).join("");
@@ -1653,7 +1704,7 @@
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario, farmaci: vistaFarmaci }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario, farmaci: vistaFarmaci, offerte: vistaOfferte }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 
