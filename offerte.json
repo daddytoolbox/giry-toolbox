@@ -1,31 +1,200 @@
 {
  "aggiornato": "2026-11-03",
- "province": {"TO": {"nome": "Torino", "dal": "2026-11-03"}},
+ "province": {
+  "TO": {
+   "nome": "Torino",
+   "dal": "2026-11-03"
+  }
+ },
  "regole": [
   "Mostriamo solo offerte con date di validità e una fonte da cui verificarle. I prezzi possono variare da punto vendita a punto vendita: controlla sempre il volantino del tuo negozio.",
   "Nessun negozio paga per comparire e i link non ci fanno guadagnare nulla.",
-  "Dove possibile calcoliamo il **prezzo al pezzo** e lo confrontiamo con i prodotti migliori dei test: un'offerta conviene solo se batte il prezzo normale dei migliori.",
-  "**Non pubblichiamo offerte sul latte artificiale**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche il latte di proseguimento."
- ],
- "riferimenti": [
-  {"cat": "pannolini", "nome": "Lupilu Premium (Lidl)", "unita": 0.14, "testo": "Miglior Acquisto Altroconsumo (ottobre 2026), prezzo normale circa 0,14 € a pannolino"},
-  {"cat": "pannolini-top", "nome": "Pampers Progressi Newborn", "unita": 0.40, "testo": "Migliore del Test Altroconsumo (ottobre 2026), prezzo normale circa 0,40 € a pannolino"}
+  "**Come ordiniamo la classifica.** Dove esiste un prodotto di riferimento dai test (oggi i pannolini) calcoliamo il **prezzo al pezzo** e lo confrontiamo con il prezzo normale del Miglior Acquisto: è il confronto più onesto, perché uno sconto su un prodotto caro può costare comunque più del prodotto migliore a prezzo pieno.",
+  "Per le altre categorie usiamo lo **sconto sul prezzo pieno** indicato dal volantino. È meno affidabile: il prezzo pieno lo decide il negozio.",
+  "Le offerte senza prezzo pieno né numero di pezzi finiscono in fondo con \"sconto ?\": sono vere, ma non possiamo dire quanto convengano.",
+  "Le foto dei prodotti vengono solo da archivi con licenza libera (Open Food Facts e progetti collegati); altrimenti mostriamo un'icona della categoria. Niente immagini dei negozi: caricarle ti farebbe tracciare dai loro server.",
+  "**Non pubblichiamo offerte sul latte artificiale né su biberon e tettarelle**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche latte di proseguimento, biberon e tettarelle."
  ],
  "negozi": [
-  {"prov": "TO", "nome": "Prénatal", "tipo": "infanzia", "volantino": "Ultime offerte del catalogo", "al": "2026-11-10", "dove": "Vinovo (Str. Debouchè) e altri punti vendita", "link": "https://www.doveconviene.it/carmagnola/volantino/prenatal", "fonte": "DoveConviene (aggregatore)"},
-  {"prov": "TO", "nome": "Iperbimbo", "tipo": "infanzia", "volantino": "Ultime offerte", "al": "2026-11-22", "dove": "Corso Bramante 14, Via Adamello 2, Settimo, Chieri", "link": "https://www.doveconviene.it/torino/volantino/iperbimbo", "fonte": "DoveConviene (aggregatore)"},
-  {"prov": "TO", "nome": "Iperbimbo", "tipo": "infanzia", "volantino": "Catalogo giocattoli", "al": "2026-12-31", "link": "https://www.doveconviene.it/torino/volantino/iperbimbo", "fonte": "DoveConviene (aggregatore)"},
-  {"prov": "TO", "nome": "Carrefour Iper", "tipo": "supermercato", "volantino": "Catalogo Giocattolo", "al": "2026-12-24", "link": "https://www.doveconviene.it/torino/volantino/carrefour-ipermercati", "fonte": "DoveConviene (aggregatore)"},
-  {"prov": "TO", "nome": "Coop", "tipo": "supermercato", "volantino": "Ultime offerte", "al": "2026-11-11", "link": "https://www.doveconviene.it/torino/volantino/coop", "fonte": "DoveConviene (aggregatore)"},
-  {"prov": "TO", "nome": "Esselunga", "tipo": "supermercato", "volantino": "Offerte d'Autunno", "dal": "2026-10-22", "al": "2026-11-04", "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html", "fonte": "Esselunga (sito ufficiale)"},
-  {"prov": "TO", "nome": "Lidl", "tipo": "discount", "volantino": "Sottocosto", "dal": "2026-11-02", "al": "2026-11-11", "link": "https://www.doveconviene.it/torino/volantino/lidl", "fonte": "PromoQui / DoveConviene (aggregatori)"},
-  {"prov": "TO", "nome": "Eurospin", "tipo": "discount", "volantino": "Sapori in festa", "dal": "2026-11-05", "al": "2026-11-15", "link": "https://www.doveconviene.it/torino/volantino/eurospin", "fonte": "PromoQui (aggregatore)"},
-  {"prov": "TO", "nome": "MD", "tipo": "discount", "volantino": "Nuova apertura", "dal": "2026-10-30", "al": "2026-11-15", "link": "https://www.promoqui.it/torino/offerte/infanzia", "fonte": "PromoQui (aggregatore)"},
-  {"prov": "TO", "nome": "Decò", "tipo": "supermercato", "volantino": "La qualità che conviene", "dal": "2026-11-03", "al": "2026-11-12", "link": "https://www.promoqui.it/torino/offerte/infanzia", "fonte": "PromoQui (aggregatore)"}
+  {
+   "prov": "TO",
+   "nome": "Prénatal",
+   "tipo": "infanzia",
+   "volantino": "Ultime offerte del catalogo",
+   "al": "2026-11-10",
+   "dove": "Vinovo (Str. Debouchè) e altri punti vendita",
+   "link": "https://www.doveconviene.it/carmagnola/volantino/prenatal",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Iperbimbo",
+   "tipo": "infanzia",
+   "volantino": "Ultime offerte",
+   "al": "2026-11-22",
+   "dove": "Corso Bramante 14, Via Adamello 2, Settimo, Chieri",
+   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Iperbimbo",
+   "tipo": "infanzia",
+   "volantino": "Catalogo giocattoli",
+   "al": "2026-12-31",
+   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Carrefour Iper",
+   "tipo": "supermercato",
+   "volantino": "Catalogo Giocattolo",
+   "al": "2026-12-24",
+   "link": "https://www.doveconviene.it/torino/volantino/carrefour-ipermercati",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Coop",
+   "tipo": "supermercato",
+   "volantino": "Ultime offerte",
+   "al": "2026-11-11",
+   "link": "https://www.doveconviene.it/torino/volantino/coop",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Offerte d'Autunno",
+   "dal": "2026-10-22",
+   "al": "2026-11-04",
+   "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
+   "fonte": "Esselunga (sito ufficiale)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Lidl",
+   "tipo": "discount",
+   "volantino": "Sottocosto",
+   "dal": "2026-11-02",
+   "al": "2026-11-11",
+   "link": "https://www.doveconviene.it/torino/volantino/lidl",
+   "fonte": "PromoQui / DoveConviene (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Eurospin",
+   "tipo": "discount",
+   "volantino": "Sapori in festa",
+   "dal": "2026-11-05",
+   "al": "2026-11-15",
+   "link": "https://www.doveconviene.it/torino/volantino/eurospin",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "MD",
+   "tipo": "discount",
+   "volantino": "Nuova apertura",
+   "dal": "2026-10-30",
+   "al": "2026-11-15",
+   "link": "https://www.promoqui.it/torino/offerte/infanzia",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Decò",
+   "tipo": "supermercato",
+   "volantino": "La qualità che conviene",
+   "dal": "2026-11-03",
+   "al": "2026-11-12",
+   "link": "https://www.promoqui.it/torino/offerte/infanzia",
+   "fonte": "PromoQui (aggregatore)"
+  }
  ],
  "offerte": [
-  {"prov": "TO", "negozio": "Esselunga", "cat": "salviette", "prodotto": "Pampers Progressi salviette", "formato": "confezione da 378 salviette", "pezzi": 378, "prezzo": 9.99, "dal": "2026-10-22", "al": "2026-11-04", "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/", "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"},
-  {"prov": "TO", "negozio": "Esselunga", "cat": "pannolini", "prodotto": "Pampers Baby-Dry pannolini", "formato": "confezione Esa (numero di pezzi per taglia non indicato)", "prezzo": 29.99, "dal": "2026-10-22", "al": "2026-11-04", "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/", "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"}
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "cat": "salviette",
+   "prodotto": "Pampers Progressi salviette",
+   "formato": "confezione da 378 salviette",
+   "pezzi": 378,
+   "prezzo": 9.99,
+   "dal": "2026-10-22",
+   "al": "2026-11-04",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "cat": "pannolini",
+   "prodotto": "Pampers Baby-Dry pannolini",
+   "formato": "confezione Esa; il volantino non indica il numero di pezzi, quindi non possiamo calcolare il prezzo al pannolino",
+   "prezzo": 29.99,
+   "dal": "2026-10-22",
+   "al": "2026-11-04",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+  }
  ],
- "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Per il resto trovi qui sopra quali negozi hanno un volantino attivo e fino a quando."
+ "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
+ "categorie": [
+  {
+   "id": "pannolini",
+   "nome": "Pannolini",
+   "emo": "🧷",
+   "col": "c3",
+   "unita": "pannolino",
+   "rif": 0.14,
+   "rifNome": "Lupilu Premium (Lidl)",
+   "rifTesto": "Miglior Acquisto Altroconsumo, ottobre 2026"
+  },
+  {
+   "id": "salviette",
+   "nome": "Salviette",
+   "emo": "🧻",
+   "col": "c5",
+   "unita": "salvietta"
+  },
+  {
+   "id": "igiene",
+   "nome": "Bagnetto e cambio",
+   "emo": "🛁",
+   "col": "c1"
+  },
+  {
+   "id": "pappe",
+   "nome": "Pappa (dai 6 mesi)",
+   "emo": "🥣",
+   "col": "c2"
+  },
+  {
+   "id": "accessori",
+   "nome": "Accessori",
+   "emo": "🧺",
+   "col": "c0"
+  },
+  {
+   "id": "abbigliamento",
+   "nome": "Abbigliamento 0-3",
+   "emo": "👕",
+   "col": "c4"
+  },
+  {
+   "id": "viaggio",
+   "nome": "Seggiolini, passeggini, marsupi",
+   "emo": "🚗",
+   "col": "c3"
+  },
+  {
+   "id": "giochi",
+   "nome": "Giochi 0-3",
+   "emo": "🧸",
+   "col": "c2"
+  }
+ ]
 }

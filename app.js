@@ -224,7 +224,7 @@
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=26" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=27" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -853,10 +853,27 @@
   // ---------- offerte (volantini e promozioni per bambini) ----------
   const euro = n => n.toLocaleString("it-IT", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: n < 1 ? 3 : 2 });
   const gg = iso => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "short" });
+  // indice di affare: risparmio rispetto al prezzo normale dei migliori nei test (se c'è) oppure sconto dichiarato dal volantino
+  function affare(o, cat) {
+    const u = o.pezzi ? o.prezzo / o.pezzi : null;
+    if (u && cat?.rif) {
+      const s = (cat.rif - u) / cat.rif, p = Math.round(Math.abs(s) * 100);
+      return { s, u, base: "test", breve: s >= 0 ? `sotto il Miglior Acquisto dei test (${euro(cat.rif)})` : `sopra il Miglior Acquisto dei test (${euro(cat.rif)}): non conviene`, testo: s >= 0 ? `Costa il ${p}% in meno del ${cat.rifNome} (${euro(cat.rif)} a ${cat.unita || "pezzo"}), il Miglior Acquisto dei test` : `Costa il ${p}% in più del ${cat.rifNome}, che senza offerta costa ${euro(cat.rif)} a ${cat.unita || "pezzo"}` };
+    }
+    if (o.prezzoPieno > o.prezzo) {
+      const s = (o.prezzoPieno - o.prezzo) / o.prezzoPieno;
+      return { s, u, base: "sconto", breve: "di sconto sul prezzo pieno del negozio", testo: `Sconto del ${Math.round(s * 100)}% sul prezzo pieno dichiarato (${euro(o.prezzoPieno)})${cat?.rif ? "" : ". Non abbiamo un prezzo di riferimento dai test per questa categoria"}` };
+    }
+    return { s: null, u, base: null, breve: "sconto non indicato dal volantino", testo: "Il volantino non indica il prezzo pieno né lo sconto: non possiamo dire quanto si risparmia" };
+  }
+  const ordAffare = (x, y) => {
+    const k = a => a.s == null ? 1 : a.s >= 0 ? 0 : 2;
+    return k(x.a) - k(y.a) || (y.a.s ?? 0) - (x.a.s ?? 0) || (x.a.u ?? 1e9) - (y.a.u ?? 1e9) || x.prezzo - y.prezzo;
+  };
   function vistaOfferte(f) {
     if (!O) { $app.innerHTML = testata("offerte") + `<div class="card empty">Non riesco a caricare le offerte. Controlla la connessione.</div>`; return; }
     const P = provAttuale(), sigla = P?.sigla || "TO", nome = P?.nome || O.province[sigla]?.nome || sigla;
-    const oggiIso = new Date().toISOString().slice(0, 10);
+    const oggiIso = new Date().toISOString().slice(0, 10), domaniIso = addDays(oggi(), 1).toISOString().slice(0, 10);
     const attivo = x => (!x.al || x.al >= oggiIso) && (!x.dal || x.dal <= addDays(oggi(), 7).toISOString().slice(0, 10));
     const testa = `<a class="back" href="#/organizza">← Organizza</a>` + testata("offerte", "Offerte per bambini", `${nome} · aggiornate il ${fmtData(O.aggiornato)}`);
     if (!O.province[sigla]) {
@@ -864,36 +881,52 @@
         <p style="margin:0">Per ora raccogliamo le offerte solo per ${esc(Object.values(O.province).map(p => p.nome).join(", "))}. ${esc(nome)} non è la vostra provincia? <a href="#/profilo">Cambia città</a>.</p></section>`;
       return;
     }
-    const rif = O.riferimenti || [];
-    const conf = o => {
-      if (!o.pezzi) return "";
-      const u = o.prezzo / o.pezzi;
-      const r = o.cat === "pannolini" ? rif.find(x => x.cat === "pannolini") : null;
-      let verdetto = "";
-      if (r) verdetto = u <= r.unita ? `<span class="tag g">Conviene</span> sotto il prezzo normale del ${esc(r.nome)} (${euro(r.unita)})` : `<span class="tag c4">Non conviene</span> il ${esc(r.nome)} costa ${euro(r.unita)} a pezzo anche senza offerta`;
-      return `<p class="price">💶 <strong>${euro(u)}</strong> al pezzo${verdetto ? `<br>${verdetto}` : ""}</p>`;
-    };
-    const off = (O.offerte || []).filter(o => o.prov === sigla && attivo(o)).sort((x, y) => (x.al || "").localeCompare(y.al || ""));
-    const neg = (O.negozi || []).filter(n => n.prov === sigla && attivo(n));
-    const gruppo = (t, tipo) => { const l = neg.filter(n => tipo.includes(n.tipo)); return l.length ? `<h3 class="sub">${t}</h3><div class="glist">${l.map(n => `
-        <a class="grow" href="${esc(n.link)}" target="_blank" rel="noopener"><span class="gi ${n.tipo === "infanzia" ? "c4" : "c2"}">${n.tipo === "infanzia" ? "🧸" : "🛒"}</span>
-          <span class="gt"><strong>${esc(n.nome)}</strong><small>${esc(n.volantino)} · ${n.dal && n.dal > oggiIso ? `dal ${gg(n.dal)} ` : ""}fino al ${gg(n.al)}${n.dove ? ` · ${esc(n.dove)}` : ""}</small><small class="muted">${esc(n.fonte)}</small></span><span class="chev">›</span></a>`).join("")}</div>` : ""; };
-    $app.innerHTML = testa + `
-      <h2 class="sec">🔎 Offerte verificate</h2>
-      ${off.length ? off.map(o => `<section class="card">
-          <div class="tags"><span class="tag">${esc(o.negozio)}</span><span class="tag c2">fino al ${gg(o.al)}</span></div>
-          <h3>${esc(o.prodotto)}</h3>
-          <p class="meta">${esc(o.formato)} · <strong>${euro(o.prezzo)}</strong></p>
-          ${conf(o)}
-          <p class="meta small">Fonte: ${esc(o.fonte)}</p>
-          <a class="more" href="${esc(o.link)}" target="_blank" rel="noopener">Vedi la fonte →</a>
-        </section>`).join("") : `<div class="card empty">Nessuna offerta su singoli prodotti verificata in questi giorni. Sotto trovi i volantini attivi.</div>`}
-      <h2 class="sec">📰 Volantini attivi</h2>
-      ${gruppo("Negozi per l'infanzia", ["infanzia"])}
-      ${gruppo("Supermercati e discount", ["supermercato", "discount"])}
-      <p class="hint">${esc(O.nota)}</p>
-      <details class="card acc"><summary><div><span class="pill">Metodo</span><h3>Come le scegliamo</h3></div></summary>${lista(O.regole)}</details>
+    const CATS = O.categorie || [];
+    const catDi = id => CATS.find(c => c.id === id) || { id: "altro", nome: "Altro", emo: "🛍️", col: "c5" };
+    const off = (O.offerte || []).filter(o => o.prov === sigla && attivo(o)).map(o => ({ ...o, c: catDi(o.cat) })).map(o => ({ ...o, a: affare(o, o.c) })).sort(ordAffare);
+    const neg = (O.negozi || []).filter(n => n.prov === sigla && attivo(n)).sort((x, y) => (x.al || "").localeCompare(y.al || ""));
+    const scade = o => o.dal && o.dal > oggiIso ? `dal ${gg(o.dal)}` : o.al === oggiIso ? `<b class="urg">scade oggi</b>` : o.al === domaniIso ? `<b class="urg">scade domani</b>` : `fino al ${gg(o.al)}`;
+    const thumb = (o, big) => `<div class="othumb ${o.c.col || "c5"}${big ? " big" : ""}" aria-hidden="true">${o.img ? `<img src="${esc(o.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ""}<span>${o.c.emo}</span></div>`;
+    const chip = a => a.s == null ? `<span class="aff na">sconto ?</span>` : `<span class="aff ${a.s >= 0 ? (a.s >= .25 ? "top" : "ok") : "ko"}">${a.s >= 0 ? "−" : "+"}${Math.round(Math.abs(a.s) * 100)}%</span>`;
+    const prezzi = o => `<p class="oprice"><strong>${euro(o.prezzo)}</strong>${o.prezzoPieno > o.prezzo ? ` <s>${euro(o.prezzoPieno)}</s>` : ""}${o.a.u ? ` <span class="unit">${euro(o.a.u)} a ${esc(o.c.unita || "pezzo")}</span>` : ""}</p>`;
+    const MED = ["🥇", "🥈", "🥉"];
+    const migliori = off.filter(o => o.a.s > 0).slice(0, 3);
+    const podio = migliori.length ? `<h2 class="sec">🏆 Migliori affari</h2>${migliori.map((o, i) => `
+      <a class="card oferta podio" href="${esc(o.link)}" target="_blank" rel="noopener">
+        <div class="orow">${thumb(o, true)}<div class="obody">
+          <p class="okick">${MED[i]} ${esc(o.c.nome)} · ${esc(o.negozio)}</p>
+          <h3>${esc(o.prodotto)}</h3>${prezzi(o)}
+        </div>${chip(o.a)}</div>
+        <p class="why">${esc(o.a.testo)}.</p>
+        <p class="meta small">${esc(o.formato)}${o.condizioni ? ` · ${esc(o.condizioni)}` : ""} · ${scade(o)}</p>
+      </a>`).join("")}` : `<section class="card soft c2"><p class="kicker">🏆 Migliori affari</p><p style="margin:0">In questi giorni nessuna offerta verificata ha un risparmio misurabile (prezzo pieno o confronto con i test). Sotto trovi comunque quelle che abbiamo trovato.</p></section>`;
+    const presenti = CATS.concat(off.some(o => o.c.id === "altro") ? [catDi("altro")] : []).filter(c => off.some(o => o.c.id === c.id));
+    let sel = store.get("offCat", "tutte"); if (sel !== "tutte" && !presenti.some(c => c.id === sel)) sel = "tutte";
+    const riga = (o, i) => `
+      <a class="grow origa" href="${esc(o.link)}" target="_blank" rel="noopener">
+        <span class="othw">${thumb(o)}<span class="opos">${i + 1}</span></span>
+        <span class="gt"><span class="otop"><strong>${esc(o.prodotto)}</strong>${chip(o.a)}</span>
+          <small>${esc(o.negozio)} · ${scade(o)}${o.test ? ` · <b class="intest">${esc(o.test)}</b>` : ""}</small>
+          ${prezzi(o)}
+          <small class="obreve ${o.a.s == null ? "" : o.a.s >= 0 ? "si" : "no"}">${o.a.s == null ? "" : `${Math.round(Math.abs(o.a.s) * 100)}% `}${esc(o.a.breve)}</small>
+          <small class="muted">${esc(o.formato)}${o.condizioni ? ` · ${esc(o.condizioni)}` : ""} · ${esc(o.fonte)}</small></span></a>`;
+    const blocco = c => { const l = off.filter(o => o.c.id === c.id); return `<h2 class="sec">${c.emo} ${esc(c.nome)} <small class="cnt">${l.length}</small></h2>
+      ${c.rif ? `<p class="hint">Riferimento: ${esc(c.rifNome)} a ${euro(c.rif)} a ${esc(c.unita || "pezzo")} senza offerta (${esc(c.rifTesto || "test")}). Sopra questo prezzo un'offerta non conviene.</p>` : ""}
+      <div class="glist">${l.map(riga).join("")}</div>`; };
+    const corpo = !off.length ? `<div class="card empty">Nessuna offerta su singoli prodotti verificata in questi giorni. Più sotto trovi i volantini attivi.</div>`
+      : `<h2 class="sec">📊 Classifica per categoria</h2>
+      <div class="chips"><button class="chip" data-c="tutte" aria-pressed="${sel === "tutte"}">Tutte · ${off.length}</button>${presenti.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${sel === c.id}">${c.emo} ${esc(c.nome)} · ${off.filter(o => o.c.id === c.id).length}</button>`).join("")}</div>
+      ${(sel === "tutte" ? presenti : presenti.filter(c => c.id === sel)).map(blocco).join("")}`;
+    $app.innerHTML = testa + podio + corpo + `
+      <details class="card acc"><summary><div><span class="pill">${neg.length}</span><h3>📰 Sfoglia i volantini attivi</h3></div></summary>
+        <div class="glist flat">${neg.map(n => `
+        <a class="grow" href="${esc(n.link)}" target="_blank" rel="noopener"><span class="gi ${n.tipo === "infanzia" ? "c4" : "c2"}">${n.tipo === "infanzia" ? "🧸" : n.tipo === "discount" ? "🏷️" : "🛒"}</span>
+          <span class="gt"><strong>${esc(n.nome)}</strong><small>${esc(n.volantino)} · ${scade(n)}${n.dove ? ` · ${esc(n.dove)}` : ""}</small><small class="muted">${esc(n.fonte)}</small></span><span class="chev">›</span></a>`).join("")}</div>
+        <p class="hint">${esc(O.nota)}</p></details>
+      <details class="card acc"><summary><div><span class="pill">Metodo</span><h3>Come costruiamo la classifica</h3></div></summary>${lista(O.regole)}</details>
       <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Prima di comprare</p><h2>Acquisti smart</h2><p>Quali prodotti vincono i test, a prescindere dalle offerte →</p></a>`;
+    $app.querySelectorAll(".chip[data-c]").forEach(b => b.addEventListener("click", () => { store.set("offCat", b.dataset.c); vistaOfferte(f); }));
+    $app.querySelectorAll(".othumb img").forEach(im => im.addEventListener("error", () => im.remove()));
   }
 
   // ---------- acquisti smart ----------
