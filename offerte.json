@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-03",
+ "aggiornato": "2026-11-04",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -72,6 +72,16 @@
    "al": "2026-11-04",
    "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
    "fonte": "Esselunga (sito ufficiale)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Sconti fino al 50%",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
+   "fonte": "Sbirciaprezzo / AnteprimaVolantino (aggregatori; date da verificare sul sito ufficiale)"
   },
   {
    "prov": "TO",
