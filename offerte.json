@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-04",
+ "aggiornato": "2026-11-07",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -18,40 +18,22 @@
  "negozi": [
   {
    "prov": "TO",
+   "nome": "Chicco",
+   "tipo": "infanzia",
+   "volantino": "3x2 (prodotti inclusi non indicati)",
+   "dal": "2026-11-02",
+   "al": "2026-11-08",
+   "link": "https://www.promoqui.it/volantino/chicco/1737410",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
    "nome": "Prénatal",
    "tipo": "infanzia",
    "volantino": "Ultime offerte del catalogo",
    "al": "2026-11-10",
    "dove": "Vinovo (Str. Debouchè) e altri punti vendita",
    "link": "https://www.doveconviene.it/carmagnola/volantino/prenatal",
-   "fonte": "DoveConviene (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Iperbimbo",
-   "tipo": "infanzia",
-   "volantino": "Ultime offerte",
-   "al": "2026-11-22",
-   "dove": "Corso Bramante 14, Via Adamello 2, Settimo, Chieri",
-   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
-   "fonte": "DoveConviene (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Iperbimbo",
-   "tipo": "infanzia",
-   "volantino": "Catalogo giocattoli",
-   "al": "2026-12-31",
-   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
-   "fonte": "DoveConviene (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Carrefour Iper",
-   "tipo": "supermercato",
-   "volantino": "Catalogo Giocattolo",
-   "al": "2026-12-24",
-   "link": "https://www.doveconviene.it/torino/volantino/carrefour-ipermercati",
    "fonte": "DoveConviene (aggregatore)"
   },
   {
@@ -65,26 +47,6 @@
   },
   {
    "prov": "TO",
-   "nome": "Esselunga",
-   "tipo": "supermercato",
-   "volantino": "Offerte d'Autunno",
-   "dal": "2026-10-22",
-   "al": "2026-11-04",
-   "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
-   "fonte": "Esselunga (sito ufficiale)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Esselunga",
-   "tipo": "supermercato",
-   "volantino": "Sconti fino al 50%",
-   "dal": "2026-11-05",
-   "al": "2026-11-18",
-   "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
-   "fonte": "Sbirciaprezzo / AnteprimaVolantino (aggregatori; date da verificare sul sito ufficiale)"
-  },
-  {
-   "prov": "TO",
    "nome": "Lidl",
    "tipo": "discount",
    "volantino": "Sottocosto",
@@ -92,6 +54,26 @@
    "al": "2026-11-11",
    "link": "https://www.doveconviene.it/torino/volantino/lidl",
    "fonte": "PromoQui / DoveConviene (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Decò",
+   "tipo": "supermercato",
+   "volantino": "La qualità che conviene",
+   "dal": "2026-11-03",
+   "al": "2026-11-12",
+   "link": "https://www.promoqui.it/torino/offerte/infanzia",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Conad",
+   "tipo": "supermercato",
+   "volantino": "Sottocosto",
+   "dal": "2026-11-05",
+   "al": "2026-11-14",
+   "link": "https://www.promoqui.it/torino/conad",
+   "fonte": "PromoQui (aggregatore)"
   },
   {
    "prov": "TO",
@@ -115,12 +97,143 @@
   },
   {
    "prov": "TO",
-   "nome": "Decò",
-   "tipo": "supermercato",
-   "volantino": "La qualità che conviene",
+   "nome": "Penny",
+   "tipo": "discount",
+   "volantino": "Maxi formato",
+   "dal": "2026-11-05",
+   "al": "2026-11-15",
+   "link": "https://www.promoqui.it/torino/penny",
+   "fonte": "PromoQui / AnteprimaVolantino (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "MD",
+   "tipo": "discount",
+   "volantino": "Anteprima Natale",
    "dal": "2026-11-03",
-   "al": "2026-11-12",
-   "link": "https://www.promoqui.it/torino/offerte/infanzia",
+   "al": "2026-11-15",
+   "link": "https://www.sbirciaprezzo.com/volantino-md-anteprima-natale-dal-03-al-15-novembre-2026/",
+   "fonte": "Sbirciaprezzo (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Conad City",
+   "tipo": "supermercato",
+   "volantino": "Prezzi a pezzi",
+   "dal": "2026-11-03",
+   "al": "2026-11-16",
+   "link": "https://www.promoqui.it/torino/conad",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Sconti fino al 50%",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.esselunga.it/it-it/promozioni/volantini.esselunga-di-corso-traiano-torino.tra.html",
+   "fonte": "Sbirciaprezzo / AnteprimaVolantino (aggregatori; date da verificare sul sito ufficiale)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Bimbo Store",
+   "tipo": "infanzia",
+   "volantino": "Offerte stregate!",
+   "dal": "2026-10-12",
+   "al": "2026-11-18",
+   "link": "https://www.doveconviene.it/torino/infanzia-e-giochi/bimbo-store/volantino/ultime-offerte-bimbo-store?flyerId=1714877&flyerPage=1",
+   "fonte": "DoveConviene / PromoQui (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Ipercoop",
+   "tipo": "supermercato",
+   "volantino": "Grandi marche",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.promoqui.it/torino/ipercoop",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Bennet",
+   "tipo": "supermercato",
+   "volantino": "Sottocosto",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.promoqui.it/torino/bennet",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Pam",
+   "tipo": "supermercato",
+   "volantino": "Tante offerte",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "dove": "Torino (2 punti vendita) e Moncalieri",
+   "link": "https://www.promoqui.it/torino/pam",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Iperbimbo",
+   "tipo": "infanzia",
+   "volantino": "La vita è meravigliosa",
+   "al": "2026-11-22",
+   "dove": "Corso Bramante 14, Via Adamello 2, Settimo, Chieri",
+   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
+   "fonte": "DoveConviene (aggregatore)",
+   "dal": "2026-10-31"
+  },
+  {
+   "prov": "TO",
+   "nome": "Prénatal",
+   "tipo": "infanzia",
+   "volantino": "Sconti fino al -40%",
+   "dal": "2026-10-22",
+   "al": "2026-12-08",
+   "link": "https://www.doveconviene.it/torino/infanzia-e-giochi/prenatal/volantino/ultime-offerte-prenatal?flyerId=1738590&flyerPage=1",
+   "fonte": "PromoQui / DoveConviene (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Carrefour Iper",
+   "tipo": "supermercato",
+   "volantino": "Catalogo Giocattolo",
+   "al": "2026-12-24",
+   "link": "https://www.doveconviene.it/torino/volantino/carrefour-ipermercati",
+   "fonte": "DoveConviene (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Bennet",
+   "tipo": "supermercato",
+   "volantino": "Giocattoli e addobbi speciali",
+   "dal": "2026-11-05",
+   "al": "2026-12-24",
+   "link": "https://www.promoqui.it/torino/bennet",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Iperbimbo",
+   "tipo": "infanzia",
+   "volantino": "Catalogo giocattoli",
+   "al": "2026-12-31",
+   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
+   "fonte": "DoveConviene (aggregatore)",
+   "dal": "2026-10-27"
+  },
+  {
+   "prov": "TO",
+   "nome": "Penny",
+   "tipo": "discount",
+   "volantino": "Catalogo di Natale",
+   "dal": "2026-11-02",
+   "al": "2026-12-31",
+   "link": "https://www.promoqui.it/torino/penny",
    "fonte": "PromoQui (aggregatore)"
   }
  ],
@@ -128,27 +241,101 @@
   {
    "prov": "TO",
    "negozio": "Esselunga",
-   "cat": "salviette",
-   "prodotto": "Pampers Progressi salviette",
-   "formato": "confezione da 378 salviette",
-   "pezzi": 378,
-   "prezzo": 9.99,
-   "dal": "2026-10-22",
-   "al": "2026-11-04",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
    "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "salviette",
+   "prodotto": "Pampers salviette",
+   "formato": "confezione da 210 salviette",
+   "pezzi": 210,
+   "prezzo": 4.99
   },
   {
    "prov": "TO",
    "negozio": "Esselunga",
-   "cat": "pannolini",
-   "prodotto": "Pampers Baby-Dry pannolini",
-   "formato": "confezione Esa; il volantino non indica il numero di pezzi, quindi non possiamo calcolare il prezzo al pannolino",
-   "prezzo": 29.99,
-   "dal": "2026-10-22",
-   "al": "2026-11-04",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
    "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "pannolini",
+   "prodotto": "Pampers Progressi Mega Pacco o Mutandino Super Scorta",
+   "formato": "il volantino non indica il numero di pezzi, quindi non possiamo calcolare il prezzo al pannolino",
+   "prezzo": 25.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "pappe",
+   "prodotto": "Plasmon Biscotto dal 6° mese",
+   "formato": "720 g",
+   "prezzo": 4.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "giochi",
+   "prodotto": "LEGO Duplo Autopompa 10473",
+   "formato": "1 confezione",
+   "prezzo": 17.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "giochi",
+   "prodotto": "Chicco La Nuova Fattoria Parlante",
+   "formato": "1 gioco (età non indicata dal volantino)",
+   "prezzo": 19.74
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-05",
+   "al": "2026-11-18",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "giochi",
+   "prodotto": "Quercetti Momy Soft",
+   "formato": "8 pezzi (età non indicata dal volantino)",
+   "prezzo": 11.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "MD",
+   "dal": "2026-11-03",
+   "al": "2026-11-15",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-md/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "salviette",
+   "prodotto": "Speedy Care salviettine baby",
+   "formato": "confezione da 100 salviette",
+   "pezzi": 100,
+   "prezzo": 1.0
+  },
+  {
+   "prov": "TO",
+   "negozio": "MD",
+   "dal": "2026-11-03",
+   "al": "2026-11-15",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-md/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "pannolini",
+   "prodotto": "Pampers Baby Dry o Mutandino, taglie assortite",
+   "formato": "il volantino non indica il numero di pezzi",
+   "prezzo": 4.79,
+   "condizioni": "con Buona Spesa Card (senza carta 5,45 €)"
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
