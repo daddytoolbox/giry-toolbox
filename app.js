@@ -5,7 +5,7 @@
   const $app = document.getElementById("app");
   const $tab = document.getElementById("tabbar");
   const DAY = 86400000;
-  let C = null, E = null, A = null; let O = null;
+  let C = null, E = null, A = null; let O = null; let BU = null;
 
   // ---------- storage ----------
   const store = {
@@ -65,6 +65,7 @@
     vicino:    { nome: "Vicino a te", emo: "📍", col: "c5", sub: "Luoghi adatti all'età" },
     acquisti:  { nome: "Acquisti smart", emo: "🛒", col: "c2", sub: "Scelti dai test, non dal marchio" },
     nascita:   { nome: "Lista nascita", emo: "🎁", col: "c4", sub: "Scegli, personalizza, condividi in PDF" },
+    burocrazia: { nome: "Burocrazia", emo: "📋", col: "c5", sub: "Anagrafe, documenti, bonus e congedi" },
     offerte:   { nome: "Offerte", emo: "🏷️", col: "c0", sub: "Volantini e promozioni per bambini in zona" },
     farmaci:   { nome: "Farmaci in gravidanza", emo: "💊", col: "c3", sub: "Cosa dicono AIFA, EMA e ISS" },
     calendario: { nome: "Calendario", emo: "📅", col: "c3", sub: "Visite, ecografie e appuntamenti, per entrambi" }
@@ -218,13 +219,14 @@
     try { E = await get("eventi.json"); } catch { E = { eventi: [] }; }
     try { A = await get("acquisti.json"); } catch { A = null; }
     try { O = await get("offerte.json"); } catch { O = null; }
+    try { BU = await get("burocrazia.json"); } catch { BU = null; }
   }
 
   // ---------- profilo ----------
   function vistaProfilo(primo) {
     const p = store.get("profilo", { stato: "attesa", data: "", nome: "", citta: "Torino" });
     $app.innerHTML = `
-      ${primo ? `<div class="welcome"><img src="icon-512.png?v=27" alt=""><h1>Benvenuti in Giry toolbox</h1>
+      ${primo ? `<div class="welcome"><img src="icon-512.png?v=28" alt=""><h1>Benvenuti in Giry toolbox</h1>
         <p>Due informazioni e l'app si adatta da sola, settimana dopo settimana.</p></div>
       <section class="card soft c3"><p class="kicker">👫 L'altro genitore usa già l'app?</p>
         <p>Non serve reinserire i dati: incolla il suo link d'invito e arriva tutto da solo.</p>
@@ -316,8 +318,8 @@
     }
 
     const td = store.get("todo", {});
-    const hub = f.stato === "nato" ? ["calendario", "acquisti", "guide", "organizza", "liste", "vicino", "nascita", "mamma", "papa"]
-      : ["calendario", "nascita", "acquisti", "organizza", "liste", "vicino", "attivita", "mamma", "papa"];
+    const hub = f.stato === "nato" ? ["calendario", "acquisti", "guide", "organizza", "burocrazia", "vicino", "liste", "mamma", "papa"]
+      : ["calendario", "nascita", "acquisti", "organizza", "burocrazia", "vicino", "attivita", "mamma", "papa"];
     const pe = prossimiEventi()[0];
     const ev = filtraEventi(f)[0];
     const st = C.organizza.stagioni[stagione(oggi())];
@@ -475,7 +477,8 @@
       <a class="card link soft c2" href="#/acquisti"><p class="kicker">🛒 Acquisti smart</p><h2>Seggiolino, passeggino, culla, marsupio</h2><p>Scelti dai test di laboratorio, non dal marchio →</p></a>
       <h2 class="sec">💡 Consigli smart</h2>
       <div class="card">${C.organizza.smart.map(ideaRow).join("")}</div>
-      <a class="card link soft c5" href="#/liste"><p class="kicker">✅ Liste</p><h2>Borsa per l'ospedale, casa, pratiche</h2><p>Da spuntare man mano →</p></a>
+      <a class="card link soft c5" href="#/burocrazia"><p class="kicker">📋 Burocrazia</p><h2>Anagrafe, documenti, bonus e congedi</h2><p>Le pratiche in ordine di tempo, con le scadenze →</p></a>
+      <a class="card link soft c5" href="#/liste"><p class="kicker">✅ Liste</p><h2>Borsa per l'ospedale, casa pronta</h2><p>Da spuntare man mano →</p></a>
       <p class="hint">${esc(O.notaTog)}</p>
       ${fonti(O.fonti)}`;
 
@@ -849,6 +852,78 @@
     document.getElementById("farm-ok")?.addEventListener("click", () => { store.set("farmaciOk", true); vistaFarmaci(); });
   }
 
+
+
+  // ---------- burocrazia ----------
+  const addMesi = (d, m) => { const x = new Date(d); x.setMonth(x.getMonth() + m); return x; };
+  const sposta = (d, o) => o.g != null ? addDays(d, o.g) : addMesi(d, o.m);
+  const dataBreve = d => d.toLocaleDateString("it-IT", { day: "numeric", month: "short", year: d.getFullYear() !== oggi().getFullYear() ? "numeric" : undefined });
+  function infoScad(x, f) {
+    if ((!x.entro && !x.dal) || store.get("check", {})[`buro:${x.id}`]) return null;
+    const B = f.nascita, t = oggi();
+    const dal = x.dal ? sposta(B, x.dal) : null, entro = x.entro ? sposta(B, x.entro) : null;
+    const gg = d => Math.round((d - t) / DAY), stima = f.stato === "attesa" ? " (con la data presunta)" : "";
+    if (entro && gg(entro) < 0 && f.stato === "nato") return { cls: "ko", entro, breve: `scaduto il ${dataBreve(entro)}`, testo: `⚠️ Termine passato il ${dataBreve(entro)}: verifica subito se si può ancora fare.` };
+    if (dal && gg(dal) > 0) return { cls: "", dal, entro, breve: `dal ${dataBreve(dal)}`, testo: `📅 Si può fare dal ${dataBreve(dal)}${entro ? ` al ${dataBreve(entro)}` : ""}${stima}` };
+    if (entro) { const n = gg(entro); return { cls: n <= 14 ? "urg" : "ok", entro, breve: `entro il ${dataBreve(entro)}`, testo: `⏳ Entro il ${dataBreve(entro)}${stima}${f.stato === "nato" ? ` · ${n === 0 ? "oggi" : n === 1 ? "domani" : `mancano ${n} giorni`}` : ""}` }; }
+    return null;
+  }
+  const scadenzaBuro = (x, f) => { const s = infoScad(x, f); return s ? `<p class="scad ${s.cls}">${s.testo}</p>` : ""; };
+  const fontiBuro = l => l?.length ? `<p class="fonti">${l.map(x => `<a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a>`).join("")}</p>` : "";
+  function vistaBurocrazia(f) {
+    if (!BU) { $app.innerHTML = testata("burocrazia") + `<div class="card empty">Non riesco a caricare questa sezione. Controlla la connessione.</div>`; return; }
+    const ck = store.get("check", {});
+    const tutti = BU.fasi.flatMap(fa => fa.passi);
+    const fatti = tutti.filter(x => ck[`buro:${x.id}`]).length;
+    // fase consigliata: in attesa "prima", poi secondo i giorni dalla nascita
+    const giorni = f.stato === "nato" ? Math.floor((oggi() - f.nascita) / DAY) : -1;
+    const faseOra = giorni < 0 ? "prima" : giorni <= 10 ? "subito" : giorni <= 60 ? "mese" : "poi";
+    const prossime = tutti.map(x => ({ x, s: infoScad(x, f) })).filter(o => o.s && (o.s.entro || o.s.dal)).sort((p, q) => (p.s.cls === "ko" ? -1 : 0) - (q.s.cls === "ko" ? -1 : 0) || ((p.s.dal && p.s.dal > oggi() ? p.s.dal : p.s.entro) - (q.s.dal && q.s.dal > oggi() ? q.s.dal : q.s.entro))).slice(0, 4);
+    const passo = x => {
+      const ok = !!ck[`buro:${x.id}`];
+      return `<details class="card acc buro${ok ? " fatto" : ""}" id="p-${x.id}">
+        <summary><div>${ok ? `<span class="pill on">✓ Fatto</span>` : `${(sc => sc ? `<span class="pill scp ${sc.cls}">${sc.cls === "ko" ? "⚠️" : sc.dal && !sc.cls ? "📅" : "⏳"} ${esc(sc.breve)}</span>` : "")(infoScad(x, f))}${x.obbligo ? `<span class="pill warn">Obbligatoria</span>` : x.solo ? `<span class="pill">${esc(x.solo)}</span>` : ""}`}
+          <h3>${x.emo} ${esc(x.titolo)}</h3><p class="meta small">🕒 ${esc(x.quando)}</p></div></summary>
+        ${scadenzaBuro(x, f)}
+        <p>${inline(x.cosa)}</p>
+        ${x.come?.length ? `<p class="lbl">Come si fa</p><ol class="passi">${x.come.map(c => `<li>${inline(c)}</li>`).join("")}</ol>` : ""}
+        ${x.serve?.length ? `<p class="lbl">Cosa serve</p>${lista(x.serve)}` : ""}
+        ${x.attenzione ? `<p class="hint warn">${inline(x.attenzione)}</p>` : ""}
+        ${x.consiglio ? `<p class="hint">💡 ${inline(x.consiglio)}</p>` : ""}
+        ${x.costo ? `<p class="meta"><strong>Costo:</strong> ${esc(x.costo)}</p>` : ""}
+        ${fontiBuro(x.fonti)}
+        <label class="todo fattobox"><input type="checkbox" data-k="buro:${x.id}" ${ok ? "checked" : ""}><span>Fatto</span></label>
+      </details>`;
+    };
+    const scheda = b => `<details class="card acc">
+        <summary><div>${b.solo ? `<span class="pill">${esc(b.solo)}</span>` : ""}<h3>${b.emo} ${esc(b.nome)}</h3><p class="importo">${esc(b.importo)}</p></div></summary>
+        ${lista(b.dettagli)}
+        ${b.aChi ? `<p><strong>A chi:</strong> ${inline(b.aChi)}</p>` : ""}
+        ${b.come ? `<p><strong>Come:</strong> ${inline(b.come)}</p>` : ""}
+        ${b.verificato ? `<p class="meta small">Verificato il ${fmtData(b.verificato)}</p>` : ""}
+        ${fontiBuro(b.fonti)}
+      </details>`;
+    const ia = BU.inArrivo;
+    $app.innerHTML = `<a class="back" href="#/organizza">← Organizza</a>` + testata("burocrazia", "Burocrazia", `Verificata il ${fmtData(BU.verificato)}`) + `
+      <p class="muted">${esc(BU.intro)}</p>
+      <section class="card disclaimer"><p class="kicker">⚖️ Da sapere</p>${lista(BU.avviso)}</section>
+      <div class="buro-prog"><div class="bar"><span style="width:${Math.round(fatti / tutti.length * 100)}%"></span></div><p class="meta small">${fatti === 1 ? "1 pratica fatta" : `${fatti} pratiche fatte`} su ${tutti.length}. Le spunte si condividono con l'altro genitore, se avete collegato il profilo.</p></div>
+      ${prossime.length ? `<h2 class="sec">⏳ Prossime scadenze</h2><div class="glist">${prossime.map(({ x, s }) => `<a class="grow" href="#/burocrazia" data-apri="${x.id}"><span class="gi c5">${x.emo}</span><span class="gt"><strong>${esc(x.titolo)}</strong><small class="sc-${s.cls}">${esc(s.breve)}${f.stato === "attesa" ? " (data presunta)" : ""}</small></span><span class="chev">›</span></a>`).join("")}</div>` : ""}
+      <div class="chips buro-chips">${BU.fasi.map(fa => `<a class="chip" href="#/burocrazia" data-f="${fa.id}" aria-pressed="${fa.id === faseOra}">${fa.emo} ${esc(fa.titolo)}</a>`).join("")}<a class="chip" href="#/burocrazia" data-f="bonus">💶 Bonus</a><a class="chip" href="#/burocrazia" data-f="congedi">👔 Congedi</a></div>
+      ${BU.fasi.map(fa => `<h2 class="sec" id="f-${fa.id}">${fa.emo} ${esc(fa.titolo)}${fa.id === faseOra ? ` <span class="pill on">Adesso</span>` : ""}</h2>${fa.passi.map(passo).join("")}`).join("")}
+      <h2 class="sec" id="f-bonus">💶 Bonus e agevolazioni 2026</h2>
+      ${BU.bonus.map(scheda).join("")}
+      <h2 class="sec" id="f-congedi">👔 Lavoro e congedi</h2>
+      ${BU.congedi.map(scheda).join("")}
+      ${ia ? `<section class="card soft c2"><p class="kicker">🔜 ${esc(ia.titolo)}</p><p>${inline(ia.testo)}</p>${lista(ia.voci)}${fontiBuro(ia.fonti)}</section>` : ""}
+      <a class="card link soft c3" href="#/calendario"><p class="kicker">📅 Non dimenticare le scadenze</p><h2>Segnale nel calendario</h2><p>Appuntamenti e promemoria condivisi tra i genitori →</p></a>`;
+    $app.querySelectorAll("[data-apri]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); const d = document.getElementById(`p-${a.dataset.apri}`); if (d) { d.open = true; d.scrollIntoView({ behavior: "smooth", block: "start" }); } }));
+    $app.querySelectorAll(".chip[data-f]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); document.getElementById(`f-${a.dataset.f}`)?.scrollIntoView({ behavior: "smooth", block: "start" }); }));
+    $app.querySelectorAll("input[data-k^='buro:']").forEach(cb => cb.addEventListener("change", () => {
+      const c = store.get("check", {}); if (cb.checked) c[cb.dataset.k] = 1; else delete c[cb.dataset.k]; store.set("check", c);
+      const aperto = cb.closest("details").id; vistaBurocrazia(f); document.getElementById(aperto)?.setAttribute("open", "");
+    }));
+  }
 
   // ---------- offerte (volantini e promozioni per bambini) ----------
   const euro = n => n.toLocaleString("it-IT", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: n < 1 ? 3 : 2 });
@@ -1702,7 +1777,8 @@
     const check = store.get("check", {});
     $app.innerHTML = `<a class="back" href="#/organizza">← Organizza</a>` + testata("liste", "Liste", "Si salvano su questo telefono") +
       `<a class="card link soft c4" href="#/nascita"><p class="kicker">🎁 Lista nascita</p><h2>Scegli i prodotti e condividila in PDF</h2><p>Apri la lista nascita →</p></a>` +
-      C.liste.filter(l => l.id !== "nascita").map(l => {
+      `<a class="card link soft c5" href="#/burocrazia"><p class="kicker">📋 Pratiche dopo la nascita</p><h2>Burocrazia</h2><p>Passaggi, documenti e scadenze, con le spunte →</p></a>` +
+      C.liste.filter(l => l.id !== "nascita" && l.id !== "burocrazia").map(l => {
         const fatte = l.voci.filter((_, i) => check[`${l.id}:${i}`]).length, pct = Math.round(fatte / l.voci.length * 100);
         return `<details class="card acc" ${fatte < l.voci.length ? "" : ""}>
           <summary><div><h3>${esc(l.nome)}</h3><div class="bar"><span style="width:${pct}%"></span></div><small class="muted">${fatte} di ${l.voci.length}</small></div></summary>
@@ -1722,7 +1798,7 @@
   function barra(f, rotta) {
     const quinta = f && f.stato === "nato" ? "attivita" : "guide";
     const tabs = ["oggi", quinta, "organizza", "mamma", "papa"];
-    const attiva = rotta === "guida" || rotta === "farmaci" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" || rotta === "offerte" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
+    const attiva = rotta === "guida" || rotta === "farmaci" ? "guide" : rotta === "liste" || rotta === "acquisti" || rotta === "nascita" || rotta === "offerte" || rotta === "burocrazia" ? "organizza" : rotta === "vicino" ? "attivita" : rotta;
     $tab.innerHTML = tabs.map(k => `<a href="#/${k}" class="${k === attiva ? "on" : ""}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>
       <span>${SEZ[k].nome}</span></a>`).join("");
@@ -1737,7 +1813,7 @@
     barra(f, rotta);
     if (!f || rotta === "profilo") vistaProfilo(!f);
     else ({ guide: vistaGuide, guida: () => vistaGuida(arg), organizza: vistaOrganizza, mamma: vistaMamma, perte: vistaMamma,
-            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario, farmaci: vistaFarmaci, offerte: vistaOfferte }[rotta] || vistaOggi)(f);
+            papa: vistaPapa, attivita: vistaAttivita, liste: vistaListe, vicino: vistaVicino, acquisti: vistaAcquisti, nascita: vistaNascita, calendario: vistaCalendario, farmaci: vistaFarmaci, offerte: vistaOfferte, burocrazia: vistaBurocrazia }[rotta] || vistaOggi)(f);
     window.scrollTo(0, 0);
   }
 

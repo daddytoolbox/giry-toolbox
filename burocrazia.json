@@ -1,0 +1,518 @@
+{
+ "verificato": "2026-11-07",
+ "intro": "Le pratiche da fare prima e dopo la nascita, in ordine di tempo, con i passaggi concreti. Poi i bonus e i congedi in vigore oggi.",
+ "avviso": [
+  "Informazioni generali prese da fonti ufficiali (INPS, Ministero dell'Interno, Ministero della Giustizia, Agenzia delle Entrate, leggi). Non sono consulenza legale, fiscale o del lavoro.",
+  "Le regole su bonus e congedi cambiano spesso, di solito con la legge di bilancio di fine anno. Prima di presentare una domanda controlla sempre la pagina dell'ente: qui trovi il link e la data dell'ultima verifica.",
+  "Gli uffici e i tempi possono variare da Comune a Comune e da ASL ad ASL."
+ ],
+ "fasi": [
+  {
+   "id": "prima",
+   "titolo": "Prima della nascita",
+   "emo": "🤰",
+   "passi": [
+    {
+     "id": "riconoscimento",
+     "emo": "✍️",
+     "titolo": "Riconoscimento del figlio",
+     "solo": "Solo se non siete sposati",
+     "quando": "Durante la gravidanza, oppure alla dichiarazione di nascita",
+     "cosa": "Se i genitori sono sposati, il marito della madre è considerato padre in automatico. Se non lo sono, **il figlio va riconosciuto da ciascun genitore**. Si può fare insieme alla dichiarazione di nascita oppure prima, durante la gravidanza (riconoscimento del nascituro, art. 254 del Codice civile).",
+     "come": [
+      "Chiedi un appuntamento all'ufficio di stato civile del Comune di residenza e chiedi quali documenti portare.",
+      "Andate insieme: il riconoscimento si fa con una dichiarazione davanti all'ufficiale di stato civile.",
+      "Alla nascita l'atto sarà già pronto per entrambi: utile se uno dei due non potrà essere presente alla dichiarazione."
+     ],
+     "attenzione": "Se il riconoscimento del secondo genitore arriva dopo, serve il consenso del genitore che ha già riconosciuto il figlio (sotto i 14 anni).",
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "Ministero della Giustizia – Nascita e riconoscimento",
+       "u": "https://www.giustizia.it/giustizia/page/it/nascita?tab=d"
+      },
+      {
+       "t": "Codice civile, art. 254 (testo)",
+       "u": "https://www.brocardi.it/codice-civile/libro-primo/titolo-vii/capo-iv/sezione-i/art254.html"
+      }
+     ]
+    },
+    {
+     "id": "isee",
+     "emo": "📊",
+     "titolo": "ISEE pronto e aggiornato",
+     "quando": "Prima della nascita, poi da aggiornare quando nasce il bimbo",
+     "cosa": "Quasi tutti i bonus dipendono dall'ISEE. Senza ISEE l'assegno unico viene pagato al **minimo** e il bonus nuovi nati non spetta. Dal 2026 per le prestazioni familiari si usa un ISEE che **non conta l'assegno unico** ricevuto.",
+     "come": [
+      "Entra nel Portale unico ISEE dell'INPS con SPID, CIE o CNS e scegli la DSU precompilata (in alternativa: CAF o patronato, gratuiti).",
+      "Controlla i dati precompilati e accettali o correggili.",
+      "Dopo la nascita: rettifica la DSU con «aggiungi nuovo componente» inserendo il codice fiscale del bimbo, altrimenti il nuovo figlio non conta."
+     ],
+     "serve": [
+      "SPID, CIE o CNS",
+      "Codici fiscali di tutti i componenti",
+      "Dati di conti, depositi e immobili (in gran parte già precompilati)"
+     ],
+     "attenzione": "Se i genitori non sono sposati e non convivono, l'ISEE per i figli può dover includere anche il genitore non convivente: segui le istruzioni della procedura.",
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "INPS – Portale unico ISEE",
+       "u": "https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.Portale-unico-ISEE.html"
+      },
+      {
+       "t": "INPS – Circolare 7/2026 (assegno unico, ISEE)",
+       "u": "https://www.informazionefiscale.it/IMG/pdf/16548_circolare-numero-7-del-30-01-2026.pdf"
+      }
+     ]
+    },
+    {
+     "id": "auu",
+     "emo": "💶",
+     "titolo": "Domanda di assegno unico",
+     "quando": "Dal 7° mese di gravidanza, al più tardi entro 120 giorni dalla nascita",
+     "dal": {
+      "m": -2
+     },
+     "entro": {
+      "g": 120
+     },
+     "cosa": "L'assegno unico spetta per ogni figlio **dal 7° mese di gravidanza** fino ai 21 anni. La domanda si può fare già in gravidanza; va comunque fatta **entro 120 giorni dalla nascita** per non perdere le mensilità arretrate.",
+     "come": [
+      "Primo figlio (o nessun assegno in corso): nuova domanda sul sito INPS («Assegno unico e universale per i figli a carico»), dall'app INPS Mobile, al Contact Center 803.164 o con un patronato.",
+      "Se ricevete già l'assegno per altri figli non serve una nuova domanda: aggiungete il nuovo nato modificando la domanda in corso, sempre entro 120 giorni.",
+      "Indicate l'IBAN: si può dividere l'importo al 50% tra i genitori.",
+      "Ricordate di aggiornare l'ISEE con il nuovo figlio."
+     ],
+     "serve": [
+      "SPID, CIE o CNS",
+      "Codice fiscale del bambino (dopo la nascita)",
+      "IBAN",
+      "ISEE valido (facoltativo, ma senza si riceve il minimo)"
+     ],
+     "consiglio": "Nell'area MyINPS (I tuoi dati › Contatti e consensi) puoi attivare gli avvisi automatici: l'INPS scrive alle famiglie quando nasce un bambino per ricordare assegno unico e bonus nuovi nati.",
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "INPS – Assegno unico 2026: domanda e importi (2 feb 2026)",
+       "u": "https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.assegno-unico-2026-presentazione-domanda-e-aggiornamento-importi.html"
+      },
+      {
+       "t": "INPS – Avvisi automatici per assegno unico e bonus nuovi nati (lug 2026)",
+       "u": "https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.07.come-ricevere-gli-avvisi-automatici-per-auu-e-bonus-nuovi-nati.html"
+      }
+     ]
+    },
+    {
+     "id": "paternita",
+     "emo": "🧔",
+     "titolo": "Congedo di paternità: avvisa il datore di lavoro",
+     "solo": "Per il papà lavoratore dipendente",
+     "quando": "Da 2 mesi prima della data presunta a 5 mesi dopo la nascita",
+     "dal": {
+      "m": -2
+     },
+     "entro": {
+      "m": 5
+     },
+     "cosa": "Il papà dipendente ha diritto a **10 giorni lavorativi obbligatori** (20 per i gemelli), pagati al 100%, anche non consecutivi, da usare tra 2 mesi prima e 5 mesi dopo il parto.",
+     "come": [
+      "Comunica per iscritto al datore di lavoro i giorni scelti, con almeno 5 giorni di anticipo.",
+      "Dipendenti privati: domanda anche all'INPS (online, Contact Center o patronato). Dipendenti pubblici: basta la domanda all'ente datore di lavoro.",
+      "L'indennità è anticipata in busta paga."
+     ],
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "D.Lgs. 151/2001, art. 27-bis (Normattiva)",
+       "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151~art27bis"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "subito",
+   "titolo": "Nei primi 10 giorni",
+   "emo": "🏥",
+   "passi": [
+    {
+     "id": "dichiarazione",
+     "emo": "📝",
+     "titolo": "Dichiarazione di nascita",
+     "quando": "Entro 3 giorni in ospedale, oppure entro 10 giorni in Comune",
+     "entro": {
+      "g": 10
+     },
+     "obbligo": true,
+     "cosa": "È l'atto che fa esistere il bambino per lo Stato: da qui partono atto di nascita, residenza, codice fiscale e tessera sanitaria. È **obbligatoria**.",
+     "come": [
+      "In ospedale (direzione sanitaria o ufficio nascite del punto nascita): entro 3 giorni dal parto. È la strada più comoda: l'ospedale trasmette tutto al Comune.",
+      "Oppure in Comune: all'ufficio di stato civile del Comune dove è nato il bambino o del Comune di residenza, entro 10 giorni.",
+      "Può dichiarare uno dei genitori (se sposati), un procuratore speciale, o il medico o l'ostetrica che hanno assistito al parto.",
+      "Genitori non sposati: per essere riconosciuti entrambi servono entrambi, o un riconoscimento fatto prima della nascita."
+     ],
+     "serve": [
+      "Attestazione di nascita rilasciata dal punto nascita",
+      "Documento d'identità di chi dichiara",
+      "Nome scelto e accordo sul cognome"
+     ],
+     "attenzione": "Il cognome: dal 2022 il figlio prende **i cognomi di entrambi i genitori**, nell'ordine che decidete insieme. Potete scegliere di comune accordo anche un solo cognome (Corte costituzionale, sentenza 131/2022). Pensateci prima: dopo cambiarlo è complicato.",
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "Ministero della Giustizia – Dichiarazione di nascita",
+       "u": "https://www.giustizia.it/giustizia/page/it/nascita?tab=d"
+      },
+      {
+       "t": "Corte costituzionale – Sentenza 131/2022 sul cognome",
+       "u": "https://www.cortecostituzionale.it/scheda-pronuncia/2022/131"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mese",
+   "titolo": "Nelle prime settimane",
+   "emo": "📬",
+   "passi": [
+    {
+     "id": "cf",
+     "emo": "🪪",
+     "titolo": "Codice fiscale e tessera sanitaria",
+     "quando": "Automatico dopo la dichiarazione di nascita",
+     "cosa": "Il **codice fiscale lo assegna il Comune** in automatico dopo la dichiarazione di nascita. La prima tessera sanitaria (valida 1 anno) arriva per posta all'indirizzo di residenza. Dopo la scelta del pediatra arriva una seconda tessera valida 6 anni.",
+     "come": [
+      "Non serve fare domanda: aspetta la tessera a casa.",
+      "Ti serve prima, per esempio per l'assegno unico o il pediatra? Il codice è riportato anche sul certificato di nascita e il Comune può comunicarlo.",
+      "Se il Comune non l'ha comunicato: area riservata dell'Agenzia delle Entrate (SPID, CIE o CNS), servizio per il codice fiscale dei neonati, allegando certificato o dichiarazione di nascita. Ricevi il certificato in formato digitale."
+     ],
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "Agenzia delle Entrate – Guida alla tessera sanitaria",
+       "u": "https://agenziaentrate.gov.it/portale/documents/20143/3200356/Guida-Tessera_Sanitaria.pdf"
+      },
+      {
+       "t": "AGI – Nuovo servizio online per il codice fiscale dei neonati (mar 2025, fonte secondaria)",
+       "u": "https://www.agi.it/economia/news/2025-03-07/codice-fiscale-neonati-nuovo-servizio-30330266/"
+      }
+     ]
+    },
+    {
+     "id": "pediatra",
+     "emo": "🩺",
+     "titolo": "Iscrizione al Servizio sanitario e scelta del pediatra",
+     "quando": "Appena arriva il codice fiscale, nelle prime settimane",
+     "cosa": "Il bambino va iscritto al Servizio sanitario della propria ASL scegliendo un **pediatra di libera scelta**. Fino ai 6 anni il pediatra è la regola. Conviene farlo subito: le prime visite di controllo sono nelle prime settimane.",
+     "come": [
+      "Informati prima sui pediatri disponibili in zona (posti liberi, ambulatorio vicino, orari).",
+      "Vai allo sportello di scelta e revoca dell'ASL di residenza (a Torino: ASL Città di Torino) o usa i servizi online della Regione, se disponibili per il tuo caso.",
+      "Dopo la scelta arriva a casa la tessera sanitaria valida 6 anni."
+     ],
+     "serve": [
+      "Codice fiscale del bambino",
+      "Documento d'identità del genitore",
+      "Autocertificazione di nascita e residenza (anche online da ANPR)"
+     ],
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "Regione Piemonte – Iscrizione al Servizio sanitario nazionale",
+       "u": "https://www.regione.piemonte.it/web/temi/sanita/accesso-ai-servizi-sanitari/iscrizione-al-servizio-sanitario-nazionale"
+      },
+      {
+       "t": "Agenzia delle Entrate – Guida alla tessera sanitaria",
+       "u": "https://agenziaentrate.gov.it/portale/documents/20143/3200356/Guida-Tessera_Sanitaria.pdf"
+      }
+     ]
+    },
+    {
+     "id": "nuovinati",
+     "emo": "🎁",
+     "titolo": "Domanda del bonus nuovi nati",
+     "quando": "Entro 120 giorni dalla nascita",
+     "entro": {
+      "g": 120
+     },
+     "cosa": "1.000 € una tantum per i nati nel 2026, con ISEE fino a 40.000 €. **Se la domanda arriva dopo 120 giorni il bonus si perde.** Dettagli nella sezione Bonus.",
+     "come": [
+      "Aggiorna prima l'ISEE con il nuovo figlio: la DSU deve includerlo.",
+      "Fai domanda sul sito INPS (SPID, CIE, CNS), dall'app INPS Mobile, al Contact Center 803.164 o con un patronato."
+     ],
+     "costo": "Gratuito",
+     "fonti": [
+      {
+       "t": "INPS – Bonus nuovi nati (scheda)",
+       "u": "https://www.inps.it/content/inps-site/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.bonus-nuovi-nati.html"
+      }
+     ]
+    },
+    {
+     "id": "certificati",
+     "emo": "🖨️",
+     "titolo": "Certificati senza code",
+     "quando": "Quando servono",
+     "cosa": "Certificati di nascita, residenza e stato di famiglia si scaricano **gratis online** dall'Anagrafe nazionale (ANPR), anche per i figli, con SPID o CIE. Spesso basta un'autocertificazione.",
+     "come": [
+      "Entra in ANPR con SPID o CIE, scegli il certificato e il componente della famiglia.",
+      "Scarica il PDF: ha lo stesso valore di quello rilasciato allo sportello."
+     ],
+     "costo": "Gratuito online (esente da bollo)",
+     "fonti": [
+      {
+       "t": "ANPR – Anagrafe nazionale, servizi al cittadino",
+       "u": "https://www.anagrafenazionale.interno.gov.it/"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "poi",
+   "titolo": "Nei mesi successivi",
+   "emo": "🗓️",
+   "passi": [
+    {
+     "id": "cie",
+     "emo": "🪪",
+     "titolo": "Carta d'identità elettronica",
+     "solo": "Facoltativa: serve soprattutto per viaggiare",
+     "quando": "Quando serve, a qualsiasi età",
+     "cosa": "Non è obbligatoria, ma se viaggiate in Europa è il documento più semplice. **Sotto i 3 anni dura 3 anni**, dai 3 ai 18 anni dura 5 anni.",
+     "come": [
+      "Prenota allo sportello del Comune (o tramite l'agenda online del Ministero se il Comune la usa).",
+      "Il bambino deve essere presente: serve una foto recente (fondo chiaro, viso ben visibile). Per i neonati molti fotografi sono abituati.",
+      "Per renderla **valida per l'espatrio** devono essere presenti **entrambi i genitori** al momento della richiesta.",
+      "Sotto i 14 anni si possono far stampare sul retro i nomi dei genitori: utile all'estero per dimostrare chi accompagna il bambino."
+     ],
+     "serve": [
+      "Codice fiscale o tessera sanitaria del bambino",
+      "Foto formato tessera recente",
+      "Documenti d'identità dei genitori",
+      "Eventuale vecchio documento"
+     ],
+     "costo": "Tariffa statale più diritti del Comune: in genere poco più di 20 €. Controlla l'importo sul sito del tuo Comune.",
+     "fonti": [
+      {
+       "t": "Ministero dell'Interno – CIE per i minori",
+       "u": "https://www.cartaidentita.interno.gov.it/en/citizens/release-and-renew-minors/"
+      }
+     ]
+    },
+    {
+     "id": "passaporto",
+     "emo": "✈️",
+     "titolo": "Passaporto",
+     "solo": "Solo per viaggi fuori dall'Unione europea",
+     "quando": "Almeno 2-3 mesi prima del viaggio",
+     "cosa": "Serve nei Paesi dove la carta d'identità non basta. Si chiede in Questura con l'**assenso di entrambi i genitori**.",
+     "come": [
+      "Prenota l'appuntamento sull'agenda online della Polizia di Stato.",
+      "Porta il bambino, la foto e il modulo con l'assenso di entrambi i genitori. Il genitore assente firma l'assenso e allega un documento.",
+      "Controlla sul sito della Polizia di Stato costo e validità aggiornati."
+     ],
+     "fonti": [
+      {
+       "t": "Polizia di Stato – Agenda passaporto online",
+       "u": "https://www.passaportonline.poliziadistato.it/"
+      }
+     ]
+    },
+    {
+     "id": "nido",
+     "emo": "🧸",
+     "titolo": "Iscrizione al nido e bonus nido",
+     "quando": "I bandi comunali escono di solito in primavera per l'anno educativo successivo",
+     "cosa": "I posti nei nidi comunali si assegnano con **bandi annuali** con date precise: chi li perde aspetta l'anno dopo. Il bonus nido INPS rimborsa fino a 3.600 € l'anno (vedi Bonus).",
+     "come": [
+      "Segna le date del bando del tuo Comune: per Torino, sulla pagina dei servizi educativi del Comune.",
+      "Visita i nidi (comunali, convenzionati, privati autorizzati) durante gli open day.",
+      "Dopo l'iscrizione e il pagamento della prima retta, chiedi il bonus nido all'INPS."
+     ],
+     "fonti": [
+      {
+       "t": "INPS – Circolare 29/2026 bonus nido (riassunto, fonte secondaria)",
+       "u": "https://www.informazionefiscale.it/bonus-nido-2026-inps-circolare-istruzioni-importo"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "bonus": [
+  {
+   "id": "b-auu",
+   "emo": "💶",
+   "nome": "Assegno unico e universale",
+   "importo": "Da 58,30 a 203,80 € al mese per ogni figlio minorenne (2026)",
+   "dettagli": [
+    "Importo pieno con ISEE fino a 17.468,51 €; minimo con ISEE oltre 46.582,71 € o senza ISEE.",
+    "**+50% per i figli sotto 1 anno.** +50% anche per i figli da 1 a 3 anni nei nuclei con 3 o più figli e ISEE entro la soglia massima.",
+    "Maggiorazione se entrambi i genitori lavorano (fino a 34,90 € al mese) e se la madre ha meno di 21 anni (23,30 €).",
+    "Spetta dal 7° mese di gravidanza fino ai 21 anni (dopo i 18 con condizioni)."
+   ],
+   "aChi": "Tutte le famiglie con figli, residenti in Italia. L'ISEE cambia solo l'importo.",
+   "come": "Domanda INPS dal 7° mese di gravidanza ed entro 120 giorni dalla nascita (vedi la pratica sopra).",
+   "verificato": "2026-11-07",
+   "fonti": [
+    {
+     "t": "INPS – Circolare 7 del 30/01/2026",
+     "u": "https://www.informazionefiscale.it/IMG/pdf/16548_circolare-numero-7-del-30-01-2026.pdf"
+    },
+    {
+     "t": "Money.it – Tabella importi 2026 dall'allegato 1 della circolare (fonte secondaria)",
+     "u": "https://www.money.it/tabella-assegno-unico-2026-nuovi-importi-aumenti-arretrati"
+    }
+   ]
+  },
+  {
+   "id": "b-nuovinati",
+   "emo": "🎁",
+   "nome": "Bonus nuovi nati",
+   "importo": "1.000 € una tantum per ogni figlio nato nel 2026",
+   "dettagli": [
+    "ISEE fino a 40.000 € (ISEE per prestazioni familiari, che toglie l'assegno unico).",
+    "Residenza continuativa in Italia dalla nascita alla domanda. Cittadini italiani e UE, o extra UE con permesso di soggiorno di almeno un anno.",
+    "**Domanda entro 120 giorni** dalla nascita: dopo si perde."
+   ],
+   "aChi": "Genitori di bambini nati, adottati o in affido preadottivo dal 1° gennaio al 31 dicembre 2026.",
+   "come": "Sito INPS (SPID, CIE, CNS), app INPS Mobile, Contact Center 803.164 o patronato, dopo aver aggiornato la DSU con il bambino.",
+   "verificato": "2026-11-07",
+   "fonti": [
+    {
+     "t": "INPS – Bonus nuovi nati 2026 (ago 2026)",
+     "u": "https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.08.bonus-nuovi-nati-2026-domande-entro-il-12-agosto.html"
+    },
+    {
+     "t": "Fiscoetasse – Sintesi della circolare INPS 45/2026 (fonte secondaria)",
+     "u": "https://www.fiscoetasse.com/new-rassegna-stampa/3815-bonus-nuovi-nati-2026-si-puo-fare-domanda.html"
+    }
+   ]
+  },
+  {
+   "id": "b-nido",
+   "emo": "🧸",
+   "nome": "Bonus asilo nido",
+   "importo": "Fino a 3.600 € l'anno per i nati dal 2024 (ISEE fino a 40.000 €), 1.500 € oltre",
+   "dettagli": [
+    "Rimborso delle rette di nidi pubblici e privati autorizzati, in 11 mensilità, per figli sotto i 3 anni.",
+    "Copre anche l'assistenza a casa per bambini sotto i 3 anni con gravi patologie croniche.",
+    "Senza ISEE spetta il minimo (1.500 €). Un ISEE presentato dopo dà l'importo pieno, ma senza arretrati.",
+    "Dal 2026 la domanda vale fino ai 3 anni del bambino e va confermata ogni anno. Le risorse si assegnano in ordine di domanda: meglio farla presto."
+   ],
+   "aChi": "Il genitore che paga la retta: fatture e domanda devono essere intestate alla stessa persona.",
+   "come": "Online sul sito INPS o tramite patronato, allegando la ricevuta di almeno una retta.",
+   "verificato": "2026-11-07",
+   "fonti": [
+    {
+     "t": "Informazione Fiscale – Circolare INPS 29 del 27/03/2026 (fonte secondaria)",
+     "u": "https://www.informazionefiscale.it/bonus-nido-2026-inps-circolare-istruzioni-importo"
+    }
+   ]
+  },
+  {
+   "id": "b-mamme",
+   "emo": "👩‍💼",
+   "nome": "Bonus mamme lavoratrici",
+   "solo": "Dal secondo figlio",
+   "importo": "60 € al mese, fino a 720 € per il 2026",
+   "dettagli": [
+    "Per madri lavoratrici (dipendenti o autonome) con almeno 2 figli, il più piccolo sotto i 10 anni, oppure con 3 o più figli, il più piccolo sotto i 18 anni.",
+    "Redditi da lavoro fino a 40.000 € l'anno.",
+    "Le mensilità del 2026 vengono pagate tutte insieme a dicembre."
+   ],
+   "aChi": "Non vale per il primo figlio.",
+   "come": "Domanda all'INPS (online, Contact Center o patronato) quando apre il servizio.",
+   "verificato": "2026-11-07",
+   "fonti": [
+    {
+     "t": "INPS – Circolare 106 del 16/10/2026",
+     "u": "https://lentepubblica.it/wp-content/uploads/2026/10/18014_Circolare-numero-106-del-16-10-2026.pdf"
+    }
+   ]
+  }
+ ],
+ "congedi": [
+  {
+   "id": "c-maternita",
+   "emo": "🤱",
+   "nome": "Congedo di maternità",
+   "importo": "5 mesi obbligatori",
+   "dettagli": [
+    "Di norma 2 mesi prima e 3 dopo il parto. Si può scegliere 1 mese prima e 4 dopo, oppure tutti e 5 dopo il parto, con il parere del medico.",
+    "Indennità dell'80% della retribuzione a carico dell'INPS. Molti contratti, compreso il pubblico impiego, la integrano fino al 100%: controlla il tuo."
+   ],
+   "aChi": "Lavoratrici dipendenti. Regole diverse per autonome e iscritte alla gestione separata.",
+   "come": "Dipendenti private: domanda INPS con il certificato di gravidanza inviato dal medico. Pubbliche: domanda all'ente.",
+   "fonti": [
+    {
+     "t": "D.Lgs. 151/2001, artt. 16 e 22 (Normattiva)",
+     "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151"
+    }
+   ]
+  },
+  {
+   "id": "c-paternita",
+   "emo": "🧔",
+   "nome": "Congedo di paternità obbligatorio",
+   "importo": "10 giorni lavorativi pagati al 100% (20 per i gemelli)",
+   "dettagli": [
+    "Da 2 mesi prima a 5 mesi dopo la nascita, anche non consecutivi, non a ore.",
+    "Preavviso scritto al datore di lavoro di almeno 5 giorni."
+   ],
+   "aChi": "Padri lavoratori dipendenti, privati e pubblici.",
+   "come": "Comunicazione al datore di lavoro; i dipendenti privati fanno domanda anche all'INPS.",
+   "fonti": [
+    {
+     "t": "D.Lgs. 151/2001, art. 27-bis (Normattiva)",
+     "u": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2001-03-26;151~art27bis"
+    }
+   ]
+  },
+  {
+   "id": "c-parentale",
+   "emo": "👨‍👩‍👦",
+   "nome": "Congedo parentale (facoltativo)",
+   "importo": "Fino a 10 mesi in coppia (11 se il papà ne usa almeno 3), fino ai 14 anni del figlio",
+   "dettagli": [
+    "3 mesi per ciascun genitore, non trasferibili, più altri 3 da dividere.",
+    "**3 mesi complessivi pagati all'80%** se usati entro i 6 anni del bambino. Gli altri mesi indennizzati sono al 30%.",
+    "Dal 2026 il congedo si può usare fino ai 14 anni del figlio (prima erano 12). Salgono anche a 10 l'anno i giorni di malattia del figlio tra i 3 e i 14 anni."
+   ],
+   "aChi": "Genitori lavoratori dipendenti. Regole ridotte per autonomi e gestione separata.",
+   "come": "Dipendenti privati: domanda INPS prima dell'inizio, con preavviso al datore. Pubblici: domanda all'ente.",
+   "fonti": [
+    {
+     "t": "Fisco7 – Circolare INPS 95/2025 sui 3 mesi all'80% (fonte secondaria)",
+     "u": "https://www.fisco7.it/2025/06/congedo-parentale-all80-per-tre-mesi-dal-2025-istruzioni-operative-inps/"
+    },
+    {
+     "t": "Informazione Fiscale – Novità della legge di bilancio 2026 (L. 199/2025, comma 219; fonte secondaria)",
+     "u": "https://www.informazionefiscale.it/Congedo-parentale-inps-2026-novita-legge-bilancio"
+    }
+   ]
+  }
+ ],
+ "inArrivo": {
+  "titolo": "In discussione: legge di bilancio 2027",
+  "testo": "Il governo ha approvato a fine ottobre 2026 il disegno di legge di bilancio 2027, ora all'esame del Parlamento. **Non è ancora legge**: i contenuti possono cambiare fino all'approvazione di fine dicembre.",
+  "voci": [
+   "Un fondo per ogni nuovo nato, con un versamento dello Stato da 100 € che i genitori possono integrare fino ai 18 anni.",
+   "Congedo parentale all'80% che sale a 4 mesi per figlio (5 per il secondo, 6 per il terzo).",
+   "Bonus mamme lavoratrici reso strutturale.",
+   "Un voucher per baby-sitter fino a 500 € al mese per 3 mesi per i genitori che lavorano."
+  ],
+  "fonti": [
+   {
+    "t": "QuiFinanza – Manovra 2027, le misure per le famiglie (fonte secondaria)",
+    "u": "https://quifinanza.it/fisco-tasse/bonus-fiscali/bonus-famiglie-manovra-2027/1021852/amp/"
+   },
+   {
+    "t": "MySolution – Approvato in CdM il ddl di bilancio 2027 (29 ott 2026)",
+    "u": "https://www.mysolution.it/lavoro/informazioni/news/2026/10/29/approvato-in-cdm-lo-schema-di-disegno-di-legge-di-bilancio-2027/"
+   }
+  ]
+ }
+}
