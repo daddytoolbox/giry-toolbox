@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-02",
+  "aggiornato": "2026-11-09",
   "nota": "Prima versione: risorse ricorrenti. Gli eventi della settimana verranno aggiunti dall'aggiornamento automatico.",
   "eventi": [
     {
@@ -61,12 +61,124 @@
       "gratuito": false,
       "ricorrente": true,
       "prov": "TO"
+    },
+    {
+      "titolo": "Incontri di accompagnamento alla nascita – Consultorio di Grosseto",
+      "quando": "Tutto l'anno, su prenotazione",
+      "dove": "Consultorio ASL, via Don Minzoni 9, Grosseto (prenotazioni 0564 485736, lun-ven 11:30-13:30)",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Incontri del Percorso Nascita dell'ASL Toscana Sud Est, con l'attivazione del libretto di gravidanza. Si accede senza richiesta del medico, prenotando per telefono.",
+      "link": "https://www.uslsudest.toscana.it/servizi-e-strutture/consultorio/provincia-di-grosseto",
+      "gratuito": true,
+      "ricorrente": true,
+      "prov": "GR"
+    },
+    {
+      "titolo": "Incontri di accompagnamento alla nascita – Consultorio di Follonica",
+      "quando": "Tutto l'anno, su prenotazione",
+      "dove": "Consultorio ASL, viale Europa 1, Follonica (prenotazioni 0566 59614)",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Incontri del Percorso Nascita ASL e attivazione del libretto di gravidanza. Serve la prenotazione.",
+      "link": "https://www.uslsudest.toscana.it/servizi-e-strutture/consultorio/provincia-di-grosseto",
+      "gratuito": true,
+      "ricorrente": true,
+      "prov": "GR"
+    },
+    {
+      "titolo": "Incontri di accompagnamento alla nascita – Orbetello e Colline dell'Albegna",
+      "quando": "Tutto l'anno, su prenotazione",
+      "dove": "Consultorio presso l'Ospedale di Orbetello; sedi anche a Pitigliano, Manciano, Monte Argentario e Isola del Giglio (segreteria 0564 869216)",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Incontri del Percorso Nascita nei consultori della zona sud. Per sede e date chiamare la segreteria.",
+      "link": "https://www.uslsudest.toscana.it/servizi-e-strutture/consultorio/provincia-di-grosseto",
+      "gratuito": true,
+      "ricorrente": true,
+      "prov": "GR"
+    },
+    {
+      "titolo": "Incontri di accompagnamento alla nascita – Consultorio di Castel del Piano",
+      "quando": "Tutto l'anno, su prenotazione",
+      "dove": "Consultorio ASL, via IV Novembre, Castel del Piano (tel. 0564 914539)",
+      "eta": "gravidanza",
+      "tipo": "Corso",
+      "descr": "Incontri del Percorso Nascita per l'Amiata grossetana. Date e orari si chiedono per telefono.",
+      "link": "https://www.uslsudest.toscana.it/servizi-e-strutture/consultorio/provincia-di-grosseto",
+      "gratuito": true,
+      "ricorrente": true,
+      "prov": "GR"
+    },
+    {
+      "titolo": "hAPPyMamma, l'app della Regione Toscana per gravidanza e primo anno",
+      "quando": "Sempre disponibile, si attiva in consultorio",
+      "dove": "App per smartphone",
+      "eta": "gravidanza",
+      "tipo": "Servizio",
+      "descr": "App multilingue della Regione Toscana con libretto di gravidanza digitale e agenda di visite ed esami fino al primo anno.",
+      "link": "https://www.uslsudest.toscana.it/percorsi-assistenziali/percorso-nascita/happymamma",
+      "gratuito": null,
+      "ricorrente": true,
+      "prov": "GR"
+    },
+    {
+      "titolo": "Nella pancia di Tauret – visita per neogenitori con bebè",
+      "data": "2026-11-16",
+      "ora": "11:00",
+      "dove": "Museo Egizio, via Accademia delle Scienze 6, Torino",
+      "eta": "0-3",
+      "tipo": "Visita",
+      "descr": "Visita guidata di 90 minuti in piccolo gruppo per genitori con bambini fino a 9 mesi, anche sulla maternità nell'antico Egitto. Prenotazione obbligatoria (011 4406903).",
+      "link": "https://www.museoegizio.it/esplora/visite/nella-pancia-di-tauret/",
+      "gratuito": true,
+      "prov": "TO"
+    },
+    {
+      "titolo": "Piccole Domeniche alla Pinacoteca Agnelli",
+      "data": "2026-11-15",
+      "ora": "11:00",
+      "dove": "Pinacoteca Agnelli, Lingotto, via Nizza 230/103, Torino",
+      "eta": "0-3",
+      "tipo": "Laboratorio",
+      "descr": "Un'ora al museo per bambini fino a 3 anni con un adulto. Prezzo 2026 da verificare sul sito della Pinacoteca.",
+      "link": "https://abbonamentomusei.it/en/evento/piccole-domeniche-e-family-afternoons",
+      "gratuito": false,
+      "prov": "TO"
+    },
+    {
+      "titolo": "Piccole Domeniche alla Pinacoteca Agnelli",
+      "data": "2026-11-22",
+      "ora": "11:00",
+      "dove": "Pinacoteca Agnelli, Lingotto, via Nizza 230/103, Torino",
+      "eta": "0-3",
+      "tipo": "Laboratorio",
+      "descr": "Un'ora al museo per bambini fino a 3 anni con un adulto. Prezzo 2026 da verificare sul sito della Pinacoteca.",
+      "link": "https://abbonamentomusei.it/en/evento/piccole-domeniche-e-family-afternoons",
+      "gratuito": false,
+      "prov": "TO"
+    },
+    {
+      "titolo": "Piccole Domeniche alla Pinacoteca Agnelli",
+      "data": "2026-11-29",
+      "ora": "11:00",
+      "dove": "Pinacoteca Agnelli, Lingotto, via Nizza 230/103, Torino",
+      "eta": "0-3",
+      "tipo": "Laboratorio",
+      "descr": "Un'ora al museo per bambini fino a 3 anni con un adulto. Prezzo 2026 da verificare sul sito della Pinacoteca.",
+      "link": "https://abbonamentomusei.it/en/evento/piccole-domeniche-e-family-afternoons",
+      "gratuito": false,
+      "prov": "TO"
     }
   ],
   "province": {
     "TO": {
       "nome": "Torino",
       "dal": "2026-10-27"
+    },
+    "GR": {
+      "nome": "Grosseto",
+      "dal": "2026-11-09"
     }
   }
 }
