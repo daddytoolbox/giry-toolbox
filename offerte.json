@@ -18,16 +18,6 @@
  "negozi": [
   {
    "prov": "TO",
-   "nome": "Chicco",
-   "tipo": "infanzia",
-   "volantino": "3x2 (prodotti inclusi non indicati)",
-   "dal": "2026-11-02",
-   "al": "2026-11-08",
-   "link": "https://www.promoqui.it/volantino/chicco/1737410",
-   "fonte": "PromoQui (aggregatore)"
-  },
-  {
-   "prov": "TO",
    "nome": "Prénatal",
    "tipo": "infanzia",
    "volantino": "Ultime offerte del catalogo",
