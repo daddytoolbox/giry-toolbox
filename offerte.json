@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-07",
+ "aggiornato": "2026-11-13",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -16,45 +16,6 @@
   "**Non pubblichiamo offerte sul latte artificiale né su biberon e tettarelle**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche latte di proseguimento, biberon e tettarelle."
  ],
  "negozi": [
-  {
-   "prov": "TO",
-   "nome": "Prénatal",
-   "tipo": "infanzia",
-   "volantino": "Ultime offerte del catalogo",
-   "al": "2026-11-10",
-   "dove": "Vinovo (Str. Debouchè) e altri punti vendita",
-   "link": "https://www.doveconviene.it/carmagnola/volantino/prenatal",
-   "fonte": "DoveConviene (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Coop",
-   "tipo": "supermercato",
-   "volantino": "Ultime offerte",
-   "al": "2026-11-11",
-   "link": "https://www.doveconviene.it/torino/volantino/coop",
-   "fonte": "DoveConviene (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Lidl",
-   "tipo": "discount",
-   "volantino": "Sottocosto",
-   "dal": "2026-11-02",
-   "al": "2026-11-11",
-   "link": "https://www.doveconviene.it/torino/volantino/lidl",
-   "fonte": "PromoQui / DoveConviene (aggregatori)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Decò",
-   "tipo": "supermercato",
-   "volantino": "La qualità che conviene",
-   "dal": "2026-11-03",
-   "al": "2026-11-12",
-   "link": "https://www.promoqui.it/torino/offerte/infanzia",
-   "fonte": "PromoQui (aggregatore)"
-  },
   {
    "prov": "TO",
    "nome": "Conad",
@@ -164,6 +125,16 @@
    "al": "2026-11-18",
    "dove": "Torino (2 punti vendita) e Moncalieri",
    "link": "https://www.promoqui.it/torino/pam",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Lidl",
+   "tipo": "discount",
+   "volantino": "Lidl Black Days",
+   "dal": "2026-11-12",
+   "al": "2026-11-18",
+   "link": "https://www.promoqui.it/volantino/lidl/1741577",
    "fonte": "PromoQui (aggregatore)"
   },
   {
