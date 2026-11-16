@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-13",
+ "aggiornato": "2026-11-16",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -16,56 +16,6 @@
   "**Non pubblichiamo offerte sul latte artificiale né su biberon e tettarelle**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche latte di proseguimento, biberon e tettarelle."
  ],
  "negozi": [
-  {
-   "prov": "TO",
-   "nome": "Conad",
-   "tipo": "supermercato",
-   "volantino": "Sottocosto",
-   "dal": "2026-11-05",
-   "al": "2026-11-14",
-   "link": "https://www.promoqui.it/torino/conad",
-   "fonte": "PromoQui (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Eurospin",
-   "tipo": "discount",
-   "volantino": "Sapori in festa",
-   "dal": "2026-11-05",
-   "al": "2026-11-15",
-   "link": "https://www.doveconviene.it/torino/volantino/eurospin",
-   "fonte": "PromoQui (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "MD",
-   "tipo": "discount",
-   "volantino": "Nuova apertura",
-   "dal": "2026-10-30",
-   "al": "2026-11-15",
-   "link": "https://www.promoqui.it/torino/offerte/infanzia",
-   "fonte": "PromoQui (aggregatore)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Penny",
-   "tipo": "discount",
-   "volantino": "Maxi formato",
-   "dal": "2026-11-05",
-   "al": "2026-11-15",
-   "link": "https://www.promoqui.it/torino/penny",
-   "fonte": "PromoQui / AnteprimaVolantino (aggregatori)"
-  },
-  {
-   "prov": "TO",
-   "nome": "MD",
-   "tipo": "discount",
-   "volantino": "Anteprima Natale",
-   "dal": "2026-11-03",
-   "al": "2026-11-15",
-   "link": "https://www.sbirciaprezzo.com/volantino-md-anteprima-natale-dal-03-al-15-novembre-2026/",
-   "fonte": "Sbirciaprezzo (aggregatore)"
-  },
   {
    "prov": "TO",
    "nome": "Conad City",
@@ -271,32 +221,6 @@
    "prodotto": "Quercetti Momy Soft",
    "formato": "8 pezzi (età non indicata dal volantino)",
    "prezzo": 11.9
-  },
-  {
-   "prov": "TO",
-   "negozio": "MD",
-   "dal": "2026-11-03",
-   "al": "2026-11-15",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-md/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
-   "cat": "salviette",
-   "prodotto": "Speedy Care salviettine baby",
-   "formato": "confezione da 100 salviette",
-   "pezzi": 100,
-   "prezzo": 1.0
-  },
-  {
-   "prov": "TO",
-   "negozio": "MD",
-   "dal": "2026-11-03",
-   "al": "2026-11-15",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-md/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
-   "cat": "pannolini",
-   "prodotto": "Pampers Baby Dry o Mutandino, taglie assortite",
-   "formato": "il volantino non indica il numero di pezzi",
-   "prezzo": 4.79,
-   "condizioni": "con Buona Spesa Card (senza carta 5,45 €)"
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
