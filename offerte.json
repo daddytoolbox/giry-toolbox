@@ -100,12 +100,62 @@
   },
   {
    "prov": "TO",
+   "nome": "Lidl",
+   "tipo": "discount",
+   "volantino": "Volantino settimanale",
+   "dal": "2026-11-19",
+   "al": "2026-11-25",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Eurospin",
+   "tipo": "discount",
+   "volantino": "Sapori in festa",
+   "dal": "2026-11-16",
+   "al": "2026-11-25",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Volantino con Sottocosto",
+   "dal": "2026-11-19",
+   "al": "2026-11-28",
+   "link": "https://www.anteprimavolantino.it/148798/volantino-esselunga-dal-19-novembre-2026-in-anteprima/",
+   "fonte": "AnteprimaVolantino / Scontrino Felice (trascrizioni, fonti secondarie)"
+  },
+  {
+   "prov": "TO",
+   "nome": "MD",
+   "tipo": "discount",
+   "volantino": "Volantino con Speciale giocattolo",
+   "dal": "2026-11-17",
+   "al": "2026-11-29",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-md/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Penny",
+   "tipo": "discount",
+   "volantino": "Volantino settimanale",
+   "dal": "2026-11-19",
+   "al": "2026-11-29",
+   "link": "https://www.anteprimavolantino.it/148994/volantino-penny-dal-19-novembre-2026/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
    "nome": "Prénatal",
    "tipo": "infanzia",
    "volantino": "Sconti fino al -40%",
-   "dal": "2026-10-22",
+   "dal": "2026-11-03",
    "al": "2026-12-08",
-   "link": "https://www.doveconviene.it/torino/infanzia-e-giochi/prenatal/volantino/ultime-offerte-prenatal?flyerId=1738590&flyerPage=1",
+   "link": "https://www.promoqui.it/volantino/prenatal/1738590",
    "fonte": "PromoQui / DoveConviene (aggregatori)"
   },
   {
@@ -114,8 +164,9 @@
    "tipo": "supermercato",
    "volantino": "Catalogo Giocattolo",
    "al": "2026-12-24",
-   "link": "https://www.doveconviene.it/torino/volantino/carrefour-ipermercati",
-   "fonte": "DoveConviene (aggregatore)"
+   "link": "https://www.promoqui.it/volantino/carrefour-ipermercati/1725273",
+   "fonte": "PromoQui (aggregatore)",
+   "dal": "2026-10-23"
   },
   {
    "prov": "TO",
@@ -125,6 +176,36 @@
    "dal": "2026-11-05",
    "al": "2026-12-24",
    "link": "https://www.promoqui.it/torino/bennet",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Voglia di Natale",
+   "dal": "2026-11-12",
+   "al": "2026-12-24",
+   "link": "https://www.promoqui.it/volantino/esselunga/1746884",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Carrefour Iper",
+   "tipo": "supermercato",
+   "volantino": "Occasioni di Natale",
+   "dal": "2026-11-02",
+   "al": "2026-12-24",
+   "link": "https://www.promoqui.it/volantino/carrefour-ipermercati/1732632",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Conad",
+   "tipo": "supermercato",
+   "volantino": "Catalogo ceste Spazio e Superstore Piemonte",
+   "dal": "2026-11-05",
+   "al": "2026-12-24",
+   "link": "https://www.promoqui.it/volantino/conad/1730628",
    "fonte": "PromoQui (aggregatore)"
   },
   {
@@ -145,6 +226,26 @@
    "dal": "2026-11-02",
    "al": "2026-12-31",
    "link": "https://www.promoqui.it/torino/penny",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Toys Center",
+   "tipo": "infanzia",
+   "volantino": "Catalogo di Natale 2026",
+   "dal": "2026-11-10",
+   "al": "2026-12-31",
+   "link": "https://www.promoqui.it/volantino/toys-center/1744754",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Sotto l'Albero",
+   "dal": "2026-11-12",
+   "al": "2026-12-31",
+   "link": "https://www.promoqui.it/volantino/esselunga/1746885",
    "fonte": "PromoQui (aggregatore)"
   }
  ],
@@ -221,6 +322,68 @@
    "prodotto": "Quercetti Momy Soft",
    "formato": "8 pezzi (età non indicata dal volantino)",
    "prezzo": 11.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-19",
+   "al": "2026-11-28",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria); prezzo confermato da AnteprimaVolantino",
+   "cat": "salviette",
+   "prodotto": "Pampers Baby-Dry salviette",
+   "formato": "500 salviette (Sottocosto, sconto del 68% indicato nella trascrizione: prezzo pieno ricavato ≈ 24,69 €)",
+   "pezzi": 500,
+   "prezzo": 7.9,
+   "prezzoPieno": 24.69
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-11-19",
+   "al": "2026-11-28",
+   "link": "https://www.anteprimavolantino.it/148798/volantino-esselunga-dal-19-novembre-2026-in-anteprima/",
+   "fonte": "AnteprimaVolantino (trascrizione del volantino, fonte secondaria)",
+   "cat": "pannolini",
+   "prodotto": "Pampers Baby-Dry e Ultra Comfort",
+   "formato": "la trascrizione non indica con certezza il numero di pezzi, quindi non possiamo calcolare il prezzo al pannolino",
+   "prezzo": 24.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "Eurospin",
+   "dal": "2026-11-16",
+   "al": "2026-11-25",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "pannolini",
+   "prodotto": "Pannolini taglie assortite",
+   "formato": "numero di pezzi non indicato",
+   "prezzo": 2.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Eurospin",
+   "dal": "2026-11-16",
+   "al": "2026-11-25",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "giochi",
+   "prodotto": "Chicco, gioco per bambini 3-36 mesi",
+   "formato": "modello non indicato; quantità limitate",
+   "prezzo": 9.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-19",
+   "al": "2026-11-25",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
+   "cat": "giochi",
+   "prodotto": "Bayer, bambola Piccolina",
+   "formato": "dai 18 mesi",
+   "prezzo": 14.99
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
