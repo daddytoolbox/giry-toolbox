@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-19",
+ "aggiornato": "2026-11-22",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -49,6 +49,16 @@
   },
   {
    "prov": "TO",
+   "nome": "Carrefour Market",
+   "tipo": "supermercato",
+   "volantino": "Prezzi da Black Friday",
+   "dal": "2026-11-17",
+   "al": "2026-11-26",
+   "link": "https://www.promoqui.it/torino/carrefour-market",
+   "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
    "nome": "Esselunga",
    "tipo": "supermercato",
    "volantino": "Volantino con Sottocosto",
@@ -79,6 +89,66 @@
   },
   {
    "prov": "TO",
+   "nome": "Iperbimbo",
+   "tipo": "infanzia",
+   "volantino": "Black Friday (online)",
+   "dal": "2026-11-16",
+   "al": "2026-11-29",
+   "link": "https://www.iperbimbo.it/pages/black-friday-online",
+   "fonte": "Sito ufficiale (offerte online; validità nei negozi non indicata)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Black Days",
+   "dal": "2026-11-16",
+   "al": "2026-11-29",
+   "link": "https://www.tuttoesselunga.com/volantini-esselunga/19-novembre-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Ipercoop (Nova Coop)",
+   "tipo": "supermercato",
+   "volantino": "Black Friday",
+   "dal": "2026-11-19",
+   "al": "2026-11-30",
+   "link": "https://www.anteprimavolantino.it/149715/volantino-ipercoop-black-friday-dal-19-novembre-2026/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Lidl",
+   "tipo": "discount",
+   "volantino": "Black Week",
+   "dal": "2026-11-26",
+   "al": "2026-12-02",
+   "link": "https://www.anteprimavolantino.it/150259/volantino-lidl-dal-26-novembre-2026/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Pam",
+   "tipo": "supermercato",
+   "volantino": "Sotto prezzo",
+   "dal": "2026-11-19",
+   "al": "2026-12-02",
+   "link": "https://www.volantinofacile.it/pam/volantino-pam/to-torino-10121/volantino-5047376",
+   "fonte": "VolantinoFacile (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Ipercoop (Nova Coop)",
+   "tipo": "supermercato",
+   "volantino": "Volantino Ipercoop",
+   "dal": "2026-11-19",
+   "al": "2026-12-02",
+   "link": "https://www.anteprimavolantino.it/149623/volantino-ipercoop-dal-19-novembre-2026/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
    "nome": "Prénatal",
    "tipo": "infanzia",
    "volantino": "Sconti fino al -40%",
@@ -86,6 +156,16 @@
    "al": "2026-12-08",
    "link": "https://www.promoqui.it/volantino/prenatal/1738590",
    "fonte": "PromoQui / DoveConviene (aggregatori)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Eurospin",
+   "tipo": "discount",
+   "volantino": "Volantino settimanale",
+   "dal": "2026-11-26",
+   "al": "2026-12-09",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione, fonte secondaria)"
   },
   {
    "prov": "TO",
@@ -176,6 +256,16 @@
    "al": "2026-12-31",
    "link": "https://www.promoqui.it/volantino/esselunga/1746885",
    "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Speciale Giocattoli",
+   "dal": "2026-10-22",
+   "al": "2027-01-06",
+   "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria)"
   }
  ],
  "offerte": [
@@ -185,25 +275,26 @@
    "dal": "2026-11-19",
    "al": "2026-11-28",
    "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria); prezzo confermato da AnteprimaVolantino",
+   "fonte": "Scontrino Felice e TuttoEsselunga (trascrizioni del volantino, fonti secondarie). Sottocosto solo nei negozi aderenti",
    "cat": "salviette",
    "prodotto": "Pampers Baby-Dry salviette",
-   "formato": "500 salviette (Sottocosto, sconto del 68% indicato nella trascrizione: prezzo pieno ricavato ≈ 24,69 €)",
+   "formato": "500 salviette (Sottocosto, −68%; prezzo barrato 24,70 € secondo TuttoEsselunga e PromoQui)",
    "pezzi": 500,
    "prezzo": 7.9,
-   "prezzoPieno": 24.69
+   "prezzoPieno": 24.7
   },
   {
    "prov": "TO",
    "negozio": "Esselunga",
    "dal": "2026-11-19",
    "al": "2026-11-28",
-   "link": "https://www.anteprimavolantino.it/148798/volantino-esselunga-dal-19-novembre-2026-in-anteprima/",
-   "fonte": "AnteprimaVolantino (trascrizione del volantino, fonte secondaria)",
+   "link": "https://www.tuttoesselunga.com/volantini-esselunga/19-novembre-2026/",
+   "fonte": "TuttoEsselunga e AnteprimaVolantino (trascrizioni, fonti secondarie); prezzo precedente da PromoQui (aggregatore). Sottocosto solo nei negozi aderenti",
    "cat": "pannolini",
-   "prodotto": "Pampers Baby-Dry e Ultra Comfort",
-   "formato": "la trascrizione non indica con certezza il numero di pezzi, quindi non possiamo calcolare il prezzo al pannolino",
-   "prezzo": 24.9
+   "prodotto": "Pampers Baby-Dry Ultrapacco (Apri e Chiudi o Mutandino)",
+   "formato": "Apri e Chiudi 111-180 pz o Mutandino 102-144 pz secondo la taglia: pezzi variabili, prezzo al pannolino non calcolabile. Prezzo precedente 52,98 € (−53%) secondo PromoQui",
+   "prezzo": 24.9,
+   "prezzoPieno": 52.98
   },
   {
    "prov": "TO",
@@ -240,6 +331,185 @@
    "prodotto": "Bayer, bambola Piccolina",
    "formato": "dai 18 mesi",
    "prezzo": 14.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Ipercoop (Nova Coop)",
+   "dal": "2026-11-19",
+   "al": "2026-12-02",
+   "link": "https://www.anteprimavolantino.it/149623/volantino-ipercoop-dal-19-novembre-2026/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)",
+   "cat": "pannolini",
+   "prodotto": "Pampers Progressi (pannolini o mutandine)",
+   "formato": "pezzi e prezzo pieno non indicati nella trascrizione",
+   "prezzo": 29.9,
+   "test": "Pampers Progressi Newborn: 75/100 Altroconsumo"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-10-22",
+   "al": "2027-01-06",
+   "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria); fino a esaurimento scorte, prezzi variabili per negozio",
+   "cat": "giochi",
+   "prodotto": "Clementoni Tavolo Baby Park",
+   "formato": "età non indicata nella trascrizione",
+   "prezzo": 28.9,
+   "prezzoPieno": 39.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-10-22",
+   "al": "2027-01-06",
+   "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria); fino a esaurimento scorte, prezzi variabili per negozio",
+   "cat": "giochi",
+   "prodotto": "Chicco ABC Teddy Orso Emozioni",
+   "formato": "età non indicata nella trascrizione",
+   "prezzo": 22.9,
+   "prezzoPieno": 32.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-10-22",
+   "al": "2027-01-06",
+   "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria); fino a esaurimento scorte, prezzi variabili per negozio",
+   "cat": "giochi",
+   "prodotto": "LEGO DUPLO Town Autopompa 10473",
+   "formato": "età non indicata nella trascrizione (DUPLO: in genere dai 2 anni)",
+   "prezzo": 17.99,
+   "prezzoPieno": 29.99,
+   "condizioni": "con Carta Fìdaty"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Esselunga",
+   "dal": "2026-10-22",
+   "al": "2027-01-06",
+   "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
+   "fonte": "TuttoEsselunga (trascrizione, fonte secondaria); fino a esaurimento scorte, prezzi variabili per negozio",
+   "cat": "giochi",
+   "prodotto": "Quercetti Momy Soft Happy Sound",
+   "formato": "età non indicata nella trascrizione",
+   "prezzo": 12.5,
+   "prezzoPieno": 18.9
+  },
+  {
+   "prov": "TO",
+   "negozio": "Iperbimbo",
+   "dal": "2026-11-16",
+   "al": "2026-11-29",
+   "link": "https://www.iperbimbo.it/pages/black-friday-online",
+   "fonte": "Sito ufficiale Iperbimbo (offerta online; nei negozi non indicato)",
+   "cat": "accessori",
+   "prodotto": "Stokke Tripp Trapp (seggiolone)",
+   "formato": "seggiolone evolutivo",
+   "prezzo": 199.0,
+   "prezzoPieno": 249.0,
+   "condizioni": "offerta online"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Iperbimbo",
+   "dal": "2026-11-16",
+   "al": "2026-11-29",
+   "link": "https://www.iperbimbo.it/pages/black-friday-online",
+   "fonte": "Sito ufficiale Iperbimbo (offerta online; nei negozi non indicato)",
+   "cat": "accessori",
+   "prodotto": "Cuscino per Stokke Tripp Trapp",
+   "formato": "cuscino per seggiolone",
+   "prezzo": 45.0,
+   "prezzoPieno": 49.0,
+   "condizioni": "offerta online"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Iperbimbo",
+   "dal": "2026-11-16",
+   "al": "2026-11-29",
+   "link": "https://www.iperbimbo.it/pages/black-friday-online",
+   "fonte": "Sito ufficiale Iperbimbo (offerta online; nei negozi non indicato)",
+   "cat": "viaggio",
+   "prodotto": "Chicco BebèCare Easy-Tech (dispositivo antiabbandono)",
+   "formato": "sconto non indicato",
+   "prezzo": 19.9,
+   "condizioni": "offerta online"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-03",
+   "al": "2027-01-06",
+   "link": "https://www.offertevolantini.it/offerte/lupilu/lidl",
+   "fonte": "OfferteVolantini (aggregatore, fonte secondaria); fino a esaurimento scorte",
+   "cat": "giochi",
+   "prodotto": "Lupilu puzzle sonoro in legno",
+   "formato": "età e prezzo pieno non indicati",
+   "prezzo": 9.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-03",
+   "al": "2027-01-06",
+   "link": "https://www.offertevolantini.it/offerte/lupilu/lidl",
+   "fonte": "OfferteVolantini (aggregatore, fonte secondaria); fino a esaurimento scorte",
+   "cat": "giochi",
+   "prodotto": "Lupilu set veicoli e pista in legno",
+   "formato": "età e prezzo pieno non indicati",
+   "prezzo": 7.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-02",
+   "al": "2026-12-31",
+   "link": "https://www.offertevolantini.it/offerte/lupilu/lidl",
+   "fonte": "OfferteVolantini (aggregatore, fonte secondaria); fino a esaurimento scorte",
+   "cat": "abbigliamento",
+   "prodotto": "Lupilu giacca da sci bimbi",
+   "formato": "taglie non indicate",
+   "prezzo": 12.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-02",
+   "al": "2026-12-31",
+   "link": "https://www.offertevolantini.it/offerte/lupilu/lidl",
+   "fonte": "OfferteVolantini (aggregatore, fonte secondaria); fino a esaurimento scorte",
+   "cat": "abbigliamento",
+   "prodotto": "Lupilu pantaloni da sci bimbi",
+   "formato": "taglie non indicate",
+   "prezzo": 9.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Eurospin",
+   "dal": "2026-11-26",
+   "al": "2026-12-09",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione, fonte secondaria)",
+   "cat": "abbigliamento",
+   "prodotto": "Set 3 calzini antiscivolo bambino/a",
+   "formato": "taglie non indicate",
+   "prezzo": 5.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Eurospin",
+   "dal": "2026-11-26",
+   "al": "2026-12-09",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
+   "fonte": "Scontrino Felice (trascrizione, fonte secondaria)",
+   "cat": "abbigliamento",
+   "prodotto": "Babbuccia bambino/a",
+   "formato": "taglie non indicate",
+   "prezzo": 5.99
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
