@@ -1,6 +1,6 @@
 {
  "aggiornato": "2026-11-02",
- "richiamiVerificati": "2026-11-16",
+ "richiamiVerificati": "2026-11-23",
  "intro": "Qui il marchio non conta: contano i test di laboratorio indipendenti, le sostanze nocive e il prezzo. Ogni consiglio riporta chi l'ha testato, quando e quanto costava.",
  "metodo": [
   "**Test indipendenti prima di tutto**: ADAC, ÖAMTC e TCS (seggiolini, due volte l'anno), Stiftung Warentest, Öko-Test, Altroconsumo, Which?.",
@@ -297,10 +297,10 @@
    "evitare": [
     {
      "nome": "Britax Römer Baby-Safe Pro + Vario Base 5Z",
-     "motivo": "5,5 (insufficiente): nel crash frontale la fibbia si è aperta e il manichino è stato sbalzato fuori. Richiamo volontario per gli ovetti con base Isofix prodotti tra il 26/12/2025 e il 30/09/2026.",
-     "data": "2026-10",
+     "motivo": "5,5 (insufficiente): nel crash frontale la fibbia si è aperta e il manichino è stato sbalzato fuori. Richiamo ufficiale (OPSS, Regno Unito, 19/11/2026) per gli ovetti prodotti tra il 26/12/2025 e il 30/09/2026: controlla il tuo su baby-safe-check.com; Britax offre fibbia o seggiolino sostitutivo gratis.",
+     "data": "2026-11",
      "richiamo": true,
-     "link": "https://www.autobild.de/artikel/adac-warnt-kind-wird-aus-kindersitz-geschleudert-3967e4f-28839599.html"
+     "link": "https://www.gov.uk/product-safety-alerts-reports-recalls/product-recall-britax-romer-baby-safe-pro-infant-carrier-2611-0130"
     },
     {
      "nome": "Axkid Minikid Core",

@@ -1,5 +1,5 @@
 {
-  "aggiornato": "2026-11-16",
+  "aggiornato": "2026-11-23",
   "nota": "Prima versione: risorse ricorrenti. Gli eventi della settimana verranno aggiunti dall'aggiornamento automatico.",
   "eventi": [
     {
@@ -121,30 +121,6 @@
       "gratuito": null,
       "ricorrente": true,
       "prov": "GR"
-    },
-    {
-      "titolo": "Nella pancia di Tauret – visita per neogenitori con bebè",
-      "data": "2026-11-16",
-      "ora": "11:00",
-      "dove": "Museo Egizio, via Accademia delle Scienze 6, Torino",
-      "eta": "0-3",
-      "tipo": "Visita",
-      "descr": "Visita guidata di 90 minuti in piccolo gruppo per genitori con bambini fino a 9 mesi, anche sulla maternità nell'antico Egitto. Prenotazione obbligatoria (011 4406903).",
-      "link": "https://www.museoegizio.it/esplora/visite/nella-pancia-di-tauret/",
-      "gratuito": true,
-      "prov": "TO"
-    },
-    {
-      "titolo": "Piccole Domeniche alla Pinacoteca Agnelli",
-      "data": "2026-11-22",
-      "ora": "11:00",
-      "dove": "Pinacoteca Agnelli, Lingotto, via Nizza 230/103, Torino",
-      "eta": "0-3",
-      "tipo": "Laboratorio",
-      "descr": "Un'ora al museo per bambini fino a 3 anni con un adulto. Prezzo 2026 da verificare sul sito della Pinacoteca.",
-      "link": "https://abbonamentomusei.it/en/evento/piccole-domeniche-e-family-afternoons",
-      "gratuito": false,
-      "prov": "TO"
     },
     {
       "titolo": "Piccole Domeniche alla Pinacoteca Agnelli",
