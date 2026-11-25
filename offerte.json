@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-22",
+ "aggiornato": "2026-11-25",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -16,17 +16,6 @@
   "**Non pubblichiamo offerte sul latte artificiale né su biberon e tettarelle**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche latte di proseguimento, biberon e tettarelle."
  ],
  "negozi": [
-  {
-   "prov": "TO",
-   "nome": "Iperbimbo",
-   "tipo": "infanzia",
-   "volantino": "La vita è meravigliosa",
-   "al": "2026-11-22",
-   "dove": "Corso Bramante 14, Via Adamello 2, Settimo, Chieri",
-   "link": "https://www.doveconviene.it/torino/volantino/iperbimbo",
-   "fonte": "DoveConviene (aggregatore)",
-   "dal": "2026-10-31"
-  },
   {
    "prov": "TO",
    "nome": "Lidl",
@@ -266,6 +255,16 @@
    "al": "2027-01-06",
    "link": "https://www.tuttoesselunga.com/promozioni/giocattoli-esselunga-2026/",
    "fonte": "TuttoEsselunga (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Bennet",
+   "tipo": "supermercato",
+   "volantino": "Sotto costo",
+   "dal": "2026-11-19",
+   "al": "2026-11-28",
+   "link": "https://www.promoqui.it/volantino/bennet",
+   "fonte": "PromoQui (aggregatore)"
   }
  ],
  "offerte": [
@@ -510,6 +509,42 @@
    "prodotto": "Babbuccia bambino/a",
    "formato": "taglie non indicate",
    "prezzo": 5.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-30",
+   "al": "2026-12-02",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Validi da lunedì 30/11 secondo questa fonte (un altro aggregatore indica dal 26/11); età non indicata",
+   "cat": "giochi",
+   "prodotto": "Lupilu trenino in legno",
+   "formato": "5 o 6 pezzi",
+   "prezzo": 4.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-30",
+   "al": "2026-12-02",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Validi da lunedì 30/11 secondo questa fonte (un altro aggregatore indica dal 26/11); età non indicata",
+   "cat": "giochi",
+   "prodotto": "Lupilu pista in legno fattoria o dinosauro",
+   "formato": "1 pista",
+   "prezzo": 19.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Lidl",
+   "dal": "2026-11-30",
+   "al": "2026-12-02",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Validi da lunedì 30/11 secondo questa fonte (un altro aggregatore indica dal 26/11); età non indicata",
+   "cat": "giochi",
+   "prodotto": "Lupilu gioco a incastro, memory o dadi con lettere in legno",
+   "formato": "1 gioco a scelta",
+   "prezzo": 7.99
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
