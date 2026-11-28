@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-25",
+ "aggiornato": "2026-11-28",
  "province": {
   "TO": {
    "nome": "Torino",
@@ -16,36 +16,6 @@
   "**Non pubblichiamo offerte sul latte artificiale né su biberon e tettarelle**: per il latte per lattanti le promozioni nei negozi sono vietate dalla legge (D.M. 82/2009, art. 12); per scelta, in linea con il Codice OMS, escludiamo anche latte di proseguimento, biberon e tettarelle."
  ],
  "negozi": [
-  {
-   "prov": "TO",
-   "nome": "Lidl",
-   "tipo": "discount",
-   "volantino": "Volantino settimanale",
-   "dal": "2026-11-19",
-   "al": "2026-11-25",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Eurospin",
-   "tipo": "discount",
-   "volantino": "Sapori in festa",
-   "dal": "2026-11-16",
-   "al": "2026-11-25",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)"
-  },
-  {
-   "prov": "TO",
-   "nome": "Carrefour Market",
-   "tipo": "supermercato",
-   "volantino": "Prezzi da Black Friday",
-   "dal": "2026-11-17",
-   "al": "2026-11-26",
-   "link": "https://www.promoqui.it/torino/carrefour-market",
-   "fonte": "PromoQui (aggregatore)"
-  },
   {
    "prov": "TO",
    "nome": "Esselunga",
@@ -265,6 +235,36 @@
    "al": "2026-11-28",
    "link": "https://www.promoqui.it/volantino/bennet",
    "fonte": "PromoQui (aggregatore)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Esselunga",
+   "tipo": "supermercato",
+   "volantino": "Un monte di sconti",
+   "dal": "2026-11-30",
+   "al": "2026-12-13",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-esselunga/",
+   "fonte": "Scontrino Felice, TuttoEsselunga, AnteprimaVolantino (trascrizioni, fonti secondarie)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Lidl",
+   "tipo": "discount",
+   "volantino": "Volantino settimanale (Natale, Parkside)",
+   "dal": "2026-12-03",
+   "al": "2026-12-09",
+   "link": "https://www.anteprimavolantino.it/151297/volantino-lidl-dal-3-dicembre-2026-in-anteprima/",
+   "fonte": "AnteprimaVolantino (trascrizione, fonte secondaria)"
+  },
+  {
+   "prov": "TO",
+   "nome": "Acqua & Sapone",
+   "tipo": "supermercato",
+   "volantino": "Black Days (23-29/11) e Red Days (30/11-6/12)",
+   "dal": "2026-11-19",
+   "al": "2026-12-06",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-acqua-e-sapone/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Volantino valido in Piemonte; controlla il tuo punto vendita"
   }
  ],
  "offerte": [
@@ -294,42 +294,6 @@
    "formato": "Apri e Chiudi 111-180 pz o Mutandino 102-144 pz secondo la taglia: pezzi variabili, prezzo al pannolino non calcolabile. Prezzo precedente 52,98 € (−53%) secondo PromoQui",
    "prezzo": 24.9,
    "prezzoPieno": 52.98
-  },
-  {
-   "prov": "TO",
-   "negozio": "Eurospin",
-   "dal": "2026-11-16",
-   "al": "2026-11-25",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
-   "cat": "pannolini",
-   "prodotto": "Pannolini taglie assortite",
-   "formato": "numero di pezzi non indicato",
-   "prezzo": 2.99
-  },
-  {
-   "prov": "TO",
-   "negozio": "Eurospin",
-   "dal": "2026-11-16",
-   "al": "2026-11-25",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-eurospin/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
-   "cat": "giochi",
-   "prodotto": "Chicco, gioco per bambini 3-36 mesi",
-   "formato": "modello non indicato; quantità limitate",
-   "prezzo": 9.99
-  },
-  {
-   "prov": "TO",
-   "negozio": "Lidl",
-   "dal": "2026-11-19",
-   "al": "2026-11-25",
-   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-lidl/",
-   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria)",
-   "cat": "giochi",
-   "prodotto": "Bayer, bambola Piccolina",
-   "formato": "dai 18 mesi",
-   "prezzo": 14.99
   },
   {
    "prov": "TO",
@@ -545,6 +509,58 @@
    "prodotto": "Lupilu gioco a incastro, memory o dadi con lettere in legno",
    "formato": "1 gioco a scelta",
    "prezzo": 7.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Acqua & Sapone",
+   "dal": "2026-11-23",
+   "al": "2026-11-29",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-acqua-e-sapone/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Volantino valido in Piemonte; controlla il tuo punto vendita",
+   "cat": "pannolini",
+   "prodotto": "Pampers Baby-Dry o Baby-Dry Mutandino, taglie assortite",
+   "formato": "Quadri pacco, pezzi non indicati: prezzo al pannolino non calcolabile (−37%)",
+   "prezzo": 16.99,
+   "prezzoPieno": 26.99,
+   "condizioni": "Black Days, max 6 pezzi"
+  },
+  {
+   "prov": "TO",
+   "negozio": "Acqua & Sapone",
+   "dal": "2026-11-19",
+   "al": "2026-12-06",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-acqua-e-sapone/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Volantino valido in Piemonte; controlla il tuo punto vendita. Date della singola offerta non indicate: vale il periodo del volantino",
+   "cat": "pannolini",
+   "prodotto": "Pampers Sole e Luna o Sole e Luna Mutandino, taglie assortite",
+   "formato": "Pezzi e prezzo pieno non indicati",
+   "prezzo": 16.99
+  },
+  {
+   "prov": "TO",
+   "negozio": "Acqua & Sapone",
+   "dal": "2026-11-19",
+   "al": "2026-12-06",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-acqua-e-sapone/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Volantino valido in Piemonte; controlla il tuo punto vendita. Date della singola offerta non indicate: vale il periodo del volantino",
+   "cat": "salviette",
+   "prodotto": "Trudi Baby Care salviette",
+   "formato": "72 salviette",
+   "pezzi": 72,
+   "prezzo": 1.49
+  },
+  {
+   "prov": "TO",
+   "negozio": "Acqua & Sapone",
+   "dal": "2026-11-19",
+   "al": "2026-12-06",
+   "link": "https://www.scontrinofelice.it/volantini/anteprima-nuovo-volantino-acqua-e-sapone/",
+   "fonte": "Scontrino Felice (trascrizione del volantino, fonte secondaria). Volantino valido in Piemonte; controlla il tuo punto vendita. Date della singola offerta non indicate: vale il periodo del volantino",
+   "cat": "salviette",
+   "prodotto": "Speedy Care Pure Water salviette baby",
+   "formato": "2 × 72 salviette",
+   "pezzi": 144,
+   "prezzo": 2.49
   }
  ],
  "nota": "Molti volantini sono pubblicati solo come immagini: per questo l'elenco delle offerte sui singoli prodotti è incompleto. Qui trovi tutti i negozi con un volantino attivo, in ordine di scadenza.",
